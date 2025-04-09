@@ -1,0 +1,12 @@
+<div class="header p-2 w-29rem">
+  <h3 class="header__title">{{ title }}</h3>
+  <p class="header__desc my-3">{{ message }}</p>
+</div>
+<div class="flex justify-content-end align-items-center gap-3">
+  <button (click)="cancel()" type="button" class="p-button primary-outline-btn">
+    {{ 'cancel' | translate }}
+  </button>
+  <button (click)="confirm()" type="button" class="p-button primary-btn">
+    {{ 'confirm' | translate }}
+  </button>
+</div>

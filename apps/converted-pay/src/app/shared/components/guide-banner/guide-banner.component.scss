@@ -1,0 +1,113 @@
+.guide-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 11.453px;
+  background-color: var(--converted-pay-gray-blue-700);
+  // &__container{
+  //     max-height: 10rem;
+  //     @media  screen and (max-width: 768px) {
+  //         max-height: unset
+  //         ;
+  //     }
+  // }
+  &__img {
+    object-fit: contain;
+    object-position: bottom;
+  }
+  &__banner {
+    padding: 20px 24px;
+    //   @media  screen and (max-width: 768px) {
+    //            padding-bottom: 0;
+    //         }
+    display: flex;
+    gap: 18px;
+    h3 {
+      color: var(--convertedin-gray-800);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 28px;
+    }
+
+    h4 {
+      color: var(--convertedin-gray-800);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  &__btn {
+    background-color: white;
+    color: var(--convertedin-gray-700);
+    gap: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg-icon {
+      display: contents;
+    }
+  }
+}
+
+.alt-banner {
+  flex-direction: column;
+  position: relative;
+  // &::before {
+  //   position: absolute;
+  // //   inset: 0;
+  // left: 0;
+  // top: 1rem;
+  // bottom: 0;
+  // right: 3rem;
+  //   content: '';
+  //   z-index: 0;
+  //   @media screen and (min-width: 768px) {
+  //     background-position: 0 0 0 0;
+  //     background-image: url('/assets/images/guide-image.png');
+  //     background-repeat: no-repeat;
+  //     background-position: right center;
+  //     // filter: brightness(0.6);
+  //     background-size: contain;
+  //   }
+  // }
+  .alt-banner__text {
+    z-index: 1;
+  }
+  h3 {
+    color: white;
+  }
+
+  h4 {
+    color: var(--convertedin-gray-300);
+    z-index: 1;
+  }
+
+  ::ng-deep {
+    .p-button {
+      z-index: 1;
+      width: fit-content;
+
+      color: var(--convertedin-gray-700);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px; /* 142.857% */
+
+      border-radius: 8px;
+      border: 1px solid #d0d5dd;
+      background: #fff;
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+      padding: 10px 16px;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+.icon-btn {
+  inset-inline-end: 0.75rem;
+  top: 0.75rem;
+  z-index: 100;
+}

@@ -1,0 +1,40 @@
+<header
+  class="header flex justify-content-between gap-3 pb-3 border-bottom-1 border-gray-200"
+>
+  <h3 class="header__title text-2xl">
+    {{ 'howActiveGoogle.title' | translate }}
+  </h3>
+  <button class="pi pi-times icon-btn" (click)="close()"></button>
+</header>
+<section>
+  <div class="flex flex-column md:flex-row gap-3 px-4 pt-4 p-3 step-container">
+    <div class="flex-1">
+      <p class="step-container__text">
+        {{ 'howActiveGoogle.step1' | translate }}
+      </p>
+      <p class="step-container__text mt-5">
+        {{ 'howActiveGoogle.step2' | translate }}
+      </p>
+    </div>
+    <div class="w-full md:w-6">
+      <img src="assets/images/active-account-1.png" class="w-full step-container__img-1" />
+    </div>
+  </div>
+  <p class="step-container__text">
+    {{ 'howActiveGoogle.step3' | translate }}
+  </p>
+  <img src="assets/images/active-account-2.png" class="w-full step-container__img-2 my-3" />
+</section>
+<footer
+  class="flex justify-content-between align-items-center gap-3 pt-3 border-top-1 border-gray-200"
+>
+  <p class="footer-text">
+    {{ 'howActiveGoogle.footerText' | translate }}
+    <a href="https://ads.google.com/aw/accountaccess/managers" target="_blank"
+      >{{ 'howActiveGoogle.clickHere' | translate }}</a
+    >
+  </p>
+  <button class="p-button btn primary-outline-btn" (click)="close()">
+    {{ 'howActiveGoogle.close' | translate }}
+  </button>
+</footer>

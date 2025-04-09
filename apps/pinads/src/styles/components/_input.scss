@@ -1,0 +1,62 @@
+.p-inputtext,
+.convertedin-phone {
+  width: 100%;
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
+}
+.p-inputwrapper {
+  width: 100%;
+  &.ng-invalid.ng-touched {
+    .p-dropdown,
+    .p-multiselect,
+    .p-inputtext {
+      border-color: red;
+    }
+  }
+}
+.p-input-icon {
+  position: relative;
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    html[dir='rtl'] & {
+      left: 0.75rem;
+    }
+    html[dir='ltr'] & {
+      right: 0.75rem;
+    }
+  }
+
+  .p-inputtext {
+    html[dir='rtl'] & {
+      padding-left: 2.5rem;
+    }
+    html[dir='ltr'] & {
+      padding-right: 2.5rem;
+    }
+  }
+  .p-inputtext {
+  }
+}
+.p-inputgroup {
+  .p-inputgroup-addon:first-child {
+    html[dir='rtl'] & {
+      border-right: 1px solid #ced4da;
+      border-left: 0;
+      border-radius: 0;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+  }
+  .p-inputgroup-addon:last-child {
+    html[dir='rtl'] & {
+      border-radius: 0;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      border-right: 0;
+      border-left: 1px solid #ced4da;
+    }
+  }
+}

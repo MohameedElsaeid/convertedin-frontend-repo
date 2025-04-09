@@ -1,0 +1,48 @@
+<ng-container [formGroup]="_form">
+  <!-- Number input -->
+  <div class="w-6 flex flex-column">
+    <p-inputNumber
+      styleClass="flow-builder__number align-items-center"
+      [showButtons]="true"
+      buttonLayout="horizontal"
+      decrementButtonClass="flow-builder__button"
+      incrementButtonClass="flow-builder__button"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      [min]="0"
+      [formControlName]="numberControlName"
+      [ngClass]="{
+        'flow-builder__error':
+          _form.get(numberControlName).touched &&
+          !_form.get(numberControlName).valid
+      }"
+    ></p-inputNumber>
+
+    <convertedin-control-errors
+      [control]="_form.get(numberControlName)"
+      class="mt-2"
+    />
+  </div>
+
+  <!-- Period selection -->
+  <div class="w-6 flex flex-column">
+    <p-dropdown
+      styleClass="flow-sidenav__dropdown"
+      optionLabel="label"
+      optionValue="value"
+      [options]="_periodsDropDown"
+      placeholder="{{ 'automation.period-placeholder' | translate }}"
+      [formControlName]="typeControlName"
+      [ngClass]="{
+        'ng-dirty ng-invalid':
+          _form.get(typeControlName).touched &&
+          !_form.get(typeControlName).valid
+      }"
+    ></p-dropdown>
+
+    <convertedin-control-errors
+      [control]="_form.get(typeControlName)"
+      class="mt-2"
+    />
+  </div>
+</ng-container>

@@ -1,0 +1,103 @@
+<!-- Header -->
+<section class="flex gap-4 flex-column-reverse lg:flex-row">
+  <section class="flex-1">
+    <h3 class="text-sm text-primary-dark mb-3 font-semibold">
+      {{ 'topUp.selectPaymentGateway' | translate }}
+    </h3>
+    <!-- Spinner -->
+    <convertedin-spinner
+      *ngIf="isLoading"
+      class="flex gap-4 flex-grow-1 align-items-center justify-content-center"
+    />
+
+    <!-- Payment methods -->
+    <div
+      class="flex gap-2 overflow-auto"
+      *ngIf="paymentMethods$ | async as methods"
+    >
+      <div
+        *ngFor="let payment of methods"
+        class="payment-card cursor-pointer flex-1 flex align-items-center gap-3 p-3 border-1 border-gray-200 border-round-lg shadow-1"
+        [class.active]="selectedPaymentMethod?.id === payment.id"
+        [class.disabled]="!payment.isAction"
+        (click)="onSelectPayment(payment)"
+      >
+        <img [src]="payment.icon" [alt]="payment.name" />
+        <p class="text-primary-dark font-semibold text-sm">
+          {{ payment.name }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Payment method details -->
+    <section
+      class="mt-3"
+      *ngIf="selectedPaymentMethod"
+      [ngSwitch]="selectedPaymentMethod?.id"
+    >
+      <convertedin-bank-payment-step
+        (onloadBankList)="setBankList($event)"
+        *ngSwitchCase="PAYMENT_METHOD.bank"
+      />
+      <convertedin-vodafon-payment-step
+        *ngSwitchCase="PAYMENT_METHOD.vodafonCash"
+      />
+      <convertedin-fawry-payment-step *ngSwitchCase="PAYMENT_METHOD.fawry" />
+    </section>
+  </section>
+
+  <!-- Invoice section -->
+  <section class="w-full lg:w-3" *ngIf="paymentDetails$ | async as details">
+    <div class="invoice-container p-3 border-round-lg">
+      <p>{{ 'topUp.invoice' | translate }}</p>
+      <!-- Charge amount -->
+      <div
+        class="flex justify-content-between align-items-center text-xs text-gray-700 mt-4"
+      >
+        <p>{{ 'topUp.chargeAmount' | translate }}</p>
+        <span>{{ details.rechargeAmount | number }} <convertedin-currency/></span>
+      </div>
+
+      <!-- Fees -->
+      <div
+        class="flex justify-content-between align-items-center text-xs text-gray-700 mt-3"
+      >
+        <p>{{ 'topUp.agencyFees' | translate }}</p>
+        <span>
+          {{ details.agencyFee | number }} <convertedin-currency/>
+        </span>
+      </div>
+      <div
+        class="flex justify-content-between align-items-center text-xs text-gray-700 mt-3"
+      >
+        <p>{{ 'topUp.vatFees' | translate }}</p>
+        <span>
+          {{ details.vatFee | number }} <convertedin-currency/>
+        </span>
+      </div>
+
+      <hr class="my-3 w-full border-1 border-gray-300" />
+
+      <!-- Total amount -->
+      <div
+        class="flex justify-content-between align-items-center text-sm font-bold text-gray-700"
+      >
+        <p>{{ 'topUp.totalAmount' | translate }}</p>
+        <span>
+          {{ details.totalAmount | number }} <convertedin-currency/>
+        </span>
+      </div>
+    </div>
+    <div
+      *ngIf="selectedPaymentMethod?.id?.toString() === PAYMENT_METHOD.bank"
+      class="flex flex-wrap mt-3"
+    >
+      <img
+        class="bank-img px-2"
+        *ngFor="let bank of bankList"
+        src="assets/images/{{ bank.bankName }}.png"
+        alt="bank.bankName"
+      />
+    </div>
+  </section>
+</section>

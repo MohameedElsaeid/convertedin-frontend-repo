@@ -1,0 +1,20 @@
+<article class="flex justify-content-between offer-card">
+  <div class="flex flex-column justify-content-center p-5 md:w-8 lg:w-6 z-1">
+    <h3 class="offer-card__title" *ngIf="userData$ | async as user">
+      {{
+        'referral.shareToEarn'
+          | translate
+            : {
+                currency: user.currency.symbol,
+                value: user.senderFreeCreditValue
+              }
+      }}
+    </h3>
+    <p class="offer-card__desc">
+      {{ 'referral.shareReferralCodeDescription' | translate }}
+    </p>
+  </div>
+  <!-- <div class="flex-1 h-inherit">
+    <img src="assets/images/offer-banner.png" class="offer-card__img" alt="" />
+  </div> -->
+</article>

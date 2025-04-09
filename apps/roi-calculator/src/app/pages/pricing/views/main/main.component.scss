@@ -1,0 +1,55 @@
+#pricingSection{
+    h1{
+        color: theme('colors.primary-color');
+        text-align: center;
+        font-size: 60px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 72px; /* 120% */
+        letter-spacing: -1.2px;
+        margin-block: 122px 17px;
+    }
+    
+    h4{
+        color: theme('colors.primary-color');
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px; /* 133.333% */
+        margin-inline:auto;
+    }
+    
+    h5{
+        color: theme('colors.primary-color');
+        text-align: center;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 38px; /* 126.667% */
+    
+    }
+    
+    p{
+        color: theme('colors.gray.700');
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px; /* 150% */
+        margin-bottom: 71px;
+    }
+    
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        li{
+            color: theme('colors.gray.600');
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; /* 150% */
+        }
+    }
+}
+

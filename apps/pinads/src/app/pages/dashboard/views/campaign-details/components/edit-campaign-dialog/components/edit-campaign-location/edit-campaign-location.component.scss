@@ -1,0 +1,32 @@
+:host {
+  padding: 1rem;
+  background-color: var(--convertedin-gray-50);
+  display: block;
+}
+.slider-thumb {
+  transform: translateX(-50%);
+}
+.slider-thumb {
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: var(--map-ad-primary-color);
+  font-weight: 700;
+}
+:host:has(.p-slider-handle:focus),
+:host:has(.p-slider-handle:hover) {
+  .slider-thumb {
+    opacity: 1;
+  }
+}
+
+.d-ltr {
+  direction: ltr;
+}
+.thumb-container {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+.google-map {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}

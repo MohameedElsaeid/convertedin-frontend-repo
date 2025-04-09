@@ -1,0 +1,175 @@
+{
+  "name": "redmose",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "convertedin",
+  "sourceRoot": "apps/redmose/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/redmose/app-assets/",
+        "index": "apps/redmose/src/index.html",
+        "main": "apps/redmose/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/redmose/tsconfig.app.json",
+        "assets": [
+          "apps/redmose/src/app-assets/",
+          "apps/redmose/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "apps/redmose/src/app-assets/",
+            "output": "/"
+          },
+          {
+            "input": "libs/feature/src/assets/",
+            "glob": "**/*",
+            "output": "app-assets/lib/"
+          }
+        ],
+        "styles": [
+          "node_modules/quill/dist/quill.core.css",
+          "node_modules/quill/dist/quill.snow.css",
+          {
+            "bundleName": "appStyles",
+            "input": "apps/redmose/src/styles.scss"
+          },
+          {
+            "bundleName": "primeTheme",
+            "input": "node_modules/primeng/resources/themes/lara-light-blue/theme.css"
+          },
+          {
+            "bundleName": "primeng",
+            "input": "node_modules/primeng/resources/primeng.min.css"
+          },
+          {
+            "bundleName": "primeIcons",
+            "input": "node_modules/primeicons/primeicons.css"
+          },
+          {
+            "bundleName": "primeFlex",
+            "input": "node_modules/primeflex/primeflex.css"
+          },
+          {
+            "bundleName": "flagIcons",
+            "input": "node_modules/flag-icons/css/flag-icons.min.css"
+          },
+          {
+            "bundleName": "grapesjs",
+            "input": "node_modules/grapesjs/dist/css/grapes.min.css",
+            "inject": false
+          },
+          {
+            "bundleName": "ckeditor5",
+            "input": "node_modules/ckeditor5/dist/ckeditor5.css"
+          }
+        ],
+        "scripts": ["node_modules/quill/dist/quill.js"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "2mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "500kb",
+              "maximumError": "1.5mb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/redmose/src/environment/environment.ts",
+              "with": "apps/redmose/src/environment/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "stage": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "2mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/redmose/src/environment/environment.ts",
+              "with": "apps/redmose/src/environment/environment.stage.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "redmose:build:production"
+        },
+        "stage": {
+          "browserTarget": "redmose:build:stage"
+        },
+        "development": {
+          "browserTarget": "redmose:build:development",
+          "proxyConfig": "apps/redmose/proxy.conf.json"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "redmose:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/redmose/**/*.ts", "apps/redmose/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/redmose/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "redmose:build"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="flex gap-2 justify-content-between align-items-center">
+  <div>
+    <h4 class="header__title text-xl">
+      {{ 'referral.earnings' | translate }}
+      <span
+        pTooltip="{{ 'referral.referralEarningsDescription' | translate }}"
+        tooltipPosition="right"
+        class="pi pi-info-circle mx-1"
+      ></span>
+    </h4>
+    <p class="currency my-2">{{ earning.total }} <convertedin-currency/></p>
+  </div>
+  <div class="line"></div>
+  <div>
+    <h4 class="header__title text-xl">
+      {{ 'referral.remaining' | translate }}
+      <span
+        pTooltip="{{ 'referral.remainingEarningsDescription' | translate }}"
+        tooltipPosition="left"
+        class="pi pi-info-circle mx-1"
+      ></span>
+    </h4>
+    <p class="currency my-2">
+      {{ earning.currentPromotionalWalletBalance }} <convertedin-currency/>
+    </p>
+  </div>
+</div>
+<p class="header__desc text-base">
+  {{ 'referral.fromInvitations' | translate : { userCount } }}
+</p>
+<button
+  class="p-button btn primary-outline-btn w-full justify-content-center mt-3"
+  [disabled]="isCashOutDisabled"
+  (click)="redirectToTopup()"
+>
+  {{ 'referral.cashout' | translate }}
+</button>

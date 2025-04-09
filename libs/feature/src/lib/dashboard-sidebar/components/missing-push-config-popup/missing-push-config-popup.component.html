@@ -1,0 +1,23 @@
+<div class="flex flex-column gap-3">
+  <figure class="flex justify-content-center align-items-center">
+    <img
+      src="{{ assetsUrl }}/app-assets/icons/common/alert-circle.svg"
+      width="24"
+      alt="warning-icon"
+    />
+  </figure>
+
+  <div class="flex flex-column gap-1">
+    <p>{{ 'missing-config-title' | translate }}</p>
+
+    <span>
+      {{ 'missing-config-push-subtitle' | translate }}
+    </span>
+  </div>
+</div>
+
+<div class="flex gap-2 pt-5 justify-content-end popup-border">
+  <a href="/dashboard/onboarding/push" class="setup-btn">
+    {{ 'missing-config.setup-btn' | translate }}
+  </a>
+</div>

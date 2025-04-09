@@ -1,0 +1,79 @@
+h1{
+    color: #1D2939;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.aurora{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(114deg, #6EB2FF 6.87%, rgba(255, 255, 255, 0.00) 95.38%), linear-gradient(113deg, #FFF 8.54%, #8A63F2 39.95%, #CBB8FF 61.01%, #8A63F2 83.45%, #FFF 100.51%);
+    height: 40vh;
+    width: 100%;
+    z-index: -1;
+    background-size: 200% 100%, 200% 100%, 200% 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    label{
+        color: #344054;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        margin-bottom: 6px;
+    }
+    
+    input{
+        color: #667085;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        border-radius: 8px;
+        border: 1px solid #D0D5DD;
+        background: white;
+        box-shadow: 0 1px 2px 0 rgba(16, 24, 40, .05);
+        padding: 12px 12px;
+    }
+
+    ::ng-deep{
+        .p-password {
+            width: 100%;
+        }
+
+        .p-inputtext{
+            width: 100%;
+        }
+    }
+}
+
+
+
+button{
+    color: white;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    border-radius: 8px;
+    border: 1px solid #0036B1;
+    background: #0036B1;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, .05);
+    text-align: center;
+    width: 100%;
+    margin-top: 24px;
+    padding-block: 16px;
+
+    &:disabled{
+        opacity: 0.5;
+    }
+}

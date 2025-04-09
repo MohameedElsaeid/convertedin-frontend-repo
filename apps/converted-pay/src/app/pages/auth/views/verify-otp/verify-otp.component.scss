@@ -1,0 +1,48 @@
+.container {
+  width: 38%;
+  background-color: white;
+  @media screen and (max-width:998px) {
+    width: 50%;
+  }
+  @media screen and (max-width:768px) {
+    width: 100%;
+  }
+}
+
+.login-img {
+  height: auto;
+  width: 34rem;
+}
+
+::ng-deep.ngx-otp {
+  .ngx-otp-input-box {
+    flex-grow: 1;
+    .ngx-otp-input {
+      width: 3.5rem;
+      height: 3.5rem;
+      border: 1px solid var(--convertedin-gray-100);
+      @media screen and (max-width: 468px) {
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+      @media screen and (max-width: 912px) {
+        width: 3rem;
+        height: 3rem;
+      }
+      background-color: var(--convertedin-gray-100);
+      &:focus {
+        border-color: var(--convertedin-gray-700);
+      }
+    }
+  }
+}
+::ng-deep html[dir='rtl'] {
+  .ngx-otp .ngx-otp-input-container {
+    direction: ltr;
+    justify-content: flex-end !important;
+  }
+}
+.logo {
+  max-width: 148px;
+  height: 22px;
+}

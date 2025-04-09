@@ -1,0 +1,13 @@
+<button
+  *ngFor="let action of actions"
+  class="workflow__action justify-content-center align-items-center flex flex-column cursor-pointer"
+  (click)="actionTrigger(action.actionType)"
+>
+  <!-- Action icon -->
+  <figure class="flex justify-content-center">
+    <img [src]="action.img" alt="{{ action.title }}-icon" class="max-w-full" />
+  </figure>
+
+  <!-- Action title -->
+  <p>{{ action.title }}</p>
+</button>

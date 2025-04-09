@@ -1,0 +1,53 @@
+.ad-details__tips {
+  ::ng-deep & {
+    gap: 12px;
+  }
+
+  &-container {
+    row-gap: 16px;
+  }
+}
+
+.ad-details {
+  &__tip {
+    background: #f7f9fc;
+    padding: 12px 0;
+    padding-inline-start: 24px;
+    padding-inline-end: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    width: calc((100% - 16px) / 2);
+    max-width: calc((100% - 16px) / 2);
+    text-decoration: none;
+
+    &-title {
+      color: var(--convertedin-grey-800);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    &-subtitle {
+      color: var(--convertedin-grey-600);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+  }
+}
+
+h3 {
+  color: var(--convertedin-gray-800);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+::ng-deep {
+  html[dir='ltr'] {
+    .ad-details__tip img {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+  }
+}

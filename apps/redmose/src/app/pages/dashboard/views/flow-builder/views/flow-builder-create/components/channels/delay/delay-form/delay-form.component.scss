@@ -1,0 +1,65 @@
+.delay-form {
+  &__label {
+    margin-bottom: 12px;
+    color: #33383f;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &__input {
+    background: #f4f4f4;
+    // margin-bottom: 20px;
+  }
+}
+
+p {
+  color: #465373;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+}
+
+::ng-deep {
+  .delay-form {
+    &__waitfor-dropdown {
+      width: 100%;
+      max-width: 100%;
+      background: #f4f4f4;
+      height: 100%;
+    }
+
+    &__waitfor-number {
+      padding: 10px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 2px solid #efefef;
+      background: #fff;
+      width: 100%;
+
+      input {
+        max-width: 100%;
+        width: 45% !important;
+        text-align: center;
+        padding: 0 0.5rem;
+        border: unset !important;
+      }
+      input:focus {
+        box-shadow: unset !important;
+      }
+    }
+
+    &__button {
+      width: 27.5% !important;
+      border-radius: 4px !important;
+      background: #e5e7eb !important;
+      color: #6b7280 !important;
+      border-color: transparent !important;
+      width: 34px !important;
+      height: 28px !important;
+    }
+  }
+}

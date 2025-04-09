@@ -1,0 +1,27 @@
+main {
+  // width: calc(100% - 240px);
+  background-color: var(--convertedin-gray-50);
+  padding: 2rem 1.5rem;
+  max-height: 100vh;
+  overflow-y: scroll;
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+.mobile-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: fixed;
+  top: 50px;
+  left: 8px;
+  right: 8px;
+  z-index: 99999;
+  .banner{
+    background-color: var(--converted-pay-warning-200);
+  }
+  .warning-banner{
+    max-width: 800px;
+    margin: auto;
+  }
+}

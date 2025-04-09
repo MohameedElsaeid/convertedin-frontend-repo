@@ -1,0 +1,167 @@
+<div class="flex flex-column gap-4" [formGroup]="_form">
+  <!-- Campaign name -->
+  <div class="flex flex-column">
+    <label class="flow-sidenav__label">
+      {{ 'automation.create-campaign' | translate }}
+    </label>
+    <input
+      pInputText
+      placeholder="{{ 'automation.campaign-placeholder' | translate }}"
+      class="flow-sidenav__input w-full"
+      formControlName="name"
+      [ngClass]="{
+        'ng-dirty ng-invalid':
+          _form.get('name').touched && !_form.get('name').valid
+      }"
+    />
+
+    <convertedin-control-errors [control]="_form.get('name')" class="mt-2" />
+  </div>
+
+  <p-divider styleClass="m-0" />
+
+  <!-- Action start stop dropdowns -->
+  <ng-container *ngIf="_actionList$ | async as actions">
+    <!-- Start flow dropdown -->
+    <div class="flex flex-column">
+      <label class="flow-sidenav__label">
+        {{ 'automation.trigger-start-form' | translate }}
+      </label>
+
+      <p-dropdown
+        class="w-full"
+        appendTo="body"
+        styleClass="flow-sidenav__dropdown"
+        optionLabel="name"
+        optionValue="id"
+        [options]="filterByAction(_actionsType.start, actions)"
+        placeholder="{{ 'automation.start-placeholder' | translate }}"
+        formControlName="start_condition"
+        [filter]="true"
+        filterBy="name"
+        [autofocus]="false"
+        [autofocusFilter]="true"
+        (onChange)="checkValue($event, actions, 'start_condition')"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            _form.get('start_condition').touched &&
+            !_form.get('start_condition').valid
+        }"
+      >
+        <ng-template let-item pTemplate="item">
+          <ng-container
+            [ngTemplateOutlet]="dropdownTemplate"
+            [ngTemplateOutletContext]="{ $implicit: item }"
+          ></ng-container>
+        </ng-template>
+      </p-dropdown>
+
+      <convertedin-control-errors
+        [control]="_form.get('start_condition')"
+        class="mt-2"
+      />
+    </div>
+
+    <!-- Stop flow dropdown -->
+    <div class="flex flex-column">
+      <label class="flow-sidenav__label">
+        {{ 'automation.trigger-stop-form' | translate }}
+      </label>
+
+      <p-dropdown
+        class="w-full"
+        styleClass="flow-sidenav__dropdown"
+        appendTo="body"
+        optionLabel="name"
+        optionValue="id"
+        [options]="filterByAction(_actionsType.stop, actions)"
+        placeholder="{{ 'automation.stop-placeholder' | translate }}"
+        formControlName="stop_condition"
+        [filter]="true"
+        filterBy="name"
+        [autofocus]="false"
+        [autofocusFilter]="true"
+        (onChange)="checkValue($event, actions, 'stop_condition')"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            _form.get('stop_condition').touched &&
+            !_form.get('stop_condition').valid
+        }"
+      >
+        <ng-template let-item pTemplate="item">
+          <ng-container
+            [ngTemplateOutlet]="dropdownTemplate"
+            [ngTemplateOutletContext]="{ $implicit: item }"
+          ></ng-container>
+        </ng-template>
+      </p-dropdown>
+
+      <convertedin-control-errors
+        [control]="_form.get('stop_condition')"
+        class="mt-2"
+      />
+    </div>
+  </ng-container>
+
+  <p-divider styleClass="m-0" />
+
+  <!-- Frequency selector -->
+  <div class="flex flex-column">
+    <div class="flex justify-content-between align-items-center">
+      <label class="flow-sidenav__label">
+        {{ 'automation.trigger-frequency' | translate }}
+      </label>
+      <p-inputSwitch
+        [(ngModel)]="_frequencyEnabled"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="frequencyChange()"
+      ></p-inputSwitch>
+    </div>
+
+    <p>
+      {{ 'automation.trigger-frequency-subtitle' | translate }}
+    </p>
+  </div>
+
+  <!-- Frequency inputs -->
+  <ng-container *ngIf="_frequencyEnabled">
+    <p-divider styleClass="m-0" />
+
+    <div class="flex flex-column">
+      <label class="flow-sidenav__label">
+        {{ 'automation.trigger-frequency-label' | translate }}
+      </label>
+
+      <convertedin-flow-builder-period
+        numberControlName="send_after"
+        typeControlName="send_after_type"
+      />
+    </div>
+  </ng-container>
+</div>
+
+<!-- Dropdown template -->
+<ng-template #dropdownTemplate let-item>
+  <div
+    [ngClass]="{ 'disabled-item': !item.status }"
+    class="flex justify-content-between align-items-center"
+  >
+    <!-- Dropdown item label -->
+    <div class="flex align-items-center gap-2">
+      <span>{{ item.name }}</span>
+      <i
+        class="pi-question-circle pi"
+        [autoHide]="false"
+        pTooltip="{{ 'automation.trigger-need-pixel' | translate }}"
+        [escape]="false"
+        tooltipPosition="top"
+        *ngIf="!item.status"
+      ></i>
+    </div>
+
+    <!-- Check pixel state (only if item is disabled) -->
+    <a href="/dashboard/configuration#pixel-tab" *ngIf="!item.status">
+      Check Pixel
+    </a>
+  </div>
+</ng-template>

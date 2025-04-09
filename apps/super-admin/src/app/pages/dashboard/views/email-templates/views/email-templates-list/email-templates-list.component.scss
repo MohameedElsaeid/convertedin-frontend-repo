@@ -1,0 +1,112 @@
+.template-list {
+  ::ng-deep {
+    .p-datatable-header {
+      border-top: none;
+    }
+    p-paginator {
+      .p-paginator-first,
+      .p-paginator-last {
+        display: none;
+      }
+    }
+    .caption-tabel {
+      .search-item {
+        h2 {
+          font-size: 1.125rem;
+          font-weight: 500;
+          color: rgb(17 24 39);
+        }
+        input {
+          box-shadow: none;
+        }
+        .btn-search {
+          button {
+            color: white;
+            padding: 10px;
+            background: rgb(144 97 249);
+            border-radius: 7px;
+            margin-left: 8px;
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
+      .btn-new-template {
+        button {
+          color: #ffffff;
+          background: #3b82f6;
+          border: none;
+          font-weight: 700;
+          padding: 12px;
+          i {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .title-table {
+      th {
+        color: rgb(107 114 128);
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 0.75rem;
+        text-align: left;
+        padding: 16px 20px;
+        background: rgb(249 250 251);
+        min-width: calc(100% / 10);
+
+        p-columnFilter {
+          button {
+            background: none;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+    .body-table {
+      background: white;
+      td {
+        color: rgb(17 24 39);
+        font-weight: 500;
+        font-size: 0.875rem;
+        padding: 16px 20px;
+        .p-togglebutton {
+          box-shadow: none;
+          border: none;
+          font-size: 14px;
+          padding: 10px;
+          min-width: 100px;
+          span {
+            color: white;
+          }
+        }
+        .p-togglebutton[aria-checked='false'] {
+          background: rgb(200 30 30);
+        }
+        .p-togglebutton[aria-checked='true'] {
+          background: #2563eb;
+        }
+        .dropdown-action {
+          .icon-dropdown {
+            transform: translate(0, -50%);
+            z-index: 1;
+            right: 15px;
+          }
+        }
+        p-dropdown {
+          .p-dropdown {
+            box-shadow: none;
+            min-width: 120px;
+
+            .p-dropdown-trigger {
+              display: none;
+            }
+            .p-dropdown-label {
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

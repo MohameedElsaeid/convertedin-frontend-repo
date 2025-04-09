@@ -1,0 +1,84 @@
+<section class="flex flex-column-reverse md:flex-row gap-3">
+  <div class="w-full md:w-7">
+    <h2 class="header__title font-semibold text-lg mb-3">
+      {{ 'campaignDetails.contentAnalytics' | translate }}
+    </h2>
+    <p-table styleClass="overview-table" [value]="contentData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{ 'campaignDetails.type' | translate }}</th>
+          <th>{{ 'campaignDetails.content' | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-campaign>
+        <tr>
+          <td class="font-medium">
+            <span class="content-ticket" [attr.data]="campaign.key">{{
+              campaign.key | translate
+            }}</span>
+          </td>
+          <td class="font-medium">
+            <span>{{ campaign.value }}</span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <section class="flex-1">
+    <h2 class="header__title font-semibold text-lg mb-3">
+      {{ 'campaignDetails.campaignDetails' | translate }}
+    </h2>
+    <div class="details-container">
+      <h3 class="review-label">
+        {{ 'campaignDetails.businessLabel' | translate }}
+      </h3>
+      <p class="review-value">{{ campaignDetails.locations[0].title }},</p>
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.campaignName' | translate }}
+      </h3>
+      <p class="review-value">{{ campaignDetails.name }}</p>
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.phoneNumber' | translate }}
+      </h3>
+      <p class="review-value">
+        {{ campaignDetails.locations[0].phone_number ?? '-' }}
+      </p>
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.website' | translate }}
+      </h3>
+      <p class="review-value">
+        {{ campaignDetails.locations[0].website_url ?? '-' }}
+      </p>
+      <!-- 
+    <h3 class="mt-3 review-label">
+      {{ 'campaignDetails.languageLabel' | translate }}
+    </h3>
+    <p class="review-value">
+      {{ 'languages.' + campaignDetails.lang_code | translate }}
+    </p> -->
+
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.locationLabel' | translate }}
+      </h3>
+      <p class="review-value">{{ address }}</p>
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.areaRangeLabel' | translate }}
+      </h3>
+      <p class="review-value">
+        {{ campaignDetails.proximity?.radius
+        }}{{ 'createCampaign.km' | translate }}
+      </p>
+      <h3 class="mt-3 review-label">
+        {{ 'campaignDetails.budgetLabel' | translate }}
+      </h3>
+      <p class="review-value">
+        ${{
+          (campaignDetails.budget_micros
+            ? campaignDetails.budget_micros / MICRO
+            : 0
+          ) | number
+        }}
+      </p>
+    </div>
+  </section>
+</section>

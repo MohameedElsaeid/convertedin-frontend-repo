@@ -1,0 +1,23 @@
+<p class="mt-3 mb-4">
+  {{ 'automation.discard-title' | translate }}
+</p>
+
+<div class="flex justify-content-end gap-3">
+  <!-- Cancel btn -->
+  <button
+    class="p-button-secondary p-button-text discard-popup__cancel-btn"
+    pButton
+    (click)="close()"
+  >
+    {{ 'Cancel' | translate }}
+  </button>
+
+  <!-- Discard btn -->
+  <button
+    class="p-button-danger discard-popup__discard-btn"
+    pButton
+    (click)="discard()"
+  >
+    {{ 'automation.discard' | translate }}
+  </button>
+</div>

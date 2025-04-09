@@ -1,0 +1,36 @@
+<div
+  class="flex justify-content-between align-items-center create-ad__ai-header"
+>
+  <div class="flex gap-2 align-items-center">
+    <img [src]="icon" alt="ai-icon" />
+    <p class="create-ad__ai-title">{{ title }}</p>
+  </div>
+
+  <label class="cursor-pointer" (click)="openPopup.emit(title)">
+    {{ 'common.modify' | translate }}
+  </label>
+</div>
+
+<div class="create-ad__ai-data flex gap-2 flex-wrap p-3">
+  <!-- Label value -->
+  <ng-container *ngIf="items.length > 0">
+    <p class="create-ad__ai-card p-2 flex gap-1" *ngFor="let item of items">
+      {{ item?.[nameDataKey] || item}}
+
+      <i
+        *ngIf="canDelete"
+        class="pi pi-times cursor-pointer"
+        (click)="suggestionDelete.emit(item.id)"
+      ></i>
+    </p>
+  </ng-container>
+
+  <!-- Empty state -->
+  <p
+    class="empty-state flex align-items-center gap-1"
+    *ngIf="items.length === 0"
+  >
+    <img src="assets/icons/common/warning-circle2.svg" width="16" height="16" />
+    {{ ('create-ad.empty-state' | translate) + ' ' + title }}
+  </p>
+</div>

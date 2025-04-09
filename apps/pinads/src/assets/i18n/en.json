@@ -1,0 +1,502 @@
+{
+  "noResults": "No Results",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "error": "Error",
+  "logout": "Logout",
+  "B": "B",
+  "M": "M",
+  "K": "K",
+  "notification": {
+    "title": "Notifications",
+    "markAllAsRead": "Mark All As Read",
+    "notificationsEmpty": "Notifications empty"
+  },
+  "generalErr": "Oops! It seems like something unexpected happened on our end. Don't worry, our team is on it! Please try again later.",
+  "headline": "Headline",
+  "description": "Description",
+  "keyword": "Keyword",
+  "location": "Location",
+  "add": "Add",
+  "remove": "Remove",
+  "more": "More",
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "Unspecified": "Unspecified",
+  "Unkown": "Unkown",
+  "suggestionBtn": {
+    "suggestionKeywords": "Suggestion Keywords",
+    "suggestionDescriptions": "Suggestion Descriptions",
+    "suggestionHeadlines": "Suggestion Headlines",
+    "addKeyWords": "Add Keywords",
+    "addHeadlines": "Add Headlines",
+    "addDescriptions": "Add Description",
+    "pinadsSuggestions":"PinAds Suggestions"
+  },
+  "googleCallback": {
+    "access_denied": "Access Denied",
+    "no_businesses_found": "No Businesses Found"
+  },
+
+  "route": {
+    "overview": "Overview",
+    "connected-account": "Connected Account",
+    "campaign": "Create Campaign",
+    "publish": "Published",
+    "failed": "Failed",
+    "campaign-details": "Campaign Details",
+    "faq": "Frequently asked questions",
+    "keyword-finder": "Keyword Finder"
+  },
+  "auth": {
+    "footer": {
+      "needHelp": "Need help?",
+      "contactSupport": "Contact support",
+      "getAccess": "Get Access to our",
+      "terms": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "and": "and"
+    },
+    "login": {
+      "title": "Login your ad account",
+      "subtitle": "Enter your account credentials",
+      "mailLabel": "Email Address",
+      "mailPlaceholder": "Enter Email Address",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter Password",
+      "loginBtn": "Login",
+      "haveAccount": "Don't have an account?",
+      "createNewAccount": "Create new account",
+      "forgetPassword": "Forgot Password?"
+    },
+    "otp": {
+      "title": "OTP Verification",
+      "subtitle": "Please enter the OTP code that sent to your Email",
+      "emailPlaceholder": "Email Address",
+      "expireText": "Code will Expire in",
+      "verifyOTPBtn": "Verify OTP",
+      "resendOTPBtn": "Resend OTP",
+      "backBtn": "Back"
+    },
+    "register": {
+      "title": "Create your ad account",
+      "subtitle": "Enter your account info",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter Full Name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "Enter Email Address",
+      "phoneLabel": "Phone Number",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "createAccountBtn": "Create Account",
+      "backToLoginBtn": "Back to Login",
+      "businessNameLabel": "Business Name",
+      "businessNamePlaceholder": "Enter Business Name",
+      "businessCategoryLabel": "Business Category",
+      "businessCategoryPlaceholder": "Enter Business Category",
+      "strong": "Strong",
+      "weak": "Weak",
+      "medium": "Medium"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email for reset password",
+      "mailLabel": "Email Address",
+      "mailPlaceholder": "Enter Email Address",
+      "forgotPasswordBtn": "Reset Password",
+      "login": "Login"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your new password",
+      "mailLabel": "Email Address",
+      "mailPlaceholder": "Enter Email Address",
+      "resetPasswordBtn": "Reset Password",
+      "login": "Login",
+      "passwordLabel": "New Password",
+      "passwordPlaceholder": "Enter New Password",
+      "confirmPasswordPlaceholder": "Enter Confirm Password",
+      "confirmPasswordLabel": "Confirm Password"
+    }
+  },
+  "googleAuth": {
+    "callback": {
+      "title": "Connecting Google Business Account",
+      "subtitle": "Please wait while we fetch your account details"
+    },
+    "connectGoogle": {
+      "headerTitle": "Connect Google Business Profile",
+      "headerDesc": "Start connecting your Google Business Profile",
+      "connectBtnText": "Connect Now",
+      "noAccountsText": "No accounts connected yet.",
+      "supportLabel": "Have any issues?",
+      "supportBtnText": "Contact Support"
+    },
+    "selectAccount": {
+      "headerTitle": "Let's connect your google accounts",
+      "googleAds": "Google Ads",
+      "managerAccount": "Manager Account",
+      "clientAccount": "Client Account",
+      "confirmBtnText": "Confirm",
+      "searchHere": "search here",
+      "selected": "Selected",
+      "select": "Select",
+      "noResults": "No Results"
+    }
+  },
+  "campaign": {
+    "sidebar": {
+      "connectedAccount": "Connected Account",
+      "overview": "Overview",
+      "createCampaign": "Create Campaign",
+      "settings": "Settings",
+      "helpCenter": "Help Center",
+      "keywordFinder": "Keyword Finder",
+      "more": "More"
+    }
+  },
+  "campaignOverview": {
+    "title": "Overview",
+    "subtitle": "Dashboard for campaigns summary and statistics",
+    "createCampaign": "Create Campaign",
+    "createCampaignMobile": "Create",
+    "campaign": "Campaign",
+    "campaignName": "Campaign Name",
+    "status": "Status",
+    "createdAt": "Created at",
+    "clicks": "Clicks",
+    "impressions": "Impressions",
+    "localActions": "Local Actions",
+    "callClicks": "Call Clicks",
+    "allTime": "All Time",
+    "next": "Next",
+    "previous": "Previous",
+    "view": "View",
+    "edit": "Edit",
+    "noData": "No Data to Review",
+    "startCreateCampaign": "Start creating campaigns to display data",
+    "ENABLED": "Active",
+    "PAUSED": "Paused",
+    "LEARNING": "Learning",
+    "pay": "Pay",
+    "renew": "Renew",
+    "learning":"Campaign will spend first 7 days to reach the best conversion."
+  },
+  "optimizationLog": {
+    "request": "Request",
+    "content": "Content",
+    "status": "Status",
+    "date": "Date",
+    "actionBy": "Action By",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "completed": "Completed"
+  },
+  "createCampaign": {
+    "back": "Back",
+    "next": "Next",
+    "launch": "Launch",
+    "km": "km",
+    "selectBusinessLabel": "Select Business",
+    "selectBranchesLabel": "Select Branches",
+    "targetingLabel": "Targeting",
+    "targetingKeywordLabel": "Targeting Keyword",
+    "adCampaignLabel": "Ad Campaign",
+    "setBudgetLabel": "Set budget",
+    "reviewAndPublishLabel": "Review and publish",
+    "generateWithAi": "Generate With AI",
+    "branchInfoLabel": "Branch Information",
+    "nextBtnTooltip": "Please make sure to add all required information to be able to proceed",
+    "budgetTooltip": "Please select a budget option to proceed",
+    "business": {
+      "title": "Select your Business",
+      "subtitle": "Select one of your businesses",
+      "accessMessage": "You need to have an 'Owner' level access in order to create a campaign for this location"
+    },
+    "targetingKeyword": {
+      "title": "Targeting Keyword",
+      "subtitle": "",
+      "searchVolume": "Search Volume",
+      "loadingText": "Looking up the performance of your selected keywords, this may take a few seconds."
+    },
+    "branch": {
+      "title": "Branch Information",
+      "subtitle": "",
+      "searchBranch": "Search for Branch",
+      "selectedBranches": "Selected Branches",
+      "defaultLocation": "Delete Location",
+      "businessDefaultLocation": "Business Default Location",
+      "businessDefaultLocationDes": "This location should contain all info about your brand",
+      "phoneLabel": "Phone Number",
+      "websiteLabel": "Website Url",
+      "websiteDesc": "To enhance your campaign performance, please add your website URL here"
+    },
+    "targeting": {
+      "title": "Targeting",
+      "subtitle": "Customize your campaign targeting",
+      "advertiseLocation": "Advertise Location",
+      "keywords": "Keywords",
+      "languageLabel": "Advertising Language",
+      "keywordThemesLabel": "Keyword Themes",
+      "selectLanguage": "Select a Language",
+      "advertiseNearAddress": "Advertise near an address",
+      "searchLocation": "Search for location",
+      "areaRange": "Area Range",
+      "campaignName": "Campaign Name",
+      "keywordsSubtitle": "For the best results, restrict the number of keywords from 7 to 10"
+    },
+    "adCampaign": {
+      "title": "Ad Campaign",
+      "subtitle": "The more headlines and description lines you provide, the more combinations will be tested to learn which perform the best over time",
+      "headlineTitle": "Headlines",
+      "descriptionTitle": "Description",
+      "headlineSubtitle": "Adding 3 headlines or more will help your ad performance",
+      "descriptionSubtitle": "Adding 2 descriptions or more will help your ad performance",
+      "addHeadlineBtn": "Add Headline",
+      "addDescriptionBtn": "Add Description"
+    },
+    "budget": {
+      "daily": "Daily average",
+      "monthly": "Monthly",
+      "title": "Campaign Budget",
+      "subtitle": "Select a budget",
+      "selectBudget": "Select budget",
+      "customBudget": "Enter your own budget",
+      "estimatedClicksText": "Get an estimated {{min_monthly_clicks}} - {{max_monthly_clicks}} ad clicks each month",
+      "low": "Low",
+      "recommended": "Recommended",
+      "high": "High",
+      "recommendedTooltip": "Your budget recommendation is based on your keyword themes and location settings. Budget recommendations help you stay competitive with other businesses looking to reach the same customers.",
+      "invoiceDetails": "Invoice Details",
+      "adAmount": "Campaign Budget",
+      "serviceFees": "Service Fees",
+      "vatFess": "VAT Fees",
+      "totalAmount": "Total Budget",
+      "showBreakdown": "Show Breakdown"
+    },
+    "review": {
+      "title": "Review & Publish",
+      "subtitle": "Review your campaign targeting & publish",
+      "headlinesLabel": "Headlines",
+      "descriptionLabel": "Description",
+      "keywordsLabel": "Key Words",
+      "businessLabel": "Business",
+      "branchesLabel": "Branches",
+      "languageLabel": "Language",
+      "locationLabel": "Location",
+      "areaRangeLabel": "Area Range",
+      "budgetLabel": "Budget",
+      "workingHoursLabel": "Working Hours",
+      "campaignName": "Campaign Name",
+      "phoneNumber": "Phone Number",
+      "website": "Website Url"
+    },
+    "campaignReview": {
+      "title": "Ad preview",
+      "adBusinessProfile": "Ad Business Profile",
+      "getDirections": "Get Directions",
+      "callBusiness": "Call Business",
+      "desc": " Assets can be shown in any order, so to make sure that they make sense individually or in combination and do not violate our policies or local law. You can make sure certain text appears in your ad",
+      "ad": "Ad"
+    },
+    "launched": {
+      "title": "Campaign Launched Successfully!",
+      "subtitle": " You can check the performance of each channel from the Overview tab.",
+      "createCampaignBtn": "Create New Campaign",
+      "backBtn": "Back to Home",
+      "info": "Campaign status will be learning for the first 7 days to return the best results"
+    },
+    "failed": {
+      "title": "Campaign Launched Failed",
+      "subtitle": "Please try payment again",
+      "createCampaignBtn": "Create New Campaign",
+      "backBtn": "Back to Home"
+    }
+  },
+  "connectedGoogleAccount": {
+    "title": "Google Business Account",
+    "subtitle": "Connected Accounts",
+    "connectAntherBtn": "Change Account",
+    "confirmDialog": {
+      "title": "Are you sure you want to connect another business profile?",
+      "message": "If you choose to disconnect this account, you will no longer have access to the campaigns & its relevant data."
+    }
+  },
+
+  "campaignDetails": {
+    "title": "Campaign insights",
+    "subtitle": "Your campaign performance with users since it was created",
+    "headlinesLabel": "Headlines",
+    "descriptionLabel": "Description",
+    "keywordsLabel": "Key Words",
+    "businessLabel": "Business",
+    "branchesLabel": "Branches",
+    "languageLabel": "Language",
+    "locationLabel": "Location",
+    "areaRangeLabel": "Area Range",
+    "budgetLabel": "Budget",
+    "workingHoursLabel": "Working Hours",
+    "campaignName": "Campaign Name",
+    "phoneNumber": "Phone Number",
+    "website": "Website Url",
+    "backBtn": "Back to Overview",
+    "type": "Type",
+    "content": "Content",
+    "contentAnalytics": "Content Analytics",
+    "campaignDetails": "Campaign Details",
+    "overview": "Overview",
+    "editCampaign": "Edit Campaign",
+    "optimizationLog": "Optimization Log"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "questions": [
+      {
+        "question": "Why choose PinAds?",
+        "answer": "PinAds helps you create campaigns that are an efficient, easy solution for businesses to get noticed on Google. Powered by Google's advertising technology, these campaigns bring you results based on your campaign goal, whether customer calls or visits to your location."
+      },
+      {
+        "question": "What am I charged for?",
+        "answer": "You only pay for the clicks and calls that your ads get. You aren't charged for impressions. The cost of each click or call depends on many factors, like how often people are looking for businesses like yours, and how many competing businesses have ads. Although costs vary, you’re never charged more than your monthly budget."
+      },
+      {
+        "question": "Why can't I find my ad in search results?",
+        "answer": "If your dashboard shows your campaign is active, and you're getting clicks and impressions, your ad is showing to customers. Your budget, website quality, ad quality, location settings, and keyword themes all determine when and where your ad shows."
+      },
+      {
+        "question": "Where do my ads show?",
+        "answer": "Your ads show on Google Search, Maps, Gmail, and on Google partner websites. We show your ads in different places to get you the best results possible."
+      }
+    ]
+  },
+  "keywordFinder": {
+    "title": "Keyword Finder",
+    "subtitle": "Search by keywords to view more analytics about it.",
+    "keywordLabel": "Keyword",
+    "searchBtn": "Search",
+    "language": "Language",
+    "country": "Country",
+    "keyword": "Keyword",
+    "trend": "Trend",
+    "search": "Search",
+    "CPC": "CPC",
+    "low_CPC": "Low bid CPC",
+    "high_CPC": "High bid CPC",
+    "competition": "Competition",
+    "noData": "No Data to Review",
+    "noData_info": "Add keyword to start searching for results",
+    "KSA": "KSA",
+    "keywordProvided": "Keyword that you provide",
+    "keywordIdeas": "Keyword Ideas"
+  },
+  "updateCampaign": {
+    "title": "Request Edit",
+    "desc": "Fill this form to request updates for campaign",
+    "submitBtn": "Send Update Request",
+    "type": "Type",
+    "content": "Content",
+    "change": "Change",
+    "noResults": "No Results Found"
+  },
+  "languages": { "ar": "Arabic", "en": "English" },
+  "validations": {
+    "required": "This field is required",
+    "duplicatedContent": "Can't have duplicate content",
+    "keyword": {
+      "required": "Please enter Keyword"
+    },
+    "country": {
+      "required": "Please enter Country"
+    },
+    "headline": {
+      "maxLength": "Headline must be maximum 30 characters",
+      "minCount": "Must have at least 3 headline"
+    },
+    "description": {
+      "maxLength": "Description must be maximum 90 characters",
+      "minCount": "Must have at least 2 description"
+    },
+    "email": {
+      "required": "Email is Required",
+      "mail": "Please enter a valid email address"
+    },
+    "password": {
+      "required": "Password is Required",
+      "strongPassword": "Password must contain (upper case - lower case - number - special character)",
+      "confirmPassword": "Confirm Password must match password",
+      "minLength": "Password must be at least 8 characters",
+      "digit": "The password must contain at least one digit.",
+      "uppercase": "The password must contain at least one uppercase letter.",
+      "specialCharacter": "The password must contain at least one special character from the set @$!%#?& .",
+      "lowercase": "The password must contain at least one lowercase letter."
+    },
+    "otp": {
+      "required": "OPT is Required",
+      "minLength": "Please enter a valid Code"
+    },
+    "phone": {
+      "required": "Phone is Required",
+      "wrongFormat": "Wrong phone number format"
+    },
+    "name": {
+      "required": "Name is Required"
+    },
+    "language": { "required": "Please enter language" },
+    "map": { "required": "Please select location on map first" },
+    "campaign_name": { "required": "Campaign name is required" },
+    "business_name": { "required": "Business name is required" },
+    "business_category": { "required": "Business Category is required" }
+  },
+  "dateFilter": {
+    "custom": "Choose Date",
+    "lastMonth": "Last Month",
+    "lastWeek": "Last Week",
+    "startDate": "Start Date",
+    "endDate": "End Date"
+  },
+  "calendar": {
+    "dayNames": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "dayNamesMin": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "monthNamesShort": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "today": "Today",
+    "weekHeader": "Wk"
+  }
+}

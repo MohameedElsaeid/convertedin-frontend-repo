@@ -1,0 +1,89 @@
+.slider-wrapper {
+  padding-block: 220px 70px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.07);
+  margin-top: 140px;
+
+  .thumb-container {
+    .slider-thumb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        div{
+            left: -110px;
+            bottom: 20px;
+            width: 255px;
+
+            @media screen and (max-width: 768px) {
+              left: -75px;
+              width: 165px;
+            }
+            span {
+                background: theme('colors.primary-color');
+                color: #fff;
+                text-align: center;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 38px;
+                padding-inline: 50px;
+                padding-block: 15px;
+                border-radius: 37px;
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    left: 42%;
+                    top: 100%;
+                    width: 0;
+                    height: 0;
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;
+                    border-top: 20px solid theme('colors.primary-color');;
+                    clear: both;
+                }
+
+                @media screen and (max-width: 768px) {
+                  font-size: 20px;
+                  padding-inline: 30px;
+                }
+              }
+              p {
+                color: theme('colors.primary-color');
+                text-align: center;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 32px; /* 133.333% */
+                margin-top: 2em;
+
+                @media screen and (max-width: 768px) {
+                  font-size: 14px;
+                }
+              }
+        }
+
+    }
+  }
+
+  ::ng-deep {
+    .p-slider-horizontal {
+      height: 12px;
+      .p-slider-range {
+        background: linear-gradient(90deg, #0044dc, #00fff0);
+        border-radius: 44px;
+      }
+
+      .p-slider-handle {
+        height: 20px;
+        width: 20px;
+        background: #0044dc;
+        border: 5px solid white;
+        box-shadow: #0044dc 0px 0px 0px 5px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

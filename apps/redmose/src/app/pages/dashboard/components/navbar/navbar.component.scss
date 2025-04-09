@@ -1,0 +1,56 @@
+.navbar {
+  &__title {
+    color: #030750;
+    font-size: 1.125rem;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &__initials {
+    width: 45px;
+    height: 45px;
+    background-color: #dae3fa;
+    color: #0c44dd;
+  }
+
+  &__user-profile {
+    min-width: 250px;
+  }
+
+  &__dropdown {
+    background: #f8f8f8;
+    border-radius: 1rem;
+    cursor: pointer;
+    max-width: 250px;
+  }
+
+  &__down-arrow {
+    height: 15px;
+    width: 15px;
+    // margin-left: 1em;
+    color: #aeaeaeff;
+    font-size: 1.2rem;
+    margin-inline-start: 16px;
+    margin-inline-end: 4px;
+  }
+
+  &__notification {
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    img {
+      filter: grayscale(1);
+      transition: 0.2s all ease-in;
+      // scale: 1.2;
+      width: 3.125rem;
+      height: 3.125rem;
+
+      &:hover {
+        filter: grayscale(0);
+        transition: 0.2s all ease-in;
+      }
+    }
+  }
+}

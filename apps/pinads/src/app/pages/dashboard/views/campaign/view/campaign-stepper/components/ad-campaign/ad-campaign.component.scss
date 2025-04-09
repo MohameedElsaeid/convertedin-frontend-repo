@@ -1,0 +1,17 @@
+::ng-deep html[dir='rtl'] .suggestion-btn {
+  min-width: 12rem;
+  @media screen and (max-width:768px) {
+    min-width: 9rem;
+  }
+}
+::ng-deep html[dir='ltr'] .suggestion-btn {
+  min-width: 9rem;
+}
+
+.input-counter {
+  position: absolute;
+  font-size: 0.75rem;
+  top: -1rem;
+  inset-inline-end: 0.2rem;
+  color: var(--convertedin-gray-500);
+}

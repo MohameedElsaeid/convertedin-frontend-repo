@@ -1,0 +1,23 @@
+.check-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.waiting-list {
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 1rem;
+  background-color: var(--convertedin-gray-50);
+  border: 1px solid var(--convertedin-gray-200);
+}
+.info-card {
+  background: #f3fee7;
+  border-radius: 0.5rem;
+  color: var(--convertedin-gray-700);
+}

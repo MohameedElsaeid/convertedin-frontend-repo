@@ -1,0 +1,23 @@
+.account {
+  &__title {
+    color: var(--convertedin-gray-600);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  &__name {
+    color: var(--convertedin-gray-900);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  &__website {
+    color: var(--convertedin-gray-700);
+    font-size: 0.75rem;
+  }
+}
+
+::ng-deep.confirm-dialog {
+  .p-dialog-content {
+    border-radius: 6px;
+    padding: 1rem;
+  }
+}

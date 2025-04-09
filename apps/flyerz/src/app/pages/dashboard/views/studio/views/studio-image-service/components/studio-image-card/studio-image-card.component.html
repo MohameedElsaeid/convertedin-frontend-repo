@@ -1,0 +1,18 @@
+<figure class="relative flex justify-content-center align-items-center">
+  <!-- Ai image -->
+  <img
+    [src]="serviceItem.url || 'assets/icons/common/thumbnail.svg'"
+    [alt]="serviceItem.name"
+  />
+
+  <!-- Processing status -->
+  <figcaption
+    class="absolute status {{ statusClasses[serviceItem.status.id] }}"
+    *ngIf="serviceItem.status.id !== 2"
+  >
+    {{ status }}
+  </figcaption>
+</figure>
+
+<!-- Template name -->
+<p>{{ serviceItem.name }}</p>

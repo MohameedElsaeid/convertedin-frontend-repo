@@ -1,0 +1,44 @@
+<p-sidebar 
+  [(visible)]="visibleSidebar" 
+  [modal]="isSmallScreen()" 
+  class="convertedin-sidebar"
+  [ngClass]="{'is-modal': isSmallScreen()}"
+  [baseZIndex]="1000" [showCloseIcon]="false" 
+  [position]="activeLang === 'en' ? 'left' : 'right' ">
+
+  <ng-template pTemplate="header">
+    <div class="w-full h-full">
+      <img class="w-full h-full" src="assets/images/menu-logo.svg" alt="ConvertedIn Logo" />
+    </div>
+  </ng-template>
+  <div class="sidebar-content">
+    <div>
+      <a [routerLink]="['/campaigns/overview']" pButton label="Create New Campaign" class="primary-btn flex no-underline"></a>
+      <p-menu class="convertedin-sidebar__menu menu" [model]="languageMenuItems"></p-menu>
+    </div>
+
+    <div class="bottom-section">
+
+      <div class="user-info" (click)="toggleDropdown()">
+        <img src="https://i.pravatar.cc/300" alt="User Image" class="user-img" />
+        <div class="user-details">
+          <span class="user-name">DINARA</span>
+          <span class="user-email">dina@converted.in</span>
+        </div>
+        <i class="pi pi-chevron-up dropdown-icon" *ngIf="dropdownOpen"></i>
+        <i class="pi pi-chevron-down dropdown-icon" *ngIf="!dropdownOpen"></i>
+      </div>
+
+      <ul *ngIf="dropdownOpen" class="dropdown-menu">
+        <li><i class="pi pi-user"></i> Profile</li>
+        <!-- <li (click)="switchLanguage('ar')"><i class="pi pi-language" ></i> ar </li> -->
+        <li><i class="pi pi-sign-out"></i> Logout</li>
+      </ul>
+    </div>
+  </div>
+</p-sidebar>
+<!-- Toggle BTN -->
+<button pButton class="p-button-raised p-button-text toggle-btn" severity="secondary" *ngIf="isSmallScreen()" (click)="toggleSidebar()">
+  <i class="pi pi-bars"></i>
+</button>
+  

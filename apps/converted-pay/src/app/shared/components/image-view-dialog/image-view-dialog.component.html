@@ -1,0 +1,9 @@
+<div class="flex justify-content-between align-items-center gap-2 px-2 mb-3">
+  <p class="font-semibold">
+    {{ 'transactionReferenceId' | translate }}: {{ transactionRef }}
+  </p>
+  <div class="cursor-pointer" (click)="close()">
+    <span class="pi pi-times"></span>
+  </div>
+</div>
+<img [src]="imageUrl" class="img-view" [alt]="'home.refundProof' | translate" />

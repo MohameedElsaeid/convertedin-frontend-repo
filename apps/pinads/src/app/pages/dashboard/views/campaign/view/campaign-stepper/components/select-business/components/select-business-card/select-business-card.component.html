@@ -1,0 +1,22 @@
+<div
+  [tooltipOptions]="tooltipOptions"
+  [pTooltip]="'createCampaign.business.accessMessage' | translate"
+>
+  <div
+    class="card-container flex justify-content-between align-items-center border-2 border-round-lg p-3 cursor-pointer"
+    (click)="click()"
+  >
+    <div class="flex flex-column justify-content-between">
+      <h5 class="business__name">{{ business.title }}</h5>
+      <!-- <p class="business__desc">Branches</p> -->
+      <p class="business__desc mt-2">{{ business.website_url }}</p>
+      <p class="business__desc mt-2">{{ locationText }}</p>
+    </div>
+    <p-radioButton
+      [name]="controlName"
+      [value]="business.id"
+      [formControlName]="controlName"
+      (onClick)="this.selectBusiness.emit(business)"
+    ></p-radioButton>
+  </div>
+</div>

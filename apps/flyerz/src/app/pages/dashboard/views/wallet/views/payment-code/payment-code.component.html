@@ -1,0 +1,55 @@
+<ng-container *ngIf="paymentData$ | async as payment">
+  <!-- Header -->
+  <header class="flex gap-3 align-items-center dashboard-wallet__header">
+    <button convertedin-back-button></button>
+
+    <h1>{{ 'dashboard.wallet.payment-code.title' | translate }}</h1>
+  </header>
+
+  <form
+    [formGroup]="form"
+    class="mt-7 flex flex-column"
+    (ngSubmit)="recharge(payment)"
+    *ngIf="userData$ | async as userData"
+  >
+    <label class="mb-4">
+      {{ 'dashboard.wallet.payment-code.label' | translate }}
+    </label>
+
+    <convertedin-phone-number-input
+      valueFormat="separate"
+      formControlName="value"
+      class="dashboard-wallet__phone-input"
+      [wrongFormatMessage]="'auth.login.wrong-format' | translate"
+      [disableCountryDropdown]="true"
+      [perferredCountry]="userData.user.country.key"
+    />
+
+    <convertedin-control-errors [control]="form.get('value')!" class="mt-2" />
+
+    <!-- Next btn -->
+    <button
+      type="submit"
+      pButton
+      class="dashboard-wallet__funds-btn justify-content-center mt-5 gap-2"
+      [disabled]="!form.valid || isLoading"
+    >
+      {{ 'dashboard.wallet.payment-code.btn' | translate }}
+
+      <i class="pi pi-spin pi-spinner" *ngIf="isLoading"></i>
+    </button>
+
+    <!-- Payment redirect -->
+    <div
+      class="dashboard-wallet__redirect p-3 md:w-9 w-full mt-5"
+      *ngIf="redirect.show"
+    >
+      <p class="flex gap-3">
+        {{ 'dashboard.wallet.blocked' | translate }}
+        <a [href]="redirect.url" target="_blank">
+          {{ 'common.click-here' | translate }}
+        </a>
+      </p>
+    </div>
+  </form>
+</ng-container>

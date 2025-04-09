@@ -1,0 +1,42 @@
+<div class="flex flex-column px-2">
+    <div class="flex flex-column md:flex-row lg:flex-row xl:flex-row flex-wrap w-full bg-white card-style border-round-xl p-2">
+        <div class="flex col-12 md:col-12 lg:col-6 xl:col-6 flex-wrap">
+            <div class="w-full text-xs color-gray-500">
+                Crete Campaign / Campaign Templates / <span class="font-semibold">Blank</span>
+            </div>
+            <h3 class="font-semibold text-lg m-0">
+                Blank Campaign 32482
+            </h3>
+        </div>
+        <div class="col-12 md:col-12 lg:col-6 xl:col-6 flex justify-content-start lg:justify-content-end xl:justify-content-end align-items-center gap-3">
+            <button pButton pRipple label="Save as Draft" class="col-4 p-button-outlined p-button-secondary"></button>
+            <button pButton pRipple label="Lunch Campaign" class="col-4 p-button-success"></button>
+        </div>
+    </div>
+    <div class="flex flex-column md:flex-row lg:flex-row xl:flex-row flex-wrap w-full mt-2 gap-2 bg-white w-107">
+        <div class="col-12 lg:col-8 xl:col-8 flex flex-column gap-3">
+            <div class="stepper flex w-full align-items-center justify-content-center card-style border-round-xl p-2 gap-2">
+                <div class="step" [ngClass]="{'active': activeIndex === 1}" (click)="onActiveIndexChange(1)">
+                    <span class="step_number">1</span>
+                    <span class="step_text">Campaign Details</span>
+                </div>
+                <p-divider type="solid" />
+                <div class="step" [ngClass]="{'active': activeIndex === 2}" (click)="onActiveIndexChange(2)">
+                    <span class="step_number">2</span>
+                    <span class="step_text">Targiting</span>
+                </div>
+            </div>
+            <div class="form w-full card-style border-round-xl p-2">
+                <ng-container *ngIf="activeIndex === 1">
+                    <convertedin-blank-campaign-details></convertedin-blank-campaign-details>
+                </ng-container>
+                <ng-container *ngIf="activeIndex === 2">
+                    <convertedin-blank-campaign-targiting></convertedin-blank-campaign-targiting>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col card-style border-round-xl mt-2 mr-2">
+            <convertedin-blank-campaign-ad-creative></convertedin-blank-campaign-ad-creative>
+        </div>
+    </div>
+</div>

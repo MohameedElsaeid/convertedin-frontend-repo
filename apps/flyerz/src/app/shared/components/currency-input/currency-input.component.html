@@ -1,0 +1,14 @@
+<ng-container [formGroup]="form">
+  <p-inputNumber
+    [formControlName]="controlName"
+    class="w-full"
+    [min]="minValue"
+    [minFractionDigits]="0"
+    styleClass="w-full"
+    [placeholder]="placeholder"
+  />
+
+  <p class="absolute {{ dir === 'rtl' ? 'left' : 'right' }}">
+    {{ currency }}
+  </p>
+</ng-container>

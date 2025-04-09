@@ -1,0 +1,10 @@
+{
+  "/api/**": {
+    "target": "https://pinads-api-dev.convertedin.com",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+
+}

@@ -1,0 +1,62 @@
+<!-- Header -->
+<convertedin-create-ad-header
+  [title]="'create-ai-image.upload-image.title' | translate"
+  [subtitle]="'create-ai-image.upload-image.subtitle' | translate"
+/>
+
+<div class="flex gap-4 md:w-10 w-12">
+  <!-- Template image -->
+  <figure class="create-ai-image__image-container">
+    <img class="max-w-full" [src]="createAiMedia.template?.image" />
+  </figure>
+
+  <!-- Image selector -->
+  <label
+    *ngIf="!createAiMedia.imagePreview"
+    class="create-ai-image__image-container create-ai-image__image-selector cursor-pointer flex flex-column align-items-center justify-content-center"
+  >
+    <figure class="flex justify-content-center align-items-center">
+      <img src="assets/icons/common/upload.svg" alt="upload-icon" />
+    </figure>
+
+    <p class="text-center">
+      <span>
+        {{ 'create-ai-image.upload-image.upload-title-1' | translate }}
+      </span>
+      &nbsp;
+      {{ 'create-ai-image.upload-image.upload-title-2' | translate }}
+    </p>
+
+    <input
+      (change)="imageSelected($event)"
+      (click)="resetFileValue($event)"
+      type="file"
+      class="hidden"
+      accept=".png,.jpg,.jpeg"
+    />
+  </label>
+
+  <!-- Selected image -->
+  <figure
+    class="create-ai-image__image-container"
+    *ngIf="createAiMedia.imagePreview"
+  >
+    <img class="max-w-full" [src]="createAiMedia.imagePreview" />
+  </figure>
+</div>
+
+<!-- Reset selected image banner -->
+<div
+  *ngIf="createAiMedia.imagePreview"
+  class="create-ai-image__image-selected md:w-10 w-12 flex justify-content-between py-2 px-3 align-items-center"
+>
+  <div class="flex gap-2 align-items-center">
+    <img src="assets/icons/common/success.svg" alt="success-icon" />
+
+    <p>{{ 'create-ai-image.upload-image.upload-success' | translate }}</p>
+  </div>
+
+  <button (click)="resetSelectedImage()" pButton>
+    {{ 'create-ai-image.upload-image.re-upload' | translate }}
+  </button>
+</div>

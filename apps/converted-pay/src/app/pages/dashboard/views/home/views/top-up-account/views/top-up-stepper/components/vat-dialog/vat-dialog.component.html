@@ -1,0 +1,12 @@
+<h3>
+  {{ 'topUp.vatTitle' | translate : { vat } }}
+</h3>
+<p class="mt-3">
+  {{ 'topUp.vatInfo' | translate : { vat } }}
+</p>
+
+<div class="mt-5 flex justify-content-end">
+  <button class="p-button primary-btn" (click)="close()">
+    {{ 'topUp.gotIt' | translate }}
+  </button>
+</div>

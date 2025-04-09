@@ -1,0 +1,29 @@
+.nav-container {
+  list-style: none;
+  .nav-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.75rem;
+    font-size: 0.825rem;
+    border-radius: 0.5rem;
+    border-inline-start: 3px solid transparent;
+    cursor: pointer;
+    &.active {
+      background-color: #e6ecfc;
+      border-inline-start: 3px solid var(--map-ad-primary-color);
+      svg * {
+        stroke: var(--map-ad-primary-color);
+      }
+    }
+  }
+}
+::ng-deep .p-sidebar-header {
+  justify-content: space-between;
+}
+.logo-img {
+  max-width: 148px;
+}
+::ng-deep.p-sidebar{
+  z-index: 99999!important;
+}

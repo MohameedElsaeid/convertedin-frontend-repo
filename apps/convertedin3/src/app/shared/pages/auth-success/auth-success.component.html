@@ -1,0 +1,19 @@
+<div class="grid justify-content-between mt-5">
+    <div class="lg:col-6 col-12">
+      <h1>{{ title }}</h1>
+      <p>{{ message }}</p>
+      <a [routerLink]="buttonLink" class="back-btn">
+        <i class="pi pi-arrow-left"></i>
+        {{ buttonText }}
+    </a>
+    </div>
+    <div class="lg:col-5 col-12">
+      <div  class="auth-form">
+        <div class="flex flex-column align-items-center">
+            <img src="assets/icons/green-success.svg" alt="success">
+          <h5 class="mt-5">{{typeVerify}}</h5>
+          <h3 class="mt-1">{{typeVerifyMessage}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>

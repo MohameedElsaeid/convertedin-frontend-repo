@@ -1,0 +1,16 @@
+section{
+    background-image: url('/assets/images/calender-background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0px 200px;
+
+    .strip{
+        width: 100%;
+        height: 200px;
+        background-image: url('/assets/images/header-background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+}
+

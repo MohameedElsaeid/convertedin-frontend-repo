@@ -1,0 +1,70 @@
+<div class="p-inputtext cursor-pointer min-w-max" (click)="op.show($event)">
+  <span class="pi pi-calendar"></span>
+  <span class="mx-2">
+    <span class="" *ngIf="selectedRangeDate.length > 0; else placeholderTemp">
+      {{ selectedRangeDate[0] | date : 'yyyy/MM/dd' }}
+    </span>
+    <span class="" *ngIf="selectedRangeDate.length > 1">
+      <span class="mx-1">-</span>
+      {{ selectedRangeDate[1] | date : 'yyyy/MM/dd' }}
+    </span>
+    <ng-template #placeholderTemp>
+      <span>{{ placeholder }} </span>
+    </ng-template>
+  </span>
+  <span
+    class="pi pi-angle-down vertical-align-middle"
+    *ngIf="selectedRangeDate.length === 0"
+  ></span>
+  <span
+    (click)="clear()"
+    class="pi pi-times text-sm"
+    *ngIf="selectedRangeDate.length > 0"
+  ></span>
+</div>
+<p-overlayPanel #op styleClass="date-filter__panel">
+  <div class="flex">
+    <ul class="w-12rem list-none type-list">
+      <ng-container *ngFor="let type of filterTypeList; let first = first">
+        <li
+          [class.active]="selectedType === type.key"
+          class="p-3 cursor-pointer"
+          (click)="onChangeType(type.key)"
+        >
+          {{ type.label | translate }}
+        </li>
+        <hr *ngIf="first" class="mb-2 w-full border-1 border-gray-300" />
+      </ng-container>
+    </ul>
+    <div>
+      <div
+        *ngIf="selectedType === FILTER_TYPE.CUSTOM"
+        class="flex p-3 pb-0 gap-3 border-bottom-1 border-gray-300"
+      >
+        <div class="form-field">
+          <label class="form-field__label" for="email">{{
+            'dateFilter.startDate' | translate
+          }}</label>
+
+          <p-calendar appendTo="body" styleClass="w-full " [(ngModel)]="startDate" (ngModelChange)="onChangeDate([startDate])"></p-calendar>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="email">{{
+            'dateFilter.endDate' | translate
+          }}</label>
+
+          <p-calendar [disabled]="!startDate" [minDate]="startDate" appendTo="body" styleClass="w-full" [(ngModel)]="endDate" (ngModelChange)="onChangeDate([startDate,endDate])"></p-calendar>
+        </div>
+      </div>
+      <p-calendar
+        #calendar
+        [disabled]="selectedType !== FILTER_TYPE.CUSTOM"
+        styleClass="w-full "
+        [inline]="true"
+        [ngModel]="selectedRangeDate"
+        selectionMode="range"
+        (ngModelChange)="onChangeDate($event)"
+      ></p-calendar>
+    </div>
+  </div>
+</p-overlayPanel>

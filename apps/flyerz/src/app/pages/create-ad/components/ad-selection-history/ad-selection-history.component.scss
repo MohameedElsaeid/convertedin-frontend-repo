@@ -1,0 +1,61 @@
+.create-ad {
+  &__platform-img {
+    max-width: 28px;
+    max-height: 28px;
+  }
+
+  &__audiance {
+    border-radius: 8px;
+    background: var(--flyerz-primary-color);
+
+    img {
+      max-width: 36px;
+    }
+
+    h3 {
+      color: #fff;
+      font-size: 15.34px;
+      font-weight: 700;
+      line-height: 130%;
+      letter-spacing: -0.219px;
+    }
+
+    h4,
+    i {
+      color: #fff;
+      font-size: 29.248px;
+      font-weight: 700;
+      line-height: 36.56px;
+    }
+  }
+
+  &__target-img {
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+  &__card {
+    padding: 12px;
+    border-radius: 6.482px;
+    border: 0.81px solid var(--convertedin-gray-200);
+    background: white;
+    justify-content: center;
+    flex-grow: 1;
+  }
+}
+
+h5 {
+  color: var(--convertedin-gray-500);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.3px;
+}
+
+h6 {
+  color: var(--convertedin-gray-500);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0.3px;
+}

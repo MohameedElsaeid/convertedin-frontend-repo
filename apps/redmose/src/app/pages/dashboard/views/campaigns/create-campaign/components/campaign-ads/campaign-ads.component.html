@@ -1,0 +1,539 @@
+<div *ngIf="form" class="adsets-wrapper">
+  <div class="main-card adset-card">
+    <div class="card-header">
+      <div class="header-info">
+        <h4>Campaign Ads</h4>
+        <p>Add creatives for each ad set</p>
+      </div>
+    </div>
+    <!--    -->
+    <div class="dynamic-content">
+      <div class="dynamic-tabs dynamic-ads--tabs">
+        <div class="tabs-list">
+          <form [formGroup]="form">
+            <p-dropdown
+              (onChange)="setActiveAds(0)"
+              [options]="adsetsList"
+              class="main-adsets-dropdown"
+              formControlName="active"
+              optionLabel="label"
+              optionValue="value"
+            >
+            </p-dropdown>
+          </form>
+
+          <ng-container
+            *ngFor="
+              let item of adsets.at(controls['active'].value).value.ads;
+              let i = index;
+              trackBy: identify
+            "
+          >
+            <div
+              (click)="setActiveAds(i)"
+              [ngClass]="{ active: controls['activeAd'].value === i }"
+              class="dynamic-tab-element"
+            >
+              <span>{{ item.name }} {{ i + 1 }}</span>
+              <img [src]="item['platformLogo']" alt="" />
+              <p-splitButton
+                (click)="generateAdsTabsActions()"
+                [model]="items[i]"
+              >
+                <ng-template pTemplate="content"></ng-template>
+                <ng-template pTemplate="dropdownicon">
+                  <i class="pi pi-ellipsis-h"></i>
+                </ng-template>
+              </p-splitButton>
+            </div>
+          </ng-container>
+        </div>
+        <button (click)="addNewAd()" class="add-more" type="button">
+          <i class="pi pi-plus"></i>
+          <span> add more </span>
+        </button>
+      </div>
+    </div>
+    <form [formGroup]="form">
+      <div class="main-form">
+        <ng-container
+          *ngFor="
+            let adset of adsets.controls;
+            let i = index;
+            trackBy: identifyAdsets
+          "
+          formArrayName="adsets"
+        >
+          <div
+            *ngIf="i === controls['active'].value"
+            [formGroupName]="controls['active'].value"
+            class="mt-4"
+          >
+            <div class="grid">
+              <div class="col-7">
+                <ng-container
+                  *ngFor="
+                    let ads of adset.get('ads').controls;
+                    let x = index;
+                    trackBy: identifyAds
+                  "
+                  formArrayName="ads"
+                >
+                  <ng-container
+                    *ngIf="x === controls['activeAd'].value"
+                    [formGroupName]="x"
+                  >
+                    <div class="main-card">
+                      <div class="flex flex-column gap-2 form-item">
+                        <label htmlFor="username">Ad Name</label>
+                        <input
+                          aria-describedby="username-help"
+                          formControlName="name"
+                          id="username"
+                          pInputText
+                        />
+                        <!--        <small id="username-help">Enter your username to reset your password.</small>-->
+                        <convertedin-control-errors
+                          [control]="ads.get('name')"
+                          [formSubmitted]="formSubmitted"
+                        ></convertedin-control-errors>
+                      </div>
+                      <div class="checkbox-wrapper-vertical">
+                        <div class="card-header mt-4">
+                          <div class="header-info">
+                            <h4>Format</h4>
+                            <p>Choose how you'd like to structure your ad.</p>
+                          </div>
+                        </div>
+                        <label
+                          class="flex align-items-start gap-1 checkbox-wrapper-vertical-item"
+                        >
+                          <p-radioButton
+                            [formControl]="ads.get('format')"
+                            inputId="'placement-single'"
+                            name="group"
+                            value="single"
+                            (onClick)="formatTypeChange(i,x,'single')"
+                          ></p-radioButton>
+                          <div class="placement-info">
+                            <label>Single</label>
+                            <span
+                              >One image or video, or a slideshow with multiple
+                              images</span
+                            >
+                          </div>
+                        </label>
+                        <label
+                          class="flex align-items-start gap-1 checkbox-wrapper-vertical-item"
+                        >
+                          <p-radioButton
+                            [formControl]="ads.get('format')"
+                            inputId="'placement-carousel'"
+                            name="group"
+                            value="carousel"
+                            (onClick)="formatTypeChange(i,x,'carousel')"
+
+                          ></p-radioButton>
+                          <div class="placement-info">
+                            <label>Carousel</label>
+                            <span>2 or more scrollable images or videos</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="main-card mt-4">
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Ad Creative</h4>
+                            <p class="error-hint">
+<!--                                {{ads.get('media').length}}-->
+                                <convertedin-control-errors
+                                        [control]="ads.get('media')"
+                                        [formSubmitted]="formSubmitted"
+                                ></convertedin-control-errors>
+                            </p>
+
+                        </div>
+
+                      </div>
+                        <p-progressBar [value]="overallProgress" *ngIf="showProgress"/>
+                      <div class="media-wrapper">
+                        <div class="media-upload">
+                          <span>Choose a product for this campaign</span>
+                          <div class="upload-control">
+                            <input
+                              #upload
+                              (change)="uploadFile($event, i, x)"
+                              [multiple]="ads.get('format').value !== 'single'"
+                              type="file"
+                              accept=".jpg, .jpeg, .gif, .png, .tiff, .bmp"
+                            />
+                            <button
+                              (click)="upload.click()"
+                              [disabled]="
+                                ads.get('format').value === 'single' &&
+                                ads.get('media').value.length >= 1
+                              "
+                              type="button"
+                            >
+                              Browse / Upload
+                            </button>
+                          </div>
+                        </div>
+                        <div class="grid mt-4">
+                          <div class="col-12">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">Primary Text</label>
+                              <input
+                                aria-describedby="username-help"
+                                formControlName="message"
+                                id="username"
+                                pInputText
+                              />
+                              <convertedin-control-errors
+                                [control]="ads.get('message')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="grid">
+<!--                          <div class="col-12" formGroupName="cta" *ngIf="campaignState?.forms?.objective?.id !== 5">-->
+                          <div class="col-12" formGroupName="cta">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">CTA</label>
+                              <p-dropdown
+                                [filter]="true"
+                                [options]="staticData?.cta"
+                                [showClear]="true"
+                                [virtualScrollItemSize]="20"
+                                [virtualScroll]="true"
+                                filterBy="name"
+                                formControlName="title"
+                                optionLabel="name"
+                                placeholder="Select"
+                              >
+                                <ng-template let-event pTemplate="item">
+                                  <div class="flex align-items-center gap-2">
+                                    <div>{{ event.name }}</div>
+                                  </div>
+                                </ng-template>
+                              </p-dropdown>
+                              <convertedin-control-errors
+                                [control]="ads.get('cta').get('title')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                        <div *ngIf="ads.get('media').length" class="media-list">
+                          <ng-container
+                            *ngFor="
+                              let media of ads.get('media').controls;
+                              let z = index;
+                              trackBy: identifyMedia
+                            "
+                            formArrayName="media"
+                          >
+                            <ng-container
+                              *ngIf="
+                                (ads.get('format').value === 'single' &&
+                                  z === 0) ||
+                                (ads.get('format').value !== 'single' && z >= 0)
+                              "
+                              [formGroupName]="z"
+                            >
+                              <div class="media-item">
+                                <div class="media-info">
+                                  <img [src]="media.value.imageUrl" alt="" />
+                                  <div>
+                                    <span>{{ media.value.title }}</span>
+                                    <span>{{ media.value.type }}</span>
+                                  </div>
+                                </div>
+                                <div class="media-actions">
+                                  <button
+                                    (click)="
+                                      upload.click(); replaceMedia(i, x, z)
+                                    "
+                                    [disabled]="
+                                      ads.get('format').value === 'single' &&
+                                      z > 0
+                                    "
+                                    type="button"
+                                  >
+                                    Replace
+                                  </button>
+                                  <button
+                                    (click)="removeMedia(i, x, z)"
+                                    [disabled]="
+                                      ads.get('format').value === 'single' &&
+                                      z > 0
+                                    "
+                                    type="button"
+                                  >
+                                    <i class="pi pi-times"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="grid mt-4">
+                                <div class="col-12">
+                                  <div class="flex flex-column gap-2">
+                                    <label htmlFor="username">Headline</label>
+                                    <input
+                                      aria-describedby="username-help"
+                                      formControlName="headline"
+                                      id="username"
+                                      pInputText
+                                    />
+                                    <convertedin-control-errors
+                                      [control]="media.get('headline')"
+                                      [formSubmitted]="formSubmitted"
+                                    ></convertedin-control-errors>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                  <div class="flex flex-column gap-2">
+                                    <label htmlFor="username"
+                                      >Description</label
+                                    >
+                                    <input
+                                      aria-describedby="username-help"
+                                      formControlName="description"
+                                      id="username"
+                                      pInputText
+                                    />
+                                    <convertedin-control-errors
+                                      [control]="media.get('description')"
+                                      [formSubmitted]="formSubmitted"
+                                    ></convertedin-control-errors>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                  <div class="flex flex-column gap-2">
+                                    <label htmlFor="username">Url</label>
+                                    <input
+                                      aria-describedby="username-help"
+                                      formControlName="url"
+                                      id="username"
+                                      pInputText
+                                    />
+                                    <convertedin-control-errors
+                                      [control]="media.get('url')"
+                                      [formSubmitted]="formSubmitted"
+                                    ></convertedin-control-errors>
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-container>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="main-card mt-4" *ngIf="campaignState?.forms?.objective?.id !== 6 && showIfNotGetLeads">
+                      <!--                      <div class="card-header">-->
+                      <!--                        <div class="header-info">-->
+                      <!--                          <h4>Settings</h4>-->
+                      <!--                          <p>-->
+                      <!--                            Track event datasets that contain the conversions your ad might motivate. The dataset that-->
+                      <!--                            contains the conversion selected for the ad account will be tracked by default.-->
+                      <!--                          </p>-->
+                      <!--                        </div>-->
+                      <!--                      </div>-->
+                      <!--                      <p-divider></p-divider>-->
+
+                      <!--                      <div class="flex flex-column gap-2" formGroupName="urlParameters">-->
+                      <!--                        <label htmlFor="username">Website Events</label>-->
+                      <!--                        <p-dropdown [filter]="true" [options]="staticData?.websitesEvents" [showClear]="true"-->
+                      <!--                                    [virtualScrollItemSize]="20"-->
+                      <!--                                    [virtualScroll]="true"-->
+                      <!--                                    filterBy="title"-->
+                      <!--                                    formControlName="websiteEvents"-->
+                      <!--                                    optionLabel="name" optionValue="id"-->
+                      <!--                                    placeholder="Select">-->
+                      <!--                          <ng-template let-event pTemplate="item">-->
+                      <!--                            <div class="flex align-items-center gap-2">-->
+                      <!--                              <div>{{ event.name }}</div>-->
+                      <!--                            </div>-->
+                      <!--                          </ng-template>-->
+                      <!--                        </p-dropdown>-->
+                      <!--                        <convertedin-control-errors [control]="ads.get('urlParameters').get('websiteEvents')"-->
+                      <!--                                                    [formSubmitted]="formSubmitted"></convertedin-control-errors>-->
+                      <!--                      </div>-->
+                      <!--                      <p-divider></p-divider>-->
+                      <ng-container formGroupName="utmParams">
+                        <div class="card-header">
+                          <div class="header-info">
+                            <h4>URL Parameters</h4>
+                          </div>
+                        </div>
+                        <div class="grid">
+                          <div class="col-6">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">Campaign Source</label>
+                              <input
+                                aria-describedby="username-help"
+                                formControlName="source"
+                                id="username"
+                                pInputText
+                              />
+                              <convertedin-control-errors
+                                [control]="ads.get('utmParams').get('source')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">Meduim</label>
+                              <input
+                                aria-describedby="username-help"
+                                formControlName="medium"
+                                id="username"
+                                pInputText
+                              />
+                              <convertedin-control-errors
+                                [control]="ads.get('utmParams').get('medium')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">Name</label>
+                              <input
+                                aria-describedby="username-help"
+                                formControlName="name"
+                                id="username"
+                                pInputText
+                              />
+                              <convertedin-control-errors
+                                [control]="ads.get('utmParams').get('name')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="flex flex-column gap-2">
+                              <label htmlFor="username">Content</label>
+                              <input
+                                aria-describedby="username-help"
+                                formControlName="content"
+                                id="username"
+                                pInputText
+                              />
+                              <convertedin-control-errors
+                                [control]="ads.get('utmParams').get('content')"
+                                [formSubmitted]="formSubmitted"
+                              ></convertedin-control-errors>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div class="main-card mt-4" *ngIf="campaignState?.forms?.objective?.id === 5">
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Form</h4>
+                          <p>
+                            Track event datasets that contain the conversions
+                            your ad might motivate.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="grid">
+                        <div class="col-5" formGroupName="cta">
+                          <div class="flex flex-column gap-2">
+                            <label htmlFor="username">Select Form</label>
+                            <p-dropdown
+                              [filter]="true"
+                              [options]="staticData?.leadGenerationForm"
+                              [showClear]="true"
+                              [virtualScrollItemSize]="20"
+                              [virtualScroll]="true"
+                              filterBy="name"
+                              formControlName="lead_gen_form_id"
+                              optionLabel="name"
+                              optionValue="id"
+                              placeholder="Select"
+                            >
+                              <ng-template let-event pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                  <div>{{ event.name }}</div>
+                                </div>
+                              </ng-template>
+                            </p-dropdown>
+                            <convertedin-control-errors
+                              [control]="ads.get('cta').get('lead_gen_form_id')"
+                              [formSubmitted]="formSubmitted"
+                            ></convertedin-control-errors>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <button class="create-lead-form" type="button" (click)="toggleLeadGenerationForm(true)">
+                            <img class="lead-action-icon"
+                              alt=""
+                              src="app-assets/images/plus-solid.svg"
+                            />
+                            create new
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="main-card mt-4" *ngIf="showIfGetCalls">
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Call Settings</h4>
+                          <p>
+                            When people click on a call ad, they can call now.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="grid">
+                        <div class="col-5" formGroupName="cta">
+                          <div
+                               class="add-link flex flex-column gap-2 my-3">
+                            <label class="hint-link" htmlFor="link">Add phone number</label>
+                            <convertedin-phone-number-input [countryIso]="true" [valueFormat]="'separate'" formControlName="phone"/>
+                            <convertedin-control-errors
+                                [control]="ads.get('cta').get('phone')"
+                                [formSubmitted]="formSubmitted"
+                            ></convertedin-control-errors>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="col-5 overflow-hidden">
+                <div class="main-card">
+                  <convertedin-ad-preview
+                    *ngIf="adset.get('ads').value[controls['activeAd'].value]"
+                    [ad]="adset.get('ads').value[controls['activeAd'].value]"
+                  ></convertedin-ad-preview>
+
+                  <!--                                    <pre>-->
+                  <!--                              {{getAllErrors | json }}-->
+                  <!--                  </pre>-->
+                  <!--                  <pre>-->
+                  <!--                    {{adsets.value | json}}-->
+                  <!--                  </pre>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+    <!-- popup start -->
+    <convertedin-create-lead-form *ngIf="leadGenerationFormStatus" (formCreated)="toggleLeadGenerationForm(false)" (closeEvent)="leadGenerationFormStatus = false"></convertedin-create-lead-form>
+  </div>
+</div>
+<p-toast></p-toast>

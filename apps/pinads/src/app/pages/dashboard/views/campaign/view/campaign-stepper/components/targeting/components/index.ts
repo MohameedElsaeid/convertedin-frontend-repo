@@ -1,0 +1,1 @@
+export * from './advertise-location/advertise-location.component';

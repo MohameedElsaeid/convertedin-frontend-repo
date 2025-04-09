@@ -1,0 +1,49 @@
+<p>{{ 'dashboard.ad-details.finish-ad-subtitle' | translate }} #{{ adId }}</p>
+
+<ng-container *ngIf="finishReasons$ | async as reasons">
+  <ng-container *ngFor="let reason of reasons.data">
+    <!-- Reason card -->
+    <div
+      *ngIf="reason.id !== 4"
+      class="p-3 close-ad-popup__reason flex cursor-pointer align-items-center"
+      (click)="reasonSelected(reason)"
+      [ngClass]="{
+        'close-ad-popup__reason-active': reason.id === activeReason?.id
+      }"
+    >
+      <figure>
+        <img [src]="reason.icon" alt="reason-icon" />
+      </figure>
+
+      <p>
+        {{ reason.reason }}
+      </p>
+    </div>
+  </ng-container>
+</ng-container>
+
+<convertedin-spinner *ngIf="isLoading" class="flex justify-content-center" />
+
+<!-- Action btns -->
+<div class="flex gap-3">
+  <!-- Submit btn -->
+  <button
+    type="submit"
+    [disabled]="!activeReason"
+    pButton
+    class="close-ad-popup__submit-btn justify-content-center flex-grow-1"
+    (click)="openConfirmPopup()"
+  >
+    {{ 'dashboard.ad-details.finish-ad-btn' | translate }}
+  </button>
+
+  <!-- Cancel btn -->
+  <button
+    (click)="closeDialog()"
+    pButton
+    type="button"
+    class="close-ad-popup__cancel-btn justify-content-center flex-grow-1"
+  >
+    {{ 'common.cancel' | translate }}
+  </button>
+</div>

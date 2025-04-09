@@ -1,0 +1,64 @@
+<convertedin-suggestion-popup-container
+  (searchChange)="searchChanged($event)"
+  (save)="saveSelections()"
+  *ngIf="locations$ | async as locations"
+>
+  <div
+    class="flex flex-column create-ad__suggestions"
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="getCities()"
+    [scrollWindow]="false"
+  >
+    <!-- Suggestions container -->
+    <ng-container *ngIf="(cities$ | async) || _pagination.pagination.data">
+      <!-- All country selection -->
+      <div
+        class="create-ad__suggestion-card flex justify-content-between gap-4"
+      >
+        <p class="flex-grow-1 flex justify-content-between">
+          {{ 'create-ad.common.all-country' | translate }}
+        </p>
+
+        <p-checkbox
+          (ngModelChange)="selectAll($event)"
+          class="create-ad__checkbox"
+          [value]="0"
+          [(ngModel)]="selectAllCountry"
+          [binary]="true"
+        />
+      </div>
+
+      <!-- Other countries -->
+      <div
+        class="create-ad__suggestion-card flex justify-content-between gap-4"
+        *ngFor="let item of _pagination.pagination.data"
+      >
+        <p
+          class="flex-grow-1 flex justify-content-between cursor-pointer"
+          [ngClass]="{
+            'city-disabled': isCitySelected(item.id)
+          }"
+          (click)="getAreas(item)"
+        >
+          {{ item.name }}
+          <i class="pi pi-chevron-{{ dir === 'rtl' ? 'left' : 'right' }}"></i>
+        </p>
+
+        <p-checkbox
+          (ngModelChange)="itemSelected(item)"
+          class="create-ad__checkbox"
+          [value]="item.id"
+          [(ngModel)]="cityIds"
+        />
+      </div>
+    </ng-container>
+
+    <!-- Loading spinner -->
+    <convertedin-spinner
+      class="flex justify-content-center"
+      *ngIf="isLoading"
+    />
+  </div>
+</convertedin-suggestion-popup-container>

@@ -1,0 +1,15 @@
+<div class="reject__container flex flex-column gap-1">
+  <h2>{{ 'dashboard.ad-details.reject-popup.details' | translate }}</h2>
+
+  <p>{{ reject.reason }}</p>
+</div>
+
+<div class="reject__container flex flex-column gap-1">
+  <h2>{{ 'dashboard.ad-details.reject-popup.steps' | translate }}</h2>
+
+  <p>{{ reject.solutionSteps }}</p>
+</div>
+
+<button (click)="close()" pButton class="reject__btn justify-content-center">
+  {{ 'common.okay' | translate }}
+</button>

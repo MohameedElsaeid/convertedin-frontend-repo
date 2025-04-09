@@ -1,0 +1,29 @@
+<div class="h-fit header">
+  <img
+    class="mx-auto mb-3 block"
+    src="assets/icons/tick-circle.svg"
+    alt="icon"
+  />
+  <h1 class="text-center header__title">
+    {{ 'createCampaign.launched.title' | translate }}
+  </h1>
+  <p class="text-center header__desc">
+    {{ 'createCampaign.launched.subtitle' | translate }}
+  </p>
+  <div class="flex align-items-center my-3 border-round-lg gap-2 p-3 warning-banner">
+    <svg-icon name="warning-outline"></svg-icon>
+    <p>{{ 'campaignOverview.learning' | translate }}</p>
+  </div>
+ 
+  <div class="nav flex gap-2 justify-content-center">
+    <button
+      routerLink="/dashboard/campaign"
+      class="p-button primary-outline-btn"
+    >
+      {{ 'createCampaign.launched.createCampaignBtn' | translate }}
+    </button>
+    <button routerLink="/dashboard/overview" class="p-button primary-btn">
+      {{ 'createCampaign.launched.backBtn' | translate }}
+    </button>
+  </div>
+</div>

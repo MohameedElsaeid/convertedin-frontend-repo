@@ -1,0 +1,43 @@
+.flow-listing {
+  ::ng-deep &__row-btn {
+    padding: 5px !important;
+  }
+
+  ::ng-deep &__spinner {
+    .convertedin__spinner {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+
+  &__published-lbl {
+    background-color: #9dbaf5;
+    color: #0c6dfd;
+  }
+
+  &__draft-lbl {
+    background-color: #e6e8ed;
+    color: #7e899e;
+  }
+
+  &__status-lbl {
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px 24px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+td {
+  color: var(--Gray-600, #475467);
+  font-size: 13.672px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.531px; /* 142.857% */
+  text-transform: capitalize;
+}
+
+.channels-cell div {
+  gap: 4px;
+}

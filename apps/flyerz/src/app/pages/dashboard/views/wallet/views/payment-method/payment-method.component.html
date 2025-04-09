@@ -1,0 +1,61 @@
+<!-- Header -->
+<header class="flex gap-3 align-items-center dashboard-wallet__header">
+  <button convertedin-back-button></button>
+
+  <h1>{{ 'dashboard.wallet.add-funds-title' | translate }}</h1>
+</header>
+
+<ng-container *ngIf="payments$ | async as payments">
+  <!-- Anouncement banner -->
+  <div
+    class="flex gap-3 dashboard-wallet__anouncement"
+    *ngIf="payments.data.announcement"
+  >
+    <img
+      src="assets/icons/dashboard/common/info-circle.svg"
+      alt="announcement-icon"
+    />
+    <p>{{ payments.data.announcement }}</p>
+  </div>
+
+  <!-- Payment methods -->
+  <div class="flex gap-3 flex-wrap mt-2">
+    <div
+      class="dashboard-wallet__payment-method flex flex-column p-3 lg:w-2 w-3"
+      *ngFor="let item of payments.data.paymentMethods"
+      [ngClass]="{
+        'dashboard-wallet__selected-method ': selectedMethod?.id === item.id,
+        'dashboard-wallet__method-disabled': item.status.id === 0
+      }"
+      (click)="paymentSelect(item)"
+    >
+      <figure
+        class="flex justify-content-center align-items-center flex-grow-1"
+      >
+        <img
+          alt="payment-icon"
+          [src]="item.logo"
+          class="max-w-full max-h-full"
+        />
+      </figure>
+
+      <p>{{ item.name }}</p>
+    </div>
+  </div>
+
+  <!-- Next btn -->
+  <button
+    (click)="goToNextStep()"
+    pButton
+    class="dashboard-wallet__funds-btn justify-content-center"
+    [disabled]="!selectedMethod"
+  >
+    {{ 'common.next-btn' | translate }}
+  </button>
+</ng-container>
+
+<!-- Loading spinner -->
+<convertedin-spinner
+  class="flex justify-content-center flex-grow-1 align-items-center"
+  *ngIf="isLoading"
+/>

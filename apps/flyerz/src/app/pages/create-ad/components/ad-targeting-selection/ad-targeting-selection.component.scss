@@ -1,0 +1,28 @@
+.create-ad {
+  &__targeting-card {
+    min-width: 18.25rem;
+    min-height: 12.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--convertedin-gray-100);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 150%;
+    }
+  }
+}
+
+button {
+  background-color: var(--flyerz-primary-50) !important;
+  padding: 12px 24px !important;
+  color: var(--flyerz-primary-color) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+  border-color: var(--flyerz-primary-50) !important;
+}

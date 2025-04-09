@@ -1,0 +1,108 @@
+<!-- Stepper section -->
+<ng-container *ngIf="!adCreated && (createAdData$ | async) as createAdData">
+  <convertedin-stepper
+    (activeIndexChange)="indexChange($event, createAdData)"
+    class="flex-grow-1 create-ad__stepper"
+    nexButtonLabel="{{ 'common.next-btn' | translate }}"
+    backButtonLabel="{{ 'common.back-btn' | translate }}"
+    nextButtonStyleClass="create-ad__next-btn p-button"
+    backButtonStyleClass="create-ad__back-btn p-button-secondary p-button-text"
+    [disableNextBtn]="isLoading"
+    [nextBtnIcon]="isLoading ? 'pi pi-spin pi-spinner' : undefined"
+  >
+    <!-- Select platform step -->
+    <convertedin-step
+      title="{{ 'create-ad.steps.1' | translate }}"
+      [valid]="!!createAdData.channel"
+    >
+      <ng-template #content>
+        <convertedin-create-ad-back-btn />
+        <convertedin-select-platform [channel]="createAdData.channel" />
+      </ng-template>
+    </convertedin-step>
+
+    <!-- Select goal step -->
+    <convertedin-step
+      title="{{ 'create-ad.steps.3' | translate }}"
+      [valid]="!!createAdData.goal"
+    >
+      <ng-template #content>
+        <convertedin-create-ad-back-btn />
+
+        <convertedin-select-goal
+          [goal]="createAdData.goal!"
+          [channelType]="createAdData.channel?.type?.id!"
+        />
+      </ng-template>
+    </convertedin-step>
+
+    <!-- Select post step -->
+    <convertedin-step
+      title="{{ 'create-ad.steps.2' | translate }}"
+      [valid]="!!createAdData.post"
+    >
+      <ng-template #content>
+        <convertedin-create-ad-back-btn />
+
+        <convertedin-select-post
+          [post]="createAdData.post!"
+          [channel]="createAdData.channel!"
+        />
+      </ng-template>
+    </convertedin-step>
+
+    <!-- Select ad target step -->
+    <convertedin-step
+      title="{{ 'create-ad.steps.4' | translate }}"
+      [valid]="!!createAdData.adSuggestions"
+    >
+      <ng-template #content>
+        <convertedin-create-ad-back-btn />
+
+        <convertedin-ad-target
+          [post]="createAdData.post!"
+          [hasData]="!!createAdData.adSuggestions"
+        />
+      </ng-template>
+    </convertedin-step>
+
+    <!-- Select ad data -->
+    <convertedin-step
+      title="{{ 'create-ad.steps.5' | translate }}"
+      [valid]="!!createAdData.adSuggestions"
+    >
+      <ng-template #content>
+        <convertedin-create-ad-back-btn />
+
+        <convertedin-ad-data />
+      </ng-template>
+    </convertedin-step>
+  </convertedin-stepper>
+</ng-container>
+
+<!-- Success view -->
+<div
+  class="flex flex-column flex-grow-1 align-items-center justify-content-center"
+  *ngIf="adCreated"
+>
+  <div class="flex flex-column gap-4 align-items-center">
+    <img
+      src="assets/images/image 36.png"
+      alt="success-img"
+      class="create-ad__success-img"
+    />
+
+    <div class="flex flex-column gap-2">
+      <h1 class="create-ad__success-title">
+        {{ 'create-ad.success-title' | translate }}
+      </h1>
+      <p class="create-ad__success-subtitle">
+        {{ 'create-ad.success-subtitle' | translate }}
+      </p>
+    </div>
+
+    <a routerLink="/my-dashboard" pButton class="create-ad__success-btn">
+      {{ 'create-ad.success-btn' | translate }}
+    </a>
+  </div>
+</div>

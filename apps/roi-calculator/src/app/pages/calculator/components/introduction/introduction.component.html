@@ -1,0 +1,16 @@
+<section id="introductionSection">
+    <h2 class="mb-2 text-center mt-32">What is ROAS?</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 my-16 px-5 w-4/5 mx-auto gap-8">
+        <div class="flex flex-col">
+            <img class="mb-auto" src="/assets/images/introduction-graph.webp" alt="">
+        </div>
+        <div class=" flex flex-col gap-5">
+            <p>By simply entering your current ad metrics in our ROAS Calculator below, it will provide you with a real-time assessment of your current ROAS and how you are performing against industry standards and the competition.</p>
+            <div class="flex flex-wrap gap-3 py-9">
+                <div class="info-card" pTooltip="{{card.tooltip}}" tooltipPosition="top" 
+                *ngFor="let card of cards">{{ card.text }}</div>
+            </div>
+            <span>If you have this information, we encourage you to take a moment to learn how your ROAS compares to your industry peers!</span>
+        </div>
+    </div>
+</section>

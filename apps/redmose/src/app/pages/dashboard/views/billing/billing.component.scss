@@ -1,0 +1,49 @@
+// .settings-tab{
+//     padding:32px 24px;
+
+//     .settings-tab__title{
+
+//     }
+
+//     .settings-tab__sub-title{
+
+//     }
+// }
+
+
+.settings-nav{
+    border-radius: 8px;
+    border: 1px solid #EAECF0;
+    background: #F9FAFB;
+    padding: 4px;
+    display: flex;
+    gap: 8px;
+    margin-block: 24px 32px;
+    margin-inline: 24px;
+
+    a{
+        padding: 8px 12px;
+        display: block;
+        color: var(--gray-500, #667085);
+        background: #F9FAFB;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px; /* 142.857% */
+        text-decoration: none;
+        border: 1px solid transparent;
+
+        &:hover{
+            border-radius: 8px;
+            border: 1px solid var(--gray-200, #EAECF0);
+            background:#ffffff;
+            color:#344054;
+        }
+    }
+}
+
+.active-link{
+    border-radius: 8px;
+    border: 1px solid var(--gray-200, #EAECF0) !important;
+    background:#ffffff !important;
+    color:#344054 !important;
+}

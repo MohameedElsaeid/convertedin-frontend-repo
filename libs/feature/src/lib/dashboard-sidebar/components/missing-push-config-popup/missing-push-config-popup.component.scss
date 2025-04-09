@@ -1,0 +1,97 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+figure {
+  padding: 12px;
+  border-radius: 50%;
+  width: fit-content;
+  background-color: #fef7c3;
+}
+
+.popup-border {
+  border-top: 1px solid #eaecf0;
+}
+
+p {
+  color: #101828;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+span {
+  color: #475467;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.error-banner {
+  padding: 8px;
+  color: white;
+  background-color: #ef4444;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+
+.setup-btn {
+  border-radius: 8px !important;
+  border: 1px solid #0036b1 !important;
+  background: #0036b1 !important;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05) !important;
+  font-size: 16px;
+  font-weight: 600 !important;
+  line-height: 24px;
+  text-decoration: none;
+  color: white;
+  padding: 10px 18px;
+}
+
+.missing-config-banner {
+  .p-dialog-header {
+    padding-bottom: 0 !important;
+  }
+}
+
+.pt-5 {
+  padding-top: 32px;
+}
+
+.gap-4 {
+  gap: 24px;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}

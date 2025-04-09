@@ -1,0 +1,45 @@
+<!-- Overlay panel -->
+<p-overlayPanel
+  #op
+  psdoverlaypanel
+  [appendTo]="overlayDiv"
+  styleClass="convertedin__notification-overlay"
+>
+  <ng-template pTemplate="content">
+    <convertedin-notifications-list
+      listMode="list"
+      [showViewMoreBtn]="showViewMoreBtn"
+      [assetsUrl]="assetsUrl"
+    />
+  </ng-template>
+</p-overlayPanel>
+
+<!-- Notifications btn -->
+<div #overlayDiv class="relative">
+  <ng-container *ngIf="notificationsCount$ | async as count">
+    <div
+      pBadge
+      [value]="count.notifications_count"
+      *ngIf="count.notifications_count"
+    >
+      <button
+        #target
+        pButton
+        (click)="op.toggle($event, target)"
+        class="convertedin__notification flex flex-column justify-content-center"
+      >
+        <i class="pi-bell pi"></i>
+      </button>
+    </div>
+
+    <button
+      *ngIf="!count.notifications_count"
+      #target
+      pButton
+      (click)="op.toggle($event, target)"
+      class="convertedin__notification flex flex-column justify-content-center"
+    >
+      <i class="pi-bell pi"></i>
+    </button>
+  </ng-container>
+</div>

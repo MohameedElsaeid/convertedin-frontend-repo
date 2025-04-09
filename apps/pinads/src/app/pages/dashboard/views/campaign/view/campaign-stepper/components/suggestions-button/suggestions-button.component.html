@@ -1,0 +1,49 @@
+<button
+  type="button"
+  [disabled]="(isLoading$ | async)!"
+  class="p-button ai-btn h-auto"
+  (click)="getSuggestionsKeyword()"
+>
+  {{ label | translate }}
+  <i class="pi pi-spin pi-spinner mx-1" *ngIf="isLoading$.value"></i>
+</button>
+
+<p-dialog
+  styleClass="suggestion-dialog"
+  header="Header"
+  [(visible)]="openDialog"
+  [modal]="true"
+>
+  <ng-template pTemplate="header">
+    <span class="text-xl font-bold">{{ title }}</span>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div
+      *ngIf="suggestions.length > 0; else noResultsTemp"
+      class="flex flex-wrap gap-2 p-3"
+    >
+      <span class="chip-item" *ngFor="let item of suggestions; let i = index"
+        >{{ item }}
+        <!-- <span class="ml-1 pi pi-times-circle" (click)="removeKeyword(i)"></span -->
+        <!-- > -->
+      </span>
+    </div>
+    <ng-template #noResultsTemp>
+      <div class="p-3">
+        <span> {{ 'noResults' | translate }}</span>
+      </div>
+    </ng-template>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button class="p-button primary-outline-btn" (click)="openDialog = false">
+      {{ 'cancel' | translate }}
+    </button>
+    <button
+      [disabled]="suggestions.length === 0"
+      class="p-button primary-btn"
+      (click)="onSuggestionSelect(suggestions)"
+    >
+      {{ selectBtnLabel }}
+    </button>
+  </ng-template>
+</p-dialog>

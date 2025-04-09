@@ -1,0 +1,90 @@
+<p-card class="card my-card p-shadow-2 surface-card p-p-3 p-mb-3 p-border-round">
+  <div class="card--content">
+    <!-- Header Row with Type and "New" badge -->
+    <div class="p-d-flex p-jc-between p-ai-center">
+      <div class="grid flex">
+        <div class="col-6">
+          <span *ngIf="!cardData.isBlank" class="custom-chip p-mr-2"
+            [ngClass]="cardData.type == 'electronice' ? 'bg-red' : cardData.type == 'Marketing' ? 'bg-mauvie' : cardData.type == 'Health & Beauty'? 'bg-green' : '' ">{{cardData.type}}</span>
+          <span *ngIf="cardData.isBlank" class="custom-blank-chip p-mr-2">
+            <img src="assets/images/add-new.svg" />
+          </span>
+        </div>
+        <div class="col-6" *ngIf="!cardData.isBlank">
+          <div *ngIf="cardData.isNew" class="flex justify-content-end flex-wrap">
+            <div class="badge-holder">
+              <span class="new-badge col-2">New</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Header / Title -->
+    <div class="card-content p-mt-2 flex">
+      <h3 [ngClass]="cardData.isBlank ? 'isBlank' : '' " class="card-header col-12 col-sm-12 line-height-3 card-title">{{
+        cardData.cardHeader }}</h3>
+    </div>
+    <div class="flex" *ngIf="cardData.isBlank">
+      <p class="col-12 col-sm-12 card-text">Start from Scratch and Customize campaign targeting</p>
+    </div>
+
+    <!-- CTR and ROAS badges -->
+    <div *ngIf="!cardData.isBlank" class="p-d-flex p-jc-between p-mt-3 stats-container">
+      <ng-container *ngFor="let ctrItem of cardData.CTR">
+        <span class="stat-badge">{{ ctrItem.label }}: {{ ctrItem.value }}%</span>
+      </ng-container>
+      <ng-container *ngFor="let roasItem of cardData.ROAS">
+        <span class="stat-badge">{{ roasItem.label }}: {{ roasItem.value }}%</span>
+      </ng-container>
+    </div>
+
+    <!-- Strategy and Audience -->
+    <div *ngIf="!cardData.isBlank" class="p-d-row flex p-jc-between p-mt-3 details-container">
+      <div class="strategy-section col">
+        <small class="detail-label">Strategy</small>
+        <div *ngFor="let strat of cardData.strategy">
+          <p class="detail-value">{{ strat.value }}</p>
+        </div>
+      </div>
+      <div class="audience-section col">
+        <small class="detail-label">Audience</small>
+        <div *ngIf="cardData.audience && cardData.audience.length > 0">
+          <p class="detail-value">
+            {{ cardData.audience[0].value }}
+            <span *ngIf="cardData.audience.length > 1">+{{cardData.audience.length}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with Button and Social Icons -->
+    <div [ngClass]="cardData.isBlank ? 'isBlank' : '' " class="card-footer flex flex-wrap align-items-center justify-content-center">
+      <div *ngIf="!cardData.isBlank" class="col" style="min-width: fit-content;">
+        <a [routerLink]="['/dashboard/campaigns/create-template-campaign/1']" class="p-button p-button-secondary p-button-outlined button-view"
+          (click)="onViewTemplate()">
+          View Template
+        </a>
+      </div>
+      <div *ngIf="!cardData.isBlank" class="social-icons flex ml-auto">
+        <ng-container *ngIf="cardData.socialMediaLinks.facebook">
+          <img src="assets/icons/Facebook.png" alt="f" class="social-img">
+        </ng-container>
+        <ng-container *ngIf="cardData.socialMediaLinks.snapchat">
+          <img src="assets/icons/snapchat.svg" alt="s" class="social-img">
+        </ng-container>
+        <ng-container *ngIf="cardData.socialMediaLinks.instagram">
+          <img src="assets/icons/instagram.svg" alt="ins" class="social-img">
+        </ng-container>
+      </div>
+
+      <div *ngIf="cardData.isBlank" class="col-12 flex align-self-end ali">
+        <a [routerLink]="['/dashboard/campaigns/create-blank-campaign']"
+          class="align-items-center justify-content-center w-full p-button p-button-secondary p-button-outlined button-view">
+          Start from Scratch
+        </a>
+      </div>
+    </div>
+
+  </div>
+</p-card>

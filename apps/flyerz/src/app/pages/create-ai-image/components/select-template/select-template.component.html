@@ -1,0 +1,73 @@
+<!-- Header -->
+<convertedin-create-ad-header
+  [title]="'create-ai-image.select-template.title' | translate"
+  [subtitle]="'create-ai-image.select-template.subtitle' | translate"
+/>
+
+<!-- Spinner -->
+<convertedin-spinner
+  *ngIf="loaders.initial"
+  class="template__spinner flex flex-column justify-content-center align-items-center"
+/>
+
+<!-- Templates -->
+<div
+  class="w-full flex create-ai-image__container flex gap-4 flex-wrap"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  (scrolled)="getTemplates()"
+  *ngIf="(templates$ | async) || _pagination.pagination.data"
+>
+  <!-- List of templates -->
+  <ng-container *ngIf="_pagination.pagination.data?.length! > 0; else noPosts">
+    <!-- Template card -->
+    <div
+      class="create-ai-image__card p-3 gap-4 flex justify-content-between flex-column align-self-stretch"
+      [ngClass]="{
+        'create-ai-image__selected': activeTemplate?.id === template.id,
+      }"
+      (click)="selectTemplate(template)"
+      *ngFor="let template of _pagination.pagination.data"
+    >
+      <!-- Template image -->
+      <figure class="flex justify-content-center align-content-center">
+        <img
+          alt="post-img"
+          [src]="template.image"
+          class="max-w-full max-h-full"
+        />
+      </figure>
+
+      <!-- Template name -->
+      <p>{{ template.name }}</p>
+    </div>
+  </ng-container>
+
+  <!-- Empty templates view -->
+  <ng-template #noPosts>
+    <figure
+      class="flex-grow-1 flex justify-content-center align-items-center gap-3 flex-column"
+    >
+      <img
+        src="assets/images/empty-pages.png"
+        alt="empty-pages-image"
+        width="154"
+        height="134"
+      />
+
+      <figcaption>
+        {{ 'create-ai-image.select-template.empty' | translate }}
+      </figcaption>
+    </figure>
+  </ng-template>
+
+  <!-- Pagination loader -->
+  <div
+    *ngIf="loaders.paginated"
+    class="flex flex-column align-self-stretch justify-content-center align-items-center"
+  >
+    <convertedin-spinner />
+  </div>
+</div>

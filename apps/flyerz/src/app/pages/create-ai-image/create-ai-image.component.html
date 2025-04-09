@@ -1,0 +1,64 @@
+<convertedin-stepper
+  *ngIf="!loaders.ai && (createAiMedia$ | async) as aiMedia"
+  class="flex-grow-1 create-ai-image__stepper"
+  nexButtonLabel="{{ 'common.next-btn' | translate }}"
+  backButtonLabel="{{ 'common.back-btn' | translate }}"
+  nextButtonStyleClass="create-ai-image__next-btn p-button"
+  backButtonStyleClass="create-ai-image__back-btn p-button-secondary p-button-text"
+  (activeIndexChange)="indexChange($event, aiMedia)"
+  [disableNextBtn]="loaders.create"
+  [nextBtnIcon]="loaders.create ? 'pi pi-spin pi-spinner' : undefined"
+>
+  <!-- Select template step -->
+  <convertedin-step
+    title="{{ 'create-ai-image.steps.1' | translate }}"
+    [valid]="!!aiMedia.template"
+  >
+    <ng-template #content>
+      <convertedin-create-ad-back-btn route="/my-dashboard/studio/ai-image" />
+      <convertedin-select-template [activeTemplate]="aiMedia.template!" />
+    </ng-template>
+  </convertedin-step>
+
+  <!-- Upload image step -->
+  <convertedin-step
+    title="{{ 'create-ai-image.steps.2' | translate }}"
+    [valid]="!!aiMedia.imageFile"
+  >
+    <ng-template #content>
+      <convertedin-create-ad-back-btn route="/my-dashboard/studio/ai-image" />
+      <convertedin-upload-image [createAiMedia]="aiMedia" />
+    </ng-template>
+  </convertedin-step>
+
+  <!-- Payment step -->
+  <convertedin-step
+    title="{{ 'common.payment' | translate }}"
+    [valid]="isPaymentValid"
+  >
+    <ng-template #content>
+      <convertedin-create-ad-back-btn route="/my-dashboard/studio/ai-image" />
+      <convertedin-studio-payment
+        (isPaymentValid)="isPaymentValid = true"
+        mode="image"
+        [title]="'common.payment' | translate"
+        [subtitle]="'create-ai-image.payment-subtitle' | translate"
+        [template]="aiMedia.template!"
+        [previewImage]="aiMedia.imagePreview!"
+      />
+    </ng-template>
+  </convertedin-step>
+</convertedin-stepper>
+
+<!-- Creating image loader -->
+<div
+  class="flex flex-grow-1 flex-column justify-content-center align-items-center"
+  *ngIf="loaders.ai"
+>
+  <ng-lottie [options]="options" width="331px" class="mb-5"></ng-lottie>
+
+  <div class="flex flex-column gap-2 align-items-center">
+    <h1>{{ 'create-ai-image.in-progress.title' | translate }}</h1>
+    <h2>{{ 'create-ai-image.in-progress.subtitle' | translate }}</h2>
+  </div>
+</div>

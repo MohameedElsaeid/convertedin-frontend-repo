@@ -1,0 +1,46 @@
+::ng-deep .studio-image__card {
+  background-color: white;
+  border-radius: 6.482px;
+  border: 1px solid var(--convertedin-gray-200);
+  padding: 12px;
+  align-self: stretch;
+  width: calc((100% - 48px) / 4);
+}
+
+p {
+  color: var(--convertedin-gray-800);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+img {
+  max-width: 155px;
+  max-height: 190px;
+  border-radius: 8px;
+}
+
+.absolute {
+  top: 5px;
+  left: 5px;
+}
+
+.in-progress {
+  border: 1px solid #fedf89;
+  background: #fffaeb;
+  color: #dc6803;
+}
+
+.failed {
+  background-color: #fef3f2;
+  border: 1px solid #fecdca;
+  color: #b42318;
+}
+
+.status {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}

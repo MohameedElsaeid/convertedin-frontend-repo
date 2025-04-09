@@ -1,0 +1,30 @@
+<div class="grid flex convertedin--navbar">
+    <div class="col-12 lg:col-8 flex-order-1 lg:flex-order-0 flex p-3 mt-2">
+        <div class="main-section-head">
+            <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
+            <p *ngIf="pageSubTitle">{{pageSubTitle}}</p>
+        </div>
+    </div>
+    <div class="col-12 lg:col-4 justify-content-end p-3 mt-2 actions-sec">
+        <button pButton class="convertedin-outlined-button action-item p-button-primary p-button-outlined m-1 p-1">
+            <img src="assets/icons/navbar/star-icon.svg" />
+            Feedback
+        </button>
+
+        <p-dropdown styleClass="action-item form-field__input lang_dropdown mt-4" [(ngModel)]="selectedLang"
+            (onChange)="onChangeLang($event)" [options]="languages" optionLabel="label" optionValue="key" placeholder="{{
+                'accountSetup.selectLanguage' | translate
+                }}">
+            <ng-template let-lang pTemplate="selectedItem">
+                <div class="flex align-items-center gap-2" *ngIf="lang">
+                    <span class="pi pi-globe"></span>
+                    <div>{{ lang.label }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+
+        <button pButton class="action-item p-button-raised p-button-text m-1 notification-btn" severity="secondary">
+            <i class="pi pi-bell"></i>
+        </button>
+    </div>
+</div>

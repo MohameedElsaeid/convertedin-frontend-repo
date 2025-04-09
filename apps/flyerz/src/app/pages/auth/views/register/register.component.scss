@@ -1,0 +1,5 @@
+.register {
+  ::ng-deep &__input {
+    background: var(--convertedin-gray-50) !important;
+  }
+}

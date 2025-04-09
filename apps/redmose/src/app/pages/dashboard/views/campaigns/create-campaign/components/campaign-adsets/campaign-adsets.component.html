@@ -1,0 +1,1204 @@
+<div *ngIf="form" class="adsets-wrapper">
+  <div class="main-card adset-card">
+    <div class="card-header">
+      <div class="header-info">
+        <h4>Target Audience</h4>
+        <p>Setup Campaign Ad Sets</p>
+      </div>
+    </div>
+    <!--    -->
+    <div class="dynamic-content">
+      <div class="dynamic-tabs">
+        <div class="tabs-list">
+          <ng-container
+            *ngFor="let item of adsets.value; let i = index; trackBy: identify"
+          >
+            <div
+              (click)="setActiveAdset(i)"
+              [ngClass]="{ active: controls['active'].value === i }"
+              class="dynamic-tab-element"
+            >
+              <span>{{ item.name }} {{ i + 1 }}</span>
+              <img [src]="item['platformLogo']" alt="" />
+              <img
+                *ngIf="item['platformId'] === 1"
+                alt=""
+                src="https://assets-cdp-stg.s3.eu-west-1.amazonaws.com/images/social/instagram.png"
+              />
+
+              <p-splitButton
+                (click)="generateAdsetsTabsActions()"
+                [model]="items[i]"
+              >
+                <ng-template pTemplate="content"></ng-template>
+                <ng-template pTemplate="dropdownicon">
+                  <i class="pi pi-ellipsis-h"></i>
+                </ng-template>
+              </p-splitButton>
+            </div>
+          </ng-container>
+        </div>
+        <button (click)="addNewAdset()" class="add-more" type="button">
+          <i class="pi pi-plus"></i>
+          <span> add more </span>
+        </button>
+      </div>
+    </div>
+
+    <form [formGroup]="form">
+      <div class="main-form">
+        <ng-container
+          *ngFor="
+            let adset of adsets.controls;
+            let i = index;
+            trackBy: identifyAdsets
+          "
+          formArrayName="adsets"
+        >
+          <div
+            *ngIf="i === controls['active'].value"
+            [formGroupName]="controls['active'].value"
+            class="mt-5"
+          >
+            <div class="grid">
+              <div class="col-8">
+                <div class="main-card">
+                  <div class="flex flex-column gap-2 form-item">
+                    <label htmlFor="username">Adset Name</label>
+                    <input
+                      aria-describedby="username-help"
+                      formControlName="name"
+                      id="username"
+                      pInputText
+                    />
+                    <!--        <small id="username-help">Enter your username to reset your password.</small>-->
+                    <convertedin-control-errors
+                      [control]="adset.get('name')"
+                      [formSubmitted]="formSubmitted"
+                    ></convertedin-control-errors>
+                  </div>
+                  <!--conversion events control-->
+                  <div class="flex flex-column gap-2">
+                    <label htmlFor="username">Platform Page</label>
+                    <p-dropdown
+                      [filter]="true"
+                      [options]="staticData?.pages"
+                      [showClear]="true"
+                      [virtualScrollItemSize]="20"
+                      [virtualScroll]="true"
+                      filterBy="name"
+                      formControlName="pageId"
+                      optionLabel="name"
+                      placeholder="Select"
+                    >
+                      <ng-template let-event pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                          <div>{{ event.name }}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <convertedin-control-errors
+                      [control]="adset.get('pageId')"
+                      [formSubmitted]="formSubmitted"
+                    ></convertedin-control-errors>
+                  </div>
+                </div>
+                <div class="main-card mt-4">
+                  <div class="card-header">
+                    <div class="header-info">
+                      <h4>Optimize Goal</h4>
+                      <p>Optimize ad set goal</p>
+                    </div>
+                  </div>
+                  <!--conversion events control-->
+                  <div class="flex flex-column gap-2">
+                    <!--                    <label htmlFor="username">Platform Page</label>-->
+                    <p-dropdown
+                      (onChange)="createSubGoals(i)"
+                      [filter]="true"
+                      [options]="staticData?.goals"
+                      [virtualScrollItemSize]="20"
+                      [virtualScroll]="true"
+                      filterBy="title"
+                      formControlName="goal"
+                      optionLabel="title"
+                      placeholder="Select"
+                    >
+                      <ng-template let-event pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                          <div>{{ event.title }}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <convertedin-control-errors
+                      [control]="adset.get('goal')"
+                      [formSubmitted]="formSubmitted"
+                    ></convertedin-control-errors>
+                  </div>
+                  <ng-container *ngIf="adset.get('subGoals').value.length">
+                    <ng-container
+                      *ngFor="
+                        let subGoal of adset.get('subGoals').controls;
+                        let z = index;
+                        trackBy: identifySubGoals
+                      "
+                      formArrayName="subGoals"
+                    >
+                      <!--                      {{subGoal | json}}-->
+                      <ng-container [formGroupName]="z">
+                        <div class="grid">
+                          <div class="col-4">
+                            <div class="p-inputgroup">
+                              <span class="p-inputgroup-addon"
+                                >value for ROAS</span
+                              >
+                              <input
+                                budget
+                                formControlName="value"
+                                pInputText
+                                placeholder="00.00"
+                                type="text"
+                              />
+                            </div>
+                            <convertedin-control-errors
+                              [control]="
+                                adset.get('subGoals').at(z).get('value')
+                              "
+                              [formSubmitted]="formSubmitted"
+                              class="mt-2 block"
+                            ></convertedin-control-errors>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <div class="main-card mt-4">
+                  <div class="flex flex-column gap-2">
+                    <label htmlFor="username">Conversion Event</label>
+                    <p-dropdown
+                      [filter]="true"
+                      [options]="staticData?.events"
+                      [showClear]="true"
+                      filterBy="title"
+                      formControlName="conversion_event"
+                      optionLabel="title"
+                      optionValue="id"
+                      placeholder="Select"
+                    >
+                      <ng-template let-event pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                          <div>{{ event.title }}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <convertedin-control-errors
+                      [control]="controls.conversion_event"
+                      [formSubmitted]="formSubmitted"
+                    ></convertedin-control-errors>
+                  </div>
+                </div>
+
+                <ng-container *ngIf="!adset.get('cbo').value">
+                  <div class="main-card mt-4">
+                    <div class="card-header">
+                      <div class="header-info">
+                        <h4>Bidding strategy</h4>
+                        <p>Optimize ad bid strategy</p>
+                      </div>
+                    </div>
+                    <!--conversion events control-->
+                    <div class="flex flex-column gap-2">
+                      <!--                    <label htmlFor="username">Platform Page</label>-->
+  
+                      <div class="flex flex-wrap gap-3">
+                        <div class="flex align-items-center" *ngFor="let bidingStrategy of adset.get('goal')?.value?.bidding_strategies">
+                          <p-radioButton
+                            formControlName="bid_startegy"
+                            [inputId]="bidingStrategy?.id"
+                            name="bid_startegy"
+                            [value]="bidingStrategy?.id"
+                          ></p-radioButton>
+                          <label class="ml-2" for="ingredient1"
+                            >{{bidingStrategy?.title}}</label
+                          >
+                        </div>
+                      </div>
+                      
+                      <ng-container *ngIf="adset.get('bid_startegy').value && adset.get('bid_startegy').value !== 'LOWEST_COST_WITHOUT_CAP'">
+                        <p-divider></p-divider>
+                        <div class="flex flex-column gap-2 form-item mb-0">
+                          <label htmlFor="username"
+                            >Add value
+                            <span class="small-hint">"Optional"</span></label
+                          >
+                        </div>
+                        <div class="p-inputgroup">
+                          <span class="p-inputgroup-addon">USD</span>
+                          <input
+                            budget
+                            formControlName="bid_amount"
+                            pInputText
+                            placeholder="00.00"
+                            type="text"
+                          />
+                        </div>  
+                      </ng-container>
+                      
+                    </div>
+                  </div>
+                   
+                  <div class="main-card mt-4">
+                    <ng-container formGroupName="schedule">
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Ad Set Lifetime</h4>
+                          <p>The time that Ad Set running on platform</p>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap gap-3 mb-3">
+                        <div
+                          *ngIf="
+                            adset.get('budget').get('type').value === 'daily'
+                          "
+                          class="flex align-items-center"
+                        >
+                          <p-radioButton
+                            [value]="false"
+                            formControlName="lifetime"
+                            inputId="lifeTime"
+                          ></p-radioButton>
+                          <label class="ml-2" for="ingredient1"
+                            >Running Forever</label
+                          >
+                        </div>
+  
+                        <div class="flex align-items-center">
+                          <p-radioButton
+                            [value]="true"
+                            formControlName="lifetime"
+                            inputId="lifeTime2"
+                          ></p-radioButton>
+                          <label class="ml-2" for="ingredient2"
+                            >Start / End Date</label
+                          >
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="adset.get('schedule').get('lifetime').value"
+                        class="grid"
+                      >
+                        <div class="col-4">
+                          <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon">Start Date</span>
+                            <p-calendar  [showOtherMonths]="false"
+                              (onSelect)="validateStartEndDates(i)"
+                              [minDate]="today"
+                              class="date-control"
+                              dateFormat="dd/mm/yy"
+                              formControlName="start"
+                              placeholder="dd/mm/yy"
+                            ></p-calendar>
+                          </div>
+                          <convertedin-control-errors
+                            [control]="adset.get('schedule').get('start')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                        <div class="col-4">
+                          <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon">End Date</span>
+                            <p-calendar  [showOtherMonths]="false"
+                              (onSelect)="validateStartEndDates(i)"
+                              [minDate]="endDateMin"
+                              [defaultDate]="adset.get('schedule')?.get('start')?.value"
+                              class="date-control"
+                              dateFormat="dd/mm/yy"
+                              formControlName="end"
+                              placeholder="dd/mm/yy"
+                            ></p-calendar>
+                          </div>
+                          <convertedin-control-errors
+                            [control]="adset.get('schedule').get('end')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                    </ng-container>
+                    <p-divider></p-divider>
+                    <ng-container>
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Ad Set Budget</h4>
+                          <p>Set the Ad Set budget</p>
+                        </div>
+                      </div>
+
+                      <div
+                        class="flex flex-wrap gap-3 mb-3"
+                        formGroupName="budget"
+                      >
+                        <div class="flex align-items-center">
+                          <p-radioButton
+                            (onClick)="toggleRunningForever()"
+                            formControlName="type"
+                            inputId="type"
+                            value="daily"
+                          ></p-radioButton>
+                          <label class="ml-2" for="type">Daily Budget</label>
+                        </div>
+
+                        <div class="flex align-items-center">
+                          <p-radioButton
+                            (onClick)="toggleRunningForever()"
+                            formControlName="type"
+                            inputId="type2"
+                            value="lifetime"
+                          ></p-radioButton>
+                          <label class="ml-2" for="type2"
+                            >Life Time Budget</label
+                          >
+                        </div>
+                      </div>
+
+                      <div class="grid" formGroupName="budget">
+                        <div class="col-4">
+                          <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon">USD</span>
+                            <input
+                              budget
+                              formControlName="value"
+                              pInputText
+                              placeholder="00.00"
+                              type="text"
+                            />
+                          </div>
+                          <convertedin-control-errors
+                            [control]="adset.get('budget').get('value')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                    </ng-container>   
+                  </div>
+                </ng-container>
+
+                <div class="main-card mt-4">
+                  <div class="grid">
+                    <ng-container formGroupName="targeting">
+                      <ng-container formGroupName="locations">
+                        <div class="col-6">
+                          <div class="flex flex-column gap-2">
+                            <label htmlFor="username">Country</label>
+                            <p-multiSelect
+                              (onChange)="fetchCites(i)"
+                              [filter]="true"
+                              [options]="staticData?.countries"
+                              [showClear]="true"
+                              filterBy="title"
+                              formControlName="countries"
+                              optionLabel="title"
+                              optionValue="id"
+                              placeholder="Select"
+                            >
+                            </p-multiSelect>
+                            <convertedin-control-errors
+                              [control]="
+                                adset
+                                  ?.get('targeting')
+                                  ?.get('locations')
+                                  ?.get('countries')
+                              "
+                              [formSubmitted]="formSubmitted"
+                              class="mt-2 block"
+                            ></convertedin-control-errors>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="flex flex-column gap-2">
+                            <label htmlFor="username">City</label>
+                            <p-multiSelect
+                              [filter]="true"
+                              [options]="staticData?.cites"
+                              [showClear]="true"
+                              filterBy="title"
+                              formControlName="cities"
+                              optionLabel="title"
+                              optionValue="id"
+                              placeholder="Select"
+                              [attr.disabled]="!adset
+                              ?.get('targeting')
+                              ?.get('locations')
+                              ?.get('countries')?.value"
+                            >
+                            </p-multiSelect>
+                            <convertedin-control-errors
+                              [control]="
+                                adset
+                                  ?.get('targeting')
+                                  ?.get('locations')
+                                  ?.get('cities')
+                              "
+                              [formSubmitted]="formSubmitted"
+                              class="mt-2 block"
+                            ></convertedin-control-errors>
+                          </div>
+                        </div>
+                      </ng-container>
+
+                      <div class="col-12">
+                        <div class="flex flex-column gap-2 main-card">
+                          <label htmlFor="username">Age</label>
+                          <div class="mt-2">
+                            <div class="slide-sides">
+                              <span>{{ adset.value.targeting.age[0] }}</span>
+                              <span>{{ adset.value.targeting.age[1] }}</span>
+                            </div>
+                            <p-slider
+                              [max]="65"
+                              [min]="18"
+                              [range]="true"
+                              formControlName="age"
+                            ></p-slider>
+                          </div>
+                          <convertedin-control-errors
+                            [control]="adset.get('targeting').get('age')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="flex flex-column gap-2">
+                          <label htmlFor="username">Gender</label>
+                          <p-dropdown
+                            [filter]="true"
+                            [options]="staticData?.gender"
+                            [showClear]="true"
+                            [virtualScrollItemSize]="20"
+                            [virtualScroll]="true"
+                            filterBy="title"
+                            formControlName="gender"
+                            optionLabel="title"
+                            optionValue="id"
+                            placeholder="Select"
+                          >
+                          </p-dropdown>
+                          <convertedin-control-errors
+                            [control]="adset.get('targeting').get('gender')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="flex flex-column gap-2">
+                          <label htmlFor="username">Lookalike</label>
+                          <p-dropdown
+                            [filter]="true"
+                            [options]="staticData?.lookalike"
+                            [showClear]="true"
+                            [virtualScrollItemSize]="20"
+                            [virtualScroll]="true"
+                            filterBy="name"
+                            formControlName="lookalike"
+                            optionLabel="name"
+                            optionValue="id"
+                            placeholder="Select"
+                          >
+                          </p-dropdown>
+                          <convertedin-control-errors
+                            [control]="adset.get('targeting').get('lookalike')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="flex flex-column gap-2">
+                          <label htmlFor="username">Custome Audience</label>
+                          <p-dropdown
+                            [filter]="true"
+                            [options]="staticData?.customAudience"
+                            [showClear]="true"
+                            [virtualScrollItemSize]="20"
+                            [virtualScroll]="true"
+                            filterBy="name"
+                            formControlName="customAudience"
+                            optionLabel="name"
+                            optionValue="id"
+                            placeholder="Select"
+                          >
+                          </p-dropdown>
+                          <convertedin-control-errors
+                            [control]="
+                              adset.get('targeting').get('customAudience')
+                            "
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <!--                <ng-template #recursiveLastTemplate let-categories>-->
+                <!--                  {{categories | json}}-->
+                <!--                </ng-template>-->
+
+                <ng-template
+                  #recursiveTemplate
+                  let-categories
+                  let-name="name"
+                  let-target="target"
+                >
+                  <div class="sub-items">
+                    <ng-container
+                      *ngFor="let category of categories; let y = index"
+                    >
+                      <div
+                        *ngIf="
+                          category.selected &&
+                          category.children &&
+                          category.children.length > 0
+                        "
+                        [ngClass]="{
+                          'has-child':
+                            category.children && category.children.length > 0
+                        }"
+                        class="sub-item"
+                      >
+                        <ng-container>
+                          <div
+                            [ngClass]="{
+                              'last-sub-item': i === category.children.length - 1
+                            }"
+                            class="main-item-head"
+                          >
+                            <span>{{ name }}</span> {{ category.label }}
+                          </div>
+                          <div class="sub-items">
+                            <ng-container
+                              *ngTemplateOutlet="
+                                recursiveTemplate;
+                                context: {
+                                  $implicit: category.children,
+                                  target: target,
+                                  name: name
+                                }
+                              "
+                            ></ng-container>
+                          </div>
+                        </ng-container>
+                      </div>
+
+                      <div
+                        *ngIf="
+                          !category.children || category.children.length === 0
+                        "
+                        class="overflow-hidden"
+                      ></div>
+                      <div
+                        *ngIf="
+                          category.selected &&
+                          (!category.children || category.children.length === 0)
+                        "
+                        class="sub-item-label d-block"
+                      >
+                        <div
+                          class="flex justify-content-center align-items-center"
+                        >
+                          {{ category.label }}
+                          <button
+                            (click)="removeItem(category, i, target)"
+                            type="button"
+                          >
+                            <i class="pi pi-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-template>
+                <!--<button (click)="reset()">click me</button>-->
+                <div class="selected-data">
+                  <!--                  {{selectedNodes | json}}-->
+                    <div
+                    *ngFor="
+                      let category of adset
+                        .get('targeting')
+                        .get('demographics')
+                        .get('list').value
+                    "
+                    class="main-item"
+                  >
+                    <!--                    {{category.selected}}-->
+                    <!--                  <div *ngFor="let category of selectedNodes" class="main-item">-->
+                    <ng-container *ngIf="category?.selected">
+                      <div *ngIf="category.selected" class="main-item-head">
+                        <span>Demographics</span>
+                        <ng-container
+                          *ngIf="
+                            category.children && category.children.length > 0
+                          "
+                          >{{ category.label }}</ng-container
+                        >
+                      </div>
+
+                      <ng-container
+                        *ngTemplateOutlet="
+                          recursiveTemplate;
+                          context: {
+                            $implicit: category.children,
+                            target: 'demographics',
+                            name: 'Demographics'
+                          }
+                        "
+                      ></ng-container>
+
+                      <div
+                        *ngIf="
+                          !category.children || category.children.length === 0
+                        "
+                        class="sub-items"
+                      >
+                        <div *ngIf="category.selected" class="sub-item-label">
+                          {{ category.label }}
+                        </div>
+                      </div>
+                    </ng-container>
+                    </div>
+
+                  <ng-container
+                    *ngIf="
+                      adset.get('targeting').get('interests').get('list').value
+                    "
+                  >
+                    <div
+                      *ngFor="
+                        let category of adset
+                          .get('targeting')
+                          .get('interests')
+                          .get('list').value
+                      "
+                      class="main-item"
+                    >
+                      <!--                    {{category.selected}}-->
+                      <!--                  <div *ngFor="let category of selectedNodes" class="main-item">-->
+                      <ng-container *ngIf="category.selected">
+                        <div *ngIf="category.selected" class="main-item-head">
+                          <span>Interests</span>
+                          <ng-container
+                            *ngIf="
+                              category.children && category.children.length > 0
+                            "
+                            >{{ category.label }}</ng-container
+                          >
+                        </div>
+
+                        <ng-container
+                          *ngTemplateOutlet="
+                            recursiveTemplate;
+                            context: {
+                              $implicit: category.children,
+                              target: 'interests',
+                              name: 'Interests'
+                            }
+                          "
+                        ></ng-container>
+
+                        <div
+                          *ngIf="
+                            !category.children || category.children.length === 0
+                          "
+                          class="sub-items"
+                        >
+                          <div *ngIf="category.selected" class="sub-item-label">
+                            {{ category.label }}
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+
+                  <ng-container
+                    *ngIf="
+                      adset.get('targeting').get('beahviours').get('list').value
+                    "
+                  >
+                    <div
+                      *ngFor="
+                        let category of adset
+                          .get('targeting')
+                          .get('beahviours')
+                          .get('list').value
+                      "
+                      class="main-item"
+                    >
+                      <!--                    {{category.selected}}-->
+                      <!--                  <div *ngFor="let category of selectedNodes" class="main-item">-->
+                      <ng-container *ngIf="category.selected">
+                        <div *ngIf="category.selected" class="main-item-head">
+                          <span>Behaviours</span>
+                          <ng-container
+                            *ngIf="
+                              category.children && category.children.length > 0
+                            "
+                            >{{ category.label }}</ng-container
+                          >
+                        </div>
+
+                        <ng-container
+                          *ngTemplateOutlet="
+                            recursiveTemplate;
+                            context: {
+                              $implicit: category.children,
+                              target: 'beahviours',
+                              name: 'Behaviours'
+                            }
+                          "
+                        ></ng-container>
+
+                        <div
+                          *ngIf="
+                            !category.children || category.children.length === 0
+                          "
+                          class="sub-items"
+                        >
+                          <div *ngIf="category.selected" class="sub-item-label">
+                            {{ category.label }}
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </div>
+                <ng-container formGroupName="targeting">
+                  <div class="mt-4">
+                    <!--                    <div class="card-header">-->
+                    <!--                      <div class="header-info">-->
+                    <!--                        <h4>Demographics</h4>-->
+                    <!--                      </div>-->
+                    <!--                      <div class="header-actions">-->
+                    <!--                        <span class="targted-hint">-->
+                    <!--                                                 {{adset.get('targeting').get('demographics').value.length}}  Selected-->
+                    <!--                        </span>-->
+                    <!--                      </div>-->
+                    <!--                    </div>-->
+                    <div class="grid">
+                      <div class="col-12">
+                        <p-accordion class="w-full accordion-wrapper">
+                          <p-accordionTab [selected]="true">
+                            <ng-template pTemplate="header">
+                              <div
+                                class="flex align-items-center justify-content-between w-full"
+                              >
+                                <span class="header-title">Demographics</span>
+                                <span class="targted-hint"
+                                  >{{
+                                    adset
+                                      .get('targeting')
+                                      .get('demographics')
+                                      .get('selection')?.value?.length
+                                  }}
+                                  Selected</span
+                                >
+                              </div>
+                            </ng-template>
+                            <ng-template pTemplate="content">
+                              <!--                        formControlName="demographics"-->
+                              <p-tree
+                                #tree
+                                (onNodeSelect)="
+                                  onNodeSelect($event, i, 'demographics', true)
+                                "
+                                (onNodeUnselect)="
+                                  onNodeSelect($event, i, 'demographics', false)
+                                "
+                                (selectionChange)="
+                                  onNodeChange($event, i, 'demographics')
+                                "
+                                [(selection)]="demographicsSelection[i]"
+                                [filter]="true"
+                                [trackBy]="identify"
+                                [value]="demographics[i]"
+                                class="w-full md:w-20rem"
+                                containerStyleClass="w-full"
+                                display="chip"
+                                filterPlaceholder="Search for demographics"
+                                scrollHeight="290px"
+                                selectionMode="checkbox"
+                              ></p-tree>
+
+                              <!--                        <p-multiSelect [options]="staticData?.demographics" defaultLabel="Select"-->
+                              <!--                                       display="chip"-->
+                              <!--                                       formControlName="demographics"-->
+                              <!--                                       optionLabel="label"-->
+                              <!--                                       optionValue="id"></p-multiSelect>-->
+                              <convertedin-control-errors
+                                [control]="
+                                  adset.get('targeting').get('demographics')
+                                "
+                                [formSubmitted]="formSubmitted"
+                                class="mt-2 block"
+                              ></convertedin-control-errors>
+                            </ng-template>
+                          </p-accordionTab>
+                          <p-accordionTab>
+                            <ng-template pTemplate="header">
+                              <div
+                                class="flex align-items-center justify-content-between w-full"
+                              >
+                                <span class="header-title">Interests</span>
+                                <span class="targted-hint"
+                                  >{{
+                                    adset.get('targeting')?.get('interests')?.get('selection')
+                                      ?.value?.length
+                                  }}
+                                  Selected</span
+                                >
+                              </div>
+                            </ng-template>
+                            <ng-template pTemplate="content">
+                              <!--                        formControlName="demographics"-->
+                              <p-tree
+                                #tree
+                                (onNodeSelect)="
+                                  onNodeSelect($event, i, 'interests', true)
+                                "
+                                (onNodeUnselect)="
+                                  onNodeSelect($event, i, 'interests', false)
+                                "
+                                (selectionChange)="
+                                  onNodeChange($event, i, 'interests')
+                                "
+                                [(selection)]="interestsSelection[i]"
+                                [filter]="true"
+                                [trackBy]="identify"
+                                [value]="interests[i]"
+                                class="w-full md:w-20rem"
+                                containerStyleClass="w-full"
+                                display="chip"
+                                filterPlaceholder="Search for Interests"
+                                scrollHeight="290px"
+                                selectionMode="checkbox"
+                              ></p-tree>
+
+                              <!--                        <p-multiSelect [options]="staticData?.demographics" defaultLabel="Select"-->
+                              <!--                                       display="chip"-->
+                              <!--                                       formControlName="demographics"-->
+                              <!--                                       optionLabel="label"-->
+                              <!--                                       optionValue="id"></p-multiSelect>-->
+                              <convertedin-control-errors
+                                [control]="
+                                  adset.get('targeting').get('demographics')
+                                "
+                                [formSubmitted]="formSubmitted"
+                                class="mt-2 block"
+                              ></convertedin-control-errors>
+                            </ng-template>
+                          </p-accordionTab>
+                          <p-accordionTab>
+                            <ng-template pTemplate="header">
+                              <div
+                                class="flex align-items-center justify-content-between w-full"
+                              >
+                                <span class="header-title">Behaviors</span>
+                                <span class="targted-hint"
+                                  >{{
+                                    adset.get('targeting')?.get('beahviours')?.get('selection')
+                                      ?.value?.length
+                                  }}
+                                  Selected</span
+                                >
+                              </div>
+                            </ng-template>
+                            <ng-template pTemplate="content">
+                              <!--                        formControlName="demographics"-->
+                              <p-tree
+                                #tree
+                                (onNodeSelect)="
+                                  onNodeSelect($event, i, 'beahviours', true)
+                                "
+                                (onNodeUnselect)="
+                                  onNodeSelect($event, i, 'beahviours', false)
+                                "
+                                (selectionChange)="
+                                  onNodeChange($event, i, 'beahviours')
+                                "
+                                [(selection)]="behaviorsSelection[i]"
+                                [filter]="true"
+                                [trackBy]="identify"
+                                [value]="behaviors[i]"
+                                class="w-full md:w-20rem"
+                                containerStyleClass="w-full"
+                                display="chip"
+                                filterPlaceholder="Search for Behaviors"
+                                scrollHeight="290px"
+                                selectionMode="checkbox"
+                              ></p-tree>
+
+                              <!--                        <p-multiSelect [options]="staticData?.demographics" defaultLabel="Select"-->
+                              <!--                                       display="chip"-->
+                              <!--                                       formControlName="demographics"-->
+                              <!--                                       optionLabel="label"-->
+                              <!--                                       optionValue="id"></p-multiSelect>-->
+                              <convertedin-control-errors
+                                [control]="
+                                  adset.get('targeting').get('beahviours')
+                                "
+                                [formSubmitted]="formSubmitted"
+                                class="mt-2 block"
+                              ></convertedin-control-errors>
+                            </ng-template>
+                          </p-accordionTab>
+                        </p-accordion>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="main-card mt-4">
+                    <div class="grid">
+                      <div class="col-6">
+                        <div class="flex flex-column gap-2">
+                          <label htmlFor="username">Language</label>
+                          <p-multiSelect
+                            [options]="staticData?.languages"
+                            defaultLabel="Select"
+                            display="chip"
+                            formControlName="languages"
+                            optionLabel="title"
+                            optionValue="id"
+                          ></p-multiSelect>
+                          <convertedin-control-errors
+                            [control]="adset.get('targeting').get('languages')"
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ng-container formGroupName="placement">
+                    <div class="main-card mt-4">
+                      <div class="card-header">
+                        <div class="header-info">
+                          <h4>Placement</h4>
+                        </div>
+                      </div>
+
+                      <div class="flex flex-wrap gap-3 mb-3">
+                        <label
+                          class="w-full placement-option"
+                          for="placementType"
+                        >
+                          <p-radioButton
+                            (onClick)="setAllValues(i)"
+                            formControlName="type"
+                            inputId="placementType"
+                            value="auto"
+                          ></p-radioButton>
+                          <label class="ml-2" for="placementType"
+                            >Find Best placements</label
+                          >
+                        </label>
+
+                        <label
+                          class="w-full placement-option"
+                          for="placementType2"
+                        >
+                          <p-radioButton
+                            formControlName="type"
+                            inputId="placementType2"
+                            value="manual"
+                          ></p-radioButton>
+                          <label class="ml-2" for="placementType2"
+                            >Manual placements</label
+                          >
+                        </label>
+                      </div>
+                      <ng-container
+                        *ngIf="
+                          adset.get('targeting').get('placement').get('type')
+                            .value === 'manual'
+                        "
+                      >
+                        <div class="card-header mt-4">
+                          <div class="header-info">
+                            <h4>Devices</h4>
+                          </div>
+                        </div>
+                        <div class="flex align-items-center checkbox-wrapper">
+                          <div class="flex align-items-center gap-1">
+                            <p-checkbox
+                              [formControl]="
+                                adset
+                                  .get('targeting')
+                                  .get('placement')
+                                  .get('devices')
+                              "
+                              inputId="ny"
+                              name="group1"
+                              value="desktop"
+                            ></p-checkbox>
+                            <label for="ny">Desktop</label>
+                          </div>
+
+                          <div class="flex align-items-center gap-1 ml-3">
+                            <p-checkbox
+                              [formControl]="
+                                adset
+                                  .get('targeting')
+                                  .get('placement')
+                                  .get('devices')
+                              "
+                              inputId="sf"
+                              name="group1"
+                              value="mobile"
+                            ></p-checkbox>
+                            <label for="sf">Mobile</label>
+                          </div>
+                        </div>
+                        <div class="mt-12">
+                          <convertedin-control-errors
+                            [control]="
+                              adset
+                                .get('targeting')
+                                .get('placement')
+                                .get('devices')
+                            "
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                        <p-divider></p-divider>
+                        <div class="card-header mt-4">
+                          <div class="header-info">
+                            <h4>Platforms</h4>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="staticData?.platformsOfPlatform"
+                          class="flex align-items-center checkbox-wrapper"
+                        >
+                          <div
+                            *ngFor="
+                              let platform of staticData?.platformsOfPlatform;
+                              let x = index
+                            "
+                            [ngClass]="{ 'ml-3': x > 0 }"
+                            class="flex align-items-center gap-1"
+                          >
+                            <p-checkbox
+                              (onChange)="
+                                onPlatformChange(platform.id, i, platform)
+                              "
+                              [formControl]="
+                                adset
+                                  .get('targeting')
+                                  .get('placement')
+                                  .get('platforms')
+                              "
+                              [inputId]="platform.id"
+                              [value]="platform.id"
+                              name="group"
+                            ></p-checkbox>
+                            <label [for]="platform.id">{{
+                              platform.name
+                            }}</label>
+                          </div>
+                        </div>
+                        <div class="mt-12">
+                          <convertedin-control-errors
+                            [control]="
+                              adset
+                                .get('targeting')
+                                .get('placement')
+                                .get('platforms')
+                            "
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+
+                        <p-divider></p-divider>
+                        <div class="card-header mt-4">
+                          <div class="header-info">
+                            <h4>Placements</h4>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="staticData?.placements"
+                          class="checkbox-wrapper-vertical"
+                        >
+                          <div
+                            *ngFor="
+                              let placement of mappedPlacements[i];
+                              let x = index
+                            "
+                            class="flex align-items-start gap-1 checkbox-wrapper-vertical-item"
+                          >
+                            <p-checkbox
+                              [formControl]="
+                                adset
+                                  .get('targeting')
+                                  .get('placement')
+                                  .get('placements')
+                              "
+                              [inputId]="'placement-' + x"
+                              [value]="placement.id"
+                              name="group"
+                            ></p-checkbox>
+                            <div class="placement-info">
+                              <label [for]="'placement-' + x">{{
+                                placement.name
+                              }}</label>
+                              <span>{{ placement.description }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mt-12">
+                          <convertedin-control-errors
+                            [control]="
+                              adset
+                                .get('targeting')
+                                .get('placement')
+                                .get('placements')
+                            "
+                            [formSubmitted]="formSubmitted"
+                            class="mt-2 block"
+                          ></convertedin-control-errors>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+
+              <div class="col-4 overflow-hidden">
+                <div class="main-card relative">
+                  <div class="coming-soon">
+                    <img alt="" src="app-assets/images/comming-soon.png" />
+                    <img alt="" src="app-assets/images/comming-soon-text.png" />
+                  </div>
+                  <!--                                                      <pre>-->
+                  <!--                                                                  {{getAllErrors | json }}-->
+                  <!--                                                      </pre>-->
+                  <!--                  <pre>-->
+                  <!--                                                        {{adsets.at(0).value | json}}-->
+                  <!--                                                      </pre>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</div>
+<!--<convertedin-audience-definition></convertedin-audience-definition>-->
+<p-toast></p-toast>

@@ -1,0 +1,101 @@
+.studio-payment {
+  &__container {
+    gap: 20px;
+  }
+
+  &__payment-details {
+    & > div:nth-child(1) {
+      padding: 16px 12px;
+      border-radius: 8px 8px 0px 0px;
+      border-top: 1px solid var(--convertedin-gray-200);
+      border-right: 1px solid var(--convertedin-gray-200);
+      border-left: 1px solid var(--convertedin-gray-200);
+      background: #fff;
+
+      p {
+        color: var(--convertedin-gray-800);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+
+    & > div:nth-child(2) {
+      padding: 16px 12px;
+      border-radius: 0px 0px 8px 8px;
+      border: 1px solid var(--convertedin-gray-200);
+      background: var(--convertedin-gray-50);
+
+      label {
+        color: var(--convertedin-gray-800);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+      }
+
+      p {
+        color: var(--convertedin-gray-800);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__free-trials {
+    border-radius: 8px;
+    border: 1px solid #dcfae6;
+    background: #ecfdf3;
+
+    p {
+      color: var(--convertedin-gray-900);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    label {
+      padding: 8px 12px;
+      border-radius: 100px;
+      border: 1px solid #abefc6;
+      background: #f6fef9;
+      color: #067647;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+  }
+
+  &__preview-container {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--convertedin-gray-200);
+    background: #fff;
+    gap: 20px;
+
+    i {
+      font-size: 24px !important;
+      padding: 10px;
+      border-radius: 50%;
+      border-radius: 100px;
+      border: 1px solid var(--convertedin-gray-200);
+      background: white;
+      color: var(--convertedin-gray-800) !important;
+    }
+
+    figure {
+      width: calc((100% - 80px) / 2);
+      img {
+        max-height: 215px;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+h3 {
+  color: var(--convertedin-gray-900);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}

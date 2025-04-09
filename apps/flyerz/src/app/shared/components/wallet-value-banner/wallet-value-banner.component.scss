@@ -1,0 +1,44 @@
+.wallet-value-banner {
+  &__wallet-value {
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #f0fdfa;
+
+    p {
+      color: #0cac9e;
+      font-size: 14px;
+      font-weight: 400;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__wallet-value-low {
+    border-radius: 8px;
+    padding: 12px;
+    background-color: rgba(255, 241, 242, 0.7);
+
+    p {
+      color: #ec1354;
+      font-size: 14px;
+      font-weight: 400;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+a {
+  padding: 8px 14px !important;
+  background-color: white !important;
+  border-color: white !important;
+  color: var(--convertedin-gray-700) !important;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-decoration: none;
+}

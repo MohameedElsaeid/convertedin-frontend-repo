@@ -1,0 +1,21 @@
+<convertedin-dashboard-sidebar
+  [isTestUser]="sidebarValidators.isTest"
+  [adSpendLimitExceeded]="sidebarValidators.adSpendLimitReached"
+  [missingEmailConfig]="sidebarValidators.missingEmailConfig"
+  [missingPushConfig]="sidebarValidators.missingPushConfig"
+  [missingSmsConfig]="sidebarValidators.missingSmsConfig"
+  (routeClicked)="onRouteClick($event)"
+  logo="app-assets/images/menu-logo.svg"
+/>
+
+<main class="page-layout flex flex-column max-h-screen">
+  <!-- Header bar -->
+  <header class="page-layout__header flex align-items-center">
+    <convertedin-navbar />
+  </header>
+
+  <!-- Routes container -->
+  <section class="page-layout__router-wrapper flex flex-column flex-grow-1">
+    <router-outlet></router-outlet>
+  </section>
+</main>

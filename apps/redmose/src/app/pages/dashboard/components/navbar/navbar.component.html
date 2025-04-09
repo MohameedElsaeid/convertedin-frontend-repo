@@ -1,0 +1,76 @@
+<!-- <h1 class="navbar__title">{{ getRouteLabel() }}</h1> -->
+
+<div class="gap-3 flex">
+  <a class="flex align-items-center justify-content-center" href="/dashboard/home?djs">
+    <img src="app-assets/icons/navbar/help-circle.svg" alt="">
+  </a>
+  <!-- Notifications btn -->
+  <convertedin-notification-center />
+  <!-- <figure class="navbar__notification flex flex-column justify-content-center">
+    <img src="app-assets/icons/navbar/bell.svg" alt="bell-icon" />
+  </figure> -->
+
+  <!-- Language dropdown -->
+  <div
+    class="flex align-items-center p-2 navbar__dropdown"
+    (click)="langMenu.toggle($event)"
+  >
+    <p-menu #langMenu [model]="languageMenuItems" [popup]="true"></p-menu>
+
+    <div class="flex flex-column">
+      <figure class="flex align-items-center">
+        <img src="app-assets/icons/navbar/language.svg" alt="globe-icon" />
+        <h2 class="text-sm">{{ 'Language' | translate }}</h2>
+      </figure>
+
+      <!-- Active language -->
+      <div class="flex flex-column">
+        <span class="text-xs opacity-30">{{ activeLang }}</span>
+      </div>
+    </div>
+    <i class="pi pi-angle-down navbar__down-arrow"></i>
+  </div>
+
+  <!-- User profile dropdown -->
+  <div
+    class="flex align-items-center p-2 navbar__dropdown navbar__user-profile"
+    (click)="profileMenu.toggle($event)"
+    *ngIf="userData$ | async as data"
+  >
+    <p-menu #profileMenu [model]="profileMenuItems" [popup]="true"></p-menu>
+
+    <div class="flex flex-grow-1 gap-2">
+      <!-- User logo -->
+      <figure
+        class="mr-2 flex justify-content-center flex-column max-w-2rem"
+        *ngIf="data?.user.image"
+      >
+        <img
+          [src]="data?.user.image"
+          alt="user-logo"
+          class="max-w-full border-circle"
+        />
+      </figure>
+
+      <!-- User initials in case no image exist -->
+      <div
+        class="flex justify-content-center navbar__initials border-circle align-items-center"
+        *ngIf="!data?.user.image"
+      >
+        <p class="flex justify-content-center align-items-center">
+          <span *ngFor="let item of data?.user.shortName">
+            {{ item }}
+          </span>
+        </p>
+      </div>
+      <!-- User info -->
+      <div class="flex flex-column flex-grow-1 justify-content-between gap-2">
+        <h2 class="text-sm">{{ data?.user.name | trim : 15 }}</h2>
+        <span class="text-xs opacity-30">
+          {{ data?.user.role }}
+        </span>
+      </div>
+    </div>
+    <i class="pi pi-angle-down navbar__down-arrow"></i>
+  </div>
+</div>

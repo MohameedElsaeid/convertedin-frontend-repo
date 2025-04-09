@@ -1,0 +1,94 @@
+<!-- Popup subtitle -->
+<p class="absolute">
+  {{ 'customers.import-csv-title' | translate }}
+</p>
+
+<!-- Template section -->
+<div class="flex flex-column gap-4 mt-4">
+  <div class="import-csv__banner p-4 flex flex-column gap-4">
+    <div class="flex flex-column gap-1">
+      <h1>How to upload your CSV files successfully ?</h1>
+      <h2>
+        Download convertedin customers template & replace your data then upload
+        it here...
+      </h2>
+    </div>
+
+    <div class="flex gap-3">
+      <button pButton class="import-csv__download" (click)="downloadTemplate()">
+        Download Template
+      </button>
+    </div>
+  </div>
+
+  <!-- File selector -->
+  <div class="import-csv__file flex flex-column">
+    <label
+      class="w-full flex-grow-1 cursor-pointer flex flex-column align-items-center justify-content-center gap-2"
+    >
+      <!-- Empty view -->
+      <ng-container *ngIf="!csvData.file">
+        <i class="pi pi-cloud-upload"></i>
+        <p>Click to upload</p>
+        <span>CSV format only (max. 5MB)</span>
+      </ng-container>
+
+      <!-- Selected file view -->
+      <ng-container *ngIf="csvData.file">
+        <img src="app-assets/icons/people/csv-icon.svg" alt="csv-icon" />
+
+        <span>{{ csvData.file.name }}</span>
+      </ng-container>
+
+      <input
+        type="file"
+        class="hidden"
+        accept=".csv"
+        (change)="fileSelect($event)"
+      />
+    </label>
+  </div>
+
+  <div class="flex justify-content-between align-items-center">
+    <div class="flex flex-column">
+      <!-- <p-checkbox
+        class="import-csv__checkbox"
+        [(ngModel)]="csvData.discard_duplicates"
+        [binary]="true"
+        pTooltip="Please Note: Check this for dublicate data..."
+        tooltipPosition="top"
+        label="Discard dublicates data if found in the uploaded file"
+      /> -->
+
+      <p-checkbox
+      class="import-csv__checkbox"
+      [(ngModel)]="disclaimerChecked"
+      [binary]="true"
+      [(ngModel)] ="disclaimerChecked"
+      label="Disclaimer: Imported customer data will update existing customer information. If customers are not already present in the integrated platform, they will not be available for direct messaging automation flows, pixel tracking, or segmentation operations. In other words, imported customers are primarily used for creating manual direct messaging campaigns."
+    />
+    </div>
+
+    <!-- Action buttons -->
+    <div class="flex gap-2">
+      <!-- Cancel button -->
+      <button
+        pButton
+        (click)="close()"
+        class="p-button-secondary p-button-outlined"
+      >
+        Cancel
+      </button>
+
+      <!-- Confirm button -->
+      <button
+        pButton
+        class="cin-primary-btn"
+        (click)="confirmFile()"
+        [disabled]="!csvData.file || !disclaimerChecked"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

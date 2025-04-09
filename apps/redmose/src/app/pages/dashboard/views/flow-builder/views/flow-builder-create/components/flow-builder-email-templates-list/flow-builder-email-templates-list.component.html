@@ -1,0 +1,57 @@
+
+<div class="content-gallery-template px-4 py-3 flex gap-4 flex-column">
+<!--    <div class="flex filter-template">-->
+<!--          <span class="p-input-icon-left flex-grow-1">-->
+<!--            <i class="pi pi-search"></i>-->
+<!--            <input-->
+<!--                type="text"-->
+<!--                pInputText-->
+<!--                placeholder="Search Template"-->
+<!--                class="w-full search-input shadow-none"-->
+<!--            />-->
+<!--          </span>-->
+<!--        <p-dropdown-->
+<!--            [options]="languages"-->
+<!--            optionLabel="name"-->
+<!--            [showClear]="true"-->
+<!--            placeholder="Template Language"-->
+<!--            class="shadow-none dropdown-language"-->
+<!--        ></p-dropdown>-->
+<!--    </div>-->
+<!--    <div class="flex btn-filter-template flex-wrap">-->
+<!--        <p-button class="btn-filter"> Review/Referral program</p-button>-->
+<!--        <p-button class="btn-filter active"> Sales and Discounts</p-button>-->
+<!--        <p-button class="btn-filter"> Product Highlights</p-button>-->
+<!--        <p-button class="btn-filter"> Brand Awareness</p-button>-->
+<!--        <p-button class="btn-filter"> Upsell and Cross sell</p-button>-->
+<!--        <p-button class="btn-filter"> Winback campaigns</p-button>-->
+<!--        <p-button class="btn-filter"> Holiday Shoppers</p-button>-->
+<!--    </div>-->
+    <div class="grid cards-template">
+      <ng-container *ngFor="let template of $templates | async">
+
+        <div class="col-3">
+            <div class="p-3">
+                <div class="item-card">
+                    <div class="header-card relative">
+                        <img
+                            [src]="template.image"
+                            alt=""
+                            class="w-full"
+                        />
+                        <div class="card-actions">
+                          <p-button class="btn-Preview mb-1" (onClick)="previewEmail(template)"> Preview</p-button>
+                          <p-button class="btn-use-template" (onClick)="selectEmail(template)"> Use Template</p-button>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <h3>{{template.name}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </ng-container>
+
+    </div>
+</div>
+

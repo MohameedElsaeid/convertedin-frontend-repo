@@ -1,0 +1,481 @@
+$sidebarWidth: 15rem;
+
+.create-campaign-popup {
+  .create-campaign-head {
+    h3 {
+      color: var(--greyscale-900, #1a202c);
+      text-align: center;
+      font-family: Inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 125%; /* 30px */
+      letter-spacing: 0.2px;
+    }
+
+    > p {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.2px;
+      margin: 0;
+      padding: 0;
+      color: rgba(113, 128, 150, 1);
+      margin-top: 4px;
+
+      //margin-top: 5px;
+    }
+  }
+
+  .create-campaign-popup-content {
+    padding: 25px 0;
+  }
+}
+
+.create-campaign-forms {
+  padding-bottom: 150px;
+  background: #f9fafb;
+  // margin: -25px -25px 0 -25px;
+  min-height: calc(100vh - 100px);
+}
+
+::ng-deep {
+  .form-step-header {
+    color: var(--greyscale-900, #1a202c);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 25px */
+    //margin-left: 3px;
+  }
+
+  .p-multiselect {
+    display: flex !important;
+  }
+
+  .p-dialog {
+    min-width: 1026px !important;
+    border-radius: 16px;
+    //min-height: 785px;
+  }
+
+  .p-dialog-header {
+    padding-bottom: 15px;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(232, 232, 232, 1);
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+  }
+
+  .p-dialog .p-dialog-footer {
+    .popup-creation-cancel {
+      button {
+        width: 118px;
+        height: 45px;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid var(--greyscale-300, #e2e8f0);
+        background: var(--others-white, #fff);
+
+        span {
+          color: var(--blue-primary-blue-darkest, #14286c);
+          text-align: center;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%; /* 24px */
+          letter-spacing: 0.2px;
+        }
+      }
+    }
+
+    .popup-creation-confirm {
+      button {
+        width: 133px;
+        height: 45px;
+        padding: 16px;
+        border-radius: 8px;
+        background: #04d;
+
+        span {
+          color: #fff;
+          text-align: center;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%; /* 24px */
+          letter-spacing: 0.2px;
+        }
+      }
+    }
+  }
+}
+
+.errors-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    color: #f00;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+::ng-deep {
+  .main-form {
+    .form-item {
+      margin-bottom: 16px;
+
+      label {
+        color: var(--gray-700, #344054);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 142.857% */
+      }
+
+      input {
+        border-radius: 8px;
+        border: 1px solid var(--gray-300, #d0d5dd);
+        background: var(--white, #fff);
+
+        /* Shadow/xs */
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+      }
+    }
+  }
+
+  .p-dropdown {
+    display: flex !important;
+  }
+
+  .p-inputgroup {
+    .date-control {
+      .p-calendar {
+        width: 100%;
+      }
+
+      input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        height: 46px;
+      }
+    }
+  }
+
+  .campaign-configuration-wrapper {
+    margin-top: -40px;
+    display: block;
+    width: 375px;
+  }
+
+  .main-card {
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--greyscale-300, #e2e8f0);
+    background: var(--others-white, #fff);
+
+    .p-inputgroup-addon {
+      background: #fff;
+      color: rgba(102, 112, 133, 1);
+      border-top: 1px solid #ced4da;
+      border-left: 1px solid #ced4da;
+      border-bottom: 1px solid #ced4da;
+      padding: 0.75rem 0.75rem;
+      min-width: 3rem;
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    }
+  }
+
+  .card-header {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      color: #081a39;
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 24px */
+      letter-spacing: 0.2px;
+    }
+
+    p {
+      color: #4f5c6f;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 21px */
+      letter-spacing: 0.2px;
+      &.error-hint{
+        color: red
+      }
+    }
+  }
+
+  .p-slider .p-slider-range {
+    background: #04d;
+  }
+
+  .p-slider.p-slider-horizontal {
+    height: 10px;
+  }
+
+  .p-slider .p-slider-handle {
+    border: 1px solid #fff;
+    background: #04d;
+  }
+
+  .p-slider:not(.p-disabled) .p-slider-handle:hover {
+    background: #04d;
+    border: 1px solid #fff;
+  }
+}
+
+.create-campaign-footer {
+  position: fixed;
+  width: calc(100% - $sidebarWidth);
+  // width: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding: 15.522px 41.5px 18px 0;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 11.5px;
+  border-top: 1px solid #e9f1f5;
+  background: #fff;
+  box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.05);
+
+  button {
+    cursor: pointer;
+  }
+
+  .next-action {
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #04d;
+    border: 1px solid #04d;
+    color: #fff;
+    text-transform: capitalize;
+  }
+
+  .as-draft-action {
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--greyscale-300, #e2e8f0);
+    background: var(--others-white, #fff);
+    text-transform: capitalize;
+  }
+}
+
+// adsets + ads styles
+::ng-deep {
+  .adsets-wrapper {
+    padding-top: 50px;
+
+    .adset-card {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+
+      > .card-header {
+        h4 {
+          color: #37393e;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          margin-bottom: 7px;
+        }
+
+        p {
+          color: #4f5156;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+
+      .dynamic-content {
+        .dynamic-tabs {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: 8px;
+          background: #eaeff4;
+          padding: 7px 10px;
+
+          .tabs-list {
+            display: flex;
+            align-items: center;
+          }
+
+          .add-more {
+            display: flex;
+            height: 38px;
+            padding: 24px 16px;
+            justify-content: center;
+            align-items: center;
+            color: #04d;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: capitalize;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            span {
+              margin-left: 8px;
+            }
+          }
+
+          .dynamic-tab-element {
+            display: flex;
+            height: 39px;
+            padding: 24px 16px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            margin-left: 10px;
+            cursor: pointer;
+
+            span {
+              text-transform: capitalize;
+              color: var(--greyscale-900, #1a202c);
+              font-family: Inter;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+
+            &.active {
+              border: 1px solid #e2e8f0;
+              background: #fff;
+              box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+            }
+          }
+
+          ::ng-deep {
+            .p-splitbutton {
+              button {
+                &:first-child {
+                  display: none;
+                }
+              }
+
+              .p-button {
+                background: none !important;
+                color: #000;
+                border: none;
+                outline: none;
+                width: auto;
+                box-shadow: none !important;
+              }
+            }
+          }
+
+          &.dynamic-ads--tabs {
+            padding: 0 10px 0 0;
+
+            .dynamic-tab-element {
+              padding: 11px 16px;
+              margin: 5px 0 5px;
+              //&:first-child{
+              //  margin-left: 13px !important;
+              //}
+            }
+
+            .main-adsets-dropdown {
+              margin-right: 13px;
+              display: block;
+              ::ng-deep {
+                .p-dropdown {
+                  border-radius: 8px 0 0 8px;
+                  outline: none;
+                  box-shadow: none;
+                  border: none;
+                  background: #d0dbe7;
+                  .p-dropdown-label {
+                    height: 48px;
+                    display: flex;
+                    align-items: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .dinamic-tabs-root {
+        color: #04d;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+
+  .checkbox-wrapper-vertical {
+    .checkbox-wrapper-vertical-item {
+      margin-bottom: 20px;
+    }
+
+    .placement-info {
+      margin-left: 6px;
+      margin-top: -2px;
+
+      label {
+        color: #4f5c6f;
+        text-align: center;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%; /* 21px */
+        letter-spacing: 0.2px;
+      }
+
+      span {
+        display: block;
+        width: 100%;
+        color: #4f5c6f;
+        text-align: center;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 19.5px */
+        letter-spacing: 0.2px;
+      }
+    }
+  }
+}

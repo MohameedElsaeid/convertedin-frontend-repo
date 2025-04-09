@@ -1,0 +1,88 @@
+<convertedin-header
+  [title]="'auth.login.title' | translate"
+  [subtitle]="'auth.login.subtitle' | translate"
+/>
+
+<form
+  class="flex flex-column gap-5 md:w-7 lg:w-6 w-10"
+  [formGroup]="loginForm"
+  (submit)="submitLogin()"
+>
+  <div class="flex flex-column gap-3">
+    <!-- Phone input -->
+    <div class="flex flex-column gap-1">
+      <label class="auth__label">{{ 'auth.login.label' | translate }}</label>
+
+      <convertedin-phone-number-input
+        class="auth__phone w-full"
+        [wrongFormatMessage]="'auth.login.wrong-format' | translate"
+        formControlName="phone"
+        valueFormat="separate"
+        [perferredCountry]="countryIso"
+        [disableCountryDropdown]="true"
+      />
+
+      <convertedin-control-errors [control]="loginForm.get('phone')!" />
+    </div>
+
+    <!-- Password input -->
+    <div class="flex flex-column gap-1">
+      <label class="auth__label">
+        {{ 'auth.password.label' | translate }}
+      </label>
+
+      <p-password
+        formControlName="password"
+        styleClass="w-full"
+        class="w-full login__password"
+        [toggleMask]="true"
+        [feedback]="false"
+        placeholder="{{ 'auth.password.placeholder' | translate }}"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            loginForm.get('password')?.touched &&
+            !loginForm.get('password')?.valid
+        }"
+      />
+
+      <convertedin-control-errors [control]="loginForm.get('password')!" />
+
+      <!-- Forget password link -->
+      <div class="flex justify-content-end">
+        <a routerLink="/auth/forget-password">
+          {{ 'auth.login.forget-password' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit btn -->
+  <button
+    pButton
+    type="submit"
+    class="auth__submit-btn gap-2"
+    [disabled]="isLoading || !loginForm.valid"
+  >
+    {{ 'common.continue-btn' | translate }}
+    <i class="pi pi-spin pi-spinner" *ngIf="isLoading"></i>
+  </button>
+</form>
+
+<!-- Register button section -->
+<div class="flex-column flex gap-5">
+  <p-divider styleClass="m-0" />
+
+  <div class="flex flex-column gap-3">
+    <label class="auth__label">
+      {{ 'auth.login.register-label' | translate }}
+    </label>
+
+    <a
+      pButton
+      routerLink="/auth/register"
+      class="login__register-link p-button-secondary p-button-outlined"
+    >
+      {{ 'auth.login.register-btn' | translate }}
+    </a>
+  </div>
+</div>

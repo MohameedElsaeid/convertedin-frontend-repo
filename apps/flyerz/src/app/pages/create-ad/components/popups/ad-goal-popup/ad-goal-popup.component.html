@@ -1,0 +1,30 @@
+<!-- Goals list -->
+<div class="flex flex-column gap-3 mt-3" *ngIf="goals$ | async as goals">
+  <ng-container *ngIf="currentGoal$ | async as current">
+    <ng-container *ngFor="let item of goals.data">
+      <div
+        class="flex justify-content-between gap-2 create-ad__goal-item cursor-pointer"
+        *ngIf="item.status"
+        [ngClass]="{ 'create-ad__selected': item.id === activeGoal }"
+        (click)="updateGoal(item)"
+      >
+        <p>{{ item.title }}</p>
+
+        <p-radioButton [value]="item.id" [(ngModel)]="activeGoal" />
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<!-- Loading spinner -->
+<convertedin-spinner *ngIf="isLoading" class="flex justify-content-center" />
+
+<!-- Close dialog btn -->
+<button
+  (click)="closeDialog()"
+  pButton
+  type="button"
+  class="create-ad__cancel-btn justify-content-center"
+>
+  {{ 'common.cancel' | translate }}
+</button>

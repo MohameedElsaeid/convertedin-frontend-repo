@@ -1,0 +1,32 @@
+::ng-deep .dashboard-wallet__phone-input {
+  border-radius: 16px !important;
+  background: var(--convertedin-gray-100) !important;
+}
+
+label {
+  color: var(--convertedin-gray-700);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.dashboard-wallet__redirect {
+  border-radius: 8px;
+  border: 1px solid #fedf89;
+  background: #fffaeb;
+
+  p {
+    color: var(--convertedin-gray-500);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  a {
+    color: var(--convertedin-gray-800) !important;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-decoration-line: underline;
+  }
+}

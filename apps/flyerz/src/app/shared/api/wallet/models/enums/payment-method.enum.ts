@@ -1,0 +1,7 @@
+export enum PaymentMethodCode {
+  STRIPE_CARD = 13,
+  EBANX = 14,
+  PRODUCTION_PAY_MOB_CARD = 4054986,
+  STAGE_PAY_MOB_CARD = 3124654,
+  FAWRY = 3,
+}

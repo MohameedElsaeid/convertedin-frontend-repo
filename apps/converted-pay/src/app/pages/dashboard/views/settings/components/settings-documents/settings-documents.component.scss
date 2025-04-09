@@ -1,0 +1,49 @@
+:host {
+  padding: 1.7rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: block;
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+.upload-container {
+  position: relative;
+  width: fit-content;
+  margin-inline-start: auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    .upload-card {
+      width: 100% !important;
+    }
+  }
+  .upload-card {
+    position: relative;
+    z-index: 9;
+    width: 20rem;
+    height: 10rem;
+    border: 1px dashed var(--converted-pay-primary-200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+  }
+  &.fileover,
+  &:hover {
+    .upload-card {
+      z-index: 999;
+      border-color: var(--converted-pay-primary-color);
+      background-color: #ffffffbb;
+    }
+  }
+  img {
+    z-index: 99;
+  }
+  &:hover {
+    img {
+      z-index: 1;
+    }
+  }
+}

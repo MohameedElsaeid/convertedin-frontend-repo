@@ -1,0 +1,11 @@
+<img [src]="getIcon()" alt="connection-icon" />
+
+<div class="flex flex-column gap-1">
+  <p>
+    {{ getTitle() | translate }}
+  </p>
+
+  <button (click)="openReasignPopup()" pButton *ngIf="needReassign">
+    {{ 'dashboard.settings.accounts.reassign-popup.steps-title' | translate }}
+  </button>
+</div>

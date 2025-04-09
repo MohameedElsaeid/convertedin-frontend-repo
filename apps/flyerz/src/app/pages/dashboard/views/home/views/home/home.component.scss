@@ -1,0 +1,60 @@
+.dashboard-home {
+  ::ng-deep &__container {
+    height: 100%;
+    padding-inline-end: 16px;
+    overflow-y: scroll;
+  }
+
+  ::ng-deep &__create-ad {
+    padding: 1rem !important;
+    text-decoration: none;
+    background-color: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+
+    span,
+    i {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: -0.2px;
+    }
+  }
+
+  ::ng-deep &__connect-btn {
+    padding: 8px 24px !important;
+    border-radius: 8px !important;
+    background: #cf1644 !important;
+    border: 1px solid #cf1644 !important;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    text-decoration: none;
+    min-height: 56px;
+
+    &:focus {
+      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #f7a2a2, 0 1px 2px 0 black !important;
+    }
+  }
+
+  &__connect {
+    padding: 8px 24px;
+    border-radius: 8px;
+    background: rgba(207, 22, 68, 0.1);
+
+    figure {
+      padding: 15px;
+      background-color: rgba(255, 241, 242, 0.7);
+      border-radius: 50%;
+      font-size: 0;
+    }
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      flex-grow: 1;
+    }
+  }
+}

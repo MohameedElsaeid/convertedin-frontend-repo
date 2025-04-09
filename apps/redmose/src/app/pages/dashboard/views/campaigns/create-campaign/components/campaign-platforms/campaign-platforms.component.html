@@ -1,0 +1,81 @@
+<div class="campaign-platforms-wrapper">
+  <h3 class="form-step-header">Select Platforms for cross channel campaign</h3>
+  <div class="flex flex-wrap justify-content-between platforms-form">
+    <div class="md:w-8 p-2">
+      <form [formGroup]="form">
+        <ng-container
+          *ngFor="let item of items.controls; let i = index"
+          formArrayName="items"
+        >
+          <div class="platform-group" [formGroupName]="i">
+            <h3 class="group-head">{{ item.value.type }}</h3>
+            <ng-container formArrayName="platforms">
+              <div class="flex flex-wrap">
+                <ng-container
+                  *ngFor="
+                    let platform of item.get('platforms').controls;
+                    let j = index
+                  "
+                >
+                  <div [formGroupName]="j" class="w-4 p-2">
+                    <div
+                      class="platform-item"
+                      [ngClass]="{
+                        selected: platform.value.selected,
+                        active: platform.value.active,
+                        inactive: !platform.value.active,
+                        'active-not-enabled':
+                          !platform.value.enabled_for_user &&
+                          platform.value.active,
+                        'inactive-not-enabled':
+                          !platform.value.enabled_for_user &&
+                          !platform.value.active
+                      }"
+                      [pTooltip]="
+                        !platform.value.enabled_for_user &&
+                        platform.value.active
+                          ? 'you didnt connected ' +
+                            platform.value.name +
+                            ' with your account'
+                          : !platform.value.enabled_for_user &&
+                            !platform.value.active
+                          ? 'This channel not supported for this objective'
+                          : ''
+                      "
+                      tooltipPosition="top"
+                    >
+                      <label [for]="platform.value.id">
+                        <div>
+                          <p-checkbox
+                            [name]="item.value.type"
+                            formControlName="selected"
+                            [binary]="true"
+                            [inputId]="platform.value.id"
+                          ></p-checkbox>
+                          <span>{{ platform.value.name }}</span>
+                        </div>
+                        <div>
+                          <img [src]="platform.value.logo" alt="" />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </form>
+      <!--      <pre>-->
+      <!--        {{ form.value | json }}-->
+      <!--      </pre>-->
+    </div>
+    <div class="md:w-4 p-2">
+      <div class="flex justify-content-end">
+        <convertedin-campaign-configuration-info
+          class="campaign-configuration-wrapper"
+        ></convertedin-campaign-configuration-info>
+      </div>
+    </div>
+  </div>
+</div>

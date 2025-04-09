@@ -1,0 +1,353 @@
+{
+  "USD": "USD",
+  "EGP": "EGP",
+  "poweredBy": "Powered By Convertedin",
+  "transactionReferenceId": "Transaction Reference Id",
+  "warningBanner": "Dear Valued Customer,<br/> We are currently updating our payment integration system, and as a result, new top-up transactions are temporarily on hold. We apologize for any inconvenience this may cause and appreciate your patience during this process.<br/> For further assistance or inquiries, please reach out to our support team.",
+  "dashboard": {
+    "forBestExperience": "For the best experience please use laptop or desktop to access the app dashboard"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "sidebar": {
+    "logout": "Logout",
+    "home": "Home",
+    "accounts": "Accounts",
+    "settings": "Settings",
+    "freeCredit": "Free Credit",
+    "faq": "FAQ"
+  },
+  "login": {
+    "title": "Login",
+    "description": "Welcome back, please enter your account details.",
+    "email": "Email",
+    "password": "Password",
+    "forgetPassword": "Forget password?",
+    "loginButton": "Login",
+    "createNewAccount": "Create New Account",
+    "enterEmailAddress": "Enter email address",
+    "enterPassword": "Enter password",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "welcomePopup": {
+    "header": "Hello",
+    "subheader": "Tell us more about your business",
+    "advertiserTypeLabel": "What best describes your business?",
+    "facebookPageUrlLabel": "Facebook Page URL",
+    "facebookPageUrlPlaceholder": "www.facebook.com/page-name",
+    "whenToStartLabel": "When do you want to start?",
+    "select": "Select",
+    "submit": "Submit",
+    "startOptions": [
+      "As soon as possible",
+      "Need this budget for the coming month",
+      "⁠Need this budget for the coming quarter"
+    ],
+    "describeList": ["Direct advertiser", "Digital media agency"]
+  },
+  "howActiveGoogle": {
+    "title": "How to activate account linking with ConvetedPay?",
+    "step1": "1. You will receive an email with the subject “You have a pending request to link your account to a Manager account (Convertedin - PT)”",
+    "step2": "2. Click on the button “Manage Linking Invitation”",
+    "step3": "3. You will be redirected to Link Request Page, Click on “Accept” action.",
+    "footerText": "If you didn’t receive the email, please",
+    "clickHere": "Click Here",
+    "close": "Close"
+  },
+  "resetPassword": {
+    "title": "Reset New Password",
+    "password": "Password",
+    "passwordPlaceholder": "enter password",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "enter confirm password",
+    "resetPassword": "Reset password"
+  },
+  "verifyOTP": {
+    "title": "Forgot Password",
+    "desc": "Please enter the OTP code that sent to your email address",
+    "codeWillExpire": "Code will Expire in",
+    "verifyOTP": "Verify OTP",
+    "resendOTP": "Resend OTP"
+  },
+  "forgetPassword": {
+    "title": "Forgot Password",
+    "desc": "Enter your email address to get OTP code.",
+    "email": "Email",
+    "emailPlaceholder": "Enter email address",
+    "sendOtp": "Send OTP"
+  },
+  "register": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "companyName": "Company name",
+    "enterCompanyName": "Enter company name",
+    "email": "Email",
+    "enterEmail": "Enter email",
+    "phoneNumber": "Phone number",
+    "wrongPhoneNumberFormat": "Please enter a valid phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "enterPassword": "Enter password",
+    "enterConfirmPassword": "Enter confirm password",
+    "facebookBudget": "What is your Facebook monthly budget",
+    "googleBudget": "What is your Google monthly budget",
+    "selectBudget": "Select",
+    "referralCode": "Referral code",
+    "optional": "( optional )",
+    "referralTooltip": "Add a referral code you have to get free credit",
+    "enterReferralCode": "Enter referral code ( optional )",
+    "createAccount": "Create Account",
+    "loginPrompt": "Have an account?",
+    "login": "Login",
+    "country": "Country",
+    "selectCountry": "Select Country"
+  },
+  "home": {
+    "welcomeTitle": "Welcome {{firstName}},",
+    "welcomeSubtitle": "Get started with Converted Pay",
+    "waitingListBanner": {
+      "title": "You're on the waitlist for Converted Pay dashboard full access!",
+      "description": "Thanks for joining the waitlist! Stay tuned for updates and learn more about managing {{currency}} ads with Converted Pay."
+    },
+    "accessGrantedBanner": {
+      "title": "Great News, Access Granted!",
+      "description": "Now you can manage ads in {{currency}} with Your Converted Pay Dashboard"
+    },
+    "connectAccountBanner": {
+      "title": "Start connecting your ad accounts to get started.",
+      "description": "Connect your ad account to charge and get started.",
+      "buttonText": "Connect Ad Accounts"
+    },
+    "overview": "Overview",
+    "topUpAccounts": "Top-Up Accounts",
+    "connectedAccounts": "Connected Accounts",
+    "amountCharge": "Amount Charge",
+    "latestTransactions": "Latest Transactions",
+    "noDataToView": "No data to view",
+    "startTopUpAnyAdAccount": "Start top-up any ad account to view the transaction",
+    "date": "Date",
+    "platform": "Platform",
+    "amount": "Amount",
+    "status": "Status",
+    "paymentMethod": "Payment Method",
+    "viewInvoice": "View Invoice",
+    "currentPageReportTemplate": "Showing {first} to {last} of {totalRecords} entries",
+    "refundProof": "Refund Proof",
+    "action": "Actions"
+  },
+  "topUp": {
+    "gotIt": "Got it",
+    "vatTitle": "How convertedpay collect ({{vat}}%) VAT?",
+    "vatInfo": "The VAT ({{vat}}%) is included in this payment comply with local tax regulations. this amount will not be charged again by google.",
+    "vatInfoButton": "Learn More",
+    "paymentInReview": "Your payment is in Review...",
+    "paymentConfirmation": "Once we confirm your payment transaction, your account will charge with the amount, this may take up to 24 hours.",
+    "backToHome": "Back to Home",
+    "anotherTopup": "Another Top-up",
+    "markAsPaid": "Mark as paid",
+    "uploadReceipt": "To confirm your payment you need to upload a receipt photo",
+    "uploadPhoto": "Upload Photo",
+    "done": "Done",
+    "paymentFailed": "Payment Failed",
+    "tryAgain": "Please try payment again later",
+    "selectAdAccount": "Select Ad Account",
+    "chargeAmount": "Charge Amount",
+    "payment": "Payment",
+    "back": "Back",
+    "next": "Next",
+    "payNow": "Pay Now",
+    "selectAccount": "Select your account that you want to add fees",
+    "selectPaymentGateway": "Select Payment Gateway",
+    "invoice": "Invoice",
+    "agencyFees": "Agency Fees",
+    "vatFees": "VAT Fees",
+    "totalAmount": "Total Amount",
+    "paymentDetails": "Payment Details",
+    "bankName": "Bank Name",
+    "accountName": "Account Name",
+    "accountNumber": "Account Number",
+    "iban": "IBAN",
+    "phoneNumber": "Phone number",
+    "wrongPhoneNumberFormat": "Please input valid phone number",
+    "referenceNumber": "Reference Number",
+    "followTheseSteps": "Follow These Steps",
+    "step1": "Copy this code",
+    "step2": "Form Fawry App or Machine paste this code",
+    "step3": "Confirm by uploading receipt image",
+    "setAmountToCharge": "Set amount to charge",
+    "useFreeCredit": "Use Free Credit",
+    "youHaveFreeCredit": "you have",
+    "useItToChargeYourAccount": "free credit, use it to charge your account.",
+    "enterAmountToRecharge": "Enter amount to recharge",
+    "addAmountToCharge": "Add an {{currency}} amount to charge",
+    "yourChargeLimit": "Your Charge Limit",
+    "remaining": "Remaining",
+    "paymentInfoBanner": {
+      "title": "Thanks for charging through ConvertedPay.<br /> If this is the 1st time to charge, please follow the following steps so that we can transfer the amount to your google account:",
+      "items": [
+        "Go to your google registered email and check the inbox (Invitation will be sent to give ConvertedPay access)",
+        "Please press on accepting invitation then grant us access to your billing profile",
+        "Also you can view the video below for more clarification: <a href=' https://www.youtube.com/watch?v=d-2rWXr6STM'>https://www.youtube.com/watch?v=d-2rWXr6STM</a>"
+      ]
+    }
+  },
+  "account": {
+    "title": "Accounts",
+    "subtitle": "View and manage all your ad accounts",
+    "selectYourAccount": "Select your account that you want to connect",
+    "important": "Important",
+    "itTakes24HoursToChargeYourAccount": "it takes 24 hours to charge your account for the 1st time, all next times will be charged immediately.",
+    "howItWorks": "How it works ?",
+    "confirmToAccessAllOfYourAdAccountDetails": "Confirm to access all of your ad account details.",
+    "yourAccountWillBeUnderReviewToGetVerified": "Your account will be under review to get verified.",
+    "afterYouChargedYourAccount": "After you charged your account, within 24 hours your will get the charge in your account.",
+    "cancel": "Cancel",
+    "next": "Next",
+    "back": "Back",
+    "connectAdAccount": "Connect Ad Account",
+    "connectYourAdAccountsFirst": "You need to connect your ad accounts first to top-up.",
+    "availablePlatformsToConnect": "Available platforms to connect",
+    "connectNewAccount": "Connect New Account",
+    "byConnectingYourAccountYouAgreeTo": "By connecting your account, you agree to:",
+    "joinWaitingList": "Join Waiting List",
+    "waitingList": "Waiting List",
+    "beta": "Beta",
+    "noAccountsConnected": "No Accounts Connected",
+    "pending": "Pending",
+    "disconnect": "Disconnect",
+    "refundPolicy": "Refund Policy",
+    "infoBannerList": {
+      "0": "Switch your payment method to ConvertedPay.",
+      "1": "Allow us to share ConvertedPay Billing Profile with your Ad account.",
+      "2": "Only Google Ads accounts with {{currency}} currency will be eligible for payment.",
+      "3": "When you connect Convertedpay, if you have exisiting funds in your google ads account, it will be refunded by google"
+    },
+    "needsHelp": "Needs Help",
+    "seeHowToConnectYourAddAccount": "See how to connect your add account",
+    "connectGoogle": "Connect Google",
+    "noDataFound": "No Data Found",
+    "youDidntHaveAnyAdAccounts": "you didn't have any ad accounts",
+    "howToCreateGoogleAdAccount": "How to create google ad account?",
+    "connectMeta": "Connect Meta",
+    "startConnectingYourMetaAdAccount": "Start connecting your Meta ad account",
+    "refundPolicyDescription": "We're committed to providing a smooth and secure experience. Your balance will remain in your account and can be used whenever you need it. Refunds will only be processed for genuine issues, and we appreciate your understanding and cooperation.",
+    "connect": "Connect",
+    "infoBanner": "Please note the {{currency}} accounts only can be connected.",
+    "googlePromoNotice": "<h4><span class=\"pi pi-exclamation-triangle\"></span> Important Notice: Promotional Credits Expiration <span class=\"pi pi-exclamation-triangle\"></span></h4><p class=\"mt-2\">If you proceed with a Billing Transfer (such as changing account ownership or connecting to ConvertedPay), any active promotional credits provided by Google will be lost.</p><p class=\"mt-2\">🔹 Promotional credits will NOT transfer, be refunded, or reactivated.<br />🔹 Once the transfer is completed, the credits will expire permanently.<br />🔹 You can still view past promotions under your previous billing setup via Billing Transfers > <a class=\"no-underline\" href=\"https://ads.google.com/aw/billing/promotions\">Promotions</a>.</p><p class=\"mt-2\">✅ Please review your promotional credits before proceeding.<br />❌ This action is irreversible once completed.</p>"
+  },
+  "referral": {
+    "title": "Referral",
+    "subtitle": "Get Free Credit",
+    "earnings": "Earnings",
+    "referralEarningsDescription": "Referral users receive free ad credits when a referred user completes their first charge. Use these credits to fund your ad campaigns and boost your reach!",
+    "remaining": "Remaining",
+    "remainingEarningsDescription": "Available earnings to charge your social accounts with",
+    "fromInvitations": "From {{userCount}} Invitations",
+    "cashout": "Cashout",
+    "invitees": "Invitees",
+    "viewAllInvitedFriends": "View all your invited friends",
+    "youGet": "You Get",
+    "noInvitedFriendsYet": "No invited friends yet",
+    "shareToEarn": "Share to Earn {{value}} {{currency}}",
+    "shareReferralCodeDescription": "Share your referral code with your friends and once they registered and charge their accounts, you will get your free credit",
+    "shareReferralCodeOrLink": "Share Referral Code or Link",
+    "getYourReferralLink": "Get your referral link and share it with your friends",
+    "copy": "Copy",
+    "copied": "Copied",
+    "orShareThisCode": "Or share this code",
+    "howItWorks": "How it works",
+    "step1": "Copy your referral code and share it with your friends",
+    "step2": "Your friend will create his account and charge it for the first time.",
+    "step3": "Get your free credit “{{value}} {{currency}}” and use it to charge your social account."
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "View and manage your account settings.",
+    "profile": "Profile",
+    "documents": "Documents",
+    "profileInfo": "Profile Info",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "companyName": "Company Name",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "update": "Update",
+    "enterFirstName": "enter first name",
+    "enterLastName": "enter last name",
+    "enterCompanyName": "enter company name",
+    "enterEmail": "enter email address",
+    "enterPhoneNumber": "Please enter a valid phone number",
+    "vatLaw": "Value Added Tax Law (VAT)",
+    "vatNumber": "VAT Number",
+    "saveChanges": "Save Changes",
+    "dropFileHere": "Drop your file here or",
+    "chooseFile": "choose a file",
+    "docUpdatedSuccess": "Document updated successfully",
+    "emptyFilterMessage": "No result found"
+  },
+  "offerBanner": {
+    "title": "Exclusive Deal",
+    "description": "Use ConvertedPay for your Google Ads and pay Zero Fees on transactions up to 50,000 {{currency}}. Don't miss out — offer ends soon!",
+    "buttonText": "Get Offer Now"
+  },
+  "guideBanner": {
+    "chargeAccount": {
+      "title": "A guide to charge your ad accounts.",
+      "desc": "This video will help you to charge your ad account step by step."
+    },
+    "connectAccount": {
+      "title": "A guide to connect your ad accounts.",
+      "desc": "This video will help you to connect your ad account step by step."
+    },
+    "watchVideo": "Watch video"
+  },
+  "validations": {
+    "required": "This field is required",
+    "email": {
+      "required": "Email is Required",
+      "mail": "Please enter a valid email"
+    },
+    "password": {
+      "required": "Password is Required",
+      "minLength": "Password must be at least 8 characters"
+    },
+    "confirmPassword": {
+      "match": "Confirm password must match password"
+    },
+    "firstName": {
+      "required": "First name is required"
+    },
+    "lastName": {
+      "required": "Last name is required"
+    },
+    "companyName": {
+      "required": "Company name is required"
+    },
+    "mobileNumber": {
+      "required": "Mobile number is required",
+      "vodafon": "Please enter a vodafon number"
+    },
+    "facebookMonthlyBudget": {
+      "required": "Facebook Monthly budget is required"
+    },
+    "googleMonthlyBudget": {
+      "required": "Google Monthly budget is required"
+    },
+    "otp": {
+      "required": "OTP is required",
+      "minLength": "OTP code must be 6 characters"
+    },
+    "amount": {
+      "required": "Amount is required",
+      "minimum": "Amount must be minimum {{value}}"
+    },
+    "tax": {
+      "required": "Tax Number is required",
+      "lenght": "Tax Number must be 9 characters"
+    },
+    "country": {
+      "required": "Country is required"
+    }
+  }
+}

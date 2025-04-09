@@ -1,0 +1,65 @@
+::ng-deep .workflow__trigger {
+  height: 4.8rem !important;
+  font-family: Inter;
+  line-height: 20px;
+  background-color: #e6ecfc;
+  border-color: #99b4f1 !important;
+  border-width: 2px !important;
+  border-radius: 12px !important;
+
+  &:hover {
+    background-color: #e6ecfc !important;
+    color: var(--cin-primary-color) !important;
+  }
+
+  &-value {
+    border-radius: 8px;
+    border: 2px solid #ccdaf8;
+    background: #fbfbff;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
+    &:hover {
+      border-color: #1e3ba2 !important;
+      transition: all ease-in-out 0.2s;
+    }
+
+    &:focus,
+    &:focus-within,
+    &:active {
+      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #9dc1fb, 0 1px 2px 0 black !important;
+    }
+  }
+
+  &-setup {
+    font-size: 16px;
+    font-weight: 600;
+
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--cin-primary-color);
+  }
+
+  &-start {
+    color: #4ca30d;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  &-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  &-stop {
+    color: #d92d20;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  ::ng-deep &-error {
+    border-color: #f43f5e !important;
+  }
+}

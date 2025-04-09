@@ -1,0 +1,30 @@
+<div *ngFor="let currentQuota of currentQuotas">
+    <div class="quote-block">
+        <div class="flex align-items-center justify-content-between">
+            <div class="flex align-items-center quote-block--quote-value-info">
+                <img *ngIf="currentQuota.feature === 'email'" src="app-assets/icons/billing/mail.svg" alt="">
+                <img *ngIf="currentQuota.feature === 'sms'" src="app-assets/icons/billing/sms.svg" alt="">
+                <p *ngIf="currentQuota.quota_id !== unlimitedQuotaID">{{currentQuota.spent_quota}} <span>/{{currentQuota.total_quota}}</span></p>
+                <p *ngIf="currentQuota.quota_id === unlimitedQuotaID">{{currentQuota.spent_quota}} <span>/ {{"billing.unlimited" | translate}}</span></p>
+            </div>
+            <span class="primary-indicator" *ngIf="currentQuota.is_primary">{{"billing.primary-quota" | translate}}</span>
+        </div>
+        <p-progressBar *ngIf="currentQuota.quota_id !== unlimitedQuotaID" [value]="(currentQuota.spent_quota / currentQuota.total_quota) * 100" [showValue] = "false"></p-progressBar>
+        <div class="quote-block--quote-info">
+            <span>
+                 <ng-container *ngIf="currentQuota.feature === 'email'">{{"billing.email" | translate}}</ng-container>
+                 <ng-container *ngIf="currentQuota.feature === 'sms'">{{"billing.sms" | translate}}</ng-container>
+                {{"billing.quota-used" | translate}}
+            </span>
+            <span class="expired" *ngIf="currentQuota.isExpired">
+             {{"billing.expired" | translate}}
+                {{currentQuota.expires_at | date : 'short'}}
+            </span>
+
+            <span *ngIf="!currentQuota.isExpired">
+                {{"billing.expires" | translate}}
+                {{currentQuota.expires_at | date : 'short'}}
+            </span>
+        </div>
+    </div>
+</div>

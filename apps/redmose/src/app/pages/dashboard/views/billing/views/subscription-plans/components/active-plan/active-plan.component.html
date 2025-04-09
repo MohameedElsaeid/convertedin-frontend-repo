@@ -1,0 +1,19 @@
+<convertedin-spinner *ngIf="isLoading" class="flex justify-content-center" />
+<ng-container *ngIf="plan$ | async as plan">
+  <div class="active-plan mt-3" *ngIf="plan.plan">
+    <h4 class="settings-tab__alt-sub-title">{{"billing.active-plan" | translate}}</h4>
+    <p class="plan-title">{{ plan?.plan?.name }}</p>
+    <p class="plan-price">${{ plan?.plan?.price }}</p>
+    <p class="plan-spent">{{ plan?.plan?.description }}</p>
+  </div>
+  <div class="mt-5" *ngIf="plan.plan">
+    <h3>{{"billing.plan-features" | translate}}</h3>
+    <h5>{{"billing.actie-plan-title" | translate}}</h5>
+    <ul class="mt-5">
+      <li *ngFor="let feature of plan?.plan?.features">
+        <img class="mr-2" src="app-assets/icons/common/green-tick.svg" alt="" />
+        {{ feature }}
+      </li>
+    </ul>
+  </div>
+</ng-container>

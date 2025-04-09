@@ -1,0 +1,55 @@
+<ng-container *ngIf="adData$ | async as adData">
+  <!-- Header -->
+  <convertedin-create-ad-header
+    [title]="'create-ad.ad-data.title' | translate"
+    [subtitle]="'create-ad.ad-data.subtitle' | translate"
+  />
+
+  <div class="create-ad__data-container flex-grow-1 w-full flex">
+    <div
+      class="create-ad__ai-container align-self-stretch flex flex-column gap-6 create-ad__details-container"
+    >
+      <convertedin-ad-selection-history [adData]="adData" />
+
+      <!-- Target section -->
+      <convertedin-ai-data-section
+        [canDelete]="false"
+        (openPopup)="_popups['goal']($event)"
+        icon="assets/icons/create-ad/scope.svg"
+        [items]="[adData.goal]"
+        [title]="'create-ad.common.target' | translate"
+        nameDataKey="title"
+      />
+      <!-- Audiance section -->
+      <convertedin-ai-data-section
+        (openPopup)="_popups['genders']($event)"
+        icon="assets/icons/create-ad/people.svg"
+        [items]="getAudiance(adData)"
+        [title]="'create-ad.ad-data.audiance' | translate"
+        nameDataKey=""
+        [canDelete]="false"
+      />
+      <!-- Locations section -->
+      <convertedin-ai-data-section
+        (openPopup)="_popups['cities']($event)"
+        (suggestionDelete)="removeLocation($event, adData)"
+        *ngIf="locations$ | async as locations"
+        icon="assets/icons/create-ad/location.svg"
+        [items]="locations.locations"
+        [title]="'create-ad.ad-data.locations' | translate"
+        nameDataKey="name"
+      />
+      <!-- Duration section -->
+      <convertedin-ai-data-section
+        (openPopup)="_popups['period']($event)"
+        [canDelete]="false"
+        icon="assets/icons/create-ad/calendar.svg"
+        [items]="getDuration(adData.adSuggestions!)"
+        [title]="'create-ad.ad-data.period' | translate"
+        nameDataKey=""
+      />
+    </div>
+
+    <convertedin-ad-sidebar />
+  </div>
+</ng-container>

@@ -1,0 +1,66 @@
+<p>{{ 'automation.ai' | translate }}</p>
+
+<div class="flex">
+  <!-- Enhance with ai btn -->
+  <div
+    pTooltip="Start typing text to be enhanced"
+    [tooltipDisabled]="!disabled"
+  >
+    <button
+      [disabled]="disabled"
+      type="button"
+      (click)="ov.toggle($event, targetTemplate); generateRecommendations()"
+      pButton
+    >
+      {{ 'automation.ai-btn' | translate }}
+    </button>
+  </div>
+
+  <!-- Enhance with ai overlay -->
+  <p-overlayPanel #ov appendTo="body" styleClass="ai-overlay">
+    <!-- Overlay content -->
+    <ng-template pTemplate="content">
+      <!-- Close overlay btn -->
+      <div class="flex justify-content-end pt-3">
+        <button pButton class="ai-close" (click)="ov.toggle($event)">
+          <i class="pi pi-times"></i>
+        </button>
+      </div>
+
+      <!-- Loading state -->
+      <ng-container *ngIf="_isLoading">
+        <div
+          class="flex flex-column justify-content-center align-items-center p-3 flex-grow-1"
+        >
+          <convertedin-spinner />
+          <p>Please wait.. working on getting results</p>
+        </div>
+      </ng-container>
+
+      <div
+        class="flex flex-column justify-content-center"
+        *ngIf="_aiRecommendations$ | async as data"
+      >
+        <!-- Ai suggestion -->
+        <p
+          class="ai-suggestion p-3 w-full cursor-pointer"
+          (click)="suggestionSelect.emit(item.text); ov.toggle($event)"
+          *ngFor="let item of data.data"
+        >
+          {{ item.text }}
+        </p>
+
+        <!-- Regenrate btn -->
+        <div class="p-3">
+          <button
+            pButton
+            class="w-full justify-content-center"
+            (click)="generateRecommendations()"
+          >
+            Regenerate
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </p-overlayPanel>
+</div>

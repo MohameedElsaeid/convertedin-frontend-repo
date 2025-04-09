@@ -1,0 +1,2 @@
+id,email,accepts_marketing,created_at,first_name,last_name,orders_count,state,total_spent,last_order_id,phone,currency,company,address1,address2,city,province,country,zip,province_code,country_code,country_name,default,accept_email_marketing,accept_sms_marketing,gender
+123456789,example@email.com,TRUE,2020-07-06T07:44:33+02:00,Carol,Kavanagh,1,disabled,34.97,2470484017234,,USD,,LOT 3 Luke Price Street,,Pingaring,Western Australia,Australia,6357,WA,AU,Australia,TRUE,,1,male

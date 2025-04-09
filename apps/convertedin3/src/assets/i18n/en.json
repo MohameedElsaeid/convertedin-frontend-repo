@@ -1,0 +1,20 @@
+{
+    "dashboard": {
+        "sidebar": {
+          "home": "Home",
+          "overview": "Overview",
+          "social-media": "Social Media",
+          "apps": "Apps",
+          "wallet": "Wallet",
+          "settings": "Settings",
+          "notifications": "Notifications",
+          "support": "Support",
+          "studio": "Studio",
+          "logout": "Logout"
+        }
+        },
+        "accountSetup": {
+          "selectLanguage": "Select a Language"
+        },
+        "languages": { "ar": "Arabic", "en": "English" }
+}

@@ -1,0 +1,33 @@
+<footer class="pt-16 pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 w-4/5 mx-auto">
+        <div class="flex flex-col mb-7">
+            <img src="/assets/images/nav-logo.svg" class="mr-auto mb-7" alt="Logo">
+            <p>Convertedin is your ecommerce marketing automation operating system, utilizing shopper data and insights to create personalized multi-channel marketing campaigns, boosting customer engagement and maximizing ROI.</p>
+        </div>
+        <div class="flex justify-center gap-12">
+            <div>
+                <h3>Products</h3>
+                <ul>
+                    <li *ngFor="let item of productsFooterItems">
+                        <a [href]="item.url">{{ item.text }}</a>
+                      </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li *ngFor="let item of linksFooterItems">
+                        <a [href]="item.url">{{ item.text }}</a>
+                      </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-links flex justify-between w-4/5  mx-auto mt-11 md:flex-wrap">
+        <span>© Convertedin 2024. All rights reserved.</span>
+        <div class="flex gap-4">
+            <a href="https://convertedin.com/Terms-of-Use">Terms & Conditions</a>
+            <a href="https://convertedin.com/Privacy-Policy">Privacy & Policy</a>
+        </div>
+    </div>
+</footer>

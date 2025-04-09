@@ -1,0 +1,16 @@
+.guide_iframe {
+  width: 60vw;
+  height: 26rem;
+  
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+  }
+}
+::ng-deep .guide-video-popup{
+    .p-dialog-header{
+        padding: .7rem;
+    }
+    .p-dialog-content{
+        padding: 0 .7rem .7rem .7rem;
+    }
+}

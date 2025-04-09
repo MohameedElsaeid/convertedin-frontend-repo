@@ -1,0 +1,247 @@
+<div class="flex flex-column gap-4">
+  <ng-container [formGroup]="form">
+    <div class="flex flex-column step-name">
+      <label class="step-name-label">
+        {{ 'automation.step-name' | translate }}
+      </label>
+      <input
+        class="step-name-input w-full"
+        pInputText
+        placeholder=""
+        formControlName="stepName"
+        type="text"
+      />
+      <convertedin-control-errors
+        class="mt-1 block"
+        [control]="form.controls['stepName']"
+      ></convertedin-control-errors>
+    </div>
+    <div class="flex flex-column sender-name">
+      <label class="sender-name-label">
+        {{ 'automation.email-name' | translate }}
+      </label>
+      <input
+        class="sender-name-input w-full"
+        pInputText
+        formControlName="senderName"
+        readonly
+      />
+    </div>
+    <div class="flex flex-column sender-email">
+      <label class="sender-email-label">
+        {{ 'automation.sender-email' | translate }}
+      </label>
+      <input
+        class="sender-email-input w-full"
+        pInputText
+        placeholder="Add Sender Email"
+        formControlName="senderEmail"
+        readonly
+      />
+    </div>
+    <div
+      class="flex flex-column subject-line-btn border-bottom-1 border-black-alpha-10 pb-4"
+    >
+      <label class="subject-label">
+        {{ 'automation.subject-line' | translate }}
+      </label>
+      <input
+        class="sender-email-input w-full"
+        pInputText
+        placeholder=""
+        formControlName="subject"
+      />
+      <!--      <div>-->
+      <!--        <p-button class="btn-enhance ml-2"> Enhance with AI</p-button>-->
+      <!--        <p-button class="btn-analize"> Analize</p-button>-->
+      <!--      </div>-->
+      <convertedin-control-errors
+        class="mt-1 block"
+        [control]="form.controls['subject']"
+      ></convertedin-control-errors>
+    </div>
+  </ng-container>
+  <div class="flex flex-column template-card">
+    <div
+      class="card mb-4 flex flex-row align-items-center justify-content-between"
+      *ngIf="form?.value.html"
+    >
+      <div class="flex flex-row">
+        <img
+          alt=""
+          class="mr-3 border-round-lg"
+          [src]="form?.value?.html.image"
+        />
+        <div class="title-card flex flex-column justify-content-center">
+          <h2>{{ form?.value?.html.name }}</h2>
+          <!--                  <span>Design Template</span>-->
+        </div>
+      </div>
+      <p-button class="btn-edit-design" (onClick)="updateTemplate()">
+        {{ 'automation.edit-design' | translate }}
+      </p-button>
+    </div>
+
+    <!--    sidebar-->
+    <p-sidebar
+      [(visible)]="sidebarVisible"
+      class="gallery-template"
+      position="right"
+    >
+      <div class="return-email-settings">
+        <p-button
+          (onClick)="prev()"
+          class="btn-return-email-settings"
+          icon="pi pi-arrow-left"
+        ></p-button>
+        <label class="label-return-email-settings">
+          {{ stepsConfigs[activeStep].title | translate }}
+        </label>
+      </div>
+      <!--            <pre>-->
+      <!--        {{form.value | json}}-->
+      <!--      </pre>-->
+
+      <div class="email-scenarios-wrapper" *ngIf="activeStep === 7">
+        <button
+          type="button"
+          class="email-scenario-item"
+          (click)="sidebarVisible = true; editMode = false; activeStep = 0"
+        >
+          <img src="/app-assets/images/plus-solid.svg" />
+          <span>
+            {{ 'automation.select-template' | translate }}
+          </span>
+        </button>
+        <button
+          type="button"
+          class="email-scenario-item"
+          (click)="
+            sidebarVisible = true;
+            editMode = false;
+            activeStep = 4;
+            toggleLoading(3000)
+          "
+        >
+          <img src="/app-assets/images/plus-solid.svg" />
+          <span>
+            {{ 'automation.import-html' | translate }}
+          </span>
+        </button>
+        <button
+          type="button"
+          class="email-scenario-item"
+          (click)="sidebarVisible = true; editMode = false; activeStep = 6"
+        >
+          <img src="/app-assets/images/plus-solid.svg" />
+          <span>
+            {{ 'automation.free-text' | translate }}
+          </span>
+        </button>
+      </div>
+
+      <!--        once template selected or ready for preview (selectTemplate function will show the correct tab)-->
+      <convertedin-flow-builder-email-templates-list
+        *ngIf="activeStep === 0"
+        (selectTemplate)="selectTemplate($event)"
+      />
+
+      <convertedin-flow-builder-email-template-preview
+        [emailContent]="emailContent"
+        *ngIf="activeStep === 1"
+      />
+
+      <convertedin-flow-builder-email-import-template
+        #importHtmlComponent
+        *ngIf="activeStep === 4"
+      />
+
+      <convertedin-email-builder
+        class="workflow__email-builder"
+        [html]="form.value.factoryControl.body"
+        [advanced]="false"
+        *ngIf="activeStep === 2 || activeStep === 5"
+        #emailEditor
+      />
+      <form [formGroup]="freeTextForm" *ngIf="activeStep === 6">
+        <p-editor
+          formControlName="freeTextValue"
+          [style]="{ height: 'calc(100vh - 190px)' }"
+        >
+          <ng-template pTemplate="header">
+            <span class="ql-formats">
+              <select class="ql-font"></select>
+              <select class="ql-size"></select>
+            </span>
+            <span class="ql-formats">
+              <select class="ql-color"></select>
+              <select class="ql-background"></select>
+            </span>
+            <span class="ql-formats">
+              <button type="button" class="ql-bold" aria-label="Bold"></button>
+              <button
+                type="button"
+                class="ql-italic"
+                aria-label="Italic"
+              ></button>
+              <button
+                type="button"
+                class="ql-underline"
+                aria-label="Underline"
+              ></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-list" value="ordered"></button>
+              <button class="ql-list" value="bullet"></button>
+              <button class="ql-indent" value="-1"></button>
+              <button class="ql-indent" value="+1"></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-direction" value="rtl"></button>
+              <select class="ql-align"></select>
+            </span>
+            <!--            <span class="ql-formats">-->
+            <!--                            <button class="ql-link"></button>-->
+            <!--                            <button class="ql-image"></button>-->
+            <!--                            <button class="ql-video"></button>-->
+            <!--                        </span>-->
+          </ng-template>
+        </p-editor>
+      </form>
+      <ng-template pTemplate="footer">
+        <p-button
+          *ngIf="activeStep !== 7 && activeStep !== 0 && !loading"
+          class="btn-cancel"
+          (onClick)="cancel()"
+        >
+          {{ 'Cancel' | translate }}
+        </p-button>
+        <p-button
+          *ngIf="activeStep !== 7 && activeStep !== 0 && !loading"
+          class="btn-next"
+          (onClick)="next()"
+        >
+          {{
+            (activeStep === 2 || activeStep === 5 || activeStep === 6
+              ? 'Save'
+              : 'Next'
+            ) | translate
+          }}
+        </p-button>
+      </ng-template>
+    </p-sidebar>
+    <p-button
+      (click)="sidebarVisible = true; activeStep = 7"
+      class="btn-add-template"
+    >
+      <i class="pi pi-plus"></i> {{ 'automation.add-email-design' | translate }}
+    </p-button>
+    <convertedin-control-errors
+      class="mt-1 block"
+      [control]="form.controls['html']"
+    ></convertedin-control-errors>
+  </div>
+</div>
+<!--<pre>-->
+<!--  {{form.value | json}}-->
+<!--</pre>-->

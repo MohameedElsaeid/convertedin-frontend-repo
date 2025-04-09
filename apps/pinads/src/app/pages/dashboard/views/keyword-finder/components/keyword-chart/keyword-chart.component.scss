@@ -1,0 +1,10 @@
+::ng-deep .keyword-chart {
+    max-height: 8rem ; /* Set your desired max height */
+    display: block;
+    canvas{
+        height: 8rem !important;
+        width: 40rem !important;
+
+    }
+  }
+  

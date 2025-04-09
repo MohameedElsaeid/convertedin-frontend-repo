@@ -1,0 +1,33 @@
+<convertedin-header
+  [title]="'referral.title' | translate"
+  [subtitle]="'referral.subtitle' | translate"
+/>
+<section class="mt-3">
+  <convertedin-offer-banner></convertedin-offer-banner>
+  <section
+    class="flex gap-3 mt-3 flex-column-reverse lg:flex-row"
+    *ngIf="referral$ | async as referral"
+  >
+    <div class="flex-1">
+      <convertedin-referral-code
+        [referral]="referral.referral"
+        class="card"
+      ></convertedin-referral-code>
+      <convertedin-invited-friends
+        [invitedUsers]="referral.invitedUsers"
+        (onScroll)="loadInvitedUser()"
+        class="card mt-3"
+      ></convertedin-invited-friends>
+    </div>
+    <div class="w-full lg:w-6 xl:w-4">
+      <convertedin-earning
+        [earning]="referral.earnings"
+        [userCount]="referral.invitedUsers.count"
+        class="card"
+      ></convertedin-earning>
+      <convertedin-referral-how-it-works
+        class="card mt-3"
+      ></convertedin-referral-how-it-works>
+    </div>
+  </section>
+</section>

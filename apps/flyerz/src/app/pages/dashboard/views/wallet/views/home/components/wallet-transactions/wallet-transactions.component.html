@@ -1,0 +1,81 @@
+<!-- Header & filter -->
+<div
+  class="flex justify-content-between dashboard-wallet__list-header align-items-center"
+>
+  <h4>{{ 'dashboard.wallet.list-title' | translate }}</h4>
+
+  <p-dropdown
+    [(ngModel)]="activeSort"
+    (ngModelChange)="sortChanged()"
+    [options]="items"
+  ></p-dropdown>
+</div>
+
+<!-- Transactions -->
+<ng-container *ngIf="transactions && transactions.length > 0; else empty">
+  <div class="flex flex-column gap-3">
+    <div
+      *ngFor="let item of transactions"
+      class="dashboard-wallet__transaction p-3 flex justify-content-between align-items-center"
+    >
+      <!-- Logo & number -->
+      <div class="w-3 flex gap-3">
+        <figure class="flex justify-content-center align-items-center">
+          <img
+            [src]="getCardImg(item)"
+            [ngClass]="{ 'dashboard-wallet__transaction-icon': !item.ad?.id }"
+          />
+        </figure>
+
+        <div class="flex flex-column gap-2">
+          <label>
+            <span *ngIf="item.ad?.id">
+              {{ 'common.ad' | translate }}
+            </span>
+            {{ 'dashboard.wallet.number' | translate }}
+          </label>
+          <p>#{{ item.id }}</p>
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div class="w-3 flex flex-column gap-2">
+        <label>{{ getTransactionTitle(item) | translate }} </label>
+        <p>{{ item.amount }} {{ item.currency.symbol }}</p>
+      </div>
+
+      <!-- Date -->
+      <div class="w-3 flex flex-column gap-2">
+        <label>{{ 'dashboard.wallet.transaction-date' | translate }} </label>
+        <p>{{ item.createdAt | date : 'MMM d, y, h:mm:ss a' }}</p>
+      </div>
+
+      <!-- Details btn -->
+      <button
+        (click)="showDetails(item)"
+        pButton
+        class="gap-1 dashboard-wallet__details-btn"
+      >
+        {{ 'common.details' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Empty wallet -->
+<ng-template #empty>
+  <div
+    class="flex flex-column flex-grow-1 gap-5 align-items-center justify-content-center dashboard-wallet__empty"
+  >
+    <div class="text-center flex flex-column">
+      <h5>{{ 'dashboard.wallet.empty-title' | translate }}</h5>
+      <p>{{ 'dashboard.wallet.empty-subtitle' | translate }}</p>
+    </div>
+
+    <!-- Add funds btn -->
+    <a pButton routerLink="add-funds" class="gap-1 dashboard-wallet__empty-btn">
+      <img src="assets/icons/dashboard/wallet/add.svg" alt="add-icon" />
+      {{ 'dashboard.wallet.add-funds' | translate }}
+    </a>
+  </div>
+</ng-template>

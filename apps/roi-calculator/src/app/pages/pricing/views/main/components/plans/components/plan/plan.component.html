@@ -1,0 +1,23 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  px-5  mx-auto gap-5 w-11/12 md:w-10/12 mt-14">
+    <div *ngFor="let plan of plans" class="plan">
+        <h3>${{plan.price}}</h3>
+        <div class="flex justify-center items-center gap-2">
+            <p>{{plan.name}}</p>
+            <span class="pill" *ngIf="plan.name === 'Growth'">Popular</span>
+        </div>
+        <h4>{{plan.description}}</h4>
+        <u>{{plan.fine_text}}</u>
+        <ul>
+            <li *ngFor="let feature of plan.features">
+                <img src="/assets/images/check-green.svg">
+                {{feature}}</li>
+        </ul>
+        <b>Monthly Allocation</b>
+        <ul>
+            <li *ngFor="let allocation of plan.monthly_allocations">
+                <img src="/assets/images/check-green.svg">
+                {{allocation}}</li>
+        </ul>
+        <a target="_blank" class="get-started mt-auto" href="https://app.converted.in/register">Get Started</a>
+    </div>
+</div>

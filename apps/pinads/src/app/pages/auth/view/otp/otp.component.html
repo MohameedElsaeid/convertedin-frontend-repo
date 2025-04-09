@@ -1,0 +1,53 @@
+<form
+  [formGroup]="otpForm"
+  class="w-full sm:w-8 md:w-6 lg:w-4"
+  (ngSubmit)="submit()"
+>
+  <header class="mb-4 header text-center">
+    <h1 class="header__title">{{ 'auth.otp.title' | translate }}</h1>
+    <p class="header__desc">
+      {{ 'auth.otp.subtitle' | translate }}
+    </p>
+    <p class="mt-2 text-primary" *ngIf="otpData">{{ otpData.email }}</p>
+  </header>
+  <ngx-otp-input
+    (otpChange)="otpChange($event)"
+    class="ngx-otp"
+    [config]="config"
+  ></ngx-otp-input>
+  <!-- <convertedin-control-errors [control]="otpForm.get('code')!" /> -->
+  <ng-container
+    *ngIf="{ countDownTimer: (countDownTimer$ | async) } as viewModel"
+  >
+    <p class="mt-3 expire-text">
+      {{ 'auth.otp.expireText' | translate }}
+      <span class="expire-text__time">{{
+        viewModel.countDownTimer | countDownTimer
+      }}</span>
+    </p>
+    <button
+      *ngIf="viewModel.countDownTimer !== 0"
+      class="p-button primary-btn w-full justify-content-center mt-2"
+      [disabled]="(isLoading$ | async) || otpForm.invalid"
+    >
+      {{ 'auth.otp.verifyOTPBtn' | translate }}
+      <i class="pi pi-spin pi-spinner mx-1" *ngIf="isLoading$.value"></i>
+    </button>
+    <button
+      (click)="resendOTP()"
+      class="p-button primary-outline-btn w-full justify-content-center mt-2"
+      [disabled]="isResendOTP$ | async"
+      *ngIf="RESEND_WAITING_TIME_IN_SECONDS > viewModel.countDownTimer!"
+    >
+      {{ 'auth.otp.resendOTPBtn' | translate }}
+      <i class="pi pi-spin pi-spinner mx-1" *ngIf="isResendOTP$.value"></i>
+    </button>
+    <!-- <a
+      class="p-button primary-outline-btn w-full justify-content-center mt-2"
+      [routerLink]="['../login']"
+      type="button"
+    >
+      {{ 'auth.login.loginBtn' | translate }}
+    </a> -->
+  </ng-container>
+</form>

@@ -1,0 +1,30 @@
+h4,
+h5 {
+  color: var(--convertedin-gray-800);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+::ng-deep .ad-details__insight {
+  p {
+    order: 1;
+  }
+  div {
+    order: 2;
+  }
+}
+
+label {
+  color: var(--convertedin-gray-600);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+p {
+  color: var(--convertedin-gray-800);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}

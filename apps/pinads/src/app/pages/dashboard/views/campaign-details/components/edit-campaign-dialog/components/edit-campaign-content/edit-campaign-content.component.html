@@ -1,0 +1,87 @@
+<!-- <div class="flex gap-2"> -->
+<div class="form-field w-6 md:w-auto">
+  <label class="form-field__label">
+    {{ 'updateCampaign.change' | translate }}
+  </label>
+  <p-dropdown
+    class="w-auto"
+    styleClass=" dropdown-action w-full"
+    [options]="actionList"
+    formControlName="actionType"
+    placeholder="Select a type"
+    appendTo="body"
+  >
+    <ng-template let-value pTemplate="selectedItem">
+      <div *ngIf="value">
+        {{ value | translate }}
+      </div>
+    </ng-template>
+    <ng-template let-value pTemplate="item">
+      {{ value | translate }}
+    </ng-template>
+  </p-dropdown>
+</div>
+
+<div
+  [ngSwitch]="formGroup.controls['actionType'].value"
+  class="form-field flex-1 content-field"
+>
+  <label class="form-field__label">
+    {{ 'updateCampaign.content' | translate }}
+  </label>
+  <div class="relative" *ngSwitchCase="'add'">
+    <span class="input-counter">
+      {{ contentInput.value.length }}
+      <span *ngIf="maxChar"> / {{ maxChar }}</span>
+    </span>
+    <input
+      style="min-width: 200px"
+      [maxlength]="maxChar"
+      #contentInput
+      formControlName="value"
+      type="text"
+      pInputText
+    />
+    <convertedin-control-errors
+      [control]="formGroup.controls['value']"
+    ></convertedin-control-errors>
+  </div>
+  <div *ngSwitchCase="'remove'">
+    <p-multiSelect
+      formControlName="value"
+      styleClass="w-full"
+      [options]="contentList"
+      optionLabel="name"
+      optionValue="id"
+      appendTo="body"
+    >
+      <ng-template let-value pTemplate="selectedItems">
+        <ng-template #emptyState>
+          <span class="inline-block"></span>
+        </ng-template>
+        <div
+          class="flex gap-2"
+          *ngIf="value && value?.length > 0; else emptyState"
+        >
+          <span *ngIf="value[0] || value[0] === 0" class="content-ticket">
+            {{ contentList[value[0]].name }}
+          </span>
+          <span *ngIf="value[1] || value[1] === 0" class="content-ticket">
+            {{ contentList[value[1]].name }}
+          </span>
+          <span *ngIf="value.length > 2" class="content-ticket">
+            <span>{{ 'more' | translate }}</span>
+            +{{ value.length - 2 }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="emptyfilter">
+        <p>{{ 'updateCampaign.noResults' | translate }}</p>
+      </ng-template>
+    </p-multiSelect>
+    <convertedin-control-errors
+      [control]="formGroup.controls['value']"
+    ></convertedin-control-errors>
+  </div>
+</div>
+<!-- </div> -->

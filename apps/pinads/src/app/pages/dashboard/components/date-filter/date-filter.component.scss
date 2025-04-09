@@ -1,0 +1,30 @@
+::ng-deep.date-filter__panel {
+  &::after,
+  &::before {
+    display: none;
+  }
+  .p-overlaypanel-content {
+    padding: 0 !important;
+  }
+ 
+}
+::ng-deep.p-datepicker {
+  border: none;
+  border-inline-start: 1px solid var(--convertedin-gray-300);
+  border-radius: 0;
+  &-inline {
+    width: auto !important;
+  }
+  padding: 0;
+}
+::ng-deep html[dir='rtl'] .p-datepicker .p-icon-wrapper {
+  rotate: 180deg;
+}
+::ng-deep.p-datepicker table td {
+  padding: 0.2rem;
+}
+.type-list {
+  .active {
+    background-color: var(--convertedin-gray-100);
+  }
+}

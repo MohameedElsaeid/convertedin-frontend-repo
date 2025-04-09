@@ -1,0 +1,54 @@
+<ng-container *ngIf="userData$ | async as user">
+  <nav
+    class="w-full p-3 flex justify-content-between align-items-center border-bottom-2 border-gray-200"
+  >
+    <img src="assets/icons/logo.svg" class="logo-img" alt="logo" />
+    <div class="flex gap-3 align-items-center">
+      <span
+        class="border-circle w-2rem h-2rem font-semibold text-gray-700 bg-gray-300 flex justify-content-center align-items-center text-sm"
+        >{{ user.firstName[0] }}{{ user.lastName[0] }}</span
+      >
+      <svg-icon
+        name="menu"
+        class="cursor-pointer"
+        (click)="openSidebar = !openSidebar"
+      ></svg-icon>
+    </div>
+  </nav>
+
+  <p-sidebar
+    [(visible)]="openSidebar"
+    [showCloseIcon]="false"
+    [position]="dir === 'rtl' ? 'left' : 'right'"
+  >
+    <ng-template pTemplate="header">
+      <button class="icon-btn" (click)="openSidebar = false">
+        <span class="pi pi-times"></span>
+      </button>
+    </ng-template>
+
+    <div class="px-2 flex flex-column h-full">
+      <ul class="nav-container flex-1" (click)="openSidebar = false">
+        <ng-container *ngFor="let route of routeList">
+          <li
+            *ngIf="route.conditionKey ? user[route.conditionKey] : true"
+            class="nav-item"
+            [routerLink]="route.route"
+            routerLinkActive="active"
+          >
+            <img [src]="route.icon" alt="{{ route.name | translate }}" />
+            <a> {{ route.name | translate }}</a>
+          </li>
+        </ng-container>
+      </ul>
+      <div>
+        <button
+          (click)="logout()"
+          class="p-button btn primary-outline-btn w-full justify-content-center"
+        >
+          {{ 'sidebar.logout' | translate }}
+        </button>
+      </div>
+    </div>
+  </p-sidebar>
+</ng-container>

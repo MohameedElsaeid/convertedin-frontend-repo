@@ -1,0 +1,195 @@
+.transactions-wrapper {
+  margin-top: 24px;
+  &__header {
+    h4 {
+      color: #374151;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    .header-actions {
+      ::ng-deep {
+        .p-button {
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 20px;
+
+          border-radius: 8px;
+          border: 1px solid var(--Primary-600, #0036b1);
+          background: var(--Primary-600, #0036b1);
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          padding: 8px 14px;
+        }
+      }
+    }
+  }
+
+  &__card {
+    border-radius: 8px;
+    border: 1px solid var(--Gray-100, #f2f4f7);
+    background: #fff;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    position: relative;
+
+    h3 {
+      color: #374151;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 30px;
+    }
+
+    p {
+      color: #374151;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    img {
+      position: absolute;
+      top: 16px;
+      inset-inline-end: 16px;
+    }
+  }
+
+  .transctions-table-wrapper {
+    margin-top: 24px;
+    border-radius: 8px;
+    border: 1px solid #f2f4f7;
+    background: #fff;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.08);
+
+    &__header {
+      border-bottom: 1px solid #f2f4f7;
+      padding: 24px;
+    }
+
+    .table-empty {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+
+      img {
+        margin-bottom: 24px;
+      }
+
+      h4 {
+        color: var(--convertedin-gray-800);
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      span {
+        color: var(--convertedin-gray-500);
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+
+    .table-data {
+      ::ng-deep table {
+        a {
+          color: #002985;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 20px; /* 142.857% */
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        th {
+          color: #475467;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 18px; /* 150% */
+          text-align: start;
+        }
+
+        td {
+          color: #475467;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 142.857% */
+          text-align: start;
+        }
+
+        td:first-child {
+          color: #101828;
+          font-weight: 500;
+        }
+
+        .pill {
+          color: #344054;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          text-transform: capitalize;
+
+          border-radius: 6px;
+          border: 1px solid #d0d5dd;
+          background: var(--Base-White, #fff);
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          padding: 1px 6px;
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          gap: 4px;
+        }
+
+        .paid {
+          color: #17b26a;
+          font-size: 2em;
+        }
+
+        .pending {
+          color: #f79009;
+          font-size: 2em;
+        }
+
+        .unpaid {
+          color: #f04438;
+          font-size: 2em;
+        }
+        .refunded {
+          color: #613aff;
+          font-size: 2em;
+        }
+      }
+    }
+  }
+  ::ng-deep &__pagination {
+    @media screen and (max-width: 768px) {
+      padding: 0;
+      .p-paginator-current {
+        width: 100%;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  color: var(--convertedin-gray-900);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+::ng-deep .p-datatable .p-datatable-wrapper {
+  min-height: 18rem;
+}

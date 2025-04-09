@@ -1,0 +1,82 @@
+<ng-container *ngIf="connectAccountData$ | async as connectData">
+  <!-- Header -->
+  <convertedin-header
+    [title]="'dashboard.settings.page-list.title' | translate"
+  />
+
+  <!-- Loading spinner -->
+  <convertedin-spinner *ngIf="isLoading" />
+
+  <ng-container *ngIf="pages$ | async as data">
+    <ng-container *ngIf="data.data.length > 0; else noPages">
+      <!-- Search field -->
+      <span class="p-input-icon-{{ dir === 'ltr' ? 'left' : 'right' }}">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          class="w-full"
+          pInputText
+          [(ngModel)]="searchValue"
+          (ngModelChange)="filterPages(data.data)"
+          [placeholder]="'dashboard.settings.page-list.placeholder' | translate"
+        />
+      </span>
+
+      <!-- Cards -->
+      <div class="flex flex-column gap-2">
+        <div
+          class="flex dashboard-settings__page gap-3 align-items-center"
+          [ngClass]="{
+            'dashboard-settings__page-active':
+              activePageId === item.facebook.pageId
+          }"
+          (click)="selectPage(item.facebook.pageId)"
+          *ngFor="let item of filteredPages"
+        >
+          <!-- Page image -->
+          <figure>
+            <img [src]="item.facebook.image" alt="page-image" />
+          </figure>
+
+          <!-- Page name -->
+          <p class="flex-grow-1">{{ item.facebook.name }}</p>
+
+          <p-radioButton
+            [(ngModel)]="activePageId"
+            [value]="item.facebook.pageId"
+            class="dashboard-settings__radio"
+          ></p-radioButton>
+        </div>
+      </div>
+
+      <!-- Submit btn -->
+      <button
+        pButton
+        [disabled]="!activePageId"
+        type="button"
+        class="dashboard-settings__pages-submit"
+        (click)="submitSelectedPage()"
+      >
+        {{ 'common.continue-btn' | translate }}
+      </button>
+    </ng-container>
+
+    <!-- Empty pages view -->
+    <ng-template #noPages>
+      <figure
+        class="flex-grow-1 flex justify-content-center align-items-center gap-3 flex-column"
+      >
+        <img
+          src="assets/images/empty-pages.png"
+          alt="empty-pages-image"
+          width="154"
+          height="134"
+        />
+
+        <figcaption>
+          {{ 'dashboard.settings.page-list.empty-pages' | translate }}
+        </figcaption>
+      </figure>
+    </ng-template>
+  </ng-container>
+</ng-container>

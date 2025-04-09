@@ -1,0 +1,75 @@
+<div class="grid justify-content-center align-items-center">
+    <div class="col-12 md:col-12 lg:col-8">
+        <div class="flex flex-column gap-2 my-5">
+            <div class="social-header">
+                <img class="social-header__logo" src="/assets/icons/facebook-logo.svg" alt="Facebook">
+                <div>
+                    <h2 class="social-header__title">Connect Facebook</h2>
+                    <span class="social-header__description">Choose the business manager that has the page you would like to connect</span>
+                </div>
+            </div>
+            <div class="social-body">
+                <h3 class="social-body__title mt-5">Select Business Manager</h3>
+                <div class="flex align-items-center social-body__item"
+                       *ngFor="let item of socialBodyManagers; let i = index"
+                       (click)="selectManager(item.value)"
+                       [class.active]="selectedManager === item.value">
+                    <img class="social-body__item-avatar" [src]="item.avatar" [alt]="item.title + ' avatar'">
+                    <div class="social-body__item-info">
+                        <h3 class="social-body__item-info-title">{{ item.title }}</h3>
+                        <span class="social-body__item-info-id">ID: {{ item.id }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="social-body" *ngIf="selectedManager">
+                <h3 class="social-body__title mt-3">Select Page
+                    <span class="social-body__title-description">(not connected to business manager)</span>
+                </h3>
+                <div
+                  class="flex align-items-center social-body__item"
+                  *ngFor="let item of socialBodyStores; let i = index"
+                  (click)="selectStore(item.value)"
+                  [class.active]="selectedStore === item.value"
+                >
+                  <div
+                    class="social-body__item-info flex align-items-center justify-content-between w-full"
+                  >
+                    <div class="flex align-items-center gap-3">
+                      <img
+                        class="social-body__item-avatar"
+                        [src]="item.avatar"
+                        [alt]="item.title + ' avatar'"
+                      />
+                      <h3 class="social-body__item-info-title">{{ item.title }}</h3>
+                    </div>
+                    <div class="flex flex-column gap-1">
+                      <div
+                        class="flex align-items-center gap-1 social-body__item-info-likes"
+                      >
+                        <img src="/assets/icons/thumbs-up.svg" alt="thumbs-up" />
+                        <span class="social-body__item-info-likes-text">{{
+                          item.likes
+                        }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="social-hint mt-2">
+                <img class="mb-auto" src="/assets/icons/info-circle.svg" alt="info">
+                <div class="flex flex-column gap-3">
+                    <h3 class="social-hint__title">
+                        Having trouble connecting your page?
+                    </h3>
+                    <p class="social-hint__description">You can review Facebook permissions to make sure we have access to your page</p>
+                    <button class="social-hint__button">Review Permissions</button>
+                </div>
+
+            </div>
+            <div class="social-footer mt-5">
+                <a routerLink="/dashboard/settings/social-media" class="social-footer__button social-footer__button--back">Cancel</a>
+                <button class="social-footer__button social-footer__button--next" [disabled]="!selectedStore">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

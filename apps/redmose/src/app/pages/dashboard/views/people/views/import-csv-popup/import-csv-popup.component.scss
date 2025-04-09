@@ -1,0 +1,103 @@
+.import-csv {
+  &__banner {
+    border-radius: 8px;
+
+    width: 100%;
+    background-image: url('../../../../../../../app-assets/images/csv-banner.png'),
+      linear-gradient(92deg, #04d 3.19%, #7000ff 106.41%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+
+  &__checkbox-label {
+    margin-inline-start: 30px;
+    color: #475467;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  ::ng-deep &__checkbox {
+    margin-bottom: auto;
+    .p-checkbox-label {
+      color: #344054 !important;
+      font-size: 14px !important;
+      font-style: normal;
+      font-weight: 500 !important;
+      line-height: 20px;
+      max-width: 830px;
+      margin-right: 30px;
+    }
+  }
+
+  &__file {
+    border-radius: 12px;
+    border: 2px dashed #eaecf0;
+    min-height: 210px;
+
+    p {
+      color: #002985;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    span {
+      color: #475467;
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    i {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #eaecf0;
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+      font-size: 20px;
+    }
+  }
+
+  ::ng-deep &__download {
+    padding: 8px 14px !important;
+    color: #344054 !important;
+    font-family: Inter;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: 20px;
+    background-color: white !important;
+  }
+}
+
+h1 {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+h2 {
+  color: #d0d5dd;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.absolute {
+  top: 60px;
+  color: #475467;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
