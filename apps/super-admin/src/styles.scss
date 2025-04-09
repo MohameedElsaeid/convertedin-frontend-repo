@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  //font-family: 'Poppins', sans-serif;
+}
+
+body {
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.pi {
+  font-family: 'primeicons' !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--cin-scroll-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #eee;
+}
+
+::selection {
+  background-color: #007bffff !important;
+  color: #fff !important;
+}
+
+:root {
+  --cin-primary-color: #2a50d7;
+  --cin-secondary-color: rgba(0, 68, 221, 0.05);
+  --cin-scroll-color: #bfc8db;
+  --gjs-left-width: 30% !important;
+}

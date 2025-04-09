@@ -1,0 +1,19 @@
+<div class="flex flex-wrap search-filter-container gap-1">
+    <div class="search-bar flex flex-grow-1 col xl:col-4 lg:col-4">
+        <!-- <i class="pi pi-search"></i> -->
+        <input class="search-input w-full" type="text" pInputText [(ngModel)]="searchText"
+            placeholder="Search for templates" />
+    </div>
+
+    <div class="filter-dropdowns flex flex-grow-1 flex-wrap">
+        <div *ngFor="let filter of filters" class="filter-item col">
+            <p-dropdown class="w-full" [options]="filter.options" [(ngModel)]="filterSelections[filter.field]"
+                [placeholder]="filter.label">
+            </p-dropdown>
+        </div>
+    </div>
+
+    <div class="flex-column col-1 p-0 flex-grow-1 max-w-8rem">
+        <button pButton type="button" label="Filter" class="w-full btn-filter convertedin-button-primary" (click)="applyFilters()"></button>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<ng-container *ngIf="optimizationList$ | async; let optimizationList">
+  <p-table
+    *ngIf="optimizationList.logs.length > 0 || loading$.value; else noCampaigns"
+    [loading]="(loading$ | async)!"
+    styleClass="overview-table"
+    [value]="optimizationList.logs"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'optimizationLog.request' | translate }}</th>
+        <th>{{ 'optimizationLog.content' | translate }}</th>
+        <th>{{ 'optimizationLog.status' | translate }}</th>
+        <th>{{ 'optimizationLog.date' | translate }}</th>
+        <th>{{ 'optimizationLog.actionBy' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-log>
+      <tr>
+        <td class="font-medium">{{ log.request }}</td>
+        <td>{{ log.content }}</td>
+        <td>
+          <span  [attr.data]="log.status" class="content-ticket">
+            {{ 'optimizationLog.' + log.status | translate }}
+          </span>
+        </td>
+        <td class="white-space-nowrap">
+          {{ log.created_at | date : 'yyyy-MM-dd' }}
+        </td>
+        <td>
+          {{ log.action_by }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <p-paginator
+        styleClass="w-full"
+        [first]="0"
+        [rows]="10"
+        [pageLinkSize]="pageLinkSize"
+        [totalRecords]="optimizationList.pages_number * 10"
+        [showFirstLastIcon]="false"
+        (onPageChange)="onPageChange($event)"
+      >
+        <ng-template pTemplate="nextpagelinkicon">
+          <span class="flex align-items-center gap-2">
+            {{ 'campaignOverview.next' | translate }}
+            <span class="pi pi-arrow-right text-xs"></span>
+          </span>
+        </ng-template>
+        <ng-template pTemplate="previouspagelinkicon">
+          <span class="flex align-items-center gap-2"
+            ><span class="pi pi-arrow-left text-xs"></span>
+            {{ 'campaignOverview.previous' | translate }}</span
+          >
+        </ng-template>
+      </p-paginator>
+    </ng-template>
+  </p-table>
+
+  <ng-template #noCampaigns>
+    <div class="text-center">
+      <img
+        class="block mx-auto my-3"
+        src="assets/images/campaign/no-campaign.png"
+        alt=""
+      />
+      <p>{{ 'campaignOverview.noData' | translate }}</p>
+    </div>
+  </ng-template>
+</ng-container>

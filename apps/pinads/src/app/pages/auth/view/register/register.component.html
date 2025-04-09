@@ -1,0 +1,160 @@
+<form
+  [formGroup]="accountForm"
+  class="w-full sm:w-8 md:w-6 lg:w-4 h-full mt-3"
+  (ngSubmit)="submit()"
+>
+  <header class="header text-center">
+    <h1 class="header__title">{{ 'auth.register.title' | translate }}</h1>
+    <p class="header__desc">{{ 'auth.register.subtitle' | translate }}</p>
+  </header>
+  <section class="w-full mt-4 pb-3">
+    <div class="form-field">
+      <label class="form-field__label" for="name">{{
+        'auth.register.nameLabel' | translate
+      }}</label>
+      <input
+        class="form-field__input"
+        pInputText
+        formControlName="name"
+        id="name"
+        type="text"
+        placeholder="{{ 'auth.register.namePlaceholder' | translate }}"
+      />
+      <convertedin-control-errors [control]="accountForm.get('name')!" />
+    </div>
+    <div class="form-field">
+      <label class="form-field__label" for="name">{{
+        'auth.register.businessNameLabel' | translate
+      }}</label>
+      <input
+        class="form-field__input"
+        pInputText
+        formControlName="business_name"
+        id="name"
+        type="text"
+        placeholder="{{ 'auth.register.businessNamePlaceholder' | translate }}"
+      />
+      <convertedin-control-errors
+        [control]="accountForm.get('business_name')!"
+      />
+    </div>
+    <div class="form-field">
+      <label class="form-field__label" for="name">{{
+        'auth.register.businessCategoryLabel' | translate
+      }}</label>
+      <p-dropdown
+        styleClass="w-full form-field__input"
+        formControlName="business_category"
+        [options]="(categories$ | async)!"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="{{
+          'auth.register.businessCategoryPlaceholder' | translate
+        }}"
+      >
+        <ng-template pTemplate="empty">
+          <p class="text-center">
+            <i
+              class="pi pi-spin pi-spinner mx-1"
+              *ngIf="isLoadingCategory$ | async"
+            ></i>
+          </p>
+        </ng-template>
+      </p-dropdown>
+      <convertedin-control-errors
+        [control]="accountForm.get('business_category')!"
+      />
+    </div>
+    <!-- <div class="form-field">
+      <label class="form-field__label" for="name">{{
+        'auth.register.nameLabel' | translate
+      }}</label>
+      <input
+        class="form-field__input"
+        pInputText
+        formControlName="name"
+        id="name"
+        type="text"
+        placeholder="{{ 'auth.register.namePlaceholder' | translate }}"
+      />
+      <convertedin-control-errors [control]="accountForm.get('name')!" />
+    </div> -->
+
+    <div class="form-field">
+      <label class="form-field__label" for="email">{{
+        'auth.register.emailLabel' | translate
+      }}</label>
+      <input
+        class="form-field__input"
+        pInputText
+        formControlName="email"
+        id="email"
+        type="text"
+        placeholder="{{ 'auth.register.emailPlaceholder' | translate }}"
+      />
+      <convertedin-control-errors [control]="accountForm.get('email')!" />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="phone">{{
+        'auth.register.phoneLabel' | translate
+      }}</label>
+
+      <convertedin-phone-number-input
+        perferredCountry="SA"
+        class="form-field__input w-full"
+        formControlName="phone"
+        wrongFormatMessage="{{ 'validations.phone.wrongFormat' | translate }}"
+      />
+      <convertedin-control-errors [control]="accountForm.get('phone')!" />
+    </div>
+    <div class="form-field">
+      <label class="form-field__label" for="password">{{
+        'auth.register.passwordLabel' | translate
+      }}</label>
+
+      <p-password
+        inputId="password"
+        class="form-field__input w-full"
+        formControlName="password"
+        [feedback]="false"
+        [toggleMask]="true"
+        [strongLabel]="'auth.register.strong' | translate"
+        [mediumLabel]="'auth.register.medium' | translate"
+        [weakLabel]="'auth.register.weak' | translate"
+      />
+      <convertedin-control-errors
+        [showOneOnly]="true"
+        [control]="accountForm.get('password')!"
+      />
+    </div>
+    <div class="form-field">
+      <label class="form-field__label" for="password_confirmation">{{
+        'auth.register.confirmPasswordLabel' | translate
+      }}</label>
+
+      <p-password
+        inputId="password_confirmation"
+        class="form-field__input w-full"
+        formControlName="password_confirmation"
+        [feedback]="false"
+        [toggleMask]="true"
+      />
+      <convertedin-control-errors
+        [control]="accountForm.get('password_confirmation')!"
+      />
+    </div>
+    <button
+      class="p-button primary-btn mt-3 w-full justify-content-center"
+      [disabled]="(isLoading$ | async) || accountForm.invalid"
+    >
+      {{ 'auth.register.createAccountBtn' | translate }}
+      <i class="pi pi-spin pi-spinner mx-1" *ngIf="isLoading$.value"></i>
+    </button>
+    <a
+      [routerLink]="['../login']"
+      class="p-button primary-outline-btn mt-2 w-full justify-content-center"
+      >{{ 'auth.login.loginBtn' | translate }}</a
+    >
+  </section>
+</form>

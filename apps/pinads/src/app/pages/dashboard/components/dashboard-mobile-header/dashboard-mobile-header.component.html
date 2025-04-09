@@ -1,0 +1,59 @@
+<nav
+  class="w-full p-3 flex justify-content-between align-items-center border-bottom-2 border-gray-200"
+>
+  <img src="assets/images/logo.png" class="w-7rem px-2" alt="logo" />
+  <div class="flex gap-3 align-items-center" *ngIf="user$ | async as user">
+    <span
+      class="border-circle w-2rem h-2rem font-semibold text-gray-700 bg-gray-300 flex justify-content-center align-items-center text-sm"
+      >{{ user.name[0] }}</span
+    >
+    <svg-icon
+      name="menu"
+      class="cursor-pointer"
+      (click)="openSidebar = !openSidebar"
+    ></svg-icon>
+  </div>
+</nav>
+
+<p-sidebar
+  [(visible)]="openSidebar"
+  [showCloseIcon]="false"
+  [position]="dir === 'rtl' ? 'left' : 'right'"
+>
+  <ng-template pTemplate="header">
+    <button class="icon-btn" (click)="openSidebar = false">
+      <span class="pi pi-times"></span>
+    </button>
+    <convertedin-lang-dropdown></convertedin-lang-dropdown>
+  </ng-template>
+
+  <div class="px-2 flex flex-column h-full">
+    <ul class="nav-container flex-1" (click)="openSidebar = false">
+      <li
+        *ngFor="let route of routeList"
+        class="nav-item"
+        [routerLink]="route.link"
+        routerLinkActive="active"
+      >
+        <svg-icon [name]="route.icon"></svg-icon>
+        <a> {{ route.label | translate }}</a>
+      </li>
+      <li
+        class="nav-item"
+        routerLink="/dashboard/faq"
+        routerLinkActive="active"
+      >
+        <svg-icon name="help-circle"></svg-icon>
+        <a> {{ 'campaign.sidebar.helpCenter' | translate }}</a>
+      </li>
+    </ul>
+    <div>
+      <button
+        (click)="logout()"
+        class="p-button primary-outline-btn w-full justify-content-center"
+      >
+        {{ 'logout' | translate }}
+      </button>
+    </div>
+  </div>
+</p-sidebar>

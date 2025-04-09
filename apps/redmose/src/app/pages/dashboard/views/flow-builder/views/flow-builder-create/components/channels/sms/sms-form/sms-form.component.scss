@@ -1,0 +1,17 @@
+.warning-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  background-color: #fef3f2;
+  color: #d92d20;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  margin-bottom: 24px;
+
+  img {
+    margin-bottom: auto;
+  }
+}

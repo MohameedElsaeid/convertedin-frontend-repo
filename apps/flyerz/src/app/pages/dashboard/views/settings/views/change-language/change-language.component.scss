@@ -1,0 +1,25 @@
+label {
+  color: var(--convertedin-gray-600);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+::ng-deep {
+  .language__dropdown {
+    border-radius: 8px !important;
+    border: 1px solid var(--convertedin-gray-50) !important;
+    background-color: var(--convertedin-gray-50) !important;
+  }
+
+  .language__btn {
+    border-radius: 8px !important;
+    background: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    font-size: 16px I !important;
+    font-weight: 700 !important;
+    line-height: 150%;
+    justify-content: center;
+    width: fit-content;
+    min-width: 8.93rem;
+  }
+}

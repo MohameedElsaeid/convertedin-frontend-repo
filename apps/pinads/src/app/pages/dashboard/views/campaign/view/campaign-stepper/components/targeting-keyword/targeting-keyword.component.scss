@@ -1,0 +1,26 @@
+.vertical-border {
+  width: 1.5px;
+  height: 1rem;
+  background-color: var(--convertedin-gray-400);
+}
+.keyword-card {
+    border: 1px solid var(--convertedin-gray-300);
+    border-radius: .5rem;
+    padding: 1.25rem;
+  &__text {
+    color: #4f5c6f;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  &__volume {
+    color: var(--convertedin-gray-400);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  &__number{
+    color: #4f5c6f;
+    font-weight: 700;
+    font-size: 0.875rem;
+    width: 2rem;
+  }
+}

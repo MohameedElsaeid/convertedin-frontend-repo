@@ -1,0 +1,22 @@
+<!-- Header -->
+<convertedin-header
+  title="{{ 'dashboard.studio.title' | translate }}"
+  subtitle="{{ 'dashboard.studio.subtitle' | translate }}"
+/>
+
+<div class="flex flex-column flex-grow-1">
+  <!-- Route tabs -->
+  <p-tabMenu
+    [model]="items"
+    [activeItem]="activeTab"
+    class="dashboard-studio__tabs"
+  >
+    <ng-template pTemplate="item" let-item>
+      <p>{{ item.label | translate }}</p>
+    </ng-template>
+  </p-tabMenu>
+
+  <section class="flex flex-column flex-grow-1">
+    <router-outlet></router-outlet>
+  </section>
+</div>

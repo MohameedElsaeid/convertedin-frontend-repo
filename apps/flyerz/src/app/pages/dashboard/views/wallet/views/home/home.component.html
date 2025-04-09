@@ -1,0 +1,146 @@
+<section
+  class="flex flex-column flex-grow-1 dashboard-wallet gap-4"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="scrolled()"
+  [scrollWindow]="false"
+  *ngIf="walletData$ | async as wallet"
+>
+  <!-- Header -->
+  <header class="flex justify-content-between gap-5">
+    <!-- Current balance -->
+    <div
+      class="dashboard-wallet__balance flex justify-content-between align-items-start gap-5"
+    >
+      <div class="flex flex-column">
+        <h1>{{ 'dashboard.wallet.title' | translate }}</h1>
+        <h2>
+          {{ wallet.data.currentBalance.currentBalance }}
+          <span>{{ currency$ | async }} </span>
+        </h2>
+      </div>
+
+      <img src="assets/icons/dashboard/wallet/coins.svg" alt="coins-icon" />
+    </div>
+
+    <div class="flex gap-3 flex-wrap align-content-start">
+      <!-- Add funds btn -->
+      <a
+        pButton
+        routerLink="add-funds"
+        class="gap-2 dashboard-wallet__funds-btn"
+      >
+        <img src="assets/icons/dashboard/wallet/add.svg" alt="add-icon" />
+        {{ 'dashboard.wallet.add-funds' | translate }}
+      </a>
+
+      <!-- Add copon btn -->
+      <!-- <a
+        pButton
+        routerLink="add-funds"
+        class="gap-2 dashboard-wallet__secondary-btn p-button-secondary p-button-outlined"
+      >
+        <img
+          src="assets/icons/dashboard/wallet/ticket-star.svg"
+          alt="copon-icon"
+        />
+        {{ 'dashboard.wallet.add-copon' | translate }}
+      </a> -->
+
+      <!-- Request refund btn -->
+      <!-- <a
+        pButton
+        routerLink="add-funds"
+        class="gap-2 dashboard-wallet__secondary-btn p-button-secondary p-button-outlined"
+      >
+        <img
+          src="assets/icons/dashboard/wallet/refresh.svg"
+          alt="refund-icon"
+        />
+        {{ 'dashboard.wallet.refund' | translate }}
+      </a> -->
+    </div>
+  </header>
+
+  <!-- Insights -->
+  <div class="flex gap-3" *ngIf="blockedData$ | async as blockedData">
+    <!-- Refund balance -->
+    <convertedin-insights-card
+      [isClickable]="true"
+      [title]="'dashboard.wallet.insights.1' | translate"
+      value="{{ wallet.data.currentBalance.availableForRefund }}"
+      [showCurrency]="true"
+      img="assets/icons/dashboard/wallet/refresh.svg"
+      class="dashboard-wallet__insight w-4"
+      (click)="sortTransactions(transactionType.REFUND)"
+    />
+
+    <!-- Blocked balance -->
+    <convertedin-insights-card
+      [isClickable]="true"
+      class="dashboard-wallet__insight w-4"
+      [title]="'dashboard.wallet.insights.2' | translate"
+      [showCurrency]="true"
+      value="{{
+        isZeroAmount(blockedData.data.currentBalance.totalBlockedBalance!)
+          ? ''
+          : '- '
+      }}{{ blockedData.data.currentBalance.totalBlockedBalance }}"
+      img="assets/icons/dashboard/wallet/card-wait.svg"
+      (click)="sortTransactions(transactionType.BLOCKED_AMOUNT)"
+    />
+
+    <!-- Total spend -->
+    <convertedin-insights-card
+      [isClickable]="true"
+      class="dashboard-wallet__insight w-4"
+      [title]="'dashboard.wallet.insights.3' | translate"
+      value="{{
+        isZeroAmount(wallet.data.currentBalance.totalSpend!) ? '' : '- '
+      }}{{ wallet.data.currentBalance.totalSpend }}"
+      [showCurrency]="true"
+      img="assets/icons/dashboard/wallet/card-send.svg"
+      (click)="sortTransactionsByState(transactionState.OUT)"
+    />
+
+    <!-- Total charged -->
+    <convertedin-insights-card
+      [isClickable]="true"
+      class="dashboard-wallet__insight w-4"
+      [title]="'dashboard.wallet.insights.4' | translate"
+      value="{{
+        isZeroAmount(wallet.data.currentBalance.totalCharged!) ? '' : '+ '
+      }}{{ wallet.data.currentBalance.totalCharged }}"
+      [showCurrency]="true"
+      img="assets/icons/dashboard/wallet/card-receive.svg"
+      (click)="sortTransactionsByState(transactionState.IN)"
+    />
+  </div>
+
+  <!-- Blocked amount spinner -->
+  <convertedin-spinner
+    class="flex justify-content-center"
+    *ngIf="loaders.isBlockedLoading"
+  />
+
+  <!-- Transactions list -->
+  <convertedin-wallet-transactions
+    *ngIf="(transactions$ | async) || _pagination.pagination.data!"
+    [activeSort]="_pagination.pagination.sort"
+    [transactions]="_pagination.pagination.data!"
+    (sortChange)="sortTransactions($event)"
+  />
+
+  <!-- Transactions list spinner -->
+  <convertedin-spinner
+    class="flex justify-content-center"
+    *ngIf="loaders.isTransactionLoading"
+  />
+</section>
+
+<!-- Page loading spinner -->
+<convertedin-spinner
+  class="flex-grow-1 flex justify-content-center align-items-center"
+  *ngIf="loaders.isLoading"
+/>

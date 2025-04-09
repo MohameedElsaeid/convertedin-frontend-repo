@@ -1,0 +1,69 @@
+<convertedin-suggestion-popup-container
+  (searchChange)="searchChanged($event)"
+  *ngIf="currentDemograpics$ | async"
+  (save)="saveChanges()"
+>
+  <div
+    class="flex flex-column create-ad__suggestions"
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="getDemographics()"
+    [scrollWindow]="false"
+  >
+    <!-- <div class="flex flex-column create-ad__suggestions"> -->
+    <!-- Suggestions container -->
+    <ng-container
+      *ngIf="(demographics$ | async) || _pagination.pagination.data"
+    >
+      <ng-container
+        *ngTemplateOutlet="
+          accordion;
+          context: { $implicit: _pagination.pagination.data }
+        "
+      ></ng-container>
+    </ng-container>
+
+    <!-- Loading spinner -->
+    <convertedin-spinner
+      class="flex justify-content-center"
+      *ngIf="isLoading"
+    />
+  </div>
+</convertedin-suggestion-popup-container>
+
+<!-- Demographics template -->
+<ng-template #accordion let-data>
+  <p-accordion
+    class="create-ad__accordion"
+    expandIcon="pi pi-chevron-{{ dir === 'rtl' ? 'left' : 'right' }}"
+  >
+    <!-- Accordion tab -->
+    <p-accordionTab *ngFor="let item of data" [header]="item.categoryName">
+      <!-- Extra child accordion data (self template call but with different data) -->
+      <ng-container *ngIf="item.subCategories && item.subCategories.length > 0">
+        <ng-container
+          *ngTemplateOutlet="
+            accordion;
+            context: { $implicit: item.subCategories }
+          "
+        ></ng-container>
+      </ng-container>
+
+      <!-- Category items -->
+      <div
+        class="create-ad__suggestion-card flex justify-content-between gap-3"
+        *ngFor="let childItem of item.categoryItems"
+      >
+        <p>{{ childItem.name }}</p>
+
+        <p-checkbox
+          (ngModelChange)="itemSelected(childItem)"
+          class="create-ad__checkbox"
+          [value]="childItem.id"
+          [(ngModel)]="demographics"
+        />
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</ng-template>

@@ -1,0 +1,269 @@
+<div class="setup-form" *ngIf="form">
+  <div class="px-2">
+    <div class="flex flex-wrap">
+      <div class="md:w-8 p-2">
+        <div class="main-card">
+          <div class="card-header">
+            <div class="header-info">
+              <h4>Campaign Setup</h4>
+              <p>Custom campaign name and conversion</p>
+            </div>
+          </div>
+          <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
+            <div class="main-form">
+              <ng-container>
+                <!--username control-->
+                <div class="flex flex-column gap-2 form-item">
+                  <label htmlFor="username">Campaign Name</label>
+                  <input
+                    aria-describedby="username-help"
+                    formControlName="name"
+                    id="username"
+                    pInputText
+                  />
+                  <!--        <small id="username-help">Enter your username to reset your password.</small>-->
+                  <convertedin-control-errors
+                    [control]="controls.name"
+                    [formSubmitted]="formSubmitted"
+                  ></convertedin-control-errors>
+                </div>
+                <!--conversion events control-->
+                <!--                <div class="flex flex-column gap-2" *ngIf="showConversion">-->
+                <!--                  <label htmlFor="username">Conversion Event</label>-->
+                <!--                  <p-dropdown-->
+                <!--                    [filter]="true"-->
+                <!--                    [options]="staticData?.events"-->
+                <!--                    [showClear]="true"-->
+                <!--                    filterBy="title"-->
+                <!--                    formControlName="conversion_event"-->
+                <!--                    optionLabel="title"-->
+                <!--                    optionValue="id"-->
+                <!--                    placeholder="Select"-->
+                <!--                  >-->
+                <!--                    <ng-template let-event pTemplate="item">-->
+                <!--                      <div class="flex align-items-center gap-2">-->
+                <!--                        <div>{{ event.title }}</div>-->
+                <!--                      </div>-->
+                <!--                    </ng-template>-->
+                <!--                  </p-dropdown>-->
+                <!--                  <convertedin-control-errors-->
+                <!--                    [control]="controls.conversion_event"-->
+                <!--                    [formSubmitted]="formSubmitted"-->
+                <!--                  ></convertedin-control-errors>-->
+                <!--                </div>-->
+              </ng-container>
+
+              <p-divider></p-divider>
+
+              <ng-container>
+                <div class="card-header">
+                  <div class="header-info">
+                    <h4>Campaign Budget Optimization</h4>
+                    <p>Set the campaign budget</p>
+                  </div>
+                  <div class="header-actions" formGroupName="budget">
+                    <p-inputSwitch formControlName="cbo"></p-inputSwitch>
+                  </div>
+                </div>
+
+                <ng-container *ngIf="controls.budget.get('cbo').value">
+                  <ng-container formGroupName="schedule">
+                    <div class="card-header">
+                      <div class="header-info">
+                        <h4>Campaign Lifetime</h4>
+                        <p>The time that campaign running on platform</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-3">
+                      <div
+                        class="flex align-items-center"
+                        *ngIf="controls.budget.get('type').value === 'daily'"
+                      >
+                        <p-radioButton
+                          [value]="true"
+                          formControlName="lifetime"
+                          inputId="lifeTime"
+                        ></p-radioButton>
+                        <label class="ml-2" for="ingredient1"
+                          >Running Forever</label
+                        >
+                      </div>
+    
+                      <div class="flex align-items-center">
+                        <p-radioButton
+                          [value]="false"
+                          formControlName="lifetime"
+                          inputId="lifeTime2"
+                        ></p-radioButton>
+                        <label class="ml-2" for="ingredient2"
+                          >Start / End Date</label
+                        >
+                      </div>
+                    </div>
+    
+                    <div
+                      *ngIf="!controls.schedule.get('lifetime').value"
+                      class="flex flex-wrap"
+                    >
+                      <div class="w-4 p-2">
+                        <div class="p-inputgroup">
+                          <span class="p-inputgroup-addon">Start Date</span>
+                          <p-calendar  [showOtherMonths]="false"
+                            (onSelect)="validateStartEndDates()"
+                            [minDate]="today"
+                            class="date-control"
+                            dateFormat="dd/mm/yy"
+                            formControlName="start"
+                            placeholder="dd/mm/yy"
+                          ></p-calendar>
+                        </div>
+                        <convertedin-control-errors
+                          [control]="controls.schedule.get('start')"
+                          [formSubmitted]="formSubmitted"
+                          class="mt-2 block"
+                        ></convertedin-control-errors>
+                      </div>
+                      <div class="w-4 p-2">
+                        <div class="p-inputgroup">
+                          <span class="p-inputgroup-addon">End Date</span>
+                          <p-calendar  [showOtherMonths]="false"
+                            (onSelect)="validateStartEndDates()"
+                            [minDate]="endDateMin"
+                            [defaultDate]="controls.schedule.get('start')?.value"
+                            class="date-control"
+                            dateFormat="dd/mm/yy"
+                            formControlName="end"
+                            placeholder="dd/mm/yy"
+                          ></p-calendar>
+                        </div>
+                        <convertedin-control-errors
+                          [control]="controls.schedule.get('end')"
+                          [formSubmitted]="formSubmitted"
+                          class="mt-2 block"
+                        ></convertedin-control-errors>
+                      </div>
+                    </div>
+                  </ng-container>
+                  
+                  <p-divider></p-divider>
+    
+                  <div class="card-header mt-4" formGroupName="budget">
+                    <div class="header-info">
+                      <h4>Campaign Budget</h4>
+                      <p>Set the campaign budget</p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap gap-3 mb-3" formGroupName="budget">
+                    <div class="flex align-items-center">
+                      <p-radioButton
+                        formControlName="type"
+                        inputId="type"
+                        value="daily"
+                      ></p-radioButton>
+                      <label class="ml-2" for="type">Daily Budget</label>
+                    </div>
+
+                    <div class="flex align-items-center">
+                      <p-radioButton
+                        formControlName="type"
+                        inputId="type2"
+                        value="lifetime"
+                      ></p-radioButton>
+                      <label class="ml-2" for="type2">Life Time Budget</label>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap" formGroupName="budget">
+                    <div class="w-4 p-2">
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">USD</span>
+                        <input
+                          budget
+                          formControlName="value"
+                          pInputText
+                          placeholder="00.00"
+                          type="text"
+                        />
+                      </div>
+                      <convertedin-control-errors
+                        [control]="controls.budget.get('value')"
+                        [formSubmitted]="formSubmitted"
+                        class="mt-2 block"
+                      ></convertedin-control-errors>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                  <!-- bidding options start-->
+                  <div class="card-header mt-4" formGroupName="budget">
+                    <div class="header-info">
+                      <h4>Bid Strategy</h4>
+                      <p>Optimeized for clicks, automatic CPC</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-3 mb-3" formGroupName="budget">
+                    <div class="flex align-items-center">
+                      <p-radioButton
+                        formControlName="bid_strategy"
+                        inputId="bid_strategy"
+                        value="AUTO"
+                        (onClick)="controls.budget.get('bid_amount').setValue(null)"
+                      ></p-radioButton>
+                      <label class="ml-2" for="bid_strategy">Automatically</label>
+                    </div>
+
+                    <div class="flex align-items-center">
+                      <p-radioButton
+                        formControlName="bid_strategy"
+                        inputId="bid_strategy_2"
+                        value="CPC"
+                      ></p-radioButton>
+                      <label class="ml-2" for="bid_strategy_2">Target CPC</label>
+                    </div>
+                    <convertedin-control-errors
+                    [control]="controls.budget.get('bid_strategy')"
+                    [formSubmitted]="formSubmitted"
+                    class="mt-2 block"
+                  ></convertedin-control-errors>
+                  </div>
+                  <div class="flex flex-wrap mb-3" formGroupName="budget" *ngIf="controls.budget.get('bid_strategy').value === 'CPC'">
+                    <div class="w-4 p-2">
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">USD</span>
+                        <input
+                          budget
+                          formControlName="bid_amount"
+                          pInputText
+                          placeholder="00.00"
+                          type="text"
+                        />
+                      </div>
+                      <convertedin-control-errors
+                        [control]="controls.budget.get('bid_amount')"
+                        [formSubmitted]="formSubmitted"
+                        class="mt-2 block"
+                      ></convertedin-control-errors>
+                    </div>
+                  </div>
+                  <!-- bidding options end  -->
+                </ng-container>
+
+              </ng-container>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="md:w-4 p-2">
+        <convertedin-campaign-summary
+          *ngIf="form"
+        ></convertedin-campaign-summary>
+        <!--        {{form.valid}}-->
+        <!--        <pre>-->
+        <!--          {{getAllErrors | json }}-->
+        <!--        </pre>-->
+        <!--        <pre>-->
+        <!--          {{form?.value | json }}-->
+        <!--        </pre>-->
+      </div>
+    </div>
+  </div>
+</div>

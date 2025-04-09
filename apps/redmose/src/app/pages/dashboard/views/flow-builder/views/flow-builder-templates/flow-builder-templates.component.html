@@ -1,0 +1,90 @@
+<div class="flex justify-content-between align-items-center">
+  <!-- Header -->
+  <div class="flex flex-column gap-2">
+    <h1>{{ 'automation.templates-title' | translate }}</h1>
+    <h2>{{ 'automation.templates-subtitle' | translate }}</h2>
+  </div>
+
+  <!-- Template languages -->
+  <div class="flex gap-3 align-items-center">
+    <label>{{ 'automation.templates-lang' | translate }}</label>
+
+    <p-dropdown
+      [options]="languages"
+      [(ngModel)]="activeLang"
+      (ngModelChange)="getFlowTemplates()"
+      optionLabel="label"
+      optionValue="value"
+    />
+  </div>
+</div>
+
+<!-- Template categories -->
+<p-tabMenu
+  *ngIf="templateGroups$ | async as data"
+  [(activeItem)]="activeIndex"
+  class="templates__categories"
+  [model]="data"
+  (activeItemChange)="getFlowTemplates()"
+>
+</p-tabMenu>
+
+<convertedin-spinner
+  class="flex justify-content-center align-items-center flex-grow-1"
+  *ngIf="loaders.categories"
+/>
+
+<ng-container *ngIf="templates$ | async as items">
+  <div class="flex flex-wrap gap-4 templates__container">
+    <!-- Template cards -->
+    <div
+      class="flex flex-column p-3 templates__card gap-3 cursor-pointer"
+      *ngFor="let item of items.data"
+    >
+      <figure class="relative flex justify-content-center align-items-center">
+        <img
+          [src]="item.image || 'app-assets/images/template.png'"
+          class="max-w-full"
+        />
+
+        <div class="hidden top-0 absolute h-full w-full">
+          <div
+            class="flex justify-content-center align-items-center h-full w-full"
+          >
+            <a
+              [routerLink]="'/dashboards/flow-builder/create'"
+              [queryParams]="{ flowTemplate: item.id || null }"
+            >
+              {{ 'automation.templates-use' | translate }}
+            </a>
+          </div>
+        </div>
+      </figure>
+      <div class="flex flex-column gap-2 flex-grow-1">
+        <!-- <label>{{ item.category }}</label> -->
+
+        <h3>{{ item.name }}</h3>
+
+        <p>{{ item.body }}</p>
+      </div>
+
+      <label>SMS</label>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <p-paginator
+    [totalRecords]="paginationService.pagination.meta.total"
+    [rows]="paginationService.getPerPageNumber()"
+    [rowsPerPageOptions]="[5, 10, 15, 20]"
+    (onPageChange)="paginationChange($event)"
+    [first]="paginationService.first"
+    [ngClass]="{ 'rtl-pagination': dir === 'rtl' }"
+  />
+</ng-container>
+
+<!-- Loading spinner -->
+<convertedin-spinner
+  *ngIf="loaders.templates"
+  class="flex justify-content-center align-items-center flex-grow-1"
+/>

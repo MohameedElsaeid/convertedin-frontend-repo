@@ -1,0 +1,33 @@
+.language-country {
+  &__label {
+    color: var(--convertedin-gray-500);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  ::ng-deep &__submit-btn {
+    width: 12.5rem !important;
+    background-color: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    border-radius: 8px !important;
+    justify-content: center;
+    padding: 1rem !important;
+  }
+
+  ::ng-deep &__dropdown {
+    background: var(--convertedin-gray-50);
+
+    .p-dropdown-label {
+      font-weight: 700 !important;
+    }
+
+    figure {
+      width: 30px;
+      font-size: 0;
+      img {
+        border-radius: 4px;
+        border: 1px solid transparent;
+      }
+    }
+  }
+}

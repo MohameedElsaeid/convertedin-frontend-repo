@@ -1,0 +1,16 @@
+<p-divider
+  layout="vertical"
+  styleClass="h-7rem workflow__add-action {{
+    isLast() ? 'workflow__add-end' : ''
+  }}"
+>
+  <div class="flex" *ngIf="showAddButton">
+    <!-- Add action btn -->
+    <button class="workflow__add-btn" pButton (click)="menu.toggle($event)">
+      <i class="pi pi-plus"></i>
+    </button>
+
+    <!-- Actions menu -->
+    <p-menu #menu [model]="actions" [popup]="true" appendTo="body" />
+  </div>
+</p-divider>

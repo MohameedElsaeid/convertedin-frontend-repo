@@ -1,0 +1,17 @@
+.convertedin--navbar {
+    .actions-sec {
+        .action-item {
+            height: 40px;
+        }
+
+        ::ng-deep {   
+            &.notification-btn {
+            width: 55px;
+            i {
+                color: #667085;
+                font-weight: bold;
+            }
+        }
+        }
+    } 
+}

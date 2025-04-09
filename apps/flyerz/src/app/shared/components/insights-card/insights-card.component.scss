@@ -1,0 +1,28 @@
+::ng-deep .flyerz__insight {
+  padding: 12px;
+  flex-grow: 1;
+  border-radius: 12px;
+  border: 1px solid var(--convertedin-gray-50);
+  background: #fff;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.08);
+
+  h3 {
+    color: var(--convertedin-gray-800);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  p {
+    color: var(--convertedin-gray-600);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+i {
+  color: var(--flyerz-primary-color);
+  font-size: 12px;
+  margin-inline-start: 8px;
+}

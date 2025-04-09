@@ -1,0 +1,47 @@
+<ng-container *ngIf="userWallet$ | async as userData">
+  <ng-container
+    [ngTemplateOutlet]="
+      userData.wallet! >= compareValue ? hasValue : lowBalance
+    "
+    [ngTemplateOutletContext]="{ $implicit: userData }"
+  ></ng-container>
+</ng-container>
+
+<!-- Has balance banner -->
+<ng-template #hasValue let-userData>
+  <div
+    class="wallet-value-banner__wallet-value flex gap-1 justify-content-center align-items-center"
+  >
+    <img src="assets/icons/create-ad/wallet-2.svg " alt="wallet-icon" />
+
+    <p>
+      {{ 'create-ad.wallet-popup.value-1' | translate }}
+      <span>{{ userData.wallet }} </span>
+      {{ userData.currency?.symbol }}
+      {{ 'create-ad.wallet-popup.value-2' | translate }}
+    </p>
+  </div>
+</ng-template>
+
+<!-- Low balance banner -->
+<ng-template #lowBalance let-userData>
+  <div
+    class="wallet-value-banner__wallet-value-low flex justify-content-between align-items-center"
+  >
+    <div class="flex gap-1 align-items-center">
+      <img src="assets/icons/create-ad/wallet-error.svg" alt="wallet-icon" />
+
+      <p>
+        {{ 'create-ad.wallet-popup.value-1' | translate }}
+        <span>{{ userData.wallet }} </span>
+        {{ userData.currency?.symbol }}
+        {{ 'create-ad.wallet-popup.value-2' | translate }}
+        <span>, {{ 'create-ad.wallet-popup.low-balance' | translate }}</span>
+      </p>
+    </div>
+
+    <a pButton routerLink="/my-dashboard/wallet/add-funds">
+      {{ 'common.recharge-now' | translate }}
+    </a>
+  </div>
+</ng-template>

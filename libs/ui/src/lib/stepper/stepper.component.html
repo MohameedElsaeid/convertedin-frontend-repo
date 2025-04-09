@@ -1,0 +1,94 @@
+<!-- Header -->
+<div class="flex convertedin-stepper__header {{ headerStyleClass }}">
+  <div
+    *ngFor="let step of steps; let index = index"
+    class="flex align-items-center"
+    [style]="{
+      'flex-grow': index === steps.length - 1 ? 0 : 1
+    }"
+    [ngClass]="{
+      'convertedin-stepper__active-step':
+        activeIndex === index || step.completed,
+      'convertedin-stepper__completed-step': step.completed
+    }"
+  >
+    <div
+      class="flex align-items-center convertedin-stepper__step"
+      (click)="jumpToStep(index, step.completed)"
+    >
+      <!-- Step circle -->
+      <div
+        class="convertedin-stepper__circle flex justify-content-center align-items-center"
+      >
+        <i *ngIf="step.completed" class="{{ step.completedIcon }}"></i>
+      </div>
+
+      <!-- Step title -->
+      <p class="convertedin-stepper__tabname">{{ step.title }}</p>
+    </div>
+
+    <!-- Step line -->
+    <div
+      class="convertedin-stepper__line flex-grow-1"
+      *ngIf="index !== steps.length - 1"
+    ></div>
+  </div>
+</div>
+
+<!-- Active step -->
+<div
+  class="convertedin-stepper__view-container flex-grow-1 flex flex-column relative"
+  *ngIf="activeStep"
+>
+  <ng-template [ngTemplateOutlet]="activeStep.content!"></ng-template>
+</div>
+
+<!-- Navigation buttons -->
+<div
+  class="convertedin-stepper__actions-container flex justify-content-between"
+>
+  <!-- Back button -->
+  <div>
+    <button
+      *ngIf="
+        !hideBackBtnOnFirstStep || (hideBackBtnOnFirstStep && activeIndex !== 0)
+      "
+      class="{{ backButtonStyleClass }} align-items-center gap-2"
+      pButton
+      (click)="back()"
+      [disabled]="activeIndex === 0 || disableBackBtn"
+    >
+      {{ backButtonLabel }}
+
+      <i *ngIf="backBtnIcon" class="{{ backBtnIcon }}"></i>
+    </button>
+  </div>
+
+  <!-- Next button -->
+  <div
+    *ngIf="!activeStep.valid || disableNextBtn"
+    [pTooltip]="activeStep.nextBtnTooltip"
+    [tooltipOptions]="activeStep.nextBtnTooltipOption"
+  >
+    <button
+      class="{{ nextButtonStyleClass }} align-items-center gap-2"
+      pButton
+      (click)="next()"
+      [disabled]="!activeStep.valid || disableNextBtn"
+    >
+      {{ nexButtonLabel }}
+
+      <i *ngIf="nextBtnIcon" class="{{ nextBtnIcon }}"></i>
+    </button>
+  </div>
+  <button
+    class="{{ nextButtonStyleClass }} align-items-center gap-2"
+    pButton
+    (click)="next()"
+    *ngIf="activeStep.valid && !disableNextBtn"
+  >
+    {{ nexButtonLabel }}
+
+    <i *ngIf="nextBtnIcon" class="{{ nextBtnIcon }}"></i>
+  </button>
+</div>

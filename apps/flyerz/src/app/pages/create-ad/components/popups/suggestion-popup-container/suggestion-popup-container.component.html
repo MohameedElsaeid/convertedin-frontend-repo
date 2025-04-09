@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="relative mt-1">
+  <!-- Search input -->
+  <div class="w-full relative">
+    <i class="pi pi-search absolute {{ dir === 'rtl' ? 'right' : 'left' }}"></i>
+    <p-autoComplete
+      formControlName="search"
+      class="w-full"
+      styleClass="w-full create-ad__search-input"
+      [delay]="500"
+      (completeMethod)="submitSearch()"
+      [minLength]="0"
+    />
+  </div>
+
+  <!-- Submit btn -->
+  <!-- <button
+    pButton
+    type="submit"
+    class="absolute create-ad__search-btn {{
+      dir === 'rtl' ? 'left' : 'right'
+    }}"
+  >
+    {{ 'create-ad.search' | translate }}
+  </button> -->
+</form>
+
+<ng-content></ng-content>
+
+<div class="flex gap-3">
+  <!-- Close dialog btn -->
+  <button
+    (click)="closeDialog()"
+    pButton
+    type="button"
+    class="create-ad__cancel-btn justify-content-center"
+  >
+    {{ 'common.cancel' | translate }}
+  </button>
+
+  <!-- Submit btn -->
+  <button
+    (click)="save.emit()"
+    type="button"
+    pButton
+    class="create-ad__success-btn justify-content-center gap-1 flex-grow-1"
+  >
+    {{ 'common.save' | translate }}
+  </button>
+</div>

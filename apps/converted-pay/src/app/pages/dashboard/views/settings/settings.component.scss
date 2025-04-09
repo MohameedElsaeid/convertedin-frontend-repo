@@ -1,0 +1,9 @@
+.nav-btn {
+  background-color: transparent !important;
+  color: var(--convertedin-gray-500) !important;
+  border: unset !important;
+  &.active {
+    background-color: var(--converted-pay-primary-50) !important;
+    color: var(--converted-pay-primary-color) !important;
+  }
+}

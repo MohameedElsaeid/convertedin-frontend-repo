@@ -1,0 +1,80 @@
+<section class="flex h-full">
+  <div
+    class="absolute top-0 left-0 right-0 py-5 px-4 md:px-8 flex justify-content-between align-items-center"
+  >
+    <a href="https://convertedpay.convertedin.com">
+      <img class="logo" src="assets/icons/logo.svg" alt="logo" />
+    </a>
+    <convertedin-select-app-lang
+      [isWhiteBg]="true"
+    ></convertedin-select-app-lang>
+  </div>
+  <div
+    class="h-full container py-5 px-4 md:px-8 flex flex-column justify-content-between"
+  >
+    <div class="p-4"></div>
+    <form
+      [isFormEvent]="true"
+      [convertedinLogEvents]="EVENTS_LOG.VERIFY_OTP_BUTTON"
+      [metaData]="otpForm.value"
+      [formGroup]="otpForm"
+      class="flex flex-column justify-content-center"
+      (ngSubmit)="submit()"
+    >
+      <header class="header">
+        <h1 class="header__title">{{ 'verifyOTP.title' | translate }}</h1>
+        <p class="header__desc">{{ 'verifyOTP.desc' | translate }}</p>
+
+        <p class="mt-2 text-primary" *ngIf="otpData?.email">
+          {{ otpData.email }}
+        </p>
+      </header>
+
+      <div class="w-full mt-4">
+        <ngx-otp-input
+          (otpChange)="otpChange($event)"
+          class="ngx-otp"
+          [config]="config"
+        ></ngx-otp-input>
+
+        <ng-container
+          *ngIf="{ countDownTimer: (countDownTimer$ | async) } as viewModel"
+        >
+          <p class="mt-3 expire-text">
+            {{ 'verifyOTP.codeWillExpire' | translate }}
+            <span class="expire-text__time">{{
+              viewModel.countDownTimer | countDownTimer
+            }}</span>
+          </p>
+          <button
+            class="p-button btn primary-dark-btn mt-3 w-full justify-content-center"
+            [disabled]="(isLoading$ | async) || otpForm.invalid"
+          >
+            {{ 'verifyOTP.verifyOTP' | translate }}
+            <i class="pi pi-spin pi-spinner mx-1" *ngIf="isLoading$.value"></i>
+          </button>
+          <button
+            (click)="resendOTP()"
+            class="p-button btn primary-outline-btn w-full justify-content-center mt-2"
+            [disabled]="isResendOTP$ | async"
+            *ngIf="RESEND_WAITING_TIME_IN_SECONDS > viewModel.countDownTimer!"
+          >
+            {{ 'verifyOTP.resendOTP' | translate }}
+            <i class="pi pi-spin pi-spinner mx-1" *ngIf="isResendOTP$.value"></i>
+          </button>
+        </ng-container>
+      </div>
+    </form>
+    <div>
+      <p class="text-xs text-gray-700">{{ 'poweredBy' | translate }}</p>
+    </div>
+  </div>
+
+  <div class="flex-1 hidden md:flex justify-content-center align-items-end p-8">
+    <img
+      src="assets/images/login.png"
+      class="block object-cover login-img max-w-full"
+      alt="login-img"
+    />
+  </div>
+</section>

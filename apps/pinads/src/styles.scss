@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+// @use './base';
+@use './styles/index';
+
+convertedin-root {
+  display: block;
+  height: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+body,
+.p-component,
+.p-button {
+  font-family: 'Almarai', sans-serif;
+}
+.p-toast {
+  height: auto;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+#launcher-frame {
+  right: 2px !important;
+  bottom: 56px !important;
+  max-width: 90px !important;
+  min-width: 90px !important;
+}
+.pac-container{
+  z-index: 9999;
+}

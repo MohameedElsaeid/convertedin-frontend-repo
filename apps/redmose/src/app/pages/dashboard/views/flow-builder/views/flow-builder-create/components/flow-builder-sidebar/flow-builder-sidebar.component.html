@@ -1,0 +1,88 @@
+<h3 class="flow-sidenav__title flex gap-2 align-items-center">
+  <img
+    [src]="getSideBarLogo()"
+    alt="{{ getSideBarTitle() }}-logo"
+    width="32"
+    height="32"
+  />
+  {{ getSideBarTitle() | translate }} {{ 'automation.settings' | translate }}
+</h3>
+
+<form
+  class="flex flex-column flex-grow-1"
+  (submit)="updateActiveForm()"
+  [formGroup]="activeForm"
+  *ngIf="activeAction$ | async as currentAction"
+>
+  <div class="flow-sidenav__activeform-container flex-grow-1">
+    <div class="flow-sidenav__activeform">
+      <ng-container [ngSwitch]="currentAction?.type">
+        <!-- Delay form -->
+        <convertedin-flow-builder-delay-form *ngSwitchCase="actions.DELAY" />
+
+        <!-- Notification form -->
+        <convertedin-flow-builder-notification-form
+          *ngSwitchCase="actions.NOTIFICATION"
+        />
+
+        <!-- SMS form -->
+        <convertedin-flow-builder-sms-form *ngSwitchCase="actions.SMS" />
+
+        <!-- Trigger form -->
+        <convertedin-flow-builder-trigger-form
+          *ngSwitchCase="actions.TRIGGER"
+        />
+
+        <convertedin-flow-builder-email-flow *ngSwitchCase="actions.EMAIL" />
+      </ng-container>
+    </div>
+  </div>
+  <div
+    class="flow-sidenav__actions flex justify-content-{{
+      currentAction.type !== actions.TRIGGER ? 'between' : 'end'
+    }} p-3  mt-auto"
+  >
+    <!-- Delete button -->
+    <button
+      *ngIf="currentAction.type !== actions.TRIGGER"
+      class="p-button-danger p-button-text gap-2 flow-sidenav__action-delete"
+      pButton
+      pRipple
+      type="button"
+      (click)="deleteAction(currentAction.index)"
+    >
+      <i class="pi pi-trash"></i>
+
+      {{ 'automation.delete' | translate }}
+    </button>
+
+    <div class="flex gap-2">
+      <!-- Cancel button -->
+      <button
+        class="p-button-secondary p-button-outlined"
+        pButton
+        pRipple
+        type="button"
+        (click)="cancelFormEdit()"
+      >
+        {{ 'automation.cancel' | translate }}
+      </button>
+
+      <!-- Submit button -->
+      <button
+        pButton
+        pRipple
+        type="submit"
+        class="flow-sidenav__action-save justify-content-center"
+        [disabled]="(isSubmitting$ | async) || activeForm.invalid"
+      >
+        <ng-container *ngIf="isSubmitting$ | async; else saveText">
+          <div class="loader"></div>
+        </ng-container>
+        <ng-template #saveText>
+          {{ 'automation.save' | translate }}
+        </ng-template>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+.pi-ar-rotate,
+.p-paginator-first,
+.p-paginator-last,
+.p-paginator-next,
+.p-paginator-prev {
+  html[dir='rtl'] & {
+    transform: rotate(180deg);
+  }
+}

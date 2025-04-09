@@ -1,0 +1,113 @@
+form {
+  gap: 20px;
+}
+
+.create-ad {
+  &__day-value-error {
+    border-radius: 8px;
+    padding: 12px;
+    background-color: rgba(255, 241, 242, 0.7);
+    color: #ec1354;
+    font-size: 14px;
+    font-weight: 400;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  ::ng-deep &__duration-input {
+    .p-inputnumber-input {
+      text-align: center !important;
+      padding: 0.75rem 5rem !important;
+      border-radius: 8px !important;
+      background: var(--convertedin-gray-50) !important;
+      max-width: 100%;
+      color: var(--convertedin-gray-800) !important;
+      font-size: 16px I !important;
+      font-weight: 700 !important;
+    }
+
+    .p-inputnumber {
+      position: relative;
+    }
+
+    .p-inputnumber-button-up,
+    .p-inputnumber-button-down {
+      height: 24px !important;
+      position: absolute !important;
+      border-radius: 50% !important;
+      width: 24px !important;
+    }
+
+    .p-inputnumber-button-up {
+      background-color: var(--flyerz-primary-color) !important;
+      border-color: var(--flyerz-primary-color) !important;
+    }
+
+    .p-inputnumber-button-down {
+      background-color: var(--convertedin-gray-200) !important;
+      border-color: var(--convertedin-gray-200) !important;
+      &,
+      i {
+        color: var(--convertedin-gray-600) !important;
+      }
+    }
+  }
+
+  ::ng-deep &__cancel-btn,
+  &__submit-btn {
+    padding: 16px 32px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 150%;
+  }
+
+  ::ng-deep &__cancel-btn {
+    background: var(--convertedin-gray-200) !important;
+    border-color: var(--convertedin-gray-200) !important;
+    color: var(--convertedin-gray-800) !important;
+  }
+
+  ::ng-deep &__submit-btn {
+    background: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+  }
+}
+
+::ng-deep {
+  html[dir='ltr'] {
+    .create-ad__duration-input {
+      .p-inputnumber-button-up {
+        left: 55px;
+        top: 9px;
+      }
+
+      .p-inputnumber-button-down {
+        right: 55px;
+        top: 9px;
+      }
+    }
+  }
+
+  html[dir='rtl'] {
+    .create-ad__duration-input {
+      .p-inputnumber-button-up {
+        right: 55px;
+        top: 13px;
+      }
+
+      .p-inputnumber-button-down {
+        left: 55px;
+        top: 13px;
+      }
+    }
+  }
+}
+
+.info-banner {
+  border-radius: 8px;
+  background: #fffbeb;
+  padding: 12px;
+}

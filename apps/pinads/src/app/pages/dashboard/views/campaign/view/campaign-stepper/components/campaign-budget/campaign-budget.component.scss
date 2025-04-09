@@ -1,0 +1,20 @@
+.budget-card {
+  border: 2px solid var(--convertedin-gray-300);
+  cursor: pointer;
+  &__title {
+    color: var(--convertedin-gray-900);
+    font-weight: 700;
+  }
+  &__info{
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--convertedin-gray-900);
+  }
+
+  &.active {
+    border-color: var(--map-ad-primary-color);
+    .budget-card__info,.budget-card__title{
+      color: var(--map-ad-primary-color);
+    }
+  }
+}

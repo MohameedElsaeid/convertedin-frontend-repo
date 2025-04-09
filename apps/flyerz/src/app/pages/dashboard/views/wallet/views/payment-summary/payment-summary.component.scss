@@ -1,0 +1,67 @@
+.dashboard-wallet {
+  &__summary-form {
+    margin-top: 51px;
+    gap: 41px;
+
+    label {
+      color: var(--gray-scale-gray-700);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 120%;
+    }
+  }
+
+  &__summary-container {
+    border-radius: 8px;
+    border: 1px solid var(--convertedin-gray-200);
+    background: var(--convertedin-gray-100);
+
+    p {
+      color: var(--convertedin-gray-600);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__note {
+    padding: 8px;
+    border-radius: 6px;
+    background: #f7f9fc;
+    color: #465373;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 160%;
+
+    span {
+      color: #1e3ba2 !important;
+    }
+  }
+
+  &__redirect {
+    border-radius: 8px;
+    border: 1px solid #fedf89;
+    background: #fffaeb;
+
+    p {
+      color: var(--convertedin-gray-500);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    a {
+      color: var(--convertedin-gray-800) !important;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      text-decoration-line: underline;
+    }
+  }
+
+  &__summary-total p {
+    color: var(--convertedin-gray-800) !important;
+    font-weight: 700 !important;
+  }
+}

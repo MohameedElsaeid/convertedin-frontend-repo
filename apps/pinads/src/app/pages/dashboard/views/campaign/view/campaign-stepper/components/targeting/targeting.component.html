@@ -1,0 +1,109 @@
+<header class="mb-4 header">
+  <h1 class="header__title">
+    {{ 'createCampaign.targeting.title' | translate }}
+  </h1>
+  <p class="header__desc">
+    {{ 'createCampaign.targeting.subtitle' | translate }}
+  </p>
+</header>
+<hr class="my-4 w-full border-1 border-gray-300" />
+<form [formGroup]="formGroup" class="mb-3">
+  <div class="form-field mb-3">
+    <label class="mb-2 form-field__label">
+      {{ 'createCampaign.targeting.campaignName' | translate }}
+    </label>
+    <input
+      #headlineInput
+      class="flex-1 form-field__input"
+      pInputText
+      formControlName="campaign_name"
+      type="text"
+    />
+    <convertedin-control-errors [control]="formGroup.get('campaign_name')!" />
+  </div>
+  <!-- <div class="sub-header">
+    <h2 class="mb-3 sub-header__title">
+      {{ 'createCampaign.targeting.advertiseLocation' | translate }}
+    </h2>
+  </div> -->
+
+  <section>
+    <convertedin-advertise-location
+      [control]="formGroup.get('proximity')!"
+    ></convertedin-advertise-location>
+  </section>
+  <div class="form-field mt-3">
+    <label class="mb-2 form-field__label">{{
+      'createCampaign.targeting.languageLabel' | translate
+    }}</label>
+    <p-dropdown
+      styleClass="w-full form-field__input"
+      formControlName="lang_code"
+      [options]="languages"
+      optionLabel="label"
+      optionValue="key"
+      placeholder="{{ 'createCampaign.targeting.selectLanguage' | translate }}"
+    ></p-dropdown>
+    <convertedin-control-errors [control]="formGroup.get('lang_code')!" />
+  </div>
+
+  <hr class="mt-3 mb-4 w-full border-1 border-gray-300" />
+  <div class="sub-header mb-3">
+    <h2 class="sub-header__title">
+      {{ 'createCampaign.targeting.keywords' | translate }}
+    </h2>
+    <p class="sub-header__desc">
+      {{ 'createCampaign.targeting.keywordsSubtitle' | translate }}
+    </p>
+  </div>
+
+  <div class="form-field">
+    <label class="mb-2 form-field__label">{{
+      'createCampaign.targeting.keywordThemesLabel' | translate
+    }}</label>
+    <div class="flex gap-2 mb-3 flex-column lg:flex-row">
+      <span class="p-input-icon flex-1 cursor-pointer">
+        <svg-icon
+          (click)="onClickAddKeyword()"
+          class="icon"
+          name="send"
+        ></svg-icon>
+        <input
+          convertedinChipsInput
+          #chipsInput
+          (onAddChip)="onAddKeyword($event)"
+          class="flex-1 form-field__input"
+          pInputText
+          type="text"
+        />
+      </span>
+      <div class="flex gap-2">
+
+      <convertedin-suggestions-button
+      class="inline-block w-fit"
+        [title]="'suggestionBtn.suggestionKeywords' | translate"
+        [selectBtnLabel]="'suggestionBtn.addKeyWords' | translate"
+        [targetEle]="chipsInput"
+        [suggestion$]="suggestionsKeywords$"
+        (selectSuggestions)="selectSuggestionsKeyword($event)"
+      ></convertedin-suggestions-button>
+      <convertedin-suggestions-button
+      class="inline-block w-fit"
+        [label]="'suggestionBtn.pinadsSuggestions' | translate"
+        [title]="'suggestionBtn.suggestionKeywords' | translate"
+        [selectBtnLabel]="'suggestionBtn.addKeyWords' | translate"
+        [targetEle]="chipsInput"
+        [suggestion$]="pinadsSuggestions$"
+        (selectSuggestions)="selectSuggestionsKeyword($event)"
+      ></convertedin-suggestions-button>
+    </div>
+
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="chip-item" *ngFor="let item of keywordsValue; let i = index"
+        >{{ item }}
+        <span class="ml-1 pi pi-times text-sm" (click)="removeKeyword(i)"></span
+      ></span>
+    </div>
+  </div>
+</form>

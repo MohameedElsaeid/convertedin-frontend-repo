@@ -1,0 +1,32 @@
+<!-- Header -->
+<convertedin-header
+  [title]="'dashboard.settings.accounts.title' | translate"
+  [subtitle]="'dashboard.settings.accounts.subtitle' | translate"
+/>
+
+<ng-container *ngIf="channels$ | async as data">
+  <!-- Connection banner -->
+  <convertedin-accounts-banner
+    [channel]="getChannel(data.data.channels, socialChannel.FACEBOOK)"
+    *ngIf="showBanner(data.data.channels)"
+  />
+
+  <div class="flex flex-column dashboard-accounts__container gap-4">
+    <!-- Social media cards -->
+    <ng-container *ngFor="let channel of data.data.channels">
+      <convertedin-social-media-card
+        (connectChannel)="connectChannel($event, data.data.channels)"
+        (reassign)="reassign()"
+        *ngIf="channel.isActive"
+        [isLoading]="loaders.card"
+        [channel]="channel"
+        [isReassignLoading]="loaders.reassign"
+      />
+    </ng-container>
+  </div>
+</ng-container>
+
+<!-- Loading spinner -->
+<convertedin-spinner *ngIf="loaders.channels" />
+
+<ng-container *ngIf="connectionDetails$ | async"></ng-container>

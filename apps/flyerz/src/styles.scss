@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--flyerz-primary-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #eee;
+}
+
+::selection {
+  background-color: var(--flyerz-primary-color) !important;
+  color: #fff !important;
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 16px !important;
+}
+
+html[dir='ltr'] {
+  &,
+  .p-component,
+  input:-webkit-autofill::first-line {
+    font-family: 'Inter', sans-serif !important;
+  }
+}
+
+html[dir='rtl'] {
+  &,
+  .p-component,
+  input:-webkit-autofill::first-line {
+    font-family: 'Almarai', sans-serif;
+  }
+  .fc-widget-normal {
+    right: auto !important;
+    left: 15px;
+  }
+
+  .p-datatable .p-datatable-thead > tr > th,
+  .p-datatable .p-datatable-tbody > tr > td {
+    text-align: right !important;
+  }
+
+  .p-password {
+    .p-inputtext {
+      padding-left: 2.5rem;
+      padding-right: 0.75rem !important;
+    }
+
+    .p-icon-wrapper {
+      right: unset !important;
+      left: 0.75rem;
+    }
+  }
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: var(--flyerz-primary-50) !important;
+  color: var(--flyerz-primary-color) !important;
+}
+
+.convertedin-stepper__circle {
+  border-color: var(--flyerz-primary-color) !important;
+}
+.convertedin-stepper__completed-step .convertedin-stepper__circle {
+  background-color: var(--flyerz-primary-color) !important;
+}
+
+.convertedin-stepper__tabname {
+  color: var(--flyerz-primary-color) !important;
+}
+
+:root {
+  --convertedin-gray-50: #f9fafb;
+  --convertedin-gray-100: #f2f4f6;
+  --convertedin-gray-200: #eaecf0;
+  --convertedin-gray-300: #d0d5dd;
+  --convertedin-gray-400: #98a2b3;
+  --convertedin-gray-500: #667085;
+  --convertedin-gray-600: #475467;
+  --convertedin-gray-700: #344054;
+  --convertedin-gray-800: #1d2939;
+  --convertedin-gray-900: #101828;
+
+  --flyerz-primary-color: #1e3ba2;
+  --flyerz-primary-100: rgba(30, 59, 162, 0.1);
+  --flyerz-primary-50: rgba(30, 59, 162, 0.05);
+  --flyerz-primary-25: rgba(30, 59, 162, 0.025);
+}
+
+@keyframes flyerz-spinner-rotate {
+  from {
+    stroke: var(--flyerz-primary-color);
+  }
+  to {
+    stroke: var(--flyerz-primary-color);
+  }
+}

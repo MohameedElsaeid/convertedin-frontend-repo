@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/app/shared/api/flow-builder/models/interfaces/trigger-action.ts"
+  ],
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  }
+}

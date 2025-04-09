@@ -1,0 +1,66 @@
+<h3 class="text-base font-bold text-gray-900">{{ 'settings.vatLaw' | translate }}</h3>
+<hr class="my-3 w-full border-1 border-gray-200" />
+<form [formGroup]="profileForm" class="flex flex-column-reverse md:flex-row gap-4" (ngSubmit)="submit()">
+  <div class="w-full md:w-5">
+    <div class="form-field">
+      <label class="form-field__label" for="name">{{ 'settings.vatNumber' | translate }}</label>
+      <p-inputNumber
+        class="form-field__input"
+        formControlName="taxNumber"
+        id="name"
+        type="text"
+        [format]="false"
+        styleClass="w-full"
+        placeholder="xxxxxxxxx"
+      >
+      </p-inputNumber>
+      <convertedin-control-errors [control]="profileForm.get('taxNumber')!" />
+    </div>
+    <div>
+      <button
+        [disabled]="
+          profileForm.invalid || isLoading$.value || !profileForm.dirty
+        "
+        convertedinLogEvents="UPDATE_PROFILE_BUTTON"
+        [metaData]="profileForm.value"
+        class="p-button btn primary-btn mt-3"
+      >
+        {{ 'settings.saveChanges' | translate }}
+        <i class="pi pi-spin pi-spinner mx-1" *ngIf="isLoading$ | async"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex-1">
+    <div
+      class="upload-container"
+      convertedinDragDrop
+      (filesDropped)="onSelectFile($event)"
+    >
+      <div class="upload-card">
+        <p class="text-sm">
+          {{ 'settings.dropFileHere' | translate }}
+          <span
+            (click)="fileInput.click()"
+            class="underline text-blue-500 cursor-pointer"
+          >
+            {{ 'settings.chooseFile' | translate }}
+          </span>
+        </p>
+        <input
+          type="file"
+          class="hidden"
+          #fileInput
+          (change)="onChangeFileInput($event.target)"
+          accept="image/*"
+        />
+      </div>
+      <img
+        *ngIf="imageUrl"
+        [src]="imageUrl"
+        class="w-full h-full block absolute top-0 left-0 bottom-0 right-0 object-cover"
+        alt=""
+      />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="loader-wrapper">
+  <ngx-ui-loader [loaderId]="'import-loader'"></ngx-ui-loader>
+</div>
+
+<div class="grid grid-nogutter full-view-wrapper">
+    <div class="col-6">
+        <ngs-code-editor class="full-view-wrapper block"  #emailEditor [theme]="theme" [codeModel]="model" [options]="options" (valueChanged)="onCodeChanged($event)"></ngs-code-editor>
+
+    </div>
+    <div class="col-6">
+        <convertedin-flow-builder-email-template-preview class="full-view-wrapper"  [emailContent]="emailContent"/>
+    </div>
+</div>
+

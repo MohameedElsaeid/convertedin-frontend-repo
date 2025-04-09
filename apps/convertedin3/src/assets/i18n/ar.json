@@ -1,0 +1,18 @@
+{
+    "dashboard": {
+        "sidebar": {
+          "home": "الرئيسية",
+          "apps": "التطبيقات",
+          "wallet": "المحفظة",
+          "settings": "الاعدادات",
+          "notifications": "الاشعارات",
+          "support": "الدعم",
+          "studio": "استوديو",
+          "logout": "تسجيل الخروج"
+        }
+      },
+      "accountSetup": {
+        "selectLanguage": "اختر لغة"
+      },
+      "languages": { "ar": "عربي", "en": "إنجليزي" }
+}

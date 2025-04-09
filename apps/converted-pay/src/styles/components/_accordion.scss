@@ -1,0 +1,10 @@
+.p-accordion {
+  .p-accordion-header-link {
+    gap: 0.75rem;
+    &[aria-expanded='false'] .p-accordion-toggle-icon {
+      html[dir='rtl'] & {
+        rotate: 180deg;
+      }
+    }
+  }
+}

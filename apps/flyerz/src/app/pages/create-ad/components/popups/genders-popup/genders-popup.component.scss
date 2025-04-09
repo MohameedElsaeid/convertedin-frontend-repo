@@ -1,0 +1,86 @@
+.create-ad {
+  ::ng-deep &__cancel-btn {
+    padding: 16px 32px !important;
+    border-radius: 8px !important;
+    background: var(--convertedin-gray-200) !important;
+    border-color: var(--convertedin-gray-200) !important;
+    color: var(--convertedin-gray-800) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 150%;
+  }
+
+  &__genders {
+    gap: 12px;
+  }
+
+  &__gender {
+    border-radius: 8px;
+    border: 2px solid var(--convertedin-gray-100);
+    background: #fff;
+    color: var(--convertedin-gray-800);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 180%;
+    width: calc((100% - 24px) / 3);
+  }
+
+  &__active-gender {
+    background-color: var(--flyerz-primary-color);
+    color: white !important;
+    transition: all 0.3s;
+  }
+
+  &__age-title {
+    padding: 12px 24px;
+    border: 1px solid var(--convertedin-gray-100);
+    background: var(--convertedin-gray-100);
+    color: var(--convertedin-gray-800);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+  }
+
+  ::ng-deep &__age-slider {
+    direction: ltr !important;
+
+    p {
+      color: var(--convertedin-gray-600) !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 150% !important;
+    }
+
+    .p-slider .p-slider-range {
+      background: var(--flyerz-primary-color) !important;
+    }
+
+    .p-slider:not(.p-disabled) .p-slider-handle:hover {
+      background: var(--flyerz-primary-color) !important;
+      border-color: var(--flyerz-primary-color) !important;
+    }
+
+    .p-slider .p-slider-handle {
+      border-color: var(--flyerz-primary-color) !important;
+    }
+  }
+
+  &__age-banner {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: #fffbeb;
+    padding: 10px 12px;
+
+    p {
+      font-weight: 400 !important;
+      font-size: 13px !important;
+    }
+  }
+}
+
+p {
+  color: var(--convertedin-gray-800);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+}

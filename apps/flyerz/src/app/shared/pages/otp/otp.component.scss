@@ -1,0 +1,74 @@
+.otp {
+  &__phone {
+    color: var(--flyerz-primary-color);
+    font-size: 16px;
+    font-weight: 700;
+    direction: ltr !important;
+    display: inline-block;
+  }
+
+  &__verify-error {
+    background-color: #cf1644;
+    color: white;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 70%;
+  }
+
+  &__resend-btn {
+    width: fit-content;
+    padding: 0 !important;
+    text-decoration: underline;
+    color: var(--flyerz-primary-color) !important;
+  }
+
+  &__security-banner {
+    background-color: #fef3f2;
+    border-radius: 8px;
+    width: max-content;
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: -0.2px;
+    }
+
+    label {
+      color: var(--convertedin-gray-700);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 160%;
+    }
+  }
+
+  ::ng-deep &__submit-btn {
+    width: 12.5rem !important;
+    background-color: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    border-radius: 8px !important;
+    justify-content: center;
+    padding: 1rem !important;
+  }
+  ::ng-deep &__input {
+    direction: ltr !important;
+    width: fit-content;
+    .ngx-otp-input-box {
+      margin: 0 !important;
+    }
+
+    .ngx-otp-input {
+      width: 62px !important;
+      height: 62px !important;
+      border-radius: 12px !important;
+      border: 1px solid var(--convertedin-gray-50) !important;
+      background: var(--convertedin-gray-50) !important;
+    }
+
+    .ngx-otp-input-container {
+      gap: 10px;
+    }
+  }
+}

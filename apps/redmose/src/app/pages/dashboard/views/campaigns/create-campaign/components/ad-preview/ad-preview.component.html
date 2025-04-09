@@ -1,0 +1,169 @@
+<div class="fb-cards-designs">
+<!--<pre>-->
+<!--  {{ad | json}}-->
+<!--</pre>-->
+  <div class="ad-header">
+    <h3>
+      Ad Preview
+    </h3>
+    <button>
+      <i class="pi pi-ellipsis-h"></i>
+    </button>
+  </div>
+  <!--  verified.png-->
+  <div class="fb-card-wrapper">
+
+    <div class="fb-clone-card">
+      <div class="fb-card-main-content">
+        <div class="fb-card-header">
+          <div class="user-post-info">
+            <div class="user-thumb">
+              <img alt=""  class="img-responsive logo-store-main" [src]="configuration?.staticData?.storeInfo.logo">
+            </div>
+            <div class="user-information">
+              <div class="store-title">
+                <span>
+                  {{configuration.staticData.storeInfo.name}}
+                <img alt="" src="app-assets/images/verified.png">
+                </span>
+              </div>
+              <small>
+                Sponsored ·
+                <img alt="" src="app-assets/images/public.svg">
+              </small>
+            </div>
+          </div>
+          <div class="post-action">
+            <i class="pi pi-ellipsis-h"></i>
+          </div>
+        </div>
+
+        <div class="fb-card-body simple-text-card simple-image-card">
+          <p class="headline-item">{{ad.message}}</p>
+          <div class="divider-wrapper">
+            <p-divider></p-divider>
+          </div>
+          <div *ngIf="ad.format === 'single'" class="images-container">
+            <img [src]="ad?.media[0]?.imageUrl" class="img-responsive"/>
+          </div>
+
+          <div *ngIf="ad.format === 'carousel' && ad.media.length" class="carousel-wrapper">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template *ngFor="let adItem of ad.media" carouselSlide >
+              <div  class="images-container">
+                <img [src]="adItem['imageUrl']" class="img-responsive"/>
+              </div>
+              <div   class="headline-wrapper">
+                <div>
+                  <span>Watch&More</span>
+                  <h3>{{adItem['headline']}}</h3>
+                  <p >{{adItem['description']}}</p>
+                </div>
+                <button *ngIf="ad.cta.title && ad.cta.title.name">
+                  {{ad.cta.title.name}}
+                </button>
+              </div>
+<!--              <div class="multiple-ads-item">-->
+<!--                <img [src]="adItem['imageUrl']" class="img-responsive"/>-->
+<!--                <div class="ad-item-info">-->
+<!--                  <div class="info-side">-->
+<!--                    <h3>{{adItem['headline']}}</h3>-->
+<!--                    <p>{{adItem['description']}}</p>-->
+<!--                  </div>-->
+<!--                  <div class="action-side">-->
+<!--                    <button>-->
+<!--                      {{ad.cta.title.name}}-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+
+            </ng-template>
+          </owl-carousel-o>
+          </div>
+          <div  *ngIf="ad.format === 'single'" class="headline-wrapper">
+            <div>
+              <span>Watch&More</span>
+              <h3  *ngIf="ad.format === 'single' && ad.media.length">{{ad.media[0].headline}}</h3>
+              <p   *ngIf="ad.format === 'single' && ad.media.length">{{ad.media[0].description}}</p>
+            </div>
+            <button *ngIf="ad.cta.title && ad.cta.title.name">
+              {{ad.cta.title.name}}
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="fb-card-like-comment-holder">
+        <div class="fb-card-like-comment">
+          <div class="likes-emoji-holder">
+            <span><img src="app-assets/images/reactions.png"/> 129</span>
+          </div>
+          <div class="like-comment-holder">
+            <span>10 Commnets</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fb-card-actions-holder">
+        <div class="fb-card-actions">
+          <div class="fb-btn-holder">
+            <a>
+              <img alt="" src="app-assets/images/iconLike.svg">
+              Like</a>
+          </div>
+          <div class="fb-btn-holder">
+            <a href="#"> <img alt="" src="app-assets/images/comment.svg">Comment</a>
+          </div>
+          <div class="fb-btn-holder">
+            <a href="#"> <img alt="" src="app-assets/images/share.svg">Share</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!--<div class="fb-card-body simple-text-card simple-image-card">-->
+<!--  <p class="headline-item">{{ad.message}}</p>-->
+<!--  <div class="divider-wrapper">-->
+<!--    <p-divider></p-divider>-->
+<!--  </div>-->
+<!--  <div *ngIf="ad.format === 'single'" class="images-container">-->
+<!--    <img [src]="ad?.media[0]?.imageUrl" class="img-responsive"/>-->
+<!--  </div>-->
+<!--  <div *ngIf="ad.format === 'carousel' && ad.media.length" class="carousel-wrapper">-->
+<!--    <owl-carousel-o [options]="customOptions">-->
+<!--      <ng-template *ngFor="let adItem of ad.media" carouselSlide >-->
+<!--        <div class="multiple-ads-item">-->
+<!--          <img [src]="adItem['imageUrl']" class="img-responsive"/>-->
+<!--          <div class="ad-item-info">-->
+<!--            <div class="info-side">-->
+<!--              <h3>{{adItem['headline']}}</h3>-->
+<!--              <p>{{adItem['description']}}</p>-->
+<!--            </div>-->
+<!--            <div class="action-side">-->
+<!--              <button>-->
+<!--                {{ad.cta.title.name}}-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </ng-template>-->
+<!--    </owl-carousel-o>-->
+<!--  </div>-->
+<!--  <div  *ngIf="ad.format === 'single'" class="headline-wrapper">-->
+<!--    <div>-->
+<!--      <span>Watch&More</span>-->
+<!--      <h3  *ngIf="ad.format === 'single' && ad.media.length">{{ad.media[0].headline}}</h3>-->
+<!--      <p   *ngIf="ad.format === 'single' && ad.media.length">{{ad.media[0].description}}</p>-->
+<!--    </div>-->
+<!--    <button *ngIf="ad.cta.title && ad.cta.title.name">-->
+<!--      {{ad.cta.title.name}}-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->

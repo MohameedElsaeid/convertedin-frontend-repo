@@ -1,0 +1,113 @@
+.create-ad {
+  &__social-card {
+    min-height: 13.8rem;
+    border-radius: 8px;
+    border: 2px solid var(--convertedin-gray-100);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    background-color: white;
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 150%;
+    }
+  }
+
+  &__social-container {
+    // padding: 0 5%;
+  }
+
+  &__soon {
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(237, 241, 247, 0.6);
+    color: #252f4a;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 130%;
+    top: 7px;
+  }
+
+  &__current-page {
+    border-radius: 12px;
+    border: 1px solid var(--convertedin-gray-200);
+    background: #fff;
+
+    ::ng-deep .p-button {
+      border-radius: 12px !important;
+      background: var(--flyerz-primary-50) !important;
+      border-color: var(--flyerz-primary-50) !important;
+      color: var(--flyerz-primary-color);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 130%;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    &-container {
+      padding: 0 15%;
+      width: 100%;
+    }
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 18px;
+    }
+
+    label {
+      color: rgba(70, 83, 115, 0.7);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+
+    img {
+      max-width: 2.5rem;
+      max-height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--convertedin-gray-200);
+    }
+  }
+
+  &__disabled {
+    opacity: 0.7;
+  }
+
+  &__accounts-status {
+    color: rgba(70, 83, 115, 0.7) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 150%;
+
+    span {
+      &:nth-child(1) {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        margin-inline-end: 4px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__accounts-connected {
+    background-color: #0cac9e;
+  }
+
+  &__accounts-notconnected {
+    background-color: #f43f5e;
+  }
+}
+
+.ltr {
+  right: 8px;
+}
+
+.rtl {
+  left: 8px;
+}

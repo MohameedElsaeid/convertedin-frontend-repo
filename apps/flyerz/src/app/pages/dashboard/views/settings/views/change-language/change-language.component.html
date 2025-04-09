@@ -1,0 +1,19 @@
+<!-- Language selection -->
+<div class="flex flex-column gap-2 md:w-9 w-full">
+  <label>
+    {{ 'auth.language-country.language' | translate }}
+  </label>
+
+  <p-dropdown
+    optionLabel="name"
+    optionValue="value"
+    [(ngModel)]="selectedLanguage"
+    styleClass="w-8 language__dropdown"
+    [options]="languages"
+  ></p-dropdown>
+</div>
+
+<!-- Save btn -->
+<button pButton class="language__btn" (click)="changeLang()">
+  {{ 'common.save' | translate }}
+</button>

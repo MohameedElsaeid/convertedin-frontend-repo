@@ -1,0 +1,47 @@
+<nav class="flex justify-content-between align-items-center mb-2">
+  <a routerLink="/">
+    <img class="w-8rem px-2" src="assets/images/logo.png" alt="logo" />
+  </a>
+  <div class="flex gap-2">
+    <div>
+      <p-dropdown
+        styleClass="w-full form-field__input lang_dropdown"
+        [(ngModel)]="selectedLang"
+        (onChange)="onChangeLang($event)"
+        [options]="languages"
+        optionLabel="label"
+        optionValue="key"
+        placeholder="{{
+          'createCampaign.targeting.selectLanguage' | translate
+        }}"
+      >
+        <ng-template let-lang pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2" *ngIf="lang">
+            <span class="pi pi-globe"></span>
+            <div>{{ lang.label }}</div>
+          </div>
+        </ng-template></p-dropdown
+      >
+    </div>
+    <button (click)="logout()" class="p-button p-button-text p-button-secondary">
+      <span class="pi pi-sign-out pi-ar-rotate"></span>
+    </button>
+  </div>
+</nav>
+<div class="flex-1">
+  <router-outlet></router-outlet>
+</div>
+<footer
+  class="flex justify-content-between align-items-center border-top-1 border-gray-200 pt-3"
+>
+  <p class="text-sm">
+    {{ 'auth.footer.getAccess' | translate }}
+    <a href="">{{ 'auth.footer.terms' | translate }}</a>
+    {{ 'auth.footer.and' | translate }}
+    <a href="">{{ 'auth.footer.privacyPolicy' | translate }}</a>
+  </p>
+  <div class="text-sm">
+    <span>{{ 'auth.footer.needHelp' | translate }}</span
+    ><a href=""> {{ 'auth.footer.contactSupport' | translate }}</a>
+  </div>
+</footer>

@@ -1,0 +1,98 @@
+<form
+  *ngIf="authData$ | async as authData"
+  class="flex flex-column gap-5 mb-7"
+  [formGroup]="registerForm"
+  (submit)="register()"
+>
+  <!-- Tile -->
+  <convertedin-header
+    [title]="'auth.register.title' | translate"
+    [subtitle]="'auth.register.subtitle' | translate"
+  />
+
+  <div class="flex flex-column gap-5 md:w-7 lg:w-6 w-10">
+    <!-- First name -->
+    <div class="flex flex-column gap-1">
+      <label class="auth__label">
+        {{ 'auth.register.first-name-label' | translate }}
+      </label>
+
+      <input
+        pInputText
+        class="w-full register__input"
+        formControlName="firstName"
+        name="firstName"
+        autocomplete="given-name"
+        [placeholder]="'auth.register.first-name-placeholder' | translate"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            registerForm.get('firstName')?.touched &&
+            !registerForm.get('firstName')?.valid
+        }"
+      />
+
+      <convertedin-control-errors [control]="registerForm.get('firstName')!" />
+    </div>
+
+    <!-- Last name -->
+    <div class="flex flex-column gap-1">
+      <label class="auth__label">
+        {{ 'auth.register.last-name-label' | translate }}
+      </label>
+
+      <input
+        pInputText
+        class="w-full register__input"
+        formControlName="lastName"
+        name="lastName"
+        autocomplete="additional-name"
+        [placeholder]="'auth.register.last-name-placeholder' | translate"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            registerForm.get('lastName')?.touched &&
+            !registerForm.get('lastName')?.valid
+        }"
+      />
+
+      <convertedin-control-errors [control]="registerForm.get('lastName')!" />
+    </div>
+
+    <!-- Phone input -->
+    <div class="flex flex-column gap-1">
+      <label class="auth__label">
+        {{ 'auth.login.label' | translate }}
+      </label>
+
+      <convertedin-phone-number-input
+        class="auth__phone w-full"
+        [wrongFormatMessage]="'auth.login.wrong-format' | translate"
+        formControlName="mobileNumber"
+        valueFormat="separate"
+        [perferredCountry]="countryIso"
+        [disableCountryDropdown]="true"
+      />
+
+      <convertedin-control-errors
+        [control]="registerForm.get('mobileNumber')!"
+      />
+    </div>
+
+    <!-- Password & confirm password input -->
+    <convertedin-password-confirm-password
+      class="w-full"
+      confirmPasswordControlName="passwordConfirmation"
+      passwordControlName="password"
+    />
+  </div>
+
+  <!-- Submit btn -->
+  <button
+    pButton
+    type="submit"
+    class="auth__submit-btn gap-2"
+    [disabled]="!registerForm.valid || isLoading"
+  >
+    {{ 'common.continue-btn' | translate }}
+    <i class="pi pi-spin pi-spinner" *ngIf="isLoading"></i>
+  </button>
+</form>

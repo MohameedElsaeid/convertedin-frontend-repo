@@ -1,0 +1,204 @@
+<div class="convertedin-sidebar">
+  <ng-container *ngIf="accessControl$ | async as accessControl">
+    <!-- Logo -->
+    <a href="/" id="logo">
+      <figure class="sidebar__main-logo">
+        <img [src]="logo" alt="convertedin-logo" />
+      </figure>
+    </a>
+
+    <div class="sidebar__container flex flex-column flex-grow-1">
+      <div class="flex-grow-1 flex flex-column justify-content-between">
+        <div class="flex flex-column gap-1 mb-1">
+          <!-- Routes -->
+          <ng-container *ngFor="let item of routes?.routes">
+            <p class="sidebar__title">{{ item.title | translate }}</p>
+            <ng-container
+              *ngTemplateOutlet="
+                accordion;
+                context: {
+                  $implicit: item.routes,
+                  accessControl: accessControl.data
+                }
+              "
+            ></ng-container>
+          </ng-container>
+        </div>
+
+        <div class="flex flex-column gap-1">
+          <!-- More Items -->
+          <ng-container *ngFor="let item of routes?.moreMenuRoutes">
+            <p class="sidebar__title">{{ item.title | translate }}</p>
+            <ng-container
+              *ngTemplateOutlet="
+                accordion;
+                context: {
+                  $implicit: item.routes,
+                  accessControl: accessControl.data
+                }
+              "
+            ></ng-container>
+          </ng-container>
+        </div>
+        <ng-content select="#sidebar-item"></ng-content>
+        
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Loading spinner -->
+  <convertedin-sidebar-loading
+    *ngIf="isLoading"
+    [logo]="logo"
+    [routes]="routes"
+  />
+</div>
+
+<!-- Routes template -->
+<ng-template let-item let-accessControlItems="accessControl" #accordion>
+  <p-accordion class="sidebar__accordion">
+    <ng-container *ngFor="let route of item">
+      <!-- Route link (if route is provided in base object level) -->
+      <ng-container
+        *ngIf="
+          route.route &&
+          (route.accessIdentifier | accessControl : accessControlItems) &&
+          (route?.showForTestUsers | testUser : isTestUser)
+        "
+      >
+        <a
+          (click)="onRouteClick($event, route)"
+          *ngIf="!route.isRoute"
+          [href]="route.route"
+          [id]="route.id"
+          class="flex align-items-center gap-2 {{
+            route.icon ? 'sidebar__main-route' : 'sidebar__subroute'
+          }}"
+          [ngClass]="{ sidebar__soon: route.soon }"
+        >
+          <img
+            width="20"
+            height="20"
+            [src]="assetsUrl + '/' + route.icon"
+            alt="route-icon"
+            *ngIf="route.icon"
+          />
+          <span class="flex-grow-1"> {{ route.label | translate }}</span>
+          <span *ngIf="route.new || route.soon" class="sidebar__new-lbl">
+            {{ route.new ? 'New' : 'Soon' }}
+          </span>
+        </a>
+
+        <a
+          *ngIf="route.isRoute"
+          [id]="route.id"
+          (click)="onRouteClick($event, route)"
+          class="flex align-items-center gap-2 {{
+            route.icon ? 'sidebar__main-route' : 'sidebar__subroute'
+          }}"
+          [ngClass]="{ sidebar__soon: route.soon }"
+        >
+          <img
+            [src]="assetsUrl + '/' + route.icon"
+            alt="route-icon"
+            *ngIf="route.icon"
+          />
+          <span class="flex-grow-1"> {{ route.label | translate }}</span>
+          <span *ngIf="route.new || route.soon" class="sidebar__new-lbl">
+            {{ route.new ? 'New' : 'Soon' }}
+          </span>
+        </a>
+      </ng-container>
+
+      <!-- Accorion tab -->
+      <p-accordionTab
+        [id]="route.id"
+        (selectedChange)="accordionOpen($event, route)"
+        *ngIf="
+          !route.route &&
+          (route.accessIdentifier | accessControl : accessControlItems) &&
+          (route?.showForTestUsers | testUser : isTestUser)
+        "
+        header="{{ route.icon ? undefined : (route.label | translate) }}"
+        iconPos="end"
+        class="{{
+          route.icon ? 'sidebar__main-accordion' : 'sidebar__sub-accordion'
+        }}"
+        [ngClass]="{ 'sidebar__ar-accordion': dir === 'rtl' }"
+      >
+        <!-- Header template (in case icon is present) -->
+        <ng-template pTemplate="header" *ngIf="route.icon">
+          <div class="flex gap-2 align-items-center">
+            <img [src]="assetsUrl + '/' + route.icon" alt="route-icon" />
+            <p>{{ route.label | translate }}</p>
+          </div>
+        </ng-template>
+
+        <!-- Nested accordion (in case subRoutes has data) -->
+        <ng-container *ngIf="route.subRoutes?.length > 0">
+          <ng-container
+            *ngTemplateOutlet="
+              accordion;
+              context: {
+                $implicit: route.subRoutes,
+                accessControl: accessControlItems
+              }
+            "
+          ></ng-container>
+        </ng-container>
+
+        <!-- Route links -->
+        <ng-container *ngIf="route.routes?.length > 0">
+          <ul class="flex flex-column sidebar__subroutes gap-1">
+            <ng-container *ngFor="let subRoute of route.routes">
+              <li
+                class="sidebar__subroute"
+                *ngIf="
+                  (subRoute.accessIdentifier
+                    | accessControl : accessControlItems) &&
+                  (route?.showForTestUsers | testUser : isTestUser)
+                "
+              >
+                <a
+                  [id]="subRoute.id"
+                  *ngIf="!subRoute.isRoute"
+                  [href]="subRoute.route"
+                  class="flex justify-content-between align-items-center"
+                  [ngClass]="{ sidebar__soon: subRoute.soon }"
+                  (click)="onRouteClick($event, subRoute)"
+                >
+                  {{ subRoute.label | translate }}
+
+                  <span
+                    *ngIf="subRoute.new || subRoute.soon"
+                    class="sidebar__new-lbl"
+                  >
+                    {{ subRoute.new ? 'New' : 'Soon' }}
+                  </span>
+                </a>
+
+                <a
+                  *ngIf="subRoute.isRoute"
+                  [id]="subRoute.id"
+                  (click)="routeClicked.emit(subRoute.route)"
+                  class="flex justify-content-between align-items-center"
+                  [ngClass]="{ sidebar__soon: subRoute.soon }"
+                  (click)="onRouteClick($event, subRoute)"
+                >
+                  {{ subRoute.label | translate }}
+
+                  <span
+                    *ngIf="subRoute.new || subRoute.soon"
+                    class="sidebar__new-lbl"
+                  >
+                    {{ subRoute.new ? 'New' : 'Soon' }}
+                  </span>
+                </a>
+              </li>
+            </ng-container>
+          </ul>
+        </ng-container>
+      </p-accordionTab>
+    </ng-container>
+  </p-accordion>
+</ng-template>

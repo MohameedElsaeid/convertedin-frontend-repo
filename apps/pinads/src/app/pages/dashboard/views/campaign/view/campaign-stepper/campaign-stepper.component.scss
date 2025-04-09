@@ -1,0 +1,46 @@
+::ng-deep.campaign-stepper {
+  .convertedin-stepper__circle{
+    min-width: 30px;
+  }
+  .convertedin-stepper__tabname{
+    -webkit-line-clamp:unset !important;
+    font-size: .8;
+  }
+  @media screen and (max-width: 990px) {
+    .convertedin-stepper__circle{
+      min-width: unset;
+    }
+    .convertedin-stepper__header {
+      gap: 2px;
+    }
+    .convertedin-stepper__line {
+      display: none !important;
+    }
+    .convertedin-stepper__step {
+      flex-direction: column !important;
+    }
+    .convertedin-stepper__tabname {
+      font-size: 0.8rem !important;
+      text-align: center;
+      -webkit-line-clamp:unset
+    }
+    .convertedin-stepper__tabname {
+      font-size: 0.8rem !important;
+      text-align: center;
+      -webkit-line-clamp:1;
+    }
+    .convertedin-stepper__circle {
+      height: 24px !important;
+      width: 24px !important;
+      margin: 0 !important;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .convertedin-stepper__tabname {
+      font-size: 0.62rem !important;
+    }
+    .convertedin-stepper__actions-container{
+      padding: 0.75rem 1rem!important;
+    }
+  }
+}

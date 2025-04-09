@@ -1,0 +1,96 @@
+<h4>{{ 'create-ad.ad-data.period' | translate }}</h4>
+
+<div class="ad-details__data-container flex flex-column">
+  <!-- Budget -->
+  <div class="ad-details__data-item flex gap-2">
+    <img src="assets/icons/dashboard/ad-details/money.svg" alt="budget-icon" />
+
+    <label class="flex-grow-1"> {{ 'create-ad.ad-budget' | translate }}</label>
+
+    <p>{{ adData.ad.budget }} {{ adData.currency.symbol }}</p>
+  </div>
+
+  <!-- Duration -->
+  <div class="ad-details__data-item flex gap-2">
+    <img src="assets/icons/dashboard/ad-details/clock.svg" alt="budget-icon" />
+
+    <label class="flex-grow-1">
+      {{ 'create-ad.ad-duration' | translate }}</label
+    >
+
+    <p>{{ adData.ad.days }} {{ 'common.days' | translate }}</p>
+  </div>
+
+  <!-- Ad end -->
+  <div class="ad-details__data-item flex gap-2">
+    <img src="assets/icons/dashboard/ad-details/date.svg" alt="budget-icon" />
+
+    <label class="flex-grow-1">
+      {{ 'dashboard.ad-details.ad-end-date' | translate }}</label
+    >
+
+    <p class="end-date">{{ adData.ad.end_at | date : 'short' }}</p>
+  </div>
+</div>
+
+<h4>{{ 'create-ad.ad-target.subtitle' | translate }}</h4>
+
+<div class="ad-details__data-container flex flex-column">
+  <!-- Interests -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'create-ad.ad-target.interests' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ getSuggestionText(adData.targeting.interests) }}
+    </p>
+  </div>
+
+  <!-- Demographics -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'create-ad.ad-target.demographic' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ getSuggestionText(adData.targeting.demographics) }}
+    </p>
+  </div>
+
+  <!-- Behaviours -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'create-ad.ad-target.behaviour' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ getSuggestionText(adData.targeting.behaviors) }}
+    </p>
+  </div>
+</div>
+
+<h4>{{ 'create-ad.ad-data.subtitle' | translate }}</h4>
+
+<div class="ad-details__data-container flex flex-column">
+  <!-- Goal -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'dashboard.home.ads.target-title' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ adData.ad.goal.name }}
+    </p>
+  </div>
+
+  <!-- Audiance -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'create-ad.ad-data.audiance' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ getAudiance() }}
+    </p>
+  </div>
+
+  <!-- locations -->
+  <div class="ad-details__data-item flex-column flex gap-2">
+    <h5>{{ 'create-ad.ad-data.locations' | translate }}</h5>
+
+    <p class="ad-details__suggestion">
+      {{ getLocations() }}
+    </p>
+  </div>
+</div>

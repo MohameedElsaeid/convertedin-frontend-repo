@@ -1,0 +1,144 @@
+<ng-container *ngIf="customerDetails$ | async as details">
+  <div class="flex flex-column align-items-center mb-4">
+    <div
+      class="view-customer__initials flex align-items-center justify-content-center mb-3"
+    >
+      <span *ngFor="let item of details.data.short_name">{{ item }}</span>
+    </div>
+
+    <p class="view-customer__name mb-2">
+      {{ details.data.first_name }} {{ details.data.last_name }}
+    </p>
+
+    <p class="view-customer__email">{{ details.data.email }}</p>
+  </div>
+
+  <p-tabView class="view-customer__tabs">
+    <!-- Overview -->
+    <p-tabPanel header="{{ 'common.Overview' | translate }}">
+      <ng-template pTemplate="content">
+        <div class="flex flex-column gap-3">
+          <div class="flex align-items-center justify-content-between">
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-user view-customer__icon"></i>
+              {{ 'Name' | translate }}
+            </div>
+
+            <p>{{ details.data.first_name }} {{ details.data.last_name }}</p>
+          </div>
+
+          <ng-container *ngIf="details.data.addresses?.length > 0">
+            <div
+              class="flex align-items-center justify-content-between"
+              *ngFor="let address of details.data.addresses; let i = index"
+            >
+              <div class="flex align-items-center gap-2">
+                <i class="pi pi-map-marker view-customer__icon"></i>
+                {{ 'Address' | translate }} {{ i + 1 }}
+              </div>
+
+              <p>
+                {{ address.city
+                }}{{ address.city ? ', ' + address.country : address.country }}
+              </p>
+            </div>
+          </ng-container>
+
+          <div
+            class="flex align-items-center justify-content-between"
+            *ngIf="details.data.phone"
+          >
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-phone view-customer__icon"></i>
+              {{ 'Phone Number' | translate }}
+            </div>
+
+            <p>{{ details.data.phone }}</p>
+          </div>
+
+          <div
+            class="flex align-items-center justify-content-between"
+            *ngIf="details.data.last_activity"
+          >
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-sync view-customer__icon"></i>
+              {{ 'customers.Last Visit' | translate }}
+            </div>
+
+            <p>{{ details.data.last_activity | date : 'short' }}</p>
+          </div>
+
+          <div class="flex align-items-center justify-content-between">
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-dollar view-customer__icon"></i>
+              {{ 'customers.Total Spent' | translate }}
+            </div>
+
+            <p>
+              {{ details.data.currency }}
+              {{ details.data.total_spent | number }}
+            </p>
+          </div>
+
+          <div class="flex align-items-center justify-content-between">
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-dollar view-customer__icon"></i>
+              {{ 'customers.Average Order Value' | translate }}
+            </div>
+
+            <p>
+              {{ details.data.currency }}
+              {{ details.data.avg_order_value | number }}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+
+    <!-- Orders -->
+    <p-tabPanel
+      header="{{ 'Orders' | translate }}"
+      *ngIf="details.data.orders?.length > 0"
+    >
+      <ng-template pTemplate="content">
+        <div class="flex flex-column gap-2">
+          <div
+            class="view-customer__segment flex justify-content-between align-items-center p-3"
+            *ngFor="let item of details.data.orders"
+          >
+            <div class="flex align-items-center gap-2">
+              <i class="pi pi-history"></i>
+
+              <p>
+                {{ 'customers.Order Number' | translate }}
+                {{ item.order_number }}
+              </p>
+            </div>
+
+            <p>{{ item.ordered_at | date : 'short' }}</p>
+
+            <p>{{ item.total_price }}</p>
+
+            <p>{{ item.financial_status }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+
+    <!-- Segments -->
+    <p-tabPanel header="{{ 'customers.Segments' | translate }}">
+      <ng-template pTemplate="content">
+        <div class="flex flex-column gap-2">
+          <div
+            class="view-customer__segment p-3"
+            *ngFor="let item of details.data.segments"
+          >
+            <p>{{ item.rule }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</ng-container>
+
+<convertedin-spinner *ngIf="isLoading" class="justify-content-center flex" />

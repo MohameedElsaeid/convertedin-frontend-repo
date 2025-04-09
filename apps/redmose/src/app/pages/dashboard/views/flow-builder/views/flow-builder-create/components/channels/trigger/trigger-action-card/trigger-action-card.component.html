@@ -1,0 +1,63 @@
+<ng-container
+  *ngIf="formVal?.start_condition && formVal?.stop_condition; else placeholder"
+>
+  <div
+    *ngIf="_startStopActions$ | async as actions"
+    class="p-4 flex flex-column gap-2 workflow__trigger-value cursor-pointer"
+  >
+    <div class="flex justify-content-between align-items-center">
+      <!-- Start flow trigger -->
+      <div class="flex align-items-center gap-2">
+        <img
+          src="app-assets/icons/flow-builder/play.svg"
+          alt="start-flow-icon"
+        />
+
+        <p class="workflow__trigger-start">
+          {{ 'automation.trigger-start' | translate }}
+        </p>
+      </div>
+
+      <p class="workflow__trigger-text">
+        {{ findAction(actions, formVal?.start_condition)?.name }}
+      </p>
+    </div>
+
+    <!-- Stop flow trigger -->
+    <div class="flex justify-content-between align-items-center">
+      <div class="flex align-items-center gap-2">
+        <img
+          src="app-assets/icons/flow-builder/pause-square.svg"
+          alt="stop-flow-icon"
+        />
+
+        <p class="workflow__trigger-stop">
+          {{ 'automation.trigger-stop' | translate }}
+        </p>
+      </div>
+
+      <p class="workflow__trigger-text">
+        {{ findAction(actions, formVal?.stop_condition)?.name }}
+      </p>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Placeholder view -->
+<ng-template #placeholder>
+  <button
+    pButton
+    pRipple
+    class="w-full flex workflow__trigger px-3 flex-row workflow__trigger-setup justify-content-center"
+    [ngClass]="{
+      'workflow__trigger-error': _activeForm.touched && !_activeForm.valid
+    }"
+  >
+    <img
+      src="app-assets/icons/flow-builder/flash.svg"
+      class="mr-1"
+      alt="flash-icon"
+    />
+    {{ 'automation.trigger-card-empty' | translate }}
+  </button>
+</ng-template>

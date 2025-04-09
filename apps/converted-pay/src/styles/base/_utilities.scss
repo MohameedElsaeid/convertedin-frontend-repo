@@ -1,0 +1,45 @@
+.object-cover {
+  object-fit: cover;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--converted-pay-primary-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #eee;
+}
+
+::selection {
+  background-color: var(--converted-pay-primary-color) !important;
+  color: #fff !important;
+}
+.h-inherit {
+  height: inherit !important;
+}
+.bg-convertedin-gray-100 {
+  background-color: var(--convertedin-gray-100) !important;
+}
+.bg-warning {
+  background-color: var(--converted-pay-warning-300);
+}
+@keyframes converted-pay-spinner-rotate {
+  from {
+    stroke: var(--converted-pay-primary-color);
+  }
+  to {
+    stroke: var(--converted-pay-primary-color);
+  }
+}
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

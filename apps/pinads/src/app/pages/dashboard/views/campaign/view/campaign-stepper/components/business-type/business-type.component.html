@@ -1,0 +1,13 @@
+<header class="mb-4 header">
+  <h1 class="header__title">Select Business Type</h1>
+  <p class="header__desc">Start connecting you google ads account</p>
+</header>
+<section class="grid  gap-3">
+  <div *ngFor="let type of typeList"
+   [class.active]="type.id==selectedTypeId" (click)="onChangeType(type.id)" class="p-2 py-4 col-3 md:col-2 business-card">
+    <img [src]="'assets/images/business-type/'+type.iconName+'.png'" alt="icon" class="mx-auto block business-card__icon">
+    <p class="mt-2 text-center white-space-nowrap">
+      {{type.text}}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,643 @@
+<p-dialog (onHide)="closePopup()" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" header="Header">
+    <!--    header-->
+    <ng-template pTemplate="header">
+        <div class="create-campaign-head">
+            <h3>Create Form</h3>
+            <!--          <p>Create New Campaign</p>-->
+        </div>
+    </ng-template>
+
+    <!--    content wrapper-->
+    <ng-container>
+        <div class="create-campaign-popup-content">
+            <form [formGroup]="form">
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="grid">
+                            <div class="col-12">
+                                <div class="flex flex-column gap-2 form-item">
+                                    <label htmlFor="username">Form name</label>
+                                    <input aria-describedby="form" class="shadow-none" formControlName="name"
+                                           id="username" pInputText/>
+                                    <!--        <small id="username-help">Enter your username to reset your password.</small>-->
+                                    <convertedin-control-errors [control]="controls.name"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                </div>
+                            </div>
+
+                            <!--              <div class="col-12 choose-type-control">-->
+                            <!--                <span class="hint-type-control">Type</span>-->
+                            <!--                <div class="flex flex-column gap-3">-->
+                            <!--                  <div class="flex align-items-start">-->
+                            <!--                    <p-radioButton-->
+                            <!--                      class="radio"-->
+                            <!--                      inputId="more_Volume"-->
+                            <!--                      name="formType"-->
+                            <!--                      formControlName="type"-->
+                            <!--                      value="more"-->
+                            <!--                    ></p-radioButton>-->
+                            <!--                    <label class="ml-2 flex flex-column" for="more_Volume"-->
+                            <!--                    >More Volume-->
+                            <!--                      <p>-->
+                            <!--                        Use a form that's quick to fill out and submit on a-->
+                            <!--                        mobile device.-->
+                            <!--                      </p>-->
+                            <!--                    </label>-->
+                            <!--                  </div>-->
+
+                            <!--                  <div class="flex align-items-start">-->
+                            <!--                    <p-radioButton-->
+                            <!--                      inputId="higher_Intent"-->
+                            <!--                      name="formType"-->
+                            <!--                      formControlName="type"-->
+                            <!--                      value="higher"-->
+                            <!--                    ></p-radioButton>-->
+                            <!--                    <label class="ml-2 flex flex-column" for="higher_Intent"-->
+                            <!--                    >Higher Intent-->
+                            <!--                      <p>-->
+                            <!--                        Add a review step that gives people a chance to-->
+                            <!--                        confirm their info.-->
+                            <!--                      </p>-->
+                            <!--                    </label>-->
+                            <!--                  </div>-->
+
+                            <!--                  <div class="flex align-items-start">-->
+                            <!--                    <p-radioButton-->
+                            <!--                      inputId="rich_Creative"-->
+                            <!--                      name="formType"-->
+                            <!--                      formControlName="type"-->
+                            <!--                      value="rich"-->
+                            <!--                    ></p-radioButton>-->
+                            <!--                    <label class="ml-2 flex flex-column" for="rich_Creative"-->
+                            <!--                    >Rich Creative-->
+                            <!--                      <p>-->
+                            <!--                        Hold your audience’s attention with this form that-->
+                            <!--                        integrates your company's images and messaging,-->
+                            <!--                        including an optional about us, product detail and-->
+                            <!--                        reviews sections.-->
+                            <!--                      </p>-->
+                            <!--                    </label>-->
+                            <!--                  </div>-->
+                            <!--                </div>-->
+                            <!--              </div>-->
+
+                            <!--              <div class="col-12 bg-img-control">-->
+                            <!--                <span class="hint-img-control">Background Image</span>-->
+                            <!--                <div class="flex flex-column gap-3">-->
+                            <!--                  <div class="flex align-items-start">-->
+                            <!--                    <p-radioButton-->
+                            <!--                      class="radio shadow-none"-->
+                            <!--                      inputId="image_ad"-->
+                            <!--                      name="pizza"-->
+                            <!--                      value="Cheese"-->
+                            <!--                    ></p-radioButton>-->
+                            <!--                    <label class="ml-2 flex flex-column" for="image_ad"-->
+                            <!--                    >Use the image from your ad-->
+                            <!--                      <p>-->
+                            <!--                        The image from your ad will appear with your context-->
+                            <!--                        card-->
+                            <!--                      </p>-->
+                            <!--                    </label>-->
+                            <!--                  </div>-->
+
+                            <!--                  <div class="flex align-items-start">-->
+                            <!--                    <p-radioButton-->
+                            <!--                      inputId="uploaded_image"-->
+                            <!--                      name="pizza"-->
+                            <!--                      value="Mushroom"-->
+                            <!--                    ></p-radioButton>-->
+                            <!--                    <label-->
+                            <!--                      class="ml-2 flex flex-column"-->
+                            <!--                      for="uploaded_image"-->
+                            <!--                    >Use uploaded image-->
+                            <!--                      <p>Recommended image size 1200 x 628 pixels</p>-->
+                            <!--                    </label>-->
+                            <!--                  </div>-->
+                            <!--                  <button class="upload-btn bg-white">Upload Image</button>-->
+                            <!--                </div>-->
+                            <!--              </div>-->
+
+                            <div class="col-12 Questions-dropdown-control">
+                                <span class="hint-Questions-dropdown">Questions</span>
+                                <div class="add-question-wrapper">
+                                    <p-menu #menu [model]="splitBtn" [popup]="true"></p-menu>
+                                    <button (click)="menu.toggle($event)" icon="pi pi-plus" label="Add" pButton
+                                            type="button"></button>
+                                </div>
+                            </div>
+                            <ng-container *ngFor="
+                  let question of questions.controls;
+                  trackBy: questionsTrackby;
+                  let i = index
+                " formArrayName="questions">
+                                <ng-container [formGroupName]="i">
+                                    <div *ngIf="
+                      question.value.controlType === customQuestionEnum.SHORT
+                    " class="col-12 short-answer-control p-4">
+                                        <div class="title-answer flex justify-content-between">
+                                            <h2 class="m-0">Short Answer</h2>
+                                            <button (click)="removeQuestion(i)" class="border-none" type="button">
+                                                <i class="pi pi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-column gap-2">
+                                            <label class="hint-questions ml-0"
+                                                   htmlFor="short_Questions">Questions</label>
+                                            <input aria-describedby="Questions-help" class="shadow-none"
+                                                   formControlName="label" id="short_Questions" pInputText
+                                                   placeholder="Enter the question?"/>
+                                            <convertedin-control-errors [control]="questions.at(i).get('label')"
+                                                                        [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                        </div>
+                                    </div>
+
+                                    <!--                   multiple answers-->
+                                    <div *ngIf="
+                      question.value.controlType === customQuestionEnum.MULTIPLE
+                    " class="col-12 multiple-answer-control p-4">
+                                        <div class="title-answer flex justify-content-between">
+                                            <h2 class="m-0">Multiple Choice</h2>
+                                            <button (click)="removeQuestion(i)" class="border-none" type="button">
+                                                <i class="pi pi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-column gap-2">
+                                            <label class="hint-questions" htmlFor="multiple_Questions">Questions</label>
+                                            <input aria-describedby="Questions-help" class="shadow-none"
+                                                   formControlName="label" id="multiple_Questions" pInputText
+                                                   placeholder="Enter the question?"/>
+                                            <convertedin-control-errors [control]="questions.at(i).get('label')"
+                                                                        [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                        </div>
+                                        <div class="flex flex-column gap-2 Answers-items-form">
+                                            <label class="hint-answer" htmlFor="answer_Questions1">Answers</label>
+                                            <ng-container *ngFor="
+                          let answer of question.get('options')['controls'];
+                          let x = index
+                        " formArrayName="options">
+                                                <ng-container [formGroupName]="x">
+                                                    <div class="flex flex-row align-items-center flex-wrap">
+                                                        <input aria-describedby="Questions-help"
+                                                               class="flex-grow-1 shadow-none" formControlName="label"
+                                                               id="answer_Questions1" pInputText
+                                                               placeholder="Enter an answer"/>
+                                                        <button (click)="removeAnswer(i, x)" [disabled]="
+                                question.get('options').value.length <= 1
+                              " class="border-none ml-2">
+                                                            <i class="pi pi-trash"></i>
+                                                        </button>
+                                                        <br/>
+                                                        <convertedin-control-errors [control]="
+                                questions
+                                  .at(i)
+                                  .get('options')
+                                  ['at'](x)
+                                  .get('label')
+                              " [formSubmitted]="formSubmitted" class="w-full"></convertedin-control-errors>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+                                        <button (click)="addAnswer(i)"
+                                                class="border-none add-answer flex align-items-center mt-2" type="button">
+                                            <i class="pi pi-plus mr-2"></i> Add Answer
+                                        </button>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+
+                            <!--              <div class="col-12 slider-control p-4">-->
+                            <!--                <div class="title-slider flex justify-content-between">-->
+                            <!--                  <h2 class="m-0">Slider</h2>-->
+                            <!--                  <button class="border-none" type="button">-->
+                            <!--                    <i class="pi pi-trash"></i>-->
+                            <!--                  </button>-->
+                            <!--                </div>-->
+                            <!--                <div class="flex flex-column gap-2">-->
+                            <!--                  <label class="hint-Questions" htmlFor="Questions-slider"-->
+                            <!--                  >Questions</label-->
+                            <!--                  >-->
+                            <!--                  <input-->
+                            <!--                    aria-describedby="Questions-help"-->
+                            <!--                    class="shadow-none"-->
+                            <!--                    id="Questions-slider"-->
+                            <!--                    pInputText-->
+                            <!--                    placeholder="Enter the question?"-->
+                            <!--                  />-->
+                            <!--                  <convertedin-control-errors-->
+                            <!--                    [control]="controls.name"-->
+                            <!--                    [formSubmitted]="formSubmitted"-->
+                            <!--                  ></convertedin-control-errors>-->
+                            <!--                </div>-->
+                            <!--                <div class="flex flex-row align-items-center mt-5">-->
+                            <!--                  <div class="left-side flex-grow-1 relative">-->
+                            <!--                    <label-->
+                            <!--                      class="hint-Questions absolute"-->
+                            <!--                      htmlFor="left_side "-->
+                            <!--                    >Left Side</label-->
+                            <!--                    >-->
+                            <!--                    <input-->
+                            <!--                      aria-describedby="Questions-help"-->
+                            <!--                      class="w-full shadow-none"-->
+                            <!--                      id="left_side"-->
+                            <!--                      pInputText-->
+                            <!--                      placeholder="Left Side"-->
+                            <!--                    />-->
+                            <!--                    <convertedin-control-errors-->
+                            <!--                      [control]="controls.name"-->
+                            <!--                      [formSubmitted]="formSubmitted"-->
+                            <!--                    ></convertedin-control-errors>-->
+                            <!--                  </div>-->
+                            <!--                  <span class="range"> To </span>-->
+                            <!--                  <div class="right-side flex-grow-1 relative">-->
+                            <!--                    <label-->
+                            <!--                      class="hint-Questions absolute"-->
+                            <!--                      htmlFor="right_side"-->
+                            <!--                    >Right Side</label-->
+                            <!--                    >-->
+                            <!--                    <input-->
+                            <!--                      aria-describedby="Questions-help"-->
+                            <!--                      class="w-full shadow-none"-->
+                            <!--                      id="right_side"-->
+                            <!--                      pInputText-->
+                            <!--                      placeholder="Right Side"-->
+                            <!--                    />-->
+                            <!--                    <convertedin-control-errors-->
+                            <!--                      [control]="controls.name"-->
+                            <!--                      [formSubmitted]="formSubmitted"-->
+                            <!--                    ></convertedin-control-errors>-->
+                            <!--                  </div>-->
+                            <!--                </div>-->
+                            <!--                <div class="flex flex-column gap-2">-->
+                            <!--                  <label-->
+                            <!--                    class="hint-Questions mb-0 mt-2"-->
+                            <!--                    htmlFor="step_Size"-->
+                            <!--                  >Step Size</label-->
+                            <!--                  >-->
+                            <!--                  <div class="select-size">-->
+                            <!--                    <p-multiSelect-->
+                            <!--                      [options]="cities"-->
+                            <!--                      id="step_Size"-->
+                            <!--                      optionLabel="name"-->
+                            <!--                      placeholder="Select"-->
+                            <!--                    ></p-multiSelect>-->
+                            <!--                  </div>-->
+                            <!--                </div>-->
+                            <!--                <div class="flex flex-column gap-2">-->
+                            <!--                  <label-->
+                            <!--                    class="hint-Questions mb-0 mt-2"-->
+                            <!--                    htmlFor="Start_Position"-->
+                            <!--                  >Start Position</label-->
+                            <!--                  >-->
+                            <!--                  <div class="select-size">-->
+                            <!--                    <p-multiSelect-->
+                            <!--                      [options]="cities"-->
+                            <!--                      id="Start_Position"-->
+                            <!--                      optionLabel="name"-->
+                            <!--                      placeholder="Select"-->
+                            <!--                    ></p-multiSelect>-->
+                            <!--                  </div>-->
+                            <!--                </div>-->
+                            <!--              </div>-->
+
+                            <div class="col-12 information-control mb-4">
+                                <div class="prefill-questions flex flex-column gap-2 mb-3">
+                                    <h3>Prefill Questions</h3>
+                                    <p>
+                                        Ask for user information. This will be prefilled from their
+                                        Facebook account.
+                                    </p>
+                                </div>
+                                <div class="flex mt-2 flex-column gap-2">
+                                    <label class="des-questions flex flex-column gap-2">
+                                        <h3>Description</h3>
+                                        <p>
+                                            Let people know how the information they give you will be
+                                            used or shared.
+                                        </p>
+                                    </label>
+                                    <textarea class="w-full shadow-none" formControlName="question_page_custom_headline"
+                                              pInputTextarea placeholder="Enter a message"></textarea>
+                                    <convertedin-control-errors [control]="controls.question_page_custom_headline"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                </div>
+                                <div class="choose-information flex mt-3 flex-column gap-2">
+                                    <h3>Choose the type of information you need</h3>
+
+                                    <ng-container *ngFor="
+                      let question of questions.controls;
+                      trackBy: optionsTrackby;
+                      let i = index
+                    " formArrayName="questions">
+                                        <ng-container [formGroupName]="i">
+                                            <div *ngIf="
+                          question.value.controlType !==
+                            customQuestionEnum.SHORT &&
+                          question.value.controlType !==
+                            customQuestionEnum.MULTIPLE
+                        ">
+                                                <div class="mt-3 relative">
+                                                    <input [readOnly]="true" class="w-full pl-4 shadow-none" formControlName="answer"
+                                                           pInputText placeholder="{{ question.value.label }}"
+                                                           type="text"/>
+                                                    <button (click)="removeQuestion(i)"
+                                                            class="border-none btn-remove absolute" type="button">
+                                                        <i class="pi pi-trash"></i>
+                                                    </button>
+                                                </div>
+                                                <convertedin-control-errors [control]="questions.at(i).get('answer')"
+                                                                            [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                            </div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <convertedin-control-errors [control]="controls.questions"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                    <div class="add-question-wrapper">
+                                        <p-menu #categoryMenu [model]="preQuestionsList" [popup]="true"></p-menu>
+                                        <button (click)="categoryMenu.toggle($event)" icon="pi pi-plus" label="Add"
+                                                pButton type="button"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 message-leads-control mb-4">
+                                <div class="title-message flex flex-column gap-2 mb-3">
+                                    <h4>Message for Leads</h4>
+                                    <p>Let people know what happens next</p>
+                                </div>
+
+                                <div class="form-message flex flex-column gap-2" formGroupName="thank_you_page">
+                                    <label class="hint-questions" htmlFor="Headline">Headline</label>
+                                    <input aria-describedby="Questions-help" class="shadow-none" formControlName="title"
+                                           id="Headline" pInputText placeholder="Headline"/>
+                                    <convertedin-control-errors [control]="controls.thank_you_page.get('title')"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                    <div class="flex mt-2 flex-column gap-2">
+                                        <label class="prefill-questions flex flex-column">
+                                            Description
+                                        </label>
+                                        <textarea class="w-full shadow-none" formControlName="body" pInputTextarea
+                                                  placeholder="Enter a message"></textarea>
+                                        <convertedin-control-errors [control]="controls.thank_you_page.get('body')"
+                                                                    [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 call-action-control" formGroupName="thank_you_page">
+                                <span class="title-call-control block mb-3">Call to Action</span>
+                                <div class="flex flex-column gap-3">
+                                    <div class="flex align-items-start">
+                                        <p-radioButton class="radio" formControlName="button_type"
+                                                       inputId="view_website" value="VIEW_WEBSITE"></p-radioButton>
+                                        <label class="ml-2 flex flex-column" for="view_website">View website
+                                        </label>
+                                    </div>
+
+                                    <div class="flex align-items-start">
+                                        <p-radioButton formControlName="button_type" inputId="call_Business"
+                                                       value="CALL_BUSINESS"></p-radioButton>
+                                        <label class="ml-2 flex flex-column" for="call_Business">Call Business
+                                        </label>
+                                    </div>
+                                    <div class="flex align-items-start">
+                                        <p-radioButton formControlName="button_type" inputId="download"
+                                                       value="DOWNLOAD"></p-radioButton>
+                                        <label class="ml-2 flex flex-column" for="download">Download
+                                        </label>
+                                    </div>
+                                    <convertedin-control-errors [control]="controls.thank_you_page.get('button_type')"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                </div>
+                                <div *ngIf="controls.thank_you_page.get('button_type').value ==='VIEW_WEBSITE' ||
+                                controls.thank_you_page.get('button_type').value === 'DOWNLOAD'" class="add-link flex flex-column gap-2 my-3">
+                                    <label class="hint-link" htmlFor="link">Link</label>
+                                    <input aria-describedby="Questions-help" class="shadow-none"
+                                           formControlName="website_url" id="link" pInputText placeholder="add link"/>
+                                    <convertedin-control-errors [control]="controls.thank_you_page.get('website_url')"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                </div>
+
+                                <div *ngIf="controls.thank_you_page.get('button_type').value ==='CALL_BUSINESS'"
+                                     class="add-link flex flex-column gap-2 my-3">
+                                    <label class="hint-link" htmlFor="link">Phone</label>
+                                    <convertedin-phone-number-input [countryIso]="true" [valueFormat]="'separate'" formControlName="phone"/>
+
+                                </div>
+
+                                <div class="add-text flex flex-column gap-2 my-3">
+                                    <label class="hint-text" htmlFor="action_text">Call to Action text</label>
+                                    <input aria-describedby="Questions-help" class="shadow-none"
+                                           formControlName="button_text" id="action_text" pInputText
+                                           placeholder="add text"/>
+                                    <convertedin-control-errors [control]="controls.thank_you_page.get('button_text')"
+                                                                [formSubmitted]="formSubmitted"></convertedin-control-errors>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 ml-auto card">
+                        <!--                                                            <pre>-->
+                        <!--                                                                                                  {{ form.value | json }}-->
+                        <!--                                                                                    </pre>-->
+                        <h2>Higher intent - Form preview</h2>
+                        <div
+                            class="flex align-items-center justify-content-between my-2 pb-2 border-bottom-1 border-bottom-solid border-black-alpha-10">
+                            <p class="hint-message">Message for leads</p>
+                            <div class="flex align-items-center">
+                                <span> {{activeStep + 1}} of 5</span>
+                                <div class="btn-prev-next">
+                                    <p-button (click)="prevStep()" class="mx-1" icon="pi pi-caret-left"></p-button>
+                                    <p-button (click)="nextStep()" icon="pi pi-caret-right"></p-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preview-wrapper">
+                            <div class="preview-controls">
+                                <p-button (click)="prevStep()" class="close-preview" icon="pi pi-angle-left"></p-button>
+                                <p-button class="close-preview" icon="pi pi-times"></p-button>
+                            </div>
+                            <div class="placeholder-image">
+                                <img alt="" src="app-assets/images/image-placeholder.jpg"/>
+                            </div>
+                            <div class="preview-hint">
+                                <p>The image creative used in your ad will show up</p>
+                            </div>
+
+                            <div class="preview-card-wrapper">
+                                <div *ngIf="activeStep === 0" class="info-step">
+                                    <div class="store-logo">
+                                        <img alt="" [src]="configuration?.staticData?.storeInfo?.logo || 'app-assets/images/store-logo.webp'"/>
+                                    </div>
+                                    <h1>{{configuration?.staticData?.storeInfo?.name}}</h1>
+                                    <p>
+                                        {{ controls?.question_page_custom_headline?.value }}
+                                    </p>
+                                </div>
+
+                                <!-- start contact step -->
+
+                                <div *ngIf="activeStep === 1" class="contact-step">
+                                    <h1>Contact Information <i class="pi pi-info"></i></h1>
+                                    <div class="form-contact flex flex-column gap-4">
+                                        <ng-container *ngFor="
+                        let question of questions.controls;
+                        trackBy: optionsTrackby;
+                        let i = index
+                      " formArrayName="questions">
+                                            <ng-container [formGroupName]="i">
+                                                <div *ngIf="
+                            question.value.controlType !==
+                              customQuestionEnum.SHORT &&
+                            question.value.controlType !==
+                              customQuestionEnum.MULTIPLE">
+                                                    <div class="flex flex-column">
+                                                        <label htmlFor="email">{{
+																													question.value.label
+                                                            }}</label>
+                                                        <input aria-describedby="form" class="shadow-none" id="email"
+                                                               pInputText placeholder="Enter your answer." type="email"/>
+                                                        <span *ngIf="question.value.type === questionEnum.PHONE"
+                                                              class="phone-hint">
+                                                            Store Name may contact you to follow up</span>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                                <!-- end contact step -->
+                                <ng-container *ngIf="activeStep === 2">
+                                    <!-- start response step-->
+
+                                    <div class="response-step flex flex-column gap-4">
+                                        <!--                                  <div class="card-headline">-->
+                                        <!--                                    <div class="store-logo">-->
+                                        <!--                                      <img alt="" src="app-assets/images/store-logo.webp"/>-->
+                                        <!--                                    </div>-->
+                                        <!--                                    <span class="mb-4">GetResponse</span>-->
+                                        <!--                                    <h3>Headline Text</h3>-->
+                                        <!--                                  </div>-->
+                                        <ng-container
+                                            *ngFor="let question of questions.controls; trackBy: optionsTrackby; let i = index"
+                                            formArrayName="questions">
+                                            <ng-container [formGroupName]="i">
+                                                <div *ngIf="question.value.controlType === customQuestionEnum.SHORT"
+                                                     class="card-color">
+                                                    <div class="flex flex-column">
+                                                        <label htmlFor="email">{{
+																													question.value.label
+                                                            }}</label>
+                                                        <input aria-describedby="form" class="shadow-none" id="email"
+                                                               pInputText placeholder="Enter your answer." type="email"/>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                        <ng-container
+                                            *ngFor="let question of questions.controls; trackBy: optionsTrackby; let i = index"
+                                            formArrayName="questions">
+                                            <ng-container [formGroupName]="i">
+                                                <div *ngIf="
+                          question.value.controlType ===
+                          customQuestionEnum.MULTIPLE
+                        " class="card-color">
+                                                    <h3 class="mb-4">
+                                                        {{ question.value.label }}
+                                                    </h3>
+                                                    <div class="btn-color-group flex flex-column gap-4">
+                                                        <ng-container *ngFor="let answer of question.get('options')['value'];let x = index">
+                                                            <p-button>{{answer.label}}</p-button>
+                                                        </ng-container>
+
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                    </div>
+
+                                    <!-- end response step-->
+                                    <!-- start review step -->
+
+                                </ng-container>
+
+                                <div *ngIf="activeStep === 3"
+                                     class="review-step flex flex-column gap-4">
+                                    <div class="card-review">
+                                        <h3>Review Your Info</h3>
+                                        <span>Personel Info</span>
+                                        <h3>Email</h3>
+                                        <h3>Full name</h3>
+                                        <h3>Phone number</h3>
+                                    </div>
+                                    <div class="card-privacy">
+                                        <h3>Review Your Info</h3>
+                                        <p>
+                                            By clicking submit, you agree to send your info to store name who agrees to use it according to their
+                                            privacy policy. Facebook will also use it subject to our
+                                            Data policy, including to auto-fill forms for
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- end review step -->
+
+                                <!-- start success step -->
+
+                                <div *ngIf="activeStep === 4" class="success-step">
+                                    <div class="border-bottom-1 border-black-alpha-10 pb-4">
+                                        <div class="store-logo">
+                                          <img alt="" [src]="configuration?.staticData?.storeInfo?.logo || 'app-assets/images/store-logo.webp'"/>
+
+
+                                        </div>
+                                      <h1>{{configuration.staticData.storeInfo.name}}</h1>
+                                        <h3>
+                                            {{controls.thank_you_page.get('title').value}}
+                                        </h3>
+
+                                        <p>
+                                            {{controls.thank_you_page.get('body').value}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- end success step -->
+                            </div>
+                        </div>
+                        <div>
+                            <p-button (onClick)="nextStep()" *ngIf="activeStep < 4" class="link-to-website" label="Next"></p-button>
+
+                            <ng-container *ngIf="activeStep === 4">
+                                <ng-container *ngIf="controls.thank_you_page.get('button_type').value === 'VIEW_WEBSITE'">
+                                    <p-button (onClick)="nextStep()" class="link-to-website" [label]="controls.thank_you_page.get('button_text').value || 'View Website'"></p-button>
+                                </ng-container>
+                                <ng-container *ngIf="controls.thank_you_page.get('button_type').value === 'CALL_BUSINESS'">
+                                    <p-button (onClick)="nextStep()" class="link-to-website" [label]="controls.thank_you_page.get('button_text').value || 'Call Business'"></p-button>
+                                </ng-container>
+                                <ng-container *ngIf="controls.thank_you_page.get('button_type').value === 'DOWNLOAD'">
+                                    <p-button (onClick)="nextStep()" class="link-to-website" [label]="controls.thank_you_page.get('button_text').value || 'Download'"></p-button>
+                                </ng-container>
+                            </ng-container>
+
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!--        popup components-->
+        </div>
+    </ng-container>
+
+    <!--    footer-->
+    <ng-template pTemplate="footer">
+        <div class="pt-3">
+            <p-button (onClick)="closePopup()" class="popup-creation-cancel" label="Cancel" styleClass="p-button-text"></p-button>
+
+            <p-button (onClick)="submitForm()" class="popup-creation-confirm" label="Publish"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>

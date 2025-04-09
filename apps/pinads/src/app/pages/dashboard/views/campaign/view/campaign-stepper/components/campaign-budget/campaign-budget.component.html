@@ -1,0 +1,173 @@
+<header class="mb-4 header">
+  <h1 class="header__title">{{ 'createCampaign.budget.title' | translate }}</h1>
+  <p class="header__desc">{{ 'createCampaign.budget.subtitle' | translate }}</p>
+</header>
+<hr class="my-4 w-full border-1 border-gray-300" />
+<div
+  *ngIf="isLoading$ | async"
+  class="flex justify-content-center align-items-center"
+>
+  <p-progressSpinner
+    styleClass="w-3rem h-3rem"
+    strokeWidth="6"
+  ></p-progressSpinner>
+</div>
+<section class="flex flex-column gap-2">
+  <ng-container *ngIf="suggestionsBudgets$ | async as suggestionsBudgets">
+    <div class="flex align-items-center gap-2 my-3">
+      <p-radioButton
+        name="budget"
+        [value]="budgetOptions.SELECT_BUDGET"
+        [(ngModel)]="selectedOption"
+        (onClick)="onchangeBudgetOption()"
+        inputId="select_budget"
+      ></p-radioButton>
+      <label for="select_budget" class="font-semibold">{{
+        'createCampaign.budget.selectBudget' | translate
+      }}</label>
+    </div>
+    <ng-container *ngIf="selectedOption === budgetOptions.SELECT_BUDGET">
+      <div
+        [class.active]="selectedBudget === item.key"
+        (click)="onChangeBudget(item.key, item.value)"
+        *ngFor="let item of suggestionsBudgets | keyvalue"
+        class="budget-card p-3 border-round-xl"
+      >
+        <div class="flex justify-content-between align-items-center">
+          <p class="budget-card__title">
+            <span
+              class="capitalize text-lg"
+              tooltipPosition="bottom"
+              [pTooltip]="
+                'createCampaign.budget.recommendedTooltip' | translate
+              "
+              *ngIf="item.key === 'recommended'; else budgetLabel"
+              >{{ 'createCampaign.budget.' + item.key | translate }}
+
+              <span class="mx-2 pi pi-question-circle"></span>
+            </span>
+            <ng-template #budgetLabel>
+              <span class="capitalize text-lg"
+                >{{ 'createCampaign.budget.' + item.key | translate }}
+              </span>
+            </ng-template>
+            <span
+              class="text-sm font-normal text-gray-700 inline-block md:inline"
+            >
+              ${{ item.value.monthly_amount | dailyBudget }}
+              {{ 'createCampaign.budget.daily' | translate }}
+            </span>
+            <!-- <span class="">EGP</span> {{ suggestionsBudgets[item].monthly_amount }} -->
+          </p>
+          <span
+            class="budget-card__info mt-2 text-base md:text-2xl white-space-nowrap"
+          >
+            ${{ item.value.monthly_amount }} /
+            <span class="text-sm md:text-lg">{{
+              'createCampaign.budget.monthly' | translate
+            }}</span>
+          </span>
+        </div>
+        <div class="flex justify-content-between align-items-center gap-2">
+          <p>
+            {{
+              'createCampaign.budget.estimatedClicksText'
+                | translate
+                  : {
+                      min_monthly_clicks: item.value.min_monthly_clicks,
+                      max_monthly_clicks: item.value.max_monthly_clicks
+                    }
+            }}
+          </p>
+          <button
+            (click)="
+              showBreakdown({
+                total: +item.value.monthly_amount,
+                serviceFees,
+                tax
+              });
+              $event.stopPropagation()
+            "
+            class="text-sm btn p-button p-button-text py-1 px-2"
+          >
+            {{ 'createCampaign.budget.showBreakdown' | translate }}
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <div class="flex align-items-center gap-2 my-3">
+      <p-radioButton
+        name="budget"
+        [value]="budgetOptions.CUSTOM_BUDGET"
+        [(ngModel)]="selectedOption"
+        (onClick)="onchangeBudgetOption()"
+        inputId="custom_budget"
+      ></p-radioButton>
+      <label for="custom_budget" class="font-semibold">{{
+        'createCampaign.budget.customBudget' | translate
+      }}</label>
+    </div>
+    <ng-container *ngIf="selectedOption === budgetOptions.CUSTOM_BUDGET">
+      <div class="flex gap-2">
+        <div class="form-field">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon text-lg bg-gray-200"> $</span>
+            <p-inputNumber
+              styleClass="form-field__input"
+              id="custom_budget_input"
+              [formControl]="customBudgetControl"
+              [placeholder]="'createCampaign.budget.customBudget' | translate"
+              [min]="minCustomBudget"
+              [max]="maxCustomBudget"
+              [maxlength]="4"
+            >
+            </p-inputNumber>
+            <span class="p-inputgroup-addon bg-gray-200">
+              <span class="text-sm md:text-lg">{{
+                'createCampaign.budget.monthly' | translate
+              }}</span>
+            </span>
+          </div>
+          <convertedin-control-errors [control]="customBudgetControl" />
+        </div>
+      </div>
+      <div class="px-3 my-2 w-full lg:w-8">
+        <p-slider
+          [step]="1"
+          [ngModel]="customBudgetControl.value"
+          (ngModelChange)="customBudgetControl.patchValue($event)"
+          [min]="minCustomBudget"
+          [max]="maxCustomBudget"
+        ></p-slider>
+      </div>
+      <div>
+        <span class="text-sm font-normal text-gray-700 inline-block md:inline">
+          ${{ customBudgetControl.value | dailyBudget }}
+          {{ 'createCampaign.budget.daily' | translate }}
+        </span>
+        <p class="mt-2">
+          {{
+            'createCampaign.budget.estimatedClicksText'
+              | translate
+                : {
+                    min_monthly_clicks: customBudgetControl.value |customBudgetEstimatedClicks :recommendedBudget.monthly_amount:recommendedBudget.min_monthly_clicks,
+                    max_monthly_clicks:customBudgetControl.value |customBudgetEstimatedClicks:recommendedBudget.monthly_amount:recommendedBudget.max_monthly_clicks,
+                  }
+          }}
+        </p>
+        <button
+            (click)="
+              showBreakdown({
+                total: +customBudgetControl.value!,
+                serviceFees,
+                tax
+              });
+            "
+            class="text-sm btn p-button p-button-text py-1 px-2"
+          >
+            {{ 'createCampaign.budget.showBreakdown' | translate }}
+          </button>
+      </div>
+    </ng-container>
+  </ng-container>
+</section>

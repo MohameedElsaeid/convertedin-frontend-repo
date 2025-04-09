@@ -1,0 +1,31 @@
+::ng-deep .flyerz__currency-input {
+  .p-inputnumber-input {
+    padding-inline-end: 3.45rem;
+    background: var(--convertedin-gray-100) !important;
+    border-color: var(--convertedin-gray-200) !important;
+
+    &::placeholder {
+      color: #8f9bb3;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  .absolute {
+    top: 15px;
+    color: var(--convertedin-gray-600);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.3px;
+  }
+
+  .left {
+    left: 15px;
+  }
+
+  .right {
+    right: 15px;
+  }
+}

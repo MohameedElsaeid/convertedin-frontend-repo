@@ -1,0 +1,47 @@
+<div class="flex justify-content-between" *ngIf="triggers$ | async as triggers">
+  <!-- Flow name -->
+  <div class="flex gap-2 align-items-center">
+    <label>{{ 'automation.flow-name' | translate }}</label>
+
+    <p>{{ activeForm?.value?.name || 'Campaign Name' }}</p>
+  </div>
+
+  <!-- Actions -->
+  <div class="flex gap-2">
+    <button
+      class="p-button-secondary p-button-text workflow__discard-btn"
+      pButton
+      pRipple
+      type="button"
+      (click)="discardWorkflow()"
+    >
+      {{ 'automation.discard' | translate }}
+    </button>
+
+    <button
+      class="p-button-outlined p-button-secondary flex gap-2"
+      pButton
+      pRipple
+      type="button"
+      (click)="saveDraft()"
+      [disabled]="loaders.draft || !activeForm.valid"
+    >
+      {{ 'automation.save-draft' | translate }}
+
+      <i class="pi pi-spin pi-spinner" *ngIf="loaders.draft"></i>
+    </button>
+
+    <button
+      (click)="submitWorkFlow(triggers)"
+      pButton
+      pRipple
+      type="button"
+      [disabled]="loaders.publish || !activeForm.valid"
+      class="workflow__submit-btn justify-content-center flex gap-2"
+    >
+      {{ 'automation.submit' | translate }}
+
+      <i class="pi pi-spin pi-spinner" *ngIf="loaders.publish"></i>
+    </button>
+  </div>
+</div>

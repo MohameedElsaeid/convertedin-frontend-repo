@@ -1,0 +1,19 @@
+::ng-deep .landing {
+  &__footer {
+    padding: 52px;
+    background: var(--convertedin-gray-50);
+
+    h6 {
+      color: var(--convertedin-gray-800);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: -0.228px;
+    }
+  }
+
+  &__copyright {
+    color: var(--flyerz-primary-color) !important;
+    margin-top: 12px;
+  }
+}

@@ -1,0 +1,13 @@
+.business-card{
+  cursor: pointer;
+  border: 1px solid var(--convertedin-gray-300);
+  border-radius: 0.5rem;
+  color: var(--convertedin-gray-700);
+  font-weight: 500;
+  &.active{
+    border: 1px solid var(--map-ad-primary-color);
+  }
+  &__icon{
+    opacity: 54%;
+  }
+}

@@ -1,0 +1,32 @@
+label {
+  color: var(--convertedin-gray-700);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+p {
+  color: var(--convertedin-gray-700);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.end-date {
+  direction: ltr !important;
+}
+
+h4,
+h5 {
+  color: var(--convertedin-gray-800);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.ad-details__suggestion {
+  color: var(--convertedin-gray-600);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}

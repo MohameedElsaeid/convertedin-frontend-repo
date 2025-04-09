@@ -1,0 +1,69 @@
+<div class="flex flex-column gap-5 mb-7" *ngIf="authData$ | async as authData">
+  <!-- Security banner -->
+  <div
+    class="flex gap-2 py-3 px-4 align-items-center otp__security-banner"
+    *ngIf="showSecurityBanner"
+  >
+    <img
+      src="assets/icons/common/warning-circle.svg"
+      width="42"
+      height="42"
+      alt="warning-icons"
+    />
+    <div class="flex flex-column">
+      <p>{{ 'auth.password.too-many-title' | translate }}</p>
+      <label>{{ 'auth.password.too-many-subtitle' | translate }}</label>
+    </div>
+  </div>
+
+  <convertedin-header
+    [title]="'auth.otp.title' | translate"
+    [subtitle]="'auth.otp.subtitle' | translate"
+  >
+    &nbsp;<span class="otp__phone"
+      >({{ authData.countryCode }}) {{ authData.mobileNumber }}</span
+    >
+  </convertedin-header>
+
+  <div class="otp__verify-error flex" *ngIf="errorMsg">
+    <i class="pi pi-info-circle"></i> <span>{{ errorMsg }}</span>
+  </div>
+
+  <!-- OTP input -->
+  <ngx-otp-input
+    #otpComponent
+    [config]="otpInputConfig"
+    class="otp__input"
+    (otpChange)="inputChange($event)"
+  ></ngx-otp-input>
+
+  <!-- Counter -->
+  <p *ngIf="countdown > 0">
+    {{ 'auth.otp.countdown' | translate }}&nbsp;
+    <span class="otp__phone">00 : {{ getCountdown() }}</span>
+  </p>
+
+  <!-- Resend btn -->
+  <button
+    *ngIf="countdown === 0"
+    type="button"
+    class="p-button-link otp__resend-btn"
+    pButton
+    (click)="resend(); getOtp()"
+  >
+    {{ 'auth.otp.resend-btn' | translate }}
+  </button>
+
+  <!-- Submit btn -->
+  <button
+    pButton
+    type="button"
+    class="otp__submit-btn gap-2"
+    [disabled]="otp!.length < 6 || isLoading"
+    (click)="changePhone ? verifyOtpForNumberChanger() : verifyOtp()"
+  >
+    {{ 'auth.otp.confirm-btn' | translate }}
+
+    <i class="pi pi-spin pi-spinner" *ngIf="isLoading"></i>
+  </button>
+</div>

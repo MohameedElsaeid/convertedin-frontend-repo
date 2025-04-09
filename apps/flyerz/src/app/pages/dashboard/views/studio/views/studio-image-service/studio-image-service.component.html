@@ -1,0 +1,39 @@
+<div
+  class="flex flex-column studio__images mt-5 flex-grow-1"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="getImages()"
+  [scrollWindow]="false"
+>
+  <!-- Header -->
+  <convertedin-studio-service-header mode="image" />
+
+  <!-- User images -->
+  <div
+    *ngIf="(userItems$ | async) || data"
+    class="flex gap-3 flex-wrap flex-grow-1 pb-6"
+    [ngClass]="{
+      'justify-content-center align-items-center': data && data.length === 0
+    }"
+  >
+    <ng-container *ngIf="data && data.length > 0">
+      <convertedin-image-service-card
+        *ngFor="let item of data"
+        [serviceItem]="item"
+      />
+    </ng-container>
+
+    <ng-container *ngIf="data && data.length === 0">
+      <div class="flex flex-column gap-3">
+        <ng-lottie [options]="options" width="300px"></ng-lottie>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Loader -->
+  <convertedin-spinner
+    *ngIf="isLoading"
+    class="flex flex-grow-1 align-items-center justify-content-center"
+  />
+</div>

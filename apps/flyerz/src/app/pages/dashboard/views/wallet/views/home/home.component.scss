@@ -1,0 +1,77 @@
+::ng-deep .dashboard-wallet {
+  &__insight {
+    p {
+      order: 1;
+    }
+
+    & > div {
+      order: 2;
+    }
+  }
+
+  &__funds-btn {
+    padding: 1rem !important;
+    height: fit-content !important;
+    border-radius: 8px !important;
+    background-color: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    text-decoration: none;
+    &,
+    i {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 130%;
+    }
+  }
+
+  &__secondary-btn {
+    padding: 1rem !important;
+    height: fit-content !important;
+    border-radius: 8px !important;
+    text-decoration: none;
+    &,
+    i {
+      color: var(--convertedin-gray-500) !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 130%;
+    }
+  }
+}
+
+.dashboard-wallet {
+  padding-top: 12px;
+  max-height: 100%;
+  padding-inline-end: 16px;
+  overflow-y: scroll;
+
+  &__balance {
+    border-radius: 16px;
+    background: var(--flyerz-primary-100);
+    padding: 24px 27px;
+    width: fit-content;
+    // max-width: 21.4375rem;
+
+    h1 {
+      color: var(--convertedin-gray-800);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: -0.2px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      color: var(--convertedin-gray-900);
+      font-size: 60px;
+      font-weight: 800;
+      line-height: 105%;
+      letter-spacing: -1.3px;
+
+      span {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+}

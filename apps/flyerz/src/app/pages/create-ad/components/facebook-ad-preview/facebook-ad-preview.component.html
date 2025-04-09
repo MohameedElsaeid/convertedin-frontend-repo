@@ -1,0 +1,42 @@
+<div class="flex flex-column facebook-preview__container">
+  <div class="flex flex-column gap-3 facebook-preview__header">
+    <div class="flex justify-content-between align-items-center">
+      <div class="flex gap-2 align-items-center">
+        <img [src]="pageImage" [alt]="pageName" width="24" height="24" />
+
+        <div class="flex flex-column gap-1">
+          <p class="page-name">{{ pageName }}</p>
+
+          <p class="flex align-items-center">
+            Sponsored &nbsp;
+            <img width="7" height="7" src="assets/icons/create-ad/world.png" />
+          </p>
+        </div>
+      </div>
+
+      <i class="pi-ellipsis-h pi"></i>
+    </div>
+
+    <!-- Post title -->
+    <p class="page-title">{{ postTitle }}</p>
+  </div>
+
+  <!-- Post image -->
+  <figure
+    class="flex flex-column align-items-center justify-content-center bg-white"
+  >
+    <img [src]="postImage" class="max-w-full" />
+  </figure>
+
+  <div
+    class="facebook-preview__footer flex justify-content-between align-items-center"
+  >
+    <div class="flex flex-column flex-grow-1">
+      <p class="page-url">{{ url }}</p>
+      <p class="page-address">{{ postAddress }}</p>
+      <p class="page-description">{{ postDescription }}</p>
+    </div>
+
+    <button>Shop Now</button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.beta-badge {
+  padding: 0.3rem;
+  border: 1px solid var(--convertedin-gray-300);
+  background-color: var(--convertedin-gray-200);
+}
+.active {
+  border: 2px solid var(--converted-pay-primary-color) !important;
+}
+.banner {
+  background-color: var(--converted-pay-warning-100);
+}
+::ng-deep.pi-exclamation-triangle {
+  color: var(--converted-pay-warning-700);
+}

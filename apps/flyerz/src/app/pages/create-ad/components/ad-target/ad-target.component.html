@@ -1,0 +1,54 @@
+<ng-container *ngIf="isTargetingCompleted">
+  <!-- Header -->
+  <convertedin-create-ad-header
+    [title]="'create-ad.ad-target.title' | translate"
+    [subtitle]="'create-ad.ad-target.subtitle' | translate"
+  />
+
+  <ng-container *ngIf="adData$ | async as adData">
+    <div class="create-ad__data-container flex-grow-1 w-full flex">
+      <div
+        class="create-ad__ai-container align-self-stretch flex flex-column gap-6 create-ad__details-container"
+      >
+        <convertedin-ad-selection-history [adData]="adData" />
+
+        <!-- Behaviour section -->
+        <convertedin-ai-data-section
+          (openPopup)="_popups['behaviours']($event)"
+          icon="assets/icons/create-ad/paper.svg"
+          [items]="adData.adSuggestions?.behaviors || []"
+          [title]="'create-ad.ad-target.behaviour' | translate"
+          nameDataKey="name"
+          (suggestionDelete)="deleteBehaviour($event)"
+        />
+        <!-- Demographic section -->
+        <convertedin-ai-data-section
+          icon="assets/icons/create-ad/flake.svg"
+          nameDataKey="name"
+          (openPopup)="_popups['demographics']($event)"
+          [items]="adData.adSuggestions?.demographics || []"
+          [title]="'create-ad.ad-target.demographic' | translate"
+          (suggestionDelete)="deleteDemographic($event)"
+        />
+        <!-- Interests section -->
+        <convertedin-ai-data-section
+          (openPopup)="_popups['interests']($event)"
+          icon="assets/icons/create-ad/radar.svg"
+          nameDataKey="name"
+          [items]="adData.adSuggestions?.interests || []"
+          [title]="'create-ad.ad-target.interests' | translate"
+          (suggestionDelete)="deleteInterest($event)"
+        />
+      </div>
+
+      <convertedin-ad-sidebar />
+    </div>
+  </ng-container>
+</ng-container>
+
+<!-- Targeting selection section -->
+<convertedin-ad-targeting-selection
+  *ngIf="!isTargetingCompleted"
+  [message]="post.postMessage"
+  (completed)="isTargetingCompleted = true"
+/>

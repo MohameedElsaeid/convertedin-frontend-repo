@@ -1,0 +1,25 @@
+<h1 class="header__title text-center mb-4">{{ 'faq.title' | translate }}</h1>
+<section class="w-full lg:w-8 mx-auto">
+  <p-accordion [multiple]="true" [activeIndex]="[3]">
+    <p-accordionTab
+      [header]="item.question"
+      *ngFor="let item of 'faq.questions' | translate; let last = last"
+    >
+      <p>
+        {{ item.answer }}
+      </p>
+      <div *ngIf="last" class="">
+        <img
+          class="w-full md:w-6 h-auto object-contain"
+          src="assets/images/faq/ads-ex-1.webp"
+          alt="ads-example"
+        />
+        <img
+          class="w-full md:w-6 h-auto object-contain"
+          src="assets/images/faq/ads-ex-2.webp"
+          alt="ads-example"
+        />
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</section>

@@ -1,0 +1,28 @@
+<convertedin-flow-builder-action-card-shell
+  icon="app-assets/icons/flow-builder/letter.svg"
+  [title]="formVal.stepName || ('automation.email-name' | translate)"
+  *ngIf="_formValue$ | async as formVal"
+>
+  <div class="filled-state-wrapper" *ngIf="formVal.html">
+    <div>
+      <h4>
+        {{ formVal.subject }}
+      </h4>
+      <span>{{ formVal.html.name }}</span>
+    </div>
+    <p-button class="btn-add-template" (onClick)="editEmail()">
+      <img src="app-assets/images/edit-pencil.svg" /> {{ 'Edit' | translate }}
+    </p-button>
+  </div>
+
+  <div class="empty-state-wrapper" *ngIf="!formVal.html">
+    <p-button class="btn-add-template" (onClick)="openPage()">
+      <i class="pi pi-plus"></i> {{ 'automation.add-email-design' | translate }}
+    </p-button>
+  </div>
+  <!--  &lt;!&ndash;  &lt;!&ndash;  &ndash;&gt;&ndash;&gt;-->
+
+  <!--      <pre>-->
+  <!--        formVal: {{ formVal | json }}-->
+  <!--      </pre>-->
+</convertedin-flow-builder-action-card-shell>

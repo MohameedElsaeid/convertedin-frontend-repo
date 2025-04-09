@@ -1,0 +1,96 @@
+<ng-container *ngFor="let binding of _chipsItems">
+  <!-- Track url btn -->
+  <ng-container
+    *ngIf="binding.id === 8"
+    [ngTemplateOutlet]="url"
+    [ngTemplateOutletContext]="{
+      $implicit: binding
+    }"
+  ></ng-container>
+
+  <!-- Any other attribute btn -->
+  <button
+    *ngIf="binding.id !== 8"
+    type="button"
+    pButton
+    class="p-button-outlined message-content__message-item"
+    (click)="addMessageBinding(binding)"
+  >
+    {{ binding.name }}
+  </button>
+</ng-container>
+
+<!-- Menu section -->
+<div class="relative">
+  <button
+    type="button"
+    pButton
+    class="p-button-outlined p-button-rounded message-content__message-item"
+    (click)="messagesMenu.toggle($event)"
+  >
+    +{{ _menuItems.length }}
+    <i class="pi pi-chevron-down ml-2"></i>
+  </button>
+  <!-- Extra options menu -->
+  <p-menu
+    #messagesMenu
+    [model]="_menuItems"
+    [popup]="true"
+    appendTo="body"
+    class="message-content__message-menu"
+  ></p-menu>
+</div>
+
+<!-- Track url template -->
+<ng-template #url let-value>
+  <div class="relative">
+    <!-- Url button -->
+    <button
+      type="button"
+      pButton
+      class="p-button-outlined p-button-rounded message-content__url-btn"
+      (click)="toggleInput()"
+    >
+      <i class="pi-link pi"></i>
+      <span class="ml-1">URL</span>
+
+      <i class="pi pi-chevron-down ml-2"></i>
+    </button>
+
+    <!-- Url input -->
+    <div
+      class="flex absolute message-content__url-container gap-2"
+      *ngIf="_showUrlInput$ | async"
+      [formGroup]="_form"
+    >
+      <div class="flex flex-column gap-2">
+        <input
+          pInputText
+          placeholder="Paste your URL Here"
+          formControlName="url"
+        />
+
+        <convertedin-control-errors
+          [control]="_form.get('url')"
+          *ngIf="_form.get('url').touched && !_form.get('url').valid"
+        />
+      </div>
+
+      <div class="flex">
+        <!-- Add button -->
+        <button type="button" class="mr-1" (click)="addTrackUrl(value)">
+          <img alt="save-icon" src="app-assets/icons/common/tick-circle.svg" />
+        </button>
+        <!-- Cancel button -->
+        <button type="button" (click)="toggleInput()">
+          <img
+            alt="cancel-icon"
+            src="app-assets/icons/common/close-circle.svg"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="seperator"></div> -->
+</ng-template>

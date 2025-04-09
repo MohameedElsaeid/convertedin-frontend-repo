@@ -1,0 +1,55 @@
+.ad-details {
+  &__inlearning-banner,
+  &__learnfail-banner {
+    border-radius: 8px;
+    border: 1px solid rgba(223, 223, 255, 0.8);
+    padding: 8px 12px;
+    background: #f7f7fc;
+
+    p {
+      color: var(--convertedin-gray-800) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 140%;
+    }
+
+    span {
+      color: var(--convertedin-gray-700);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+  }
+
+  &__learnfail-banner {
+    border: 1px solid rgba(253, 228, 212, 0.8) !important;
+    background: #fff8f3 !important;
+  }
+
+  &__inreview-banner {
+    border-radius: 6px;
+    background: #fffbeb;
+    padding: 8px 12px;
+
+    p {
+      color: var(--convertedin-gray-800) !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 140%;
+    }
+  }
+
+  &__rejection-banner {
+    border-radius: 6px;
+    border: 1px solid rgba(207, 22, 68, 0.04);
+    background: rgba(255, 241, 242, 0.4);
+    padding: 8px;
+
+    p {
+      color: #ec1354 !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 20px;
+    }
+  }
+}

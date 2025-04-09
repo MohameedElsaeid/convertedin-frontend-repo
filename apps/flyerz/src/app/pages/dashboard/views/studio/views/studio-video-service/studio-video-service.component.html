@@ -1,0 +1,27 @@
+<div class="mt-5 flex flex-column studio__video flex-grow-1">
+  <!-- Header -->
+  <convertedin-studio-service-header mode="video" />
+
+  <!-- User videos -->
+  <div
+    *ngIf="userItems$ | async as userItems"
+    class="flex gap-3 flex-wrap flex-grow-1"
+    [ngClass]="{
+      'justify-content-center align-items-center': userItems.data.length === 0
+    }"
+  >
+    <ng-container *ngIf="userItems.data.length > 0"> </ng-container>
+
+    <ng-container *ngIf="userItems.data.length === 0">
+      <div class="flex flex-column gap-3">
+        <img src="assets/images/empty-pages.png" alt="empty-view" />
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Loader -->
+  <convertedin-spinner
+    *ngIf="isLoading"
+    class="flex flex-grow-1 align-items-center justify-content-center"
+  />
+</div>

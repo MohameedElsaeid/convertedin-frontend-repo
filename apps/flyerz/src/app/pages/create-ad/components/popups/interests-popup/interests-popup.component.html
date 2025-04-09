@@ -1,0 +1,37 @@
+<convertedin-suggestion-popup-container
+  (searchChange)="searchChanged($event)"
+  *ngIf="currentInterests$ | async"
+  (save)="saveChanges()"
+>
+  <div
+    class="flex flex-column create-ad__suggestions"
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="getInterests()"
+    [scrollWindow]="false"
+  >
+    <!-- Suggestions container -->
+    <ng-container *ngIf="(interests$ | async) || _pagination.pagination.data">
+      <div
+        class="create-ad__suggestion-card flex justify-content-between"
+        *ngFor="let item of _pagination.pagination.data"
+      >
+        <p>{{ item.name }}</p>
+
+        <p-checkbox
+          (ngModelChange)="itemSelected(item)"
+          class="create-ad__checkbox"
+          [value]="item.id"
+          [(ngModel)]="interests"
+        />
+      </div>
+    </ng-container>
+
+    <!-- Loading spinner -->
+    <convertedin-spinner
+      class="flex justify-content-center"
+      *ngIf="isLoading"
+    />
+  </div>
+</convertedin-suggestion-popup-container>

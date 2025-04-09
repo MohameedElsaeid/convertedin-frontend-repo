@@ -1,0 +1,43 @@
+h5 {
+  color: var(--convertedin-gray-800);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 150%;
+  letter-spacing: -0.228px;
+  text-align: center;
+}
+
+::ng-deep .landing {
+  &__guide-step {
+    p:first-child {
+      color: var(--convertedin-gray-800);
+      font-weight: 700;
+    }
+  }
+
+  &__guide-timeline {
+    .p-timeline-event-opposite {
+      display: none !important;
+    }
+    .p-timeline-event-content {
+      text-align: unset !important;
+    }
+    .p-timeline-event-separator span {
+      padding: 4px 8px;
+      border: 1px solid var(--convertedin-gray-50);
+      border-radius: 50%;
+      background: var(--convertedin-gray-50);
+      color: var(--convertedin-gray-500);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: 0.341px;
+    }
+    .p-timeline-event-connector {
+      width: unset !important;
+      border-right: 2px dashed var(--convertedin-gray-200);
+      background-color: unset !important;
+    }
+  }
+}

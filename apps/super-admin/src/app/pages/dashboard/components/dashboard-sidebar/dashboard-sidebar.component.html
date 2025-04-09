@@ -1,0 +1,30 @@
+<nav class="h-full px-2 py-3 side-nav flex flex-col">
+  <img src="assets/images/menu-logo.svg" class="w-32 py-3 mx-auto" alt="logo" />
+  <div class="px-2 flex flex-col flex-1 mt-3">
+    <ul class="nav-container flex-1">
+      <li *ngFor="let route of routeList">
+        <a
+          *ngIf="route.isRoute"
+          class="nav-item"
+          [routerLink]="route.link"
+          routerLinkActive="active"
+        >
+          <img [src]="route.icon" class="w-5 h-5" [alt]="route.label" />
+          {{ route.label }}
+        </a>
+        <a *ngIf="!route.isRoute" class="nav-item" [href]="route.link">
+          <img [src]="route.icon" class="w-5 h-5" [alt]="route.label" />
+          {{ route.label }}
+        </a>
+      </li>
+    </ul>
+    <div class="nav-container">
+      <p-button
+        (onClick)="logout()"
+        styleClass="p-button-sm p-button-secondary p-button-outlined w-full justify-center !p-2"
+      >
+        <span class="pi pi-sign-out mx-2"></span>Logout
+      </p-button>
+    </div>
+  </div>
+</nav>

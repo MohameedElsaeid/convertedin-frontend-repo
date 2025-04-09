@@ -1,0 +1,52 @@
+::ng-deep .dashboard-settings__categories {
+  input {
+    background-color: var(--convertedin-gray-50) !important;
+    border-radius: 1rem !important;
+  }
+
+  &-submit {
+    width: 12.5rem !important;
+    background-color: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    border-radius: 8px !important;
+    justify-content: center;
+    padding: 1rem !important;
+  }
+
+  &-container {
+    row-gap: 1rem;
+  }
+}
+
+.dashboard-settings {
+  &__category {
+    border-radius: 16px;
+    border: 1px solid var(--convertedin-gray-200);
+    cursor: pointer;
+    height: 100%;
+    background-color: white;
+
+    p {
+      color: var(--convertedin-gray-800);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 150%;
+    }
+
+    img {
+      max-width: 24px;
+      max-height: 24px;
+    }
+  }
+
+  &__category-active {
+    background-color: var(--flyerz-primary-color);
+    p {
+      color: white !important;
+    }
+    img {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(0%)
+        saturate(7500%) hue-rotate(116deg) brightness(109%) contrast(109%);
+    }
+  }
+}

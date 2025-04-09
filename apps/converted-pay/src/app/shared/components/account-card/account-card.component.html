@@ -1,0 +1,19 @@
+<div class="flex justify-content-between align-items-start">
+  <img [src]="account.icon" [alt]="account.name" />
+  <div class="flex gap-2">
+    <span
+      *ngIf="account.isBetaVersion"
+      class="text-xs font-medium border-round-2xl beta-badge"
+      >{{ 'account.beta' | translate }}</span
+    >
+
+    <p
+      *ngIf="!account.isActive && account.userInWaitingList"
+      class="waiting-list"
+    >
+      {{ 'account.waitingList' | translate }}
+    </p>
+  </div>
+</div>
+<h5 class="text-sm text-primary-dark mt-2">{{ account.name }}</h5>
+<p class="text-xs text-primary-dark">{{ account.description }}</p>

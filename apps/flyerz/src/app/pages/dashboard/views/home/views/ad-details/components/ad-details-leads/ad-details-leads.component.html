@@ -1,0 +1,91 @@
+<!-- Header -->
+<div class="flex justify-content-between align-items-center">
+  <h4>{{ 'dashboard.ad-details.tabs.3' | translate }}</h4>
+
+  <!-- Download btn -->
+  <!-- <button pButton class="align-items-center gap-2 ad-details__download-btn">
+    <i class="pi-download pi"></i>
+    {{ 'common.download' | translate }}
+  </button> -->
+</div>
+
+<ng-container *ngIf="leads$ | async"></ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <!-- Empty state view -->
+  <div
+    *ngIf="data.length === 0"
+    class="flex flex-column gap-4 align-items-center justify-content-center mt-6"
+  >
+    <img src="assets/images/empty-list.png" width="156" height="124" />
+
+    <div
+      class="flex flex-column gap-2 align-items-center justify-content-center"
+    >
+      <h3>{{ 'dashboard.ad-details.leads-table.empty-title' | translate }}</h3>
+      <p>{{ 'dashboard.ad-details.leads-table.empty-subtitle' | translate }}</p>
+    </div>
+  </div>
+
+  <!-- Leads table -->
+  <p-table
+    [loading]="isTableLoading"
+    [value]="data"
+    class="ad-details__leads-table"
+    *ngIf="data.length > 0"
+  >
+    <!-- Table header -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'dashboard.ad-details.leads-table.name' | translate }}</th>
+        <th>
+          {{ 'dashboard.ad-details.leads-table.first-phone' | translate }}
+        </th>
+        <th>
+          {{ 'dashboard.ad-details.leads-table.second-phone' | translate }}
+        </th>
+        <th>{{ 'dashboard.ad-details.leads-table.email' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <!-- Table body -->
+    <ng-template pTemplate="body" let-lead>
+      <tr>
+        <td>{{ lead.name }}</td>
+        <td class="dir-ltr">{{ lead.firstPhoneNumber }}</td>
+        <td class="dir-ltr">{{ lead.secondPhoneNumber }}</td>
+        <td class="dir-ltr">{{ lead.email }}</td>
+      </tr>
+    </ng-template>
+
+    <!-- Table footer -->
+    <ng-template pTemplate="summary" *ngIf="nextPaginationUrl">
+      <div class="flex justify-content-between">
+        <button
+          class="p-button-outlined p-button-secondary gap-2"
+          pButton
+          (click)="goToPrevious()"
+          [disabled]="previousPaginationUrls.length === 0"
+        >
+          <i class="pi pi-arrow-{{ dir === 'rtl' ? 'right' : 'left' }}"></i>
+          {{ 'common.back-btn' | translate }}
+        </button>
+
+        <button
+          pButton
+          class="p-button-outlined p-button-secondary gap-2"
+          (click)="goToNext()"
+        >
+          {{ 'common.next-btn' | translate }}
+          <i class="pi pi-arrow-{{ dir === 'rtl' ? 'left' : 'right' }}"></i>
+        </button>
+      </div>
+    </ng-template>
+  </p-table>
+</ng-container>
+
+<!-- Loader -->
+<convertedin-spinner
+  *ngIf="isLoading"
+  class="flex flex-column flex-grow-1 justify-content-center align-items-center"
+/>

@@ -1,0 +1,30 @@
+{
+  "/api": {
+    "target": "https://app-stg.converted.in",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/ajax": {
+    "target": "https://app-stg.converted.in",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/dashboard/": {
+    "target": "https://app-stg.converted.in",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/lang/": {
+    "target": "https://assets-cdp-staging.s3.eu-west-1.amazonaws.com/uploads/translations",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

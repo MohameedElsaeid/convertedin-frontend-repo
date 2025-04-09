@@ -1,0 +1,69 @@
+<ng-container *ngIf="targetAudiance$ | async as audiance">
+  <form [formGroup]="form" class="flex flex-column gap-4">
+    <!-- Genders -->
+    <div class="flex create-ad__genders">
+      <div
+        *ngFor="let gender of genders"
+        (click)="updateGender(gender.value)"
+        class="flex justify-content-center create-ad__gender p-3 cursor-pointer"
+        [ngClass]="{
+          'create-ad__active-gender': activeGender! === gender.value
+        }"
+      >
+        {{ gender.label | translate }}
+      </div>
+    </div>
+
+    <p class="create-ad__age-title">
+      {{ 'create-ad.audiance-popup.age-title' | translate }}
+    </p>
+
+    <!-- Current age range selected -->
+    <p class="text-center">
+      {{ form.get('ageRange')!.value[0] }}
+      {{ 'create-ad.audiance-popup.year' | translate }} -
+      {{ form.get('ageRange')!.value[1] }}
+      {{ 'create-ad.audiance-popup.year' | translate }}
+    </p>
+
+    <!-- Age range slider -->
+    <div class="flex gap-3 create-ad__age-slider align-items-center">
+      <p>
+        {{ minAge }}
+        {{ 'create-ad.audiance-popup.year' | translate }}
+      </p>
+
+      <p-slider
+        [min]="minAge"
+        [max]="maxAge"
+        [range]="true"
+        formControlName="ageRange"
+        class="flex-grow-1"
+      />
+
+      <p>
+        + {{ maxAge }}
+        {{ 'create-ad.audiance-popup.year' | translate }}
+      </p>
+    </div>
+
+    <div class="create-ad__age-banner flex gap-2 align-items-center">
+      <img
+        src="assets/icons/dashboard/common/info-circle.svg"
+        alt="announcement-icon"
+      />
+
+      <p>{{ 'create-ad.audiance-popup.banner' | translate }}</p>
+    </div>
+  </form>
+</ng-container>
+
+<!-- Close dialog btn -->
+<button
+  (click)="closeDialog()"
+  pButton
+  type="button"
+  class="create-ad__cancel-btn justify-content-center"
+>
+  {{ 'common.cancel' | translate }}
+</button>

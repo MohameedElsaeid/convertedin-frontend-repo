@@ -1,0 +1,28 @@
+<header class="mb-4 header">
+  <h1 class="header__title">
+    {{ 'createCampaign.business.title' | translate }}
+  </h1>
+  <p class="header__desc">
+    {{ 'createCampaign.business.subtitle' | translate }}
+  </p>
+</header>
+<div
+  *ngIf="isLoading$ | async"
+  class="flex justify-content-center align-items-center"
+>
+  <p-progressSpinner
+    styleClass="w-3rem h-3rem"
+    strokeWidth="6"
+  ></p-progressSpinner>
+</div>
+<form [formGroup]="formGroup" class="flex-1">
+  <section class="flex flex-column gap-3">
+    <ng-container *ngFor="let business of businessList$ | async">
+      <select-business-card
+        (selectBusiness)="onSelectBusiness($event)"
+        [business]="business"
+        controlName="locations"
+      ></select-business-card>
+    </ng-container>
+  </section>
+</form>

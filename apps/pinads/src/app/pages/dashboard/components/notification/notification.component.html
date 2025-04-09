@@ -1,0 +1,77 @@
+<!-- Notifications btn -->
+<ng-container *ngIf="{ count: notificationCount$ | async } as notification">
+  <div
+    pBadge
+    [value]="'' + notification.count"
+    [class.hide-badge]="notification.count === 0"
+  >
+    <button
+      pButton
+      (click)="openPanel($event)"
+      class="convertedin__notification flex flex-column justify-content-center"
+    >
+      <i class="pi-bell pi"></i>
+    </button>
+  </div>
+
+  <!-- Overlay panel -->
+  <p-overlayPanel
+    #op
+    appendTo="body"
+    styleClass="convertedin__notification-overlay"
+  >
+    <ng-template pTemplate="content">
+      <div
+        class="p-3 flex justify-content-between align-items-center notifications__header bg-white"
+      >
+        <p>{{ 'notification.title' | translate }}</p>
+
+        <div class="flex gap-3 align-items-center">
+          <!-- Mark all as read btn -->
+          <button
+            class="align-items-center p-button gap-2 mark-btn"
+            (click)="markAllAsRead()"
+            [disabled]="(markAllLoading$ | async) || !notification.count"
+          >
+            {{ 'notification.markAllAsRead' | translate }}
+          </button>
+        </div>
+      </div>
+      <div
+        class="notification-container"
+        infiniteScroll
+        [scrollWindow]="false"
+        [infiniteScrollDistance]="1"
+        (scrolled)="onScroll()"
+      >
+        <ng-container *ngIf="notificationList$ | async as notificationList">
+          <div *ngIf="notificationList.length > 0; else emptyState">
+            <convertedin-notification-card
+              *ngFor="let item of notificationList"
+              [notificationItem]="item"
+              (click)="onClickNotification(item)"
+            ></convertedin-notification-card>
+          </div>
+        </ng-container>
+        <div
+          *ngIf="loading$ | async"
+          class="flex justify-content-center align-items-center h-full"
+        >
+          <p-progressSpinner
+            styleClass="w-3rem h-3rem"
+            strokeWidth="6"
+          ></p-progressSpinner>
+        </div>
+      </div>
+
+      <ng-template #emptyState>
+        <div class="flex-1 flex flex-column h-full justify-content-center align-items-center">
+            <img src="assets/images/notification-bell.png" alt="" />
+            <h4 class="text-center mt-3">
+              {{ 'notification.notificationsEmpty' | translate }}
+            </h4>
+        </div>
+      </ng-template>
+    </ng-template>
+  </p-overlayPanel>
+</ng-container>

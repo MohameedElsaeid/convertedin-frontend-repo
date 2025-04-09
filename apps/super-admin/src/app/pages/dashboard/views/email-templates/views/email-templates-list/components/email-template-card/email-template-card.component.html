@@ -1,0 +1,25 @@
+<div>
+
+  <img
+  [src]="template.image_url"
+  class="w-full h-40 max-h-40 object-cover"
+  alt="email template"
+  />
+  <h3 class="mt-4">{{ template.name }}</h3>
+</div>
+<!-- <p class="text-gray-600 text-sm">Template Description</p> -->
+<div class="flex justify-between items-center">
+  <div class="flex items-center">
+    <span class="text-gray-700 text-sm">Status :</span>
+    <p-inputSwitch
+      class="flex ms-2"
+      [(ngModel)]="template.is_active"
+      (onChange)="changeStatus($event)"
+    ></p-inputSwitch>
+  </div>
+  <p-button
+    (onClick)="deleteTemplate($event)"
+    icon="pi pi-trash"
+    styleClass="p-button-danger p-button-text "
+  ></p-button>
+</div>

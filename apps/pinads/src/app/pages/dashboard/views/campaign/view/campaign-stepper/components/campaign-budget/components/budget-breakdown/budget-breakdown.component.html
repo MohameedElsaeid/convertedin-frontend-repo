@@ -1,0 +1,43 @@
+<div class="px-3 pb-3 border-round-lg">
+  <div class="flex justify-content-between align-items-center gap-2">
+
+      <p class="header__title">
+          {{ 'createCampaign.budget.invoiceDetails' | translate }}
+        </p>
+        <button
+        (click)="close()"
+        class="pi pi-times icon-btn"
+      ></button>
+    </div>
+  <!-- ad amount -->
+  <div
+    class="flex justify-content-between align-items-center text-sm text-gray-700 mt-4"
+  >
+    <p>{{ 'createCampaign.budget.adAmount' | translate }}</p>
+    <span>${{ adAmount | number }}</span>
+  </div>
+
+  <!-- Fees -->
+  <div
+    class="flex justify-content-between align-items-center text-sm text-gray-700 mt-3"
+  >
+    <p>{{ 'createCampaign.budget.serviceFees' | translate }}</p>
+    <span>${{ data.serviceFees | number }} </span>
+  </div>
+  <div
+    class="flex justify-content-between align-items-center text-sm text-gray-700 mt-3"
+  >
+    <p>{{ 'createCampaign.budget.vatFess' | translate }}</p>
+    <span>${{ vat | number }} </span>
+  </div>
+
+  <hr class="my-3 w-full border-1 border-gray-300" />
+
+  <!-- Total amount -->
+  <div
+    class="flex justify-content-between align-items-center text-sm font-bold text-gray-700"
+  >
+    <p>{{ 'createCampaign.budget.totalAmount' | translate }}</p>
+    <span>${{ data.total | number }} </span>
+  </div>
+</div>

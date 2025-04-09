@@ -1,0 +1,48 @@
+.create-ai-image {
+  &__container {
+    max-height: 50vh;
+    overflow-y: scroll;
+    padding: 0 5%;
+
+    & > div {
+      row-gap: 1rem;
+    }
+  }
+
+  &__card {
+    border-radius: 6.482px;
+    border: 2px solid var(--convertedin-gray-200);
+    width: calc((100% - 72px) / 4);
+    background-color: white;
+    cursor: pointer;
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      color: var(--convertedin-gray-800);
+      // font-size: 9.722px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+
+    figure {
+      max-height: 200px;
+    }
+  }
+}
+
+figcaption {
+  color: var(--convertedin-gray-800);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.template__spinner {
+  height: 50vh;
+}

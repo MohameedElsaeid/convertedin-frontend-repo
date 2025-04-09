@@ -1,0 +1,31 @@
+.studio-service {
+  &__banner {
+    background-color: #f2f4f7;
+    color: var(--convertedin-gray-800);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+    border-radius: 8px;
+  }
+}
+
+h3 {
+  color: var(--convertedin-gray-900);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+h4 {
+  color: var(--convertedin-gray-600);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.3px;
+}
+
+a {
+  background-color: var(--flyerz-primary-color) !important;
+  text-decoration: none;
+}

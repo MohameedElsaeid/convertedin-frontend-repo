@@ -1,0 +1,142 @@
+<!-- Ads list -->
+<div
+  class="flex flex-column flex-grow-1 gap-3"
+  *ngIf="isFacebookConnected; else connectAccount"
+>
+  <!-- Ads list header -->
+  <div
+    class="flex justify-content-between dashboard-home__header align-items-center"
+  >
+    <h4 class="dashboard-home__ads-title">
+      {{ 'dashboard.home.ads.title' | translate }}
+    </h4>
+
+    <!-- Ad filters -->
+    <p-dropdown
+      [(ngModel)]="activeSort"
+      (ngModelChange)="sortChanged()"
+      [options]="adSorting"
+    >
+    </p-dropdown>
+  </div>
+
+  <!-- Empty ads section -->
+  <div
+    *ngIf="ads?.length === 0; else adCards"
+    class="flex flex-column flex-grow-1 gap-5 justify-content-center align-items-center home__ads-empty"
+  >
+    <figure>
+      <img alt="no-ads-logo" src="assets/icons/dashboard/home/ads.svg" />
+    </figure>
+
+    <div>
+      <h4 class="dashboard-home__create-title">
+        {{ 'dashboard.home.ads.empty-title' | translate }}
+      </h4>
+      <p class="dashboard-home__create-subtitle">
+        {{ 'dashboard.home.ads.empty-subtitle' | translate }}
+      </p>
+    </div>
+
+    <!-- Create new ad btn -->
+    <button
+      pButton
+      class="flex gap-2 dashboard-home__create-ad"
+      (click)="createAdClick.emit()"
+    >
+      <i class="pi pi-plus"></i>
+      <span>{{ 'dashboard.home.create-ad-btn' | translate }}</span>
+    </button>
+  </div>
+
+  <!-- Ads cards list -->
+  <ng-template #adCards>
+    <div class="flex flex-column gap-2">
+      <!-- Ad card -->
+      <div
+        class="dashboard-home__ad-card flex flex-column gap-3"
+        *ngFor="let ad of ads"
+      >
+        <div class="flex justify-content-between align-items-center">
+          <figure class="flex gap-3 align-items-center w-3">
+            <img alt="ad-image" [src]="ad.image" />
+
+            <figcaption>{{ ad.message }}</figcaption>
+          </figure>
+
+          <!-- Ad status -->
+          <div class="flex flex-column gap-2 w-1">
+            <label>
+              {{ 'dashboard.home.ads.status-title' | translate }}
+            </label>
+            <p class="{{ getAdStatusColor(ad) }}">
+              {{ 'dashboard.home.ad-sorting.' + ad.status.name | translate }}
+            </p>
+          </div>
+
+          <!-- Ad goal -->
+          <div class="flex flex-column gap-2 w-2">
+            <label>
+              {{ 'dashboard.home.ads.target-title' | translate }}
+            </label>
+            <p>{{ ad.goal.name }}</p>
+          </div>
+
+          <!-- Ad value -->
+          <div class="flex flex-column gap-2 w-1">
+            <label>
+              {{ 'dashboard.home.ads.value-title' | translate }}
+            </label>
+            <p>{{ ad.budget }} {{ currency$ | async }}</p>
+          </div>
+
+          <!-- Ad end date -->
+          <div class="flex flex-column gap-2 w-2">
+            <label>{{ 'dashboard.home.ads.end-title' | translate }} </label>
+            <p>{{ ad.endAt | date : 'dd-M-YYYY' }}</p>
+          </div>
+
+          <!-- Go to details button -->
+          <a
+            pButton
+            type="button"
+            routerLink="/my-dashboard/ad-details/{{ ad.id }}"
+          >
+            {{ 'common.details' | translate }}
+          </a>
+        </div>
+
+        <!-- Ad rejection reason -->
+        <p *ngIf="ad.status.id === 3" class="reject-reason">
+          {{ ad.rejection?.reason }}
+        </p>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Connect account -->
+<ng-template #connectAccount>
+  <div
+    class="flex flex-column flex-grow-1 gap-5 justify-content-center align-items-center home__ads-empty"
+  >
+    <figure>
+      <img alt="no-ads-logo" src="assets/images/not-connected.png" />
+    </figure>
+
+    <div>
+      <h4 class="dashboard-home__create-title">
+        {{ 'dashboard.home.ads.connect-account-title' | translate }}
+      </h4>
+    </div>
+
+    <!-- Connect account btn -->
+    <a
+      pButton
+      class="flex gap-2 dashboard-home__connect-fb"
+      routerLink="/my-dashboard/settings/accounts"
+    >
+      <span>{{ 'dashboard.home.ads.connect-fb-btn' | translate }}</span>
+    </a>
+  </div>
+</ng-template>

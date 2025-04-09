@@ -1,0 +1,15 @@
+<h3>{{ 'dashboard.ad-details.tips.title' | translate }}</h3>
+
+<div class="ad-details__tips-container flex flex-wrap gap-3">
+  <div
+    class="ad-details__tip flex gap-3 justify-content-between align-items-center"
+    *ngFor="let item of tips"
+  >
+    <div class="flex flex-column gap-1">
+      <p class="ad-details__tip-title">{{ item.title | translate }}</p>
+      <p class="ad-details__tip-subtitle">{{ item.subtitle | translate }}</p>
+    </div>
+
+    <img [src]="item.image" alt="tip-image" />
+  </div>
+</div>

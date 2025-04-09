@@ -1,0 +1,48 @@
+<div class="mobile-banner">
+  <div
+    *ngIf="isShowBanner"
+    class="banner flex gap-3 align-items-center justify-content-between p-3 border-round-lg md:hidden"
+  >
+    <div class="flex gap-3 align-items-center">
+      <img src="assets/icons/warning.svg" alt="warning" />
+      <p class="text-primary-dark font-semibold text-xs">
+        {{ 'dashboard.forBestExperience' | translate }}
+      </p>
+    </div>
+    <div class="cursor-pointer" (click)="isShowBanner = !isShowBanner">
+      <span class="pi pi-times"></span>
+    </div>
+  </div>
+  <!-- <div
+    *ngIf="isShowInfoBanner"
+    class="banner flex gap-3 align-items-center justify-content-between p-3 border-round-lg warning-banner"
+  >
+    <div class="flex gap-3 align-items-center">
+      <img src="assets/icons/warning.svg" alt="warning" />
+      <p
+        class="text-primary-dark font-semibold text-xs md:text-sm"
+        [innerHtml]="'warningBanner' | translate"
+      ></p>
+    </div>
+    <div class="cursor-pointer" (click)="isShowInfoBanner = !isShowInfoBanner">
+      <span class="pi pi-times"></span>
+    </div>
+  </div> -->
+</div>
+
+<aside class="hidden md:block">
+  <div convertedin-sidebar class="h-full"></div>
+</aside>
+<!-- <convertedin-dashboard-mobile-header></convertedin-dashboard-mobile-header>
+<main class="flex flex-column flex-grow-1 overflow-auto">
+  <router-outlet></router-outlet>
+</main> -->
+
+<div style="min-width: 0" class="flex-1 flex flex-column">
+  <convertedin-dashboard-mobile-header
+    class="block md:hidden"
+  ></convertedin-dashboard-mobile-header>
+  <main class="flex-1 overflow-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>

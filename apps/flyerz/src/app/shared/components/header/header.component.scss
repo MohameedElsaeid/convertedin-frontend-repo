@@ -1,0 +1,13 @@
+.flyerz {
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--convertedin-gray-900);
+  }
+
+  &__subtitle {
+    color: var(--convertedin-gray-700);
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,53 @@
+<!-- Audiance section -->
+<div class="create-ad__audiance flex gap-3 align-items-center p-3 flex-grow-1">
+  <img src="assets/images/target-2 1.png" alt="target-img" />
+
+  <div class="flex flex-column gap-1">
+    <h3>{{ 'create-ad.common.audiance-title' | translate }}</h3>
+    <h4 *ngIf="reachEstimate$ | async as reach; else loading">
+      {{ reach.data.average | number }}
+    </h4>
+
+    <ng-template #loading>
+      <i class="pi pi-spin pi-spinner text-center"></i>
+    </ng-template>
+  </div>
+</div>
+
+<!-- Platform -->
+<div class="flex flex-column gap-2 create-ad__card">
+  <h5>{{ 'create-ad.common.platform' | translate }}</h5>
+
+  <div class="flex gap-2 align-items-center">
+    <h6>{{ adData?.channel?.name }}</h6>
+
+    <figure class="flex">
+      <img
+        [src]="getSocialMediaImg(adData?.channel?.type?.id!)"
+        [alt]="adData?.channel?.name"
+        class="create-ad__platform-img"
+      />
+      <!-- Instgram image if mode is facebook & instagram -->
+      <img
+        *ngIf="adData?.channel?.type?.id === channelType.FACEBOOK_INSTAGRAM"
+        src="assets/icons/common/channels/Instagram.svg"
+        [alt]="adData?.channel?.name"
+        class="create-ad__platform-img"
+      />
+    </figure>
+  </div>
+</div>
+
+<!-- Target -->
+<div class="flex flex-column gap-2 create-ad__card">
+  <h5>{{ 'create-ad.common.target' | translate }}</h5>
+  <div class="flex gap-2 align-items-center">
+    <img
+      [src]="(adData?.goal)!.images['1x']"
+      [alt]="(adData?.goal)!.title"
+      class="create-ad__target-img"
+    />
+
+    <h6>{{ (adData?.goal)!.title }}</h6>
+  </div>
+</div>

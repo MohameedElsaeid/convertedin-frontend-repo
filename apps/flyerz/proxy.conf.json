@@ -1,0 +1,10 @@
+{
+  "/sdk": {
+    "target": "https://flyerz-stg.convertedin.com",
+    "secure": false,
+    "verbose": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "timeout": 900000
+  }
+}

@@ -1,0 +1,79 @@
+<p class="absolute">Upload and attach CSV files to cusotmers.</p>
+
+<div class="flex flex-column gap-5 mt-4">
+  <!-- Success banner -->
+  <div *ngIf="mode === 'success'" class="upload-csv__success-banner p-3">
+    File uploaded successfully
+  </div>
+
+  <!-- Error banner -->
+  <div *ngIf="mode === 'fail'" class="upload-csv__fail-banner p-3">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Uploading section -->
+  <div
+    class="upload-csv__container upload-csv__{{
+      mode
+    }} p-3 flex align-items-start"
+  >
+    <img src="app-assets/icons/people/csv-icon.svg" alt="csv-icon" />
+
+    <div class="flex-grow-1 flex flex-column">
+      <!-- File data -->
+      <h3 class="flex align-items-center gap-2">
+        {{ csvData.file.name }}
+        <i *ngIf="mode === 'success'" class="pi-check-circle pi"></i>
+      </h3>
+      <label class="mb-1">{{ csvData.file.size | fileSize : 'MB' }} </label>
+
+      <p-progressBar
+        [showValue]="false"
+        [value]="100"
+        [mode]="mode === 'pending' ? 'indeterminate' : 'determinate'"
+        styleClass="w-full"
+        class="w-full"
+      />
+    </div>
+  </div>
+
+  <!-- Action btns -->
+  <div
+    class="flex justify-content-{{
+      mode === 'success' ? 'end' : 'between'
+    }} align-items-center"
+  >
+    <!-- Back btn -->
+    <button
+      (click)="back()"
+      *ngIf="mode !== 'success'"
+      pButton
+      class="p-button-secondary p-button-outlined gap-2 align-items-center"
+    >
+      <i class="pi-arrow-left pi"></i>
+      Back
+    </button>
+
+    <div class="flex gap-2">
+      <!-- Cancel btn -->
+      <button
+        *ngIf="mode !== 'success'"
+        (click)="close()"
+        pButton
+        class="p-button-secondary p-button-outlined align-items-center"
+      >
+        Cancel
+      </button>
+
+      <!-- Done btn -->
+      <button
+        (click)="done()"
+        pButton
+        class="cin-primary-btn"
+        [disabled]="mode !== 'success'"
+      >
+        Done
+      </button>
+    </div>
+  </div>
+</div>

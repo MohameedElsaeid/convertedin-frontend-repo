@@ -1,0 +1,39 @@
+::ng-deep .workflow__picker {
+  padding: 1.25rem;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  top: 150%;
+}
+
+.workflow__action {
+  background-color: var(--cin-secondary-color);
+  width: 6.25rem;
+  height: 5.06rem;
+  gap: 5px;
+  border-radius: 8px;
+  border-color: transparent;
+
+  &:disabled {
+    filter: invert(95%) sepia(13%) saturate(51%) hue-rotate(190deg)
+      brightness(89%) contrast(92%);
+  }
+
+  p {
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+
+  &:hover {
+    border: 2px solid var(--cin-primary-color);
+    img,
+    p {
+      filter: invert(18%) sepia(68%) saturate(4487%) hue-rotate(217deg)
+        brightness(88%) contrast(115%);
+    }
+  }
+}

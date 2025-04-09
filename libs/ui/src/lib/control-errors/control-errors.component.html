@@ -1,0 +1,19 @@
+<ul
+  *ngIf="
+    control &&
+    control?.errors &&
+    (control.dirty || control.touched || formSubmitted)
+  "
+>
+  <ng-container *ngIf="!showOneOnly; else onlyOneTemp">
+    <li *ngFor="let error of control?.errors | keyvalue">
+      {{ $any(error)['value']['message'] }}
+    </li>
+  </ng-container>
+
+  <ng-template #onlyOneTemp>
+    <li *ngIf="error">
+      {{ error['message'] }}
+    </li>
+  </ng-template>
+</ul>

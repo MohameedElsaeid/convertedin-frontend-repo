@@ -1,0 +1,25 @@
+<div class="w-full flex justify-center">
+    <header class="bg-white w-10/12 md:rounded-full rounded-3xl  flex  items-center flex-col md:flex-row">
+        <img src="/assets/images/nav-logo.svg" class="mr-auto" alt="Logo">
+    
+        <nav [ngClass]="{'hidden': !menuOpen, 'flex': menuOpen, 'md:flex': true}" class="flex flex flex-col md:flex-row"> 
+                <div  class="inner-nav__links  flex flex-col md:flex-row">
+                    <a href="https://convertedin.com/">Overview</a>
+                    <a href="https://convertedin.com/Feature">Solutions</a>
+                    <a routerLink="calculator" routerLinkActive="active-link">ROI Calculator</a>
+                    <a routerLink="pricing" routerLinkActive="active-link" >Pricing</a>
+                    <a href="https://convertedin.com/About-Us">About Us</a>
+                    <div class="divider md:block hidden"></div>
+                    <a href="https://app.converted.in/login">Login</a>
+                </div>
+                <a class="solutions-link" routerLink="/calculator" fragment="introductionSection">Get Started</a>
+        </nav>
+        <button class="md:hidden" (click)="toggleMenu()">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+    </header>
+</div>
+
+

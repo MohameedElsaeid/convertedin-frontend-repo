@@ -1,0 +1,63 @@
+<div class="flex flex-column gap-5">
+  <convertedin-header
+    [title]="'dashboard.settings.connect-facebook.title' | translate"
+    [subtitle]="'dashboard.settings.connect-facebook.subtitle' | translate"
+  />
+
+  <!-- Connect facebook -->
+  <button
+    class="connect-facebook__submit-btn flex-row-reverse gap-2"
+    pButton
+    [disabled]="isLoading"
+    (click)="connectFb()"
+  >
+    <i class="pi pi-facebook"></i>
+    <span>
+      {{ 'dashboard.settings.connect-facebook.facebook-btn' | translate }}
+    </span>
+    <i *ngIf="isLoading" class="pi pi-spin pi-spinner"></i>
+  </button>
+
+  <!-- Permissions -->
+  <div class="flex flex-column gap-5 w-6">
+    <p>
+      {{ 'dashboard.settings.connect-facebook.permissions-title' | translate }}
+    </p>
+
+    <ul class="flex flex-column gap-3">
+      <li>
+        {{
+          'dashboard.settings.connect-facebook.permission-reason1' | translate
+        }}
+      </li>
+      <li>
+        {{
+          'dashboard.settings.connect-facebook.permission-reason2' | translate
+        }}
+      </li>
+      <li>
+        {{
+          'dashboard.settings.connect-facebook.permission-reason3' | translate
+        }}
+      </li>
+      <li>
+        {{
+          'dashboard.settings.connect-facebook.permission-reason4' | translate
+        }}
+      </li>
+      <li>
+        {{
+          'dashboard.settings.connect-facebook.permission-reason5' | translate
+        }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Support -->
+<p class="connect-facebook__support">
+  {{ 'dashboard.settings.connect-facebook.problem-logging' | translate }}&nbsp;
+  <a (click)="openChat()">
+    {{ 'dashboard.settings.connect-facebook.help-btn' | translate }}
+  </a>
+</p>

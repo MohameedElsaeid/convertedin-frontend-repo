@@ -1,0 +1,9 @@
+::ng-deep .flow-builder {
+  background-color: #f5f7fa;
+  max-height: calc(100vh - 76px);
+  background-image: url('../../../../../../../app-assets/images/flow-builder/Lines.png');
+
+  &__editor {
+    max-height: calc(100% - 79px);
+  }
+}

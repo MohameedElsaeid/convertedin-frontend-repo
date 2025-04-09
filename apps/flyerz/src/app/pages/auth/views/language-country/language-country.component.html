@@ -1,0 +1,79 @@
+<form [formGroup]="form" (submit)="submitForm()" class="flex flex-column gap-5">
+  <!-- Tile -->
+  <convertedin-header
+    [title]="'auth.language-country.title' | translate"
+    [subtitle]="'auth.language-country.subtitle' | translate"
+  />
+
+  <!-- Loading spinner -->
+  <convertedin-spinner *ngIf="isLoading" />
+
+  <!-- Country selection -->
+  <div
+    class="flex flex-column gap-1"
+    *ngIf="countries$ | async as countriesList"
+  >
+    <label class="language-country__label">
+      {{ 'auth.language-country.country' | translate }}
+    </label>
+
+    <p-dropdown
+      optionLabel="name"
+      optionValue="id"
+      formControlName="country"
+      styleClass="w-8 language-country__dropdown"
+      [options]="countriesList.data.countries"
+      (onChange)="changeSelectedCountry($event, countriesList.data.countries)"
+    >
+      <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center gap-2">
+          <!-- flag -->
+          <figure>
+            <img
+              [alt]="selectedCountry.name"
+              [src]="selectedCountry.flag"
+              class="max-w-full"
+            />
+          </figure>
+          <!-- Country name -->
+          <span>{{ selectedCountry.name }}</span>
+        </div>
+      </ng-template>
+
+      <ng-template let-country pTemplate="item">
+        <div class="flex align-items-center gap-2">
+          <!-- flag -->
+          <figure>
+            <img [alt]="country.name" [src]="country.flag" class="max-w-full" />
+          </figure>
+          <!-- Country name -->
+          <span>{{ country.name }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+
+    <convertedin-control-errors [control]="form.get('country')!" />
+  </div>
+
+  <!-- Language selection -->
+  <div class="flex flex-column gap-1">
+    <label class="language-country__label">
+      {{ 'auth.language-country.language' | translate }}
+    </label>
+
+    <p-dropdown
+      optionLabel="name"
+      optionValue="value"
+      formControlName="language"
+      styleClass="w-8 language-country__dropdown"
+      [options]="languages"
+    ></p-dropdown>
+
+    <convertedin-control-errors [control]="form.get('language')!" />
+  </div>
+
+  <!-- Submit btn -->
+  <button pButton type="submit" class="language-country__submit-btn">
+    {{ 'common.continue-btn' | translate }}
+  </button>
+</form>

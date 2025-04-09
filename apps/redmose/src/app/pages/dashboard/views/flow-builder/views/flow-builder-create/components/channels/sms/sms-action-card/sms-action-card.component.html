@@ -1,0 +1,25 @@
+<convertedin-flow-builder-action-card-shell
+  *ngIf="_formValue$ | async as formVal"
+  title="{{
+    (formVal?.name | trim : 30) || ('automation.sms-card-title' | translate)
+  }}"
+  (deleteClicked)="deleteCard()"
+  [hasError]="_activeForm.touched && !_activeForm.valid"
+  icon="app-assets/icons/flow-builder/msg.svg"
+>
+  <!-- Placeholder -->
+  <div
+    *ngIf="!formVal?.body; else value"
+    class="flex align-items-center justify-content-center gap-2 mb-2 workflow__sms"
+  >
+    <i class="pi pi-plus"></i>
+
+    <p>{{ 'automation.create-new' | translate }}</p>
+  </div>
+
+  <ng-template #value>
+    <p class="{{ getMessageDirection(formVal?.body?.previewMessage) }}">
+      {{ formVal?.body?.previewMessage }}
+    </p>
+  </ng-template>
+</convertedin-flow-builder-action-card-shell>

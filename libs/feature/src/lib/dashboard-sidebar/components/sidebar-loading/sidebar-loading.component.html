@@ -1,0 +1,45 @@
+<!-- Logo -->
+<a href="/" id="logo">
+  <figure class="sidebar__main-logo">
+    <img [src]="logo" alt="convertedin-logo" />
+  </figure>
+</a>
+
+<div class="sidebar__container flex flex-column flex-grow-1">
+  <div class="flex-grow-1 flex flex-column justify-content-between">
+    <div class="flex flex-column gap-1 mb-1">
+      <!-- Routes -->
+      <ng-container *ngFor="let item of routes?.routes">
+        <p class="sidebar__title">{{ item.title }}</p>
+        <ng-container
+          *ngTemplateOutlet="
+              loaders;
+              context: {
+                $implicit: item.routes,
+              }
+            "
+        ></ng-container>
+      </ng-container>
+    </div>
+
+    <div class="flex flex-column gap-1">
+      <!-- More Items -->
+      <ng-container *ngFor="let item of routes?.moreMenuRoutes">
+        <p class="sidebar__title">{{ item.title }}</p>
+        <ng-container
+          *ngTemplateOutlet="
+              loaders;
+              context: {
+                $implicit: item.routes,
+              }
+            "
+        ></ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- Routes template -->
+<ng-template let-item #loaders>
+  <div *ngFor="let loader of item" class="p-skeleton"></div>
+</ng-template>

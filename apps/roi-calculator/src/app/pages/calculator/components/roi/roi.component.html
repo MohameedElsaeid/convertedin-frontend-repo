@@ -1,0 +1,295 @@
+<section class="py-32" id="calculatorSection">
+    <h2 class="pb-16">Ready to get started?</h2>
+  
+    <div
+      class="metric-card w-full md:w-7/12 flex flex-col justify-center items-center"
+    >
+      <p-dropdown
+        [options]="metricsDropdown"
+        [(ngModel)]="isMetricsReady"
+        optionLabel="label"
+        optionValue="value"
+        (onChange)="metricAvailabilityChange()"
+      >
+      </p-dropdown>
+  
+      <p class="text-center pt-6">If you don’t have your metrics ready,</p>
+      <p class="text-center">
+        just enter your contact info and we will reach out for a free
+        consultation!
+      </p>
+    </div>
+  
+    <div *ngIf="!isMetricsReady" class="metric-card w-full md:w-7/12">
+      <div id="contact"></div>
+    </div>
+  
+    <div *ngIf="isMetricsReady" class="w-full">
+      <div class="w-full md:w-7/12 mx-auto">
+        <div class="metric-card blue-top">
+          <form
+          [ngSwitch]="currentStep"
+            [formGroup]="roiCalculator"
+            class="flex flex-col gap-4"
+            (ngSubmit)="calculator()"
+          >
+            <div class="flex flex-col gap-4" *ngSwitchCase="0">
+              <div class="form_control">
+                <label>Ecommerce Category</label>
+                <p-dropdown
+                  formControlName="industry"
+                  [options]="industriesDropdown"
+                  optionLabel="label"
+                  optionValue="value"
+                  placeholder="Select"
+                >
+                </p-dropdown>
+              </div>
+  
+              <div class="form_control">
+                <label>Channel to Calculate</label>
+                <p-dropdown
+                  formControlName="channel"
+                  [options]="channelsDropdown"
+                  optionLabel="label"
+                  optionValue="value"
+                  placeholder="Select"
+                >
+                </p-dropdown>
+              </div>
+            </div>
+  
+            <div class="flex flex-col gap-4" *ngSwitchCase="1">
+              <div class="form_control">
+                <label
+                  >Monthly Ad Spend
+                  <i
+                    class="pi pi-question-circle"
+                    pTooltip="Your estimated average monthly spend on the selected advertising channel"
+                    tooltipPosition="top"
+                  ></i>
+                </label>
+                <div class="flex items-center budget-wrapper">
+                  <p>USD</p>
+                  <p-inputNumber
+                    inputId="monthlyAdSpent"
+                    mode="decimal"
+                    [min]="0"
+                    [minFractionDigits]="2"
+                    [maxFractionDigits]="2"
+                    formControlName="adSpend"
+                  />
+                </div>
+              </div>
+  
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="form_control">
+                  <label
+                    >Cost Per Mille (CPM)
+                    <i
+                      class="pi pi-question-circle"
+                      pTooltip="Your average campaign cost for 1,000 impressions"
+                      tooltipPosition="top"
+                    ></i
+                  ></label>
+                  <p-inputNumber
+                    inputId="cpm"
+                    mode="decimal"
+                    [min]="0"
+                    [minFractionDigits]="2"
+                    [maxFractionDigits]="2"
+                    formControlName="CPM"
+                  />
+                </div>
+                <div class="form_control">
+                  <label
+                    >Click-Through Rate (CTR)
+                    <i
+                      class="pi pi-question-circle"
+                      pTooltip="The ratio of average campaign clicks to impressions"
+                      tooltipPosition="top"
+                    ></i
+                  ></label>
+                  <p-inputNumber
+                    inputId="ctr"
+                    mode="decimal"
+                    [min]="0"
+                    [minFractionDigits]="2"
+                    [maxFractionDigits]="3"
+                    formControlName="CTR"
+                  />
+                </div>
+              </div>
+  
+              <div class="form_control">
+                <label
+                  >Conversion Rate (CR)
+                  <i
+                    class="pi pi-question-circle"
+                    pTooltip="The percentage of campaign visitors who make a purchase"
+                    tooltipPosition="top"
+                  ></i
+                ></label>
+                <div class="flex items-center budget-wrapper">
+                  <p>%</p>
+                  <p-inputNumber
+                    inputId="cr"
+                    mode="decimal"
+                    [minFractionDigits]="2"
+                    [maxFractionDigits]="2"
+                    formControlName="CR"
+                    [min]="0"
+                    [max]="100"
+                  />
+                </div>
+              </div>
+            </div>
+  
+            <div class="flex flex-col gap-4" *ngSwitchCase="2">
+              <div class="form_control">
+                <label
+                  >Ad Duration
+                  <i
+                    class="pi pi-question-circle"
+                    pTooltip="The length of time that your current campaign has been active"
+                    tooltipPosition="top"
+                  ></i
+                ></label>
+                <div class="flex items-center budget-wrapper">
+                  <p>Months</p>
+                  <p-dropdown
+                    styleClass="!rounded-s-none"
+                    formControlName="adDuration"
+                    [options]="AdDurationList"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select Ad Duration"
+                  >
+                  </p-dropdown>
+                </div>
+              </div>
+            </div>
+  
+            <div class="flex flex-col gap-4" *ngSwitchCase="3">
+              <div class="form_control">
+                <label
+                  >Business Email (If You Would Like To Receive Your
+                  Report)</label
+                >
+                <input type="text" pInputText formControlName="email" />
+              </div>
+            </div>
+
+            <div  *ngSwitchCase="4">
+              <p class="text-center">Thank you, your Potential Uplift is now displayed below!</p>
+            </div>
+  
+            <div class="navigation">
+              <button *ngIf="currentStep > 0 && currentStep < steps.length - 1" type="button" (click)="prevStep()">
+                Previous
+              </button>
+              <button
+                *ngIf="currentStep < steps.length - 2"
+                type="button"
+                (click)="nextStep()"
+                [disabled]="
+                  roiCalculator.value
+                    | calculatorStepValidation
+                      : steps[currentStep]
+                "
+              >
+                Next
+              </button>
+              <button
+                *ngIf="currentStep === steps.length - 2"
+                type="submit"
+                [disabled]="!roiCalculator.valid"
+              >
+                Submit
+              </button>
+              <button *ngIf="currentStep === steps.length - 1" type="button" (click)="reset()">
+                Reset Calculator
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="potential-block mx-auto mt-14 px-5">
+        <h2 class="text-center mt-24">Your Potential Uplift!</h2>
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 w-full md:w-10/12 mx-auto gap-5"
+        >
+          <div class="potential-block__preview-block flex flex-col gap-5">
+            <span class="preview-title">ROAS</span>
+              <div class="flex justify-between current-progress preview-result">
+                <span>Current</span>
+                <h6>{{roas}}X</h6>
+              </div>
+  
+              <div class="flex justify-between potential-progress preview-result">
+                <span>With Convertedin </span>
+                <h6 class="blue">{{enhancedRoas}}X</h6>
+              </div>
+          </div>
+          <div class="potential-block__preview-block flex flex-col gap-5">
+            <span class="preview-title">Revenue</span>
+            <div class="preview-result flex items-center justify-between current-progress">
+              <span>Current</span>
+              <h3>${{revenue}}</h3>
+            </div>
+            <div class="preview-result flex items-center justify-between potential-progress">
+              <span>With Convertedin</span>
+              <h3 class="blue">${{revenueConverted}}</h3>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="roas < enhancedRoas" class="potential-block__result-block mx-auto w-full md:w-10/12">
+          <h3>Enhance Your ROAS!</h3>
+          <br />
+          <p>
+            In today’s competitive marketplace, boosting your ROAS is crucial. As
+            industry averages climb and ad efficiency proves the ultimate measure
+            of success, Convertedin can enhance your ROAS, aiming for a industry
+            benchmark of <span class="blue">{{benchMark}}x</span> to elevate your business
+            to new heights!
+          </p>
+          <br />
+          <p>
+            Now that you know your potential, we are thrilled to share best
+            practices on how you can navigate the market to supercharge your ROAS.
+          </p>
+        </div>
+        <div *ngIf="roas > enhancedRoas" class="potential-block__result-block mx-auto w-full md:w-10/12">
+          <h3>Scale Your ROAS Even Higher!</h3>
+          <br />
+          <p>
+            It’s time to surpass your peers’ performance and aim for your industry
+            benchmark of <span class="blue">{{benchMark}}x</span> ROAS with Convertedin!
+          </p>
+          <br />
+          <p>
+            Increase your ad efficiency, reach, and conversion rates with our
+            globally proven approach and solution!
+          </p>
+          <br />
+          <p>
+            Now that you know your potential, we are thrilled to share best
+            practices on how you can navigate the market to supercharge your ROAS.
+          </p>
+        </div>
+  
+        <a routerLink="/calculator" fragment="calenderSection" class="schedule-btn mx-auto mt-20 mb-14"
+          >Schedule a Consultation!</a
+        >
+  
+        <em class="text-center mx-auto w-full md:w-7/12"
+          >*ROAS and Revenue “With Convertedin” values are representative
+          estimates based on inputted metrics and historic ad performance with
+          Convertedin, assuming a minimum 12 month term of utilizing the platform
+          and associated Managed Services</em
+        >
+      </div>
+    </div>
+  </section>
+  

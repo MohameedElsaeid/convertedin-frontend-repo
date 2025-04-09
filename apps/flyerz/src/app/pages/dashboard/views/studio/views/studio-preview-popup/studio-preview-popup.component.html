@@ -1,0 +1,37 @@
+<!-- Image -->
+<figure class="my-3 flex justify-content-center align-items-center">
+  <img [src]="data.url" [alt]="data.name" />
+</figure>
+
+<div class="popup-actions flex align-items-center justify-content-between pt-4">
+  <!-- Copy to clipboard btn -->
+  <button
+    pButton
+    (click)="copyToClipboard()"
+    class="p-button-secondary p-button-outlined gap-2 align-items-center justify-content-center"
+  >
+    <i class="pi {{ copied ? 'pi-check' : 'pi-copy' }}"></i>
+    {{
+      (copied
+        ? 'dashboard.studio.popup.copy-success'
+        : 'dashboard.studio.popup.copy-' + mode
+      ) | translate
+    }}
+  </button>
+
+  <!-- Close popup btn -->
+  <div class="flex align-items-center">
+    <button
+      pButton
+      (click)="close()"
+      class="p-button-secondary p-button-outlined"
+    >
+      {{ 'common.cancel' | translate }}
+    </button>
+
+    <!-- Download image btn -->
+    <a [href]="data.url" download target="_blank" pButton>
+      {{ 'dashboard.studio.popup.download-' + mode | translate }}
+    </a>
+  </div>
+</div>

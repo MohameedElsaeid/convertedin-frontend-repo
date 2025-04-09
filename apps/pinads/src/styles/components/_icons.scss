@@ -1,0 +1,6 @@
+.pi-ar-rotate,
+.p-breadcrumb ul li.p-breadcrumb-chevron {
+  html[dir='rtl'] & {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,37 @@
+.dashboard-studio {
+  ::ng-deep &__tabs {
+    .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+      background-color: var(--flyerz-primary-50) !important;
+      color: var(--flyerz-primary-color) !important;
+      border-color: var(--flyerz-primary-color) !important;
+    }
+
+    .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+      padding: 12px !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 20px;
+      border-radius: unset !important;
+    }
+
+    .p-tabmenu-nav {
+      gap: 16px;
+      margin-inline-end: 16px;
+      border-width: 2px 0;
+    }
+  }
+
+  ::ng-deep &__popup {
+    .p-dialog-header {
+      padding: 24px 16px !important;
+    }
+
+    .p-dialog-content {
+      padding: 0 16px 24px 16px !important;
+    }
+
+    @media (min-width: 768px) {
+      min-width: 590px !important;
+    }
+  }
+}

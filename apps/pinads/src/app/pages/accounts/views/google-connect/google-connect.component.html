@@ -1,0 +1,21 @@
+<header class="mb-4 header text-center">
+  <h1 class="header__title">
+    {{ 'googleAuth.connectGoogle.headerTitle' | translate }}
+  </h1>
+  <p class="header__desc">
+    {{ 'googleAuth.connectGoogle.headerDesc' | translate }}
+  </p>
+</header>
+<div class="google-ads">
+  <p-button styleClass="google-ads__btn" (click)="connectGoogle()">
+    <span>
+      <img src="assets/icons/google-business.svg" alt="google-business" />
+    </span>
+    <span class="mx-2">{{
+      'googleAuth.connectGoogle.connectBtnText' | translate
+    }}</span>
+  </p-button>
+  <p class="google-ads__text my-3 text-center">
+    {{ 'googleAuth.connectGoogle.noAccountsText' | translate }}
+  </p>
+</div>

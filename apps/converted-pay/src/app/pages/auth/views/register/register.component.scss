@@ -1,0 +1,17 @@
+.container {
+  width: 42%;
+  @media screen and (max-width:998px) {
+    width: 50%;
+  }
+  @media screen and (max-width:768px) {
+    width: 100%;
+  }
+}
+.register-img {
+  height: auto;
+  width: 34rem;
+}
+.logo {
+  max-width: 148px;
+  height: 22px;
+}

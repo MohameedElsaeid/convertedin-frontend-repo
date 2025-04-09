@@ -1,0 +1,169 @@
+<ng-container *ngIf="adDetails$ | async as details">
+  <!-- Header -->
+  <div class="flex gap-3 ad-details__header">
+    <button convertedin-back-button></button>
+
+    <div class="flex-grow-1 flex justify-content-between align-items-center">
+      <div class="flex flex-column gap-2">
+        <h1 class="flex gap-2 align-items-center">
+          {{ 'dashboard.ad-details.title' | translate }}
+          <span
+            class="ad-details__status ad-details__{{
+              details.data.ad.status.name
+            }}"
+          >
+            {{
+              'dashboard.home.ad-sorting.' + details.data.ad.status.name
+                | translate
+            }}
+          </span>
+        </h1>
+
+        <!-- Ad number -->
+        <p
+          pTooltip="{{ 'dashboard.ad-details.copy-tip' | translate }}"
+          tooltipPosition="bottom"
+          class="ad-details__ad-number cursor-pointer flex gap-1 align-items-center"
+          (click)="copyToClipboard(details.data.ad.referenceNo)"
+        >
+          {{ 'dashboard.ad-details.ad-number' | translate }}
+          <span>{{ details.data.ad.referenceNo }}</span>
+          <i class="pi pi-copy"></i>
+        </p>
+      </div>
+
+      <!-- Actions menu -->
+      <div class="flex flex-column">
+        <button
+          *ngIf="menuItems.length > 0"
+          pButton
+          class="p-button-secondary p-button-outlined"
+          (click)="menu.toggle($event)"
+        >
+          <i class="pi pi-cog"></i>
+        </button>
+
+        <p-menu #menu [model]="menuItems" appendTo="body" [popup]="true" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <convertedin-ad-details-banner
+    [bannerMode]="bannerMode"
+    [rejection]="details.data.ad.rejection"
+    (showRejection)="showRejectDetails(details.data)"
+  />
+
+  <p-tabView class="ad-details__tabs mt-5">
+    <!-- Statistics tab -->
+    <p-tabPanel header="{{ 'dashboard.ad-details.tabs.1' | translate }}">
+      <ng-template pTemplate="content">
+        <div class="flex flex-grow-1 gap-4">
+          <div class="flex flex-column w-8">
+            <!-- Ad tips -->
+            <convertedin-ad-details-tips
+              class="mb-3"
+              *ngIf="
+                bannerMode === 'learn-fail' || bannerMode === 'learn-success'
+              "
+            />
+
+            <convertedin-ad-details-statistics
+              [adData]="details.data.insights"
+              [goalId]="details.data.ad.goal.id"
+              [spend]="details.data.ad.spend"
+            />
+          </div>
+
+          <!-- Vertical line -->
+          <div class="ad-details__vertical-line"></div>
+
+          <!-- Sidebar -->
+          <ng-container
+            [ngTemplateOutlet]="sideBarTemplate"
+            [ngTemplateOutletContext]="{ $implicit: details.data.ad }"
+          ></ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+
+    <!-- Details data tab -->
+    <p-tabPanel header="{{ 'dashboard.ad-details.tabs.2' | translate }}">
+      <ng-template pTemplate="content">
+        <div class="flex flex-grow-1 gap-4">
+          <div class="flex flex-column w-8">
+            <!-- Ad tips -->
+            <convertedin-ad-details-tips
+              class="mb-3"
+              *ngIf="
+                bannerMode === 'learn-fail' || bannerMode === 'learn-success'
+              "
+            />
+
+            <convertedin-ad-details-data [adData]="details.data" />
+          </div>
+
+          <!-- Vertical line -->
+          <div class="ad-details__vertical-line"></div>
+
+          <!-- Sidebar -->
+          <ng-container
+            [ngTemplateOutlet]="sideBarTemplate"
+            [ngTemplateOutletContext]="{ $implicit: details.data.ad }"
+          ></ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+
+    <!--Ad leads tab (Only if goal is lead gen) -->
+    <p-tabPanel
+      header="{{ 'dashboard.ad-details.tabs.3' | translate }}"
+      *ngIf="details.data.ad.goal.id === adGoal.LEAD_GENERATION"
+    >
+      <ng-template pTemplate="content">
+        <convertedin-ad-details-leads [adId]="adNumber" />
+      </ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</ng-container>
+
+<!-- Loading spinner -->
+<convertedin-spinner
+  class="flex justify-content-center align-items-center flex-grow-1"
+  *ngIf="isLoading"
+/>
+
+<!-- Sidebar template -->
+<ng-template let-ad #sideBarTemplate>
+  <div class="flex flex-column w-4 gap-4">
+    <div class="ad-details__post flex">
+      <img [src]="ad.photo" alt="post-img" />
+
+      <p>{{ ad.message }}</p>
+    </div>
+
+    <convertedin-details-timeline [adData]="ad" />
+
+    <!-- Earn money -->
+    <!-- <div class="p-4 flex flex-column ad-details__earn-money">
+          <img
+            src="assets/images/earn-money.png"
+            alt="earn-money-img"
+            width="59"
+            height="76"
+            class="mb-3"
+          />
+  
+          <div class="flex flex-column gap-2">
+            <h6>{{ 'dashboard.ad-details.earn-money.title' | translate }}</h6>
+  
+            <p>{{ 'dashboard.ad-details.earn-money.subtitle' | translate }}</p>
+  
+            <a class="cursor-pointer">
+              {{ 'dashboard.ad-details.earn-money.btn' | translate }}
+            </a>
+          </div>
+        </div> -->
+  </div>
+</ng-template>

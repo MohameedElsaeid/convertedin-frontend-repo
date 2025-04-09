@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+// @use './base';
+@use './styles/index';
+
+convertedin-root {
+  height: 100%;
+  display: block;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body,
+.p-component,
+.p-button {
+  font-family: 'Almarai', sans-serif;
+}
+.p-toast {
+  height: auto;
+  width: auto !important;
+  min-width: 15rem;
+  max-width: 28rem;
+}
+
+#freshworks-container {
+  position: absolute;
+  bottom: 20px;
+  inset-inline-end: 20px;
+  width: fit-content !important;
+  height: fit-content !important;
+  cursor: grab;
+  z-index: 9999;
+  touch-action: none;
+  user-select: none;
+  
+  #launcher-frame {
+    position: static !important;
+    max-width: 114px !important;
+    min-width: 90px !important;
+    pointer-events: none;
+  }
+}

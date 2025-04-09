@@ -1,0 +1,27 @@
+table {
+  margin-inline: auto;
+  tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  color: theme('colors.gray.600');
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+
+  td{
+    padding-block: 15px;
+    padding-inline: 24px;
+  }
+
+  .header-row {
+    td {
+      color: theme('colors.primary-color');
+      font-weight: 600;
+    }
+  }
+}

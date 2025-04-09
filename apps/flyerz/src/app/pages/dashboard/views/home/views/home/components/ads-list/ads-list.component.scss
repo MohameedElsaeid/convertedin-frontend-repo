@@ -1,0 +1,126 @@
+.dashboard-home {
+  &__create-title {
+    color: var(--convertedin-gray-600);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+  }
+
+  ::ng-deep &__connect-fb {
+    padding: 8px 24px !important;
+    border-radius: 12px !important;
+    background-color: var(--flyerz-primary-color) !important;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 150%;
+    border-color: var(--flyerz-primary-color) !important;
+  }
+
+  &__create-subtitle {
+    color: var(--convertedin-gray-600);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+  }
+
+  &__ads-title {
+    color: var(--convertedin-gray-600);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+  }
+
+  &__header {
+    border-radius: 8px;
+    background: var(--convertedin-gray-50);
+    padding: 16px 24px;
+  }
+
+  &__ad-card {
+    border-radius: 8px;
+    border: 1px solid var(--convertedin-gray-200);
+    background: #fff;
+    padding: 1rem;
+
+    ::ng-deep a {
+      padding: 8px 12px !important;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 150%;
+      background-color: var(--flyerz-primary-color);
+      border-color: var(--flyerz-primary-color) !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+    }
+
+    label {
+      color: var(--convertedin-gray-400);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    p {
+      color: var(--convertedin-gray-600);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    figure {
+      font-size: 0;
+      img {
+        max-width: 3.375rem;
+        max-height: 3.375rem;
+        width: 3.375rem;
+        height: 3.375rem;
+        border-radius: 50%;
+      }
+
+      figcaption {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--convertedin-gray-800);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 150%;
+        max-width: calc(100% - 3.375rem);
+        // max-height: 3.375rem;
+      }
+    }
+
+    .reject-reason {
+      padding: 8px;
+      background-color: #fff2f3;
+      color: #f43f5e;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 130%;
+      letter-spacing: -0.2px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.pending {
+  color: #ec8e00 !important;
+}
+
+.rejected {
+  color: #f5526e !important;
+}
+
+.active {
+  color: #0cac9e !important;
+}

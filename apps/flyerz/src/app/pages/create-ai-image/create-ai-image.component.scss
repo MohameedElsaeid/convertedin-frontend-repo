@@ -1,0 +1,68 @@
+.create-ai-image {
+  ::ng-deep &__next-btn {
+    padding: 12px 16px !important;
+    min-width: 7.18rem !important;
+    border-radius: 8px !important;
+    background: var(--flyerz-primary-color) !important;
+    border-color: var(--flyerz-primary-color) !important;
+    justify-content: center;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 130%;
+    letter-spacing: -0.2px;
+  }
+
+  ::ng-deep &__back-btn {
+    border-radius: 8px !important;
+    border: 1px solid var(--convertedin-gray-50) !important;
+    background: #fff !important;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+    padding: 12px 16px !important;
+    color: var(--convertedin-gray-900);
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 130%;
+    letter-spacing: -0.2px;
+  }
+
+  ::ng-deep &__stepper {
+    .convertedin-stepper__actions-container {
+      padding: 15px 2.5rem;
+      border-top: 1px solid var(--convertedin-gray-200);
+      box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    .convertedin-stepper__view-container {
+      max-height: calc(100vh - (60.8px + 73.3px));
+      overflow-y: scroll;
+    }
+
+    .convertedin-stepper__header {
+      padding: 15px 4.43rem;
+      border-bottom: 1px solid var(--convertedin-gray-200);
+      box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  ::ng-deep &__selected {
+    border-color: var(--flyerz-primary-color) !important;
+    transition: all 0.3s;
+    background-color: var(--flyerz-primary-50) !important;
+  }
+}
+
+h1 {
+  color: var(--convertedin-gray-900);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+}
+
+h2 {
+  color: var(--convertedin-gray-500);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.3px;
+}

@@ -1,0 +1,59 @@
+<div class="grid justify-content-between mt-5">
+    <div class="lg:col-6 col-12">
+      <h1>Let's get started on building your automated marketing machine.</h1>
+      <p>We're excited to help you automate your marketing journey.</p>
+      <hr class="my-4">
+      <div class="benefits-container">
+        <ul>
+            <li *ngFor="let benefit of benefits">{{benefit}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lg:col-5 col-12">
+      <form [formGroup]="registerForm" class="auth-form">
+        <div>
+          <h5>Let's get started,</h5>
+          <h3 class="mt-1">Create New Account</h3>
+        </div>
+
+        <div class="flex flex-column gap-2 mt-4">
+            <label for="name">Name</label>
+            <input pInputText id="name" formControlName="name" />
+            <convertedin-control-errors [control]="registerForm.get('name')!" />
+          </div>
+  
+        <div class="flex flex-column gap-2 mt-4">
+          <label for="email">Email</label>
+          <input pInputText id="email" formControlName="email" />
+          <convertedin-control-errors [control]="registerForm.get('email')!" />
+        </div>
+
+        <div class="flex flex-column gap-2 mt-4">
+            <label for="website">Website / Social Link</label>
+            <input pInputText id="website" formControlName="website" />
+            <small id="website-help">
+                Add your website, facebook, or instagram link...
+            </small>
+            <convertedin-control-errors [control]="registerForm.get('website')!" />
+          </div>
+  
+        <div class="flex flex-column gap-2 mt-3">
+            <label class="flex justify-content-between align-items-center" for="password">Password</label>
+          <p-password id="password" [toggleMask]="true" formControlName="password" />
+          <convertedin-control-errors [control]="registerForm.get('password')!" />
+        </div>
+
+        <div class="flex flex-column gap-2 mt-3">
+            <label class="flex justify-content-between align-items-center" for="confirm_password">Confirm Password</label>
+          <p-password id="confirm_password" [toggleMask]="true" formControlName="confirm_password" />
+          <convertedin-control-errors [control]="registerForm.get('confirm_password')!" />
+        </div>
+  
+        <div class="flex flex-column gap-2 mt-3">
+          <button type="submit" [disabled]="registerForm.invalid">Create New Account</button>
+        </div>
+        <hr class="my-5" />
+        <span>Already have an Account? <a routerLink="../login">Login</a></span>
+      </form>
+    </div>
+  </div>

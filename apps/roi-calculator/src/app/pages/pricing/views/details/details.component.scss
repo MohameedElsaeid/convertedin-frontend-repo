@@ -1,0 +1,92 @@
+h1{
+    color: theme('colors.primary-color');
+    text-align: center;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 72px; /* 120% */
+    letter-spacing: -1.2px;
+    margin-block: 66px 17px;
+}
+
+h3{
+    color: theme('colors.primary-color');
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 133.333% */
+}
+
+.plan{
+    p{
+        color: theme('colors.gray.900');
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px; /* 150% */
+    }
+
+    h2{
+        color: theme('colors.gray.900');
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 60px; /* 125% */
+        letter-spacing: -0.96px;
+        margin-top: 15px;
+    }
+
+    h4{
+        color: theme('colors.gray.400');
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+        margin-block: 16px 24px;
+        display: block;
+    }
+
+    span{
+        border-radius: 16px;
+        border: 1px solid #99B4F1;
+        background: #E6ECFC;
+        mix-blend-mode: multiply;
+        padding-inline: 10px;
+        color: #002985;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+    }
+
+    a{
+        display: block;
+        color: #FFF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px; /* 150% */
+        background: theme('colors.secondary-color');
+        width: 100%;
+        padding-block: 12px;
+        border-radius: 8px;
+        border: 1px solid theme('colors.secondary-color');
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+        text-align: center;
+    }
+}
+
+a{
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    display: block;
+    background: #04d;
+    text-align: center;
+    padding-block: 12px;
+    border-radius: 8px;
+}
