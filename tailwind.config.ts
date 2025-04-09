@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,19 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				laravel: {
+					DEFAULT: '#F05340',
+					50: '#FDEEED',
+					100: '#FBDDDB',
+					200: '#F7BBB6',
+					300: '#F49992',
+					400: '#F2776D',
+					500: '#F05340',
+					600: '#DE2B14',
+					700: '#B02310',
+					800: '#821A0C',
+					900: '#551107',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
