@@ -1,9 +1,0 @@
-{
-  "/api": {
-    "target": "https://app-stg.converted.in",
-    "secure": false,
-    "verbose": true,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
-}

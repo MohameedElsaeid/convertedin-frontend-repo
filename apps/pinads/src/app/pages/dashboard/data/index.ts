@@ -1,1 +1,0 @@
-export * from './sidebar-routes.data';

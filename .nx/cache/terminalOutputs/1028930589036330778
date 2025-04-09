@@ -1,0 +1,520 @@
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[36m⠋[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                                                    [2m | [22m[1mNames[22m                                                    [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mvendor.js[39m[37m                                                                                              [2m | [22mvendor                                                   [2m | [22m  [96m3.06 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mprimeFlex.css, primeFlex.js[39m[37m                                                                            [2m | [22mprimeFlex                                                [2m | [22m[96m657.54 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mprimeTheme.css, primeTheme.js[39m[37m                                                                          [2m | [22mprimeTheme                                               [2m | [22m[96m408.82 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mpolyfills.js[39m[37m                                                                                           [2m | [22mpolyfills                                                [2m | [22m[96m335.46 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mprimeIcons.css, primeIcons.js[39m[37m                                                                          [2m | [22mprimeIcons                                               [2m | [22m[96m246.23 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mprimeng.css, primeng.js[39m[37m                                                                                [2m | [22mprimeng                                                  [2m | [22m[96m240.40 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mappStyles.css, appStyles.js[39m[37m                                                                            [2m | [22mappStyles                                                [2m | [22m[96m238.39 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mmain.js[39m[37m                                                                                                [2m | [22mmai[39m[37mn                                                     [2m | [22m [96m54.12 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                                                             [2m | [22mruntime                                                  [2m | [22m [96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1m [22m                                                                                                      [2m | [22m[1mInitial Total[22m                                            [2m | [22m  [1m5.20 MB[22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                                                       [2m | [22m[1mNames[22m                                                    [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_campaigns_create-campaign_create-campaign_module_ts.js[39m[37m      [2m | [22mcreate-campaign-create-campaign-module                   [2m | [22m  [96m2.55 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_ui_src_index_ts-node_modules_rxweb_reactive-form-validators_fesm2020_rxweb-react-8ae029.js[39m[37m[2m | [22mviews-billing-billing-module                             [2m | [22m  [96m1.02 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-button_mjs-node_modules_primeng_fesm2022_primen-608141.js[39m[37m[2m | [22mviews-popup-forms-popup-forms-module                     [2m | [22m[96m622.83 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-table_mjs.js[39m[37m                                             [2m | [22mviews-popup-forms-popup-forms-module                     [2m | [22m[96m578.98 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_dashboard_module_ts.js[39m[37m                                            [2m | [22mpages-dashboard-dashboard-module                         [2m | [22m[96m310.57 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-n[39m[37mode_modules_primeng_fesm2022_primeng-calendar_mjs-node_modules_primeng_fesm2022_prim-69740c.js[39m[37m[2m | [22mviews-popup-forms-popup-forms-module                     [2m | [22m[96m267.37 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_flow-builder_views_flow-builder-create_flow-builde-ec4e6b.js[39m[37m[2m | [22mviews-flow-builder-create-flow-builder-create-component  [2m | [22m[96m196.91 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-inputnumber_mjs.js[39m[37m                                       [2m | [22mviews-popup-forms-popup-forms-module                     [2m | [22m[96m110.03 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m                                [2m | [22mviews-billing-billing-module                             [2m | [22m [96m98.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-apps_redmose_src_app_shared_components_index_ts.js[39m[37m                                             [2m | [22mviews-billing-billing-module                             [2m | [22m [96m91.18 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_campaign-templates_campaign-templates_component_ts-3bfbaf.js[39m[37m[2m | [22mviews-campaign-templates-campaign-templates-component    [2m | [22m [96m88.03 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-paginator_mjs.js[39m[37m                                         [2m | [22mviews-popup-forms-popup-forms-module                     [2m | [22m [96m76.17 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-dynamicdialog_mjs.js[39m[37m                                     [2m | [22mviews-flow-builder-listing-flow-builder-listing-component[2m | [22m [96m74.80 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_popup-forms_popup-forms_module_ts.js[39m[37m                        [2m | [22mviews-popup-forms[39m[37m-popup-forms-module                     [2m | [22m [96m68.01 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_primeng_fesm2022_primeng-icons-windowmaximize_mjs-node_modules_primeng_f-856264.js[39m[37m[2m | [22mcreate-campaign-create-campaign-module                   [2m | [22m [96m36.07 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_flow-builder_views_flow-builder-listing_flow-build-1b8717.js[39m[37m[2m | [22mviews-flow-builder-listing-flow-builder-listing-component[2m | [22m [96m34.21 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_flow-builder_flow-builder_module_ts.js[39m[37m                      [2m | [22mviews-flow-builder-flow-builder-module                   [2m | [22m [96m12.53 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mcommon.js[39m[37m                                                                                              [2m | [22mcommon                                                   [2m | [22m [96m10.11 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_flow-builder_views_flow-builder-listing_components-ba8dc5.js[39m[37m[2m | [22mdelete-popup-delete-popup-component                      [2m | [22m  [96m8.51 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_campaigns_campaigns_module_ts.js[39m[37m                            [2m | [22mviews-campaigns-campaigns-module                         [2m | [22m  [96m4.66 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:14:38.636Z[39m[37m[22m - Hash: [1m[37m524640ea81911679[39m[37m[22m - Time: [1m[37m10431[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0mD:\ConvertedIn\convertedin-frontend\apps\redmose\src\app\pages\dashboard\views\campaigns\create-campaign\components\campaign-adsets\campaign-adsets.component.ts depends on 'lodash'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0mD:\ConvertedIn\convertedin-frontend\apps\redmose\src\app\shared\components\message-content\message-content.component.ts depends on '@trt2/gsm-charset-utils'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0mD:\ConvertedIn\convertedin-frontend\libs\ui\src\lib\country-dropdown\country-dropdown.component.ts depends on 'google-libphonenumber'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **[39m
+[37m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m98.05 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:16:16.323Z[39m[37m[22m - Hash: [1m[37m6c77bd8160658ffa[39m[37m[22m - Time: [1m[37m2161[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m98.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:16:20.902Z[39m[37m[22m - Hash: [1m[37m6aa1b619c91db2b9[39m[37m[22m - Time: [1m[37m1228[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m99.17 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:24:23.148Z[39m[37m[22m - Hash: [1m[37md206e85b4c887c56[39m[37m[22m - Time: [1m[37m1630[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m95[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Observable<{ data: BillingPlan[]; } | { plans: BillingPlan[]; }>' is not assignable to type 'Observable<{ data: BillingPlan[]; }>'.[39m[22m
+[1m[31m  Type '{ data: BillingPlan[]; } | { plans: BillingPlan[]; }' is not assignable to type '{ data: BillingPlan[]; }'.[39m[22m
+[1m[31m    Property 'data' is missing in type '{ plans: BillingPlan[]; }' but required in type '{ data: BillingPlan[]; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m95[0m       this.plans$ = this.__buillingApi.getAllPlans().pipe(finalize(()=>{[39m[22m
+[1m[31m[7m  [0m [91m      ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m91[0m:[93m25[0m[39m[22m
+[1m[31m    [7m91[0m     plans$!:Observable<{data:BillingPlan[]}>[39m[22m
+[1m[31m    [7m  [0m [96m                        ~~~~[0m[39m[22m
+[1m[31m    'data' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m99.17 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:25:06.814Z[39m[37m[22m - Hash: [1m[37mf5d75b28fd26eb6c[39m[37m[22m - Time: [1m[37m760[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m97.98 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:36:55.856Z[39m[37m[22m - Hash: [1m[37m5e3de47f75510692[39m[37m[22m - Time: [1m[37m948[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.html[0m:[93m3[0m:[93m53[0m - [91merror[0m[90m TS2551: [0mProperty 'plans' does not exist on type 'PlanComponent'. Did you mean 'plans$'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <div class="col-3 mt-5" *ngFor="let plan of plans">[39m[22m
+[1m[31m[7m [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m9[0m:[93m16[0m[39m[22m
+[1m[31m    [7m9[0m   templateUrl: './plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component PlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m97.62 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:38:29.199Z[39m[37m[22m - Hash: [1m[37m3379b8e5792eec2b[39m[37m[22m - Time: [1m[37m1003[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'value' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'value' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                               ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m44[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'spent' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'spent' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                                           ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.[39m[22m[1m[31mcomponent.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.html[0m:[93m3[0m:[93m53[0m - [91merror[0m[90m TS2551: [0mProperty 'plans' does not exist on type 'PlanComponent'. Did you mean 'plans$'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <div class="col-3 mt-5" *ngFor="let plan of plans">[39m[22m
+[1m[31m[7m [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m9[0m:[93m16[0m[39m[22m
+[1m[31m    [7m9[0m   templateUrl: './plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component PlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m97.62 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:39:02.671Z[39m[37m[22m - Hash: [1m[37mdb890b31bce27ebf[39m[37m[22m - Time: [1m[37m731[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'value' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'value' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                               ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m44[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'spent' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'spent' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                                           ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.[39m[22m[1m[31mcomponent.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.html[0m:[93m3[0m:[93m53[0m - [91merror[0m[90m TS2551: [0mProperty 'plans' does not exist on type 'PlanComponent'. Did you mean 'plans$'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <div class="col-3 mt-5" *ngFor="let plan of plans">[39m[22m
+[1m[31m[7m [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m8[0m:[93m16[0m[39m[22m
+[1m[31m    [7m8[0m   templateUrl: './plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component PlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m97.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:40:38.877Z[39m[37m[22m - Hash: [1m[37m8794562349ef6365[39m[37m[22m - Time: [1m[37m821[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'value' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'value' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                               ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m44[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'spent' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'spent' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                                           ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.[39m[22m[1m[31mcomponent.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.html[0m:[93m3[0m:[93m53[0m - [91merror[0m[90m TS2551: [0mProperty 'plans' does not exist on type 'PlanComponent'. Did you mean 'plans$'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <div class="col-3 mt-5" *ngFor="let plan of plans">[39m[22m
+[1m[31m[7m [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m8[0m:[93m16[0m[39m[22m
+[1m[31m    [7m8[0m   templateUrl: './plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component PlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m93.71 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:40:51.402Z[39m[37m[22m - Hash: [1m[37m88625caac8544c2d[39m[37m[22m - Time: [1m[37m588[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'value' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'value' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                               ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.html[0m:[93m9[0m:[93m44[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'spent' since it isn't a known property of 'convertedin-plan'.[39m[22m
+[1m[31m1. If 'convertedin-plan' is an Angular component and it has 'spent' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'convertedin-plan' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m             <convertedin-plan  [value]="0" [spent]="100" ></convertedin-plan>[39m[22m
+[1m[31m[7m [0m [91m                                           ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.[39m[22m[1m[31mcomponent.ts[0m:[93m5[0m:[93m16[0m[39m[22m
+[1m[31m    [7m5[0m   templateUrl: './change-plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ChangePlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m93.50 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:41:17.414Z[39m[37m[22m - Hash: [1m[37m541453cda86d5905[39m[37m[22m - Time: [1m[37m1147[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m92.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:45:09.961Z[39m[37m[22m - Hash: [1m[37ma235cf22fae4e43d[39m[37m[22m - Time: [1m[37m931[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m93.36 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:45:30.563Z[39m[37m[22m - Hash: [1m[37m9d8c2aa0f93a326e[39m[37m[22m - Time: [1m[37m830[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m12[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Observable'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m12[0m   plans$!:Observable<{plans:BillingPlan[]}>[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/change-plan.component.ts[0m:[93m16[0m:[93m57[0m - [91merror[0m[90m TS2304: [0mCannot find name 'finalize'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m16[0m     this.plans$ = this.__buillingApi.getAllPlans().pipe(finalize(()=>{[39m[22m
+[1m[31m[7m  [0m [91m                                                        ~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m93.50 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:45:57.145Z[39m[37m[22m - Hash: [1m[37m324f2c24fa39d8ed[39m[37m[22m - Time: [1m[37m943[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m93.50 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:47:33.679Z[39m[37m[22m - Hash: [1m[37m15d0ee8e09e6141e[39m[37m[22m - Time: [1m[37m809[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m92.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:50:43.054Z[39m[37m[22m - Hash: [1m[37m1c05b01c90f5436f[39m[37m[22m - Time: [1m[37m945[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m96.85 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:50:50.008Z[39m[37m[22m - Hash: [1m[37m4cf1488d6e3b5647[39m[37m[22m - Time: [1m[37m667[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.html[0m:[93m3[0m:[93m53[0m - [91merror[0m[90m TS2339: [0mProperty 'plans' does not exist on type 'PlanComponent'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <div class="col-3 mt-5" *ngFor="let plan of plans">[39m[22m
+[1m[31m[7m [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/redmose/src/app/pages/dashboard/views/billing/views/change-plan/components/plan/plan.component.ts[0m:[93m8[0m:[93m16[0m[39m[22m
+[1m[31m    [7m8[0m   templateUrl: './plan.component.html',[39m[22m
+[1m[31m    [7m [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component PlanComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m×[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m98.43 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:51:05.489Z[39m[37m[22m - Hash: [1m[37ma24229bc8238ecb0[39m[37m[22m - Time: [1m[37m1178[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m98.43 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:51:20.203Z[39m[37m[22m - Hash: [1m[37ma3d92f34d5f4fc13[39m[37m[22m - Time: [1m[37m779[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                    [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                             [2m | [22mruntime                     [2m | [22m[96m12.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                       [2m | [22m[1mNames[22m                       [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_redmose_src_app_pages_dashboard_views_billing_billing_module_ts.js[39m[37m[2m | [22mviews-billing-billing-module[2m | [22m[96m98.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m27 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:51:35.359Z[39m[37m[22m - Hash: [1m[37mc17e074ed42d2d30[39m[37m[22m - Time: [1m[37m706[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m29 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-04T19:51:46.398Z[39m[37m[22m - Hash: [1m[37mc17e074ed42d2d30[39m[37m[22m - Time: [1m[37m720[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m√[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...

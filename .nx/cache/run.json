@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve redmose -o --port 4200",
+    "startTime": "2024-08-13T21:05:09.761Z",
+    "endTime": "2024-08-13T21:27:04.314Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "redmose:serve:development",
+      "target": "serve",
+      "projectName": "redmose",
+      "hash": "10948812584755357118",
+      "startTime": "2024-08-13T21:05:09.766Z",
+      "endTime": "2024-08-13T21:27:04.313Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

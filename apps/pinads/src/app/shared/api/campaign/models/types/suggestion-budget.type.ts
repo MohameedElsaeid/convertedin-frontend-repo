@@ -1,1 +1,0 @@
-export type BudgetType = 'low' | 'recommended' | 'high';
